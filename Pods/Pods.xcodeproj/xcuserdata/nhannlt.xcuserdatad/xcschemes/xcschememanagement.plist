@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Pods-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-DNDDragAndDrop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Funny Clip-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Funny Clip-DNDDragAndDrop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Funny Clip-youtube-ios-player-helper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Funny Clip.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Funny ClipTests-AFNetworking.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Funny ClipTests-DNDDragAndDrop.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Funny ClipTests-youtube-ios-player-helper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-Funny ClipTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-youtube-ios-player-helper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>03E76CC3B8B4E57DEA5514C3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>123F249B4ED86F2B3C5EA9D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1DC74F40A4D21D032645F959</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1E5AF540AA5B9118DCC9050D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>24963B957AF663C2067D35F8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>31DC192EEFA7D9864EC2C5BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>496F7BF3937CC2C09F4E52CF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>58644BE9B4BC3C12381CFC81</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7278EC96631B12A6F9970E14</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F616582FCBDCF5AADA875C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F5ED4A46A0E8021DB10E1E20</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FAC6428745C9EE536D08DFBD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

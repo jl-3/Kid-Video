@@ -12,7 +12,7 @@
 @interface VideoItemCollectCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *thumnailImg;
-@property (weak, nonatomic) IBOutlet UIButton *moreButton;
+
 @property (weak, nonatomic) IBOutlet UILabel *titleLbl;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLb;
 //- (void) initCellWithData: ();

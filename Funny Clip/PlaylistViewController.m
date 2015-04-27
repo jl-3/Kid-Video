@@ -146,7 +146,7 @@ static const CGFloat kCropDimension = 120;
 }
 // 3
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return CGSizeMake(self.listViewColectionView.frame.size.width/3-8, self.listViewColectionView.frame.size.width/3-10);
+    return CGSizeMake(self.listViewColectionView.frame.size.width/3-8, (self.listViewColectionView.frame.size.width/3-10));
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -163,30 +163,33 @@ static const CGFloat kCropDimension = 120;
    cellScroll.titleLbl.text = [vData getTitle];
     
       NSURL *url = [NSURL URLWithString:vData.getThumbUri];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    operation.responseSerializer = [AFImageResponseSerializer serializer];
-    
-    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"das");
-        UIGraphicsBeginImageContext(CGSizeMake(kCropDimension,
-                                               kCropDimension));
-        vData.fullImage = responseObject;
-        [ responseObject drawInRect:
-         CGRectMake(0, 0, kCropDimension, kCropDimension)];
-        vData.thumbnail = UIGraphicsGetImageFromCurrentImageContext();
-        UIGraphicsEndImageContext();
-     //   cellScroll.thumnailImg.image =vData.thumbnail;
-        [cellScroll.thumnailImg setImage:vData.fullImage];
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"Error: %@", error);
-    }];
-  
-    [operation start];
-    
  
+       NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"play_on.png"];
+    
+   // __weak UITableViewCell *weakCell = cell;
+    
+    [cellScroll.thumnailImg setImageWithURLRequest:request
+                          placeholderImage:placeholderImage
+                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                       
+                                       NSLog(@"image download: %f %f",image.size.width,image.size.height);
+                                       NSLog(@"cell sizde: %f %f",cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height);
+
+                                               UIGraphicsBeginImageContext(CGSizeMake(cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height
+                                                                                      ));
+                                               vData.fullImage = image;
+                                               [ image drawInRect:
+                                               CGRectMake(0, 0, cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height)];
+                                               vData.thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+                                               UIGraphicsEndImageContext();
+                                       
+                                               [cellScroll.thumnailImg setImage:vData.thumbnail];
+                                       //cellScroll.thumnailImg.image = image;
+                                       [cellScroll setNeedsLayout];
+                                       
+                                   } failure:nil];
+    
         return cellScroll;
 }
 
@@ -215,12 +218,47 @@ static const CGFloat kCropDimension = 120;
      
     }
 
-    VideoData *vidData = [self.videos objectAtIndex:indexPath.row];
-    cell.backgroundImage.image = vidData.thumbnail;
-    cell.titleLabel.text = [vidData getTitle];
-    cell.descriptionLabel.text = [NSString stringWithFormat:@"%@ -- %@ views",
-                                     [Utils humanReadableFromYouTubeTime:vidData.getDuration],
-                                     vidData.getViews];
+    //VideoData *vidData = [self.videos objectAtIndex:indexPath.row];
+    //cell.backgroundImage.image = vidData.thumbnail;
+    
+    VideoData *vData = [self.videos objectAtIndex:indexPath.row];
+    cell.titleLabel.text = [vData getTitle];
+//    cell.descriptionLabel.text = [NSString stringWithFormat:@"%@ -- %@ views",
+//                                  [Utils humanReadableFromYouTubeTime:vData.getDuration],
+//                                  vData.getViews];
+    cell.descriptionLabel.text =[Utils humanReadableFromYouTubeTime:vData.getDuration];
+    // cellScroll.thumnailImg.image = vidData.thumbnail;
+    //cellScroll.titleLbl.text = [vData getTitle];
+    
+    NSURL *url = [NSURL URLWithString:vData.getThumbUri];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    UIImage *placeholderImage = [UIImage imageNamed:@"play_on.png"];
+    
+    // __weak UITableViewCell *weakCell = cell;
+    
+    [cell.backgroundImage setImageWithURLRequest:request
+                                  placeholderImage:placeholderImage
+                                           success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                               
+                                               NSLog(@"image download: %f %f",image.size.width,image.size.height);
+                                               NSLog(@"cell sizde: %f %f",cell.backgroundImage.frame.size.width,cell.backgroundImage.frame.size.height);
+                                               
+                                               UIGraphicsBeginImageContext(CGSizeMake(cell.backgroundImage.frame.size.width,cell.backgroundImage.frame.size.height
+                                                                                      ));
+                                               vData.fullImage = image;
+                                               [ image drawInRect:
+                                                CGRectMake(0, 0, cell.backgroundImage.frame.size.width,cell.backgroundImage.frame.size.height)];
+                                               vData.thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+                                               UIGraphicsEndImageContext();
+                                               
+                                               [cell.backgroundImage setImage:vData.thumbnail];
+                                               //cellScroll.thumnailImg.image = image;
+                                               [cell.backgroundImage setNeedsLayout];
+                                               
+                                           } failure:nil];
+
+    
     return cell;
 }
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
@@ -318,7 +356,10 @@ static const CGFloat kCropDimension = 120;
         self.youtubeService.authorizer = nil;
     } else {
         self.youtubeService.authorizer = authResult;
-        
+        //[self isAuthorized];
+        [self viewDidLoad];
+        [self.getVideos getYouTubeVideosWithService:self.youtubeService];
+
     }
 }
 

@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "VideoModel.h"
 #import <UIImageView+AFNetworking.h>
+#include "MarqueeLabel.h"
 @interface VideoItemCollectCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *thumnailImg;
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLbl;
+@property (weak, nonatomic) IBOutlet MarqueeLabel *titleLbl;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLb;
 //- (void) initCellWithData: ();
 + (id) initViewOwner;

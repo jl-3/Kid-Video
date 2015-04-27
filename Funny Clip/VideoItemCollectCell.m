@@ -12,11 +12,15 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    
+    self.titleLbl.textColor= [UIColor whiteColor];
+    self.titleLbl.textAlignment= NSTextAlignmentLeft;
+    self.titleLbl.marqueeType = MLContinuous;
+    self.titleLbl.scrollDuration = 20.0f;
+    self.titleLbl.fadeLength = 10.0f;
+    self.titleLbl.trailingBuffer = self.titleLbl.frame.size.width;
+    self.titleLbl.animationDelay=0.f;
    
 }
-
-
 - (void)initDataWithVideoInfo:(VideoModel *)model {
    // [self.titleLabel setText:model.title];
     

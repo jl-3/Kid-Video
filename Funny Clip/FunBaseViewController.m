@@ -25,8 +25,6 @@
     // Assign tab bar item with titles
    // UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
     
-    
-    
 //    self.navigationItem.leftBarButtonItem.title = @"BackView";
 //    self.navigationController.navigationBar.backItem.leftBarButtonItem.title = @"backview";
 //    //self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"Purple.png"];
@@ -42,8 +40,28 @@
     //[self.navigationItem setLeftBarButtonItem:customBarItem];
  //   [self.navigationItem setLeftBarButtonItem:[UIBarButtonItem new]];
  //   self.navigationItem.leftBarButtonItem.title = @"Back";
-
+  //  [self dummyData];
+    NSArray *data = [[DBManager getSharedInstance]getAllVideos];
+   
 }
+- (void) saveToFavorite: (FavoriteVideoDetail *) mFavoriteItem {
+    BOOL success = NO;
+    NSString *alertString = @"Data Insertion failed";
+    success = [[DBManager getSharedInstance] saveVideo:mFavoriteItem];
+    //success = [[DBManager getSharedInstance] saveVideo:item2];
+    
+    if (success == NO) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:
+                              alertString message:nil
+                                                      delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+    }
+    else {
+        NSLog(@"Save data OK");
+    }
+    
+}
+
 -(void) setTitleNavigationBar
 {
     [self.navigationItem setTitle:@"Funny Clip"];

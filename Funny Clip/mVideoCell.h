@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "VideoInfoModel.h"
+#import "MarqueeLabel.h"
 @interface mVideoCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet MarqueeLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 //- (void) initCellWithData: ();
 + (id) initViewOwner;

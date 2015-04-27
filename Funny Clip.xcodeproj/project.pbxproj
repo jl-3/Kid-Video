@@ -71,9 +71,13 @@
 		69A52C651AE8E12F00EA91CE /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A52C621AE8E12F00EA91CE /* icon_menu.png */; };
 		69A52C671AE8E40300EA91CE /* icon_listvideo_recent.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A52C661AE8E40300EA91CE /* icon_listvideo_recent.png */; };
 		69A52C691AE8E48000EA91CE /* play_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A52C681AE8E48000EA91CE /* play_on.png */; };
+		69A741E81AEE65DF000C6350 /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A741E71AEE65DF000C6350 /* MarqueeLabel.m */; };
+		69A741EA1AEE6BD7000C6350 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A741E91AEE6BD7000C6350 /* libsqlite3.dylib */; };
+		69A741F21AEE6CBD000C6350 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A741F11AEE6CBD000C6350 /* DBManager.m */; };
 		69A8769F1AE394300073C6B1 /* mVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A8769D1AE394300073C6B1 /* mVideoCell.m */; };
 		69A876A01AE394300073C6B1 /* mVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A8769E1AE394300073C6B1 /* mVideoCell.xib */; };
 		69EA86131AE6350800F612FA /* NSURLParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA86121AE6350800F612FA /* NSURLParameters.m */; };
+		69FE692C1AEE7B2500634542 /* FavoriteVideoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE692B1AEE7B2500634542 /* FavoriteVideoDetail.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,11 +198,18 @@
 		69A52C621AE8E12F00EA91CE /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu.png; sourceTree = "<group>"; };
 		69A52C661AE8E40300EA91CE /* icon_listvideo_recent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_listvideo_recent.png; sourceTree = "<group>"; };
 		69A52C681AE8E48000EA91CE /* play_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_on.png; sourceTree = "<group>"; };
+		69A741E61AEE65DF000C6350 /* MarqueeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeLabel.h; sourceTree = "<group>"; };
+		69A741E71AEE65DF000C6350 /* MarqueeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeLabel.m; sourceTree = "<group>"; };
+		69A741E91AEE6BD7000C6350 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		69A741F01AEE6CBD000C6350 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
+		69A741F11AEE6CBD000C6350 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
 		69A8769C1AE394300073C6B1 /* mVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mVideoCell.h; sourceTree = "<group>"; };
 		69A8769D1AE394300073C6B1 /* mVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mVideoCell.m; sourceTree = "<group>"; };
 		69A8769E1AE394300073C6B1 /* mVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mVideoCell.xib; sourceTree = "<group>"; };
 		69EA86111AE6350800F612FA /* NSURLParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSURLParameters.h; sourceTree = "<group>"; };
 		69EA86121AE6350800F612FA /* NSURLParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLParameters.m; sourceTree = "<group>"; };
+		69FE692A1AEE7B2500634542 /* FavoriteVideoDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteVideoDetail.h; sourceTree = "<group>"; };
+		69FE692B1AEE7B2500634542 /* FavoriteVideoDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteVideoDetail.m; sourceTree = "<group>"; };
 		82A58356B7293C6FD50E6C75 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69A741EA1AEE6BD7000C6350 /* libsqlite3.dylib in Frameworks */,
 				699D85391AE52E4900C97851 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +287,7 @@
 		6915C7D41ADE05E4005AD7E1 /* Funny Clip */ = {
 			isa = PBXGroup;
 			children = (
+				69A741E51AEE65DF000C6350 /* AutoScrollLabel */,
 				6914A3A11AE74F6D00AAC253 /* YouTube API */,
 				69EA86101AE6350800F612FA /* NSURL+Parameters */,
 				699CDFC11AE41BE3005851CC /* Model */,
@@ -347,6 +360,8 @@
 				699D84D21AE52ABD00C97851 /* VideoModel.m */,
 				699CDFC81AE41EF2005851CC /* VideoInfoModel.h */,
 				699CDFC91AE41EF2005851CC /* VideoInfoModel.m */,
+				69FE692A1AEE7B2500634542 /* FavoriteVideoDetail.h */,
+				69FE692B1AEE7B2500634542 /* FavoriteVideoDetail.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -411,9 +426,28 @@
 			path = JSONModelTransformations;
 			sourceTree = "<group>";
 		};
+		69A741E51AEE65DF000C6350 /* AutoScrollLabel */ = {
+			isa = PBXGroup;
+			children = (
+				69A741E61AEE65DF000C6350 /* MarqueeLabel.h */,
+				69A741E71AEE65DF000C6350 /* MarqueeLabel.m */,
+			);
+			path = AutoScrollLabel;
+			sourceTree = "<group>";
+		};
+		69A741EF1AEE6CBD000C6350 /* DatabaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				69A741F01AEE6CBD000C6350 /* DBManager.h */,
+				69A741F11AEE6CBD000C6350 /* DBManager.m */,
+			);
+			path = DatabaseManager;
+			sourceTree = "<group>";
+		};
 		69AB3F0E1ADE185500791DAD /* BaseCustom */ = {
 			isa = PBXGroup;
 			children = (
+				69A741EF1AEE6CBD000C6350 /* DatabaseManager */,
 				6915C7D91ADE05E4005AD7E1 /* AppDelegate.h */,
 				6915C7DA1ADE05E4005AD7E1 /* AppDelegate.m */,
 				6955CEB41ADE76B60093E1C8 /* BaseNavigationController.h */,
@@ -497,6 +531,7 @@
 		7BE508E6149B342F7B4878B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				69A741E91AEE6BD7000C6350 /* libsqlite3.dylib */,
 				699D85401AE52E7E00C97851 /* CoreGraphics.framework */,
 				699D853E1AE52E7400C97851 /* Foundation.framework */,
 				699D853C1AE52E6200C97851 /* QuartzCore.framework */,
@@ -687,9 +722,11 @@
 				697FB1421ADE9A7700DFE12D /* FunBaseViewController.m in Sources */,
 				6914A3C11AE74F8D00AAC253 /* GTLCommon_Sources.m in Sources */,
 				6914A3C21AE74F8D00AAC253 /* GTLNetworking_Sources.m in Sources */,
+				69FE692C1AEE7B2500634542 /* FavoriteVideoDetail.m in Sources */,
 				69A8769F1AE394300073C6B1 /* mVideoCell.m in Sources */,
 				699D85171AE52AD200C97851 /* JSONModelArray.m in Sources */,
 				6914A3B91AE74F6D00AAC253 /* VideoListViewController.m in Sources */,
+				69A741F21AEE6CBD000C6350 /* DBManager.m in Sources */,
 				697FB1531ADEA9AE00DFE12D /* PlaylistViewController.m in Sources */,
 				699D851B1AE52AD200C97851 /* JSONAPI.m in Sources */,
 				699D851F1AE52AD200C97851 /* JSONValueTransformer.m in Sources */,
@@ -707,6 +744,7 @@
 				69EA86131AE6350800F612FA /* NSURLParameters.m in Sources */,
 				699CDFCA1AE41EF2005851CC /* VideoInfoModel.m in Sources */,
 				69598CC81AE548E5003BE85A /* VideoItemCollectCell.m in Sources */,
+				69A741E81AEE65DF000C6350 /* MarqueeLabel.m in Sources */,
 				699D851D1AE52AD200C97851 /* JSONModel+networking.m in Sources */,
 				6999FB531ADF80A300B94D04 /* NMBottomTabBarController.m in Sources */,
 				6914A3BC1AE74F6D00AAC253 /* YouTubeDirectTag.m in Sources */,

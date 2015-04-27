@@ -25,10 +25,9 @@
 #import "VideoListViewController.h"
 #import "Utils.h"
 // Thumbnail image size.
-static const CGFloat kCropDimension = 120;
+
 @implementation PlaylistViewController
 @synthesize youtubeService;
-
 
 - (id)init
 {
@@ -47,6 +46,7 @@ static const CGFloat kCropDimension = 120;
     //[self.playerView setBackgroundColor:[UIColor blackColor]];
    // [self.playerView setHidden:NO];
       [self.getVideos getYouTubeVideosWithService:self.youtubeService];
+    [self.listViewColectionView setAlpha:0.9f];
 
 }
 
@@ -269,6 +269,13 @@ static const CGFloat kCropDimension = 120;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
         return self.mListVideo.frame.size.width;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    VideoData *vData = [self.videos objectAtIndex:indexPath.row];
+    NSDictionary *mDic= @{@"videoId": vData.getYouTubeId};
+    FavoriteVideoDetail *mFavoriteItem = [[FavoriteVideoDetail alloc]initWithDictionary:mDic];
+    [self saveToFavorite:mFavoriteItem];
+    
 }
 - (IBAction)buttonPressed:(id)sender {
   //  [self.playerView setHidden:NO];

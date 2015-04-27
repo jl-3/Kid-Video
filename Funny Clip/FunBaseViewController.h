@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <YTPlayerView.h>
+#import "DBManager.h"
 @protocol FunBaseViewControllerDelegate <NSObject>;
 @end
 @interface FunBaseViewController : UIViewController<YTPlayerViewDelegate>
@@ -15,4 +16,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *testbtn;
 - (void) setTitleNavigationBar;
 - (void) setLeftBtnNavigationBar;
+- (void) saveToFavorite: (FavoriteVideoDetail *) mFavoriteItem ;
 @end

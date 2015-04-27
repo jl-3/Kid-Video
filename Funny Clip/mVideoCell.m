@@ -16,7 +16,13 @@
 }
 - (void)awakeFromNib {
     // Initialization code
-   
+    self.titleLabel.textColor= [UIColor whiteColor];
+    self.titleLabel.textAlignment= NSTextAlignmentLeft;
+    self.titleLabel.marqueeType = MLContinuous;
+    self.titleLabel.scrollDuration = 20.0f;
+    self.titleLabel.fadeLength = 20.0f;
+    self.titleLabel.trailingBuffer = self.titleLabel.frame.size.width;
+    self.titleLabel.animationDelay=0.f;
   
 }
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

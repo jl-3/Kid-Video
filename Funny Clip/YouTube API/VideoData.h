@@ -11,6 +11,7 @@
 #import <UIKit/UIKit.h>
 @interface VideoData : NSObject
     @property(nonatomic, strong) GTLYouTubeVideo *video;
+     @property(nonatomic, strong) GTLYouTubeSearchResult *videoSearch;
     @property(nonatomic, strong) UIImage *thumbnail;
     @property(nonatomic, strong) UIImage *fullImage;
 
@@ -20,5 +21,5 @@
 -(NSString *)getWatchUri;
 -(NSString *)getDuration;
 -(NSString *)getViews;
--(GTLYouTubeVideoSnippet *)addTags:(NSArray *)tags;
+-(GTLYouTubeVideoSnippet *)addTags:(NSArray *)newTags ;
 @end

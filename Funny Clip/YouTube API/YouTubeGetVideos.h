@@ -17,8 +17,11 @@
 
 // Performs a G+ image search with the given query, will return
 // by calling googlePlusImageSearch:didFinishWithResults: when completed.
-- (void)getYouTubeVideosWithService:(GTLServiceYouTube *)service;
+- (void)getYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)playListId ;
 
+// search
+- (void)searchYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)searchKey ;
+- (void)searchYouTubeVideosWithService2:(GTLServiceYouTube *)service : (NSString *)searchKey;
 @end
 
 

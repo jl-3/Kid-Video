@@ -23,40 +23,90 @@
 #import "VideoData.h"
 #import "YouTubeGetVideos.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+//
+
+#import "UIViewController+MMDrawerController.h"
+#import "MMDrawerBarButtonItem.h"
+
+//
 //#import "VideoItemCollectCell.m"
 @protocol PlaylistViewControllerDelegate <NSObject>;
 @end;
 
-@interface PlaylistViewController : FunBaseViewController<YouTubeGetVideosDelegate,UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface PlaylistViewController : FunBaseViewController<YouTubeGetVideosDelegate,UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate>
 {
     NSMutableArray *mVideos;
+    NSMutableArray *mPlayLists;
+    NSMutableArray *mFavoriteVideos;
     NSDictionary *playerVars ;
-    
+    int flag; //flag =1 : am nhac
+              //flag =2 : ke chuyen
+              //flag =3 : hoat hinh
+    NSTimer *timer;
+    float durationOfCurrentVideoPlaying;
+    NSArray *mMenuItems;
+  
+    UIViewController *mVCAbout;
 }
-@property(nonatomic, strong) NSArray *videos;
+@property (strong, nonatomic) NSString *currentTextInSearchBar;
+
+@property (strong, nonatomic) UITapGestureRecognizer *tap;
+@property(nonatomic, strong) NSArray *VIDEOS_SEARCH_RESULTS;
+@property(nonatomic, strong) NSArray *VIDEOS_AMNHAC;
+@property(nonatomic, strong) NSArray *VIDEOS_KECHUYEN;
+@property(nonatomic, strong) NSArray *VIDEOS_HOATHINH;
 @property(nonatomic, strong) YouTubeGetVideos *getVideos;
 @property(nonatomic, retain) GTLServiceYouTube *youtubeService;
 
 
 @property (weak, nonatomic) IBOutlet UIImageView *televisionImage;
 @property (weak, nonatomic) IBOutlet UITableView *mListVideo;
+@property (weak, nonatomic) IBOutlet UITableView *tbvMenu;
 @property (weak, nonatomic) IBOutlet UITabBar *mTabbar;
-@property (strong, nonatomic) IBOutlet UIButton *ViewUpDownbtn;
+@property (weak, nonatomic) IBOutlet UISlider *sliderVideo;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *listViewColectionView;
+@property(nonatomic, strong) IBOutlet YTPlayerView *playerView;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBarView;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomOfSeekingView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingOfMenuView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topSpaceListVideo;
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *bottomSpaceListVideo;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heighButtonTheLoai;
+//constraigt for butotn
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingHoatHinh;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingAmNhac;
 
-@property(nonatomic, strong) IBOutlet YTPlayerView *playerView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *withOfKeChuyen;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottonKeChuyen;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthAmNhac;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomAmNhac;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthHoatHinh;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHoatHInh;
+
+
+@property (weak, nonatomic) IBOutlet MarqueeLabel *titleVideoPlaying;
+
+@property (weak, nonatomic) IBOutlet UIView *ViewListCollection;
+@property (weak, nonatomic) IBOutlet UIView *viewButonSeeking;
+
+
 @property(nonatomic, weak) IBOutlet UIButton *playButton;
 @property(nonatomic, weak) IBOutlet UIButton *nextVideoButton;
 @property(nonatomic, weak) IBOutlet UIButton *previousVideoButton;
+@property (weak, nonatomic) IBOutlet UIButton *btnAmNhac;
+@property (weak, nonatomic) IBOutlet UIButton *btnKeChuyen;
+@property (weak, nonatomic) IBOutlet UIButton *btnHoatHinh;
+@property (strong, nonatomic) IBOutlet UIButton *ViewUpDownbtn;
+@property (weak, nonatomic) IBOutlet UIButton *btnSearch;
+@property (weak, nonatomic) IBOutlet UIButton *playerViewFace;
+@property (weak, nonatomic) IBOutlet UIButton *btnMenu;
 
+- (IBAction)setProgress:(UISlider *)sender;
 - (IBAction)buttonPressed:(id)sender;
+- (IBAction)buttonPlayerViewFace:(id)sender;
+- (void) saveToDBWhenClick : (VideoData*) vData;
 
-//@property (nonatomic, weak) IBOutlet UIView *dragSourceView;
-//@property (nonatomic, weak) IBOutlet UIView  *dropTargetView;
-//@property (nonatomic, strong) IBOutlet DNDDragAndDropController *dragAndDropController;
 @property (retain) id<PlaylistViewControllerDelegate> delegate;
 @end

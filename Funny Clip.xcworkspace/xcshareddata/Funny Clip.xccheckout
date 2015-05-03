@@ -10,22 +10,41 @@
 	<string>Funny Clip</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>052f66bb-8366-e9ed-b056-95094e25c79e++505</key>
+		<string>http://google-api-objectivec-client.googlecode.com/svn/trunk</string>
+		<key>22754eea-fc93-e339-b032-c1f495b90c16++2896</key>
+		<string>http://gtm-oauth2.googlecode.com/svn/trunk/Source</string>
 		<key>851D9E47CDE5DC103C49D4D5CF52C6A0A2E57C41</key>
 		<string>https://github.com/oNguyenLeTrongNhan/Funny-Clip.git</string>
+		<key>B7D95A76AA5E7F267F98B715AB99D0B48A8EC2C3</key>
+		<string>https://github.com/trongnhan68/Kid-Video.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Funny Clip.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>052f66bb-8366-e9ed-b056-95094e25c79e++505</key>
+		<string>..google-api-objectivec-client-read-only</string>
+		<key>22754eea-fc93-e339-b032-c1f495b90c16++2896</key>
+		<string>..google-api-objectivec-client-read-only/Source/OAuth2</string>
 		<key>851D9E47CDE5DC103C49D4D5CF52C6A0A2E57C41</key>
+		<string>../../Funny%20Clip</string>
+		<key>B7D95A76AA5E7F267F98B715AB99D0B48A8EC2C3</key>
 		<string>..</string>
 	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>052f66bb-8366-e9ed-b056-95094e25c79e++505</key>
+		<string>http://google-api-objectivec-client.googlecode.com/svn</string>
+		<key>22754eea-fc93-e339-b032-c1f495b90c16++2896</key>
+		<string>http://gtm-oauth2.googlecode.com/svn</string>
+	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/oNguyenLeTrongNhan/Funny-Clip.git</string>
+	<string>https://github.com/trongnhan68/Kid-Video.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>851D9E47CDE5DC103C49D4D5CF52C6A0A2E57C41</string>
+	<string>B7D95A76AA5E7F267F98B715AB99D0B48A8EC2C3</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +54,30 @@
 			<string>851D9E47CDE5DC103C49D4D5CF52C6A0A2E57C41</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Funny%20Clip</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B7D95A76AA5E7F267F98B715AB99D0B48A8EC2C3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Kid-Video</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>052f66bb-8366-e9ed-b056-95094e25c79e++505</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Kid-Videogoogle-api-objectivec-client-read-only</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>22754eea-fc93-e339-b032-c1f495b90c16++2896</string>
+			<key>IDESourceControlWCCName</key>
+			<string>OAuth2</string>
 		</dict>
 	</array>
 </dict>

@@ -15,7 +15,11 @@
         self.videoId = dictionary[@"videoId"];
         self.deleted = dictionary[@"deleted"];
         self.position = dictionary[@"position"];
-        self.time = dictionary[@"time"];
+        self.videoDuration = dictionary[@"videoDuration"];
+        self.thumnailUrl = dictionary[@"thumnailUrl"];
+        self.videoName = dictionary[@"videoName"];
+        self.videoDescription = dictionary[@"videoDescription"];
+
         
     }
     return self;

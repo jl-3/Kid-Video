@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -14,40 +13,32 @@
                 <rect key="frame" x="0.0" y="0.0" width="240" height="180"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="U3l-M0-tR7">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="163"/>
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="180"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="U3l-M0-tR7" secondAttribute="height" multiplier="310:173" id="drZ-pa-TRi"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="drZ-pa-TRi"/>
-                            </mask>
-                        </variation>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwM-5e-qm8" userLabel="time">
-                        <rect key="frame" x="208" y="165" width="30" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="JMf-mC-3dp"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RED-I8-ONe" customClass="MarqueeLabel">
-                        <rect key="frame" x="8" y="165" width="200" height="15"/>
+                        <rect key="frame" x="0.0" y="160" width="240" height="20"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="30" id="DVH-HR-Zig"/>
-                            <constraint firstAttribute="height" constant="15" id="UNV-il-l8a"/>
+                            <constraint firstAttribute="height" constant="20" id="d7d-FC-qSa"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="DVH-HR-Zig"/>
-                            </mask>
-                        </variation>
+                        <size key="shadowOffset" width="0.0" height="0.0"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="scrollDuration">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwM-5e-qm8" userLabel="time">
+                        <rect key="frame" x="201" y="20" width="29" height="17"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
+                        <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -55,39 +46,30 @@
             <color key="backgroundColor" red="0.12549020350000001" green="0.82745105029999999" blue="0.44313728810000003" alpha="1" colorSpace="deviceRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="RED-I8-ONe" secondAttribute="bottom" id="0g6-KY-sDJ"/>
-                <constraint firstAttribute="trailing" secondItem="RED-I8-ONe" secondAttribute="trailing" constant="70" id="2tH-wv-JH5"/>
                 <constraint firstItem="U3l-M0-tR7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="4vj-Nh-o66"/>
-                <constraint firstAttribute="bottom" secondItem="U3l-M0-tR7" secondAttribute="bottom" constant="50" id="6Db-Gm-3Nd"/>
-                <constraint firstItem="RED-I8-ONe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="107" id="BTx-5Y-ryZ"/>
-                <constraint firstItem="RED-I8-ONe" firstAttribute="bottom" secondItem="U3l-M0-tR7" secondAttribute="bottom" constant="10" id="Ewb-9R-bFL"/>
-                <constraint firstItem="RED-I8-ONe" firstAttribute="top" secondItem="U3l-M0-tR7" secondAttribute="bottom" constant="2" id="JHr-fW-oJP"/>
-                <constraint firstItem="BwM-5e-qm8" firstAttribute="leading" secondItem="RED-I8-ONe" secondAttribute="trailing" id="Lcn-dH-agN"/>
-                <constraint firstItem="BwM-5e-qm8" firstAttribute="top" secondItem="U3l-M0-tR7" secondAttribute="bottom" constant="2" id="NvP-o5-l0s"/>
                 <constraint firstItem="U3l-M0-tR7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Ts8-fH-swc"/>
                 <constraint firstAttribute="trailing" secondItem="U3l-M0-tR7" secondAttribute="trailing" id="Wtf-HY-T6h"/>
-                <constraint firstAttribute="bottom" secondItem="BwM-5e-qm8" secondAttribute="bottom" id="azR-M4-K75"/>
-                <constraint firstAttribute="trailing" secondItem="BwM-5e-qm8" secondAttribute="trailing" constant="2" id="f5v-Mb-7bp"/>
-                <constraint firstItem="RED-I8-ONe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="jnS-iG-7iO"/>
-                <constraint firstItem="BwM-5e-qm8" firstAttribute="leading" secondItem="RED-I8-ONe" secondAttribute="trailing" id="uCj-m7-tA6"/>
+                <constraint firstAttribute="bottom" secondItem="U3l-M0-tR7" secondAttribute="bottom" id="cAI-tu-aoC"/>
+                <constraint firstItem="BwM-5e-qm8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="eKP-F2-43S"/>
+                <constraint firstItem="RED-I8-ONe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="jnS-iG-7iO"/>
+                <constraint firstAttribute="trailing" secondItem="RED-I8-ONe" secondAttribute="trailing" id="psg-z6-Ws0"/>
+                <constraint firstAttribute="trailing" secondItem="BwM-5e-qm8" secondAttribute="trailing" constant="10" id="vtN-S2-end"/>
             </constraints>
-            <size key="customSize" width="320" height="188"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="6Db-Gm-3Nd"/>
-                    <exclude reference="2tH-wv-JH5"/>
-                    <exclude reference="BTx-5Y-ryZ"/>
-                    <exclude reference="Ewb-9R-bFL"/>
-                    <exclude reference="uCj-m7-tA6"/>
-                </mask>
-            </variation>
+            <size key="customSize" width="560" height="291"/>
             <connections>
+                <outlet property="descriptionLb" destination="BwM-5e-qm8" id="19D-vn-LNm"/>
                 <outlet property="thumnailImg" destination="U3l-M0-tR7" id="zhC-oT-MW4"/>
                 <outlet property="titleLbl" destination="RED-I8-ONe" id="ymB-pV-e88"/>
             </connections>
-            <point key="canvasLocation" x="217" y="264"/>
+            <point key="canvasLocation" x="272.5" y="282.5"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="_1.png" width="1024" height="768"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>

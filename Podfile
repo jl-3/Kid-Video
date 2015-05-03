@@ -3,6 +3,7 @@
 pod 'AFNetworking', '2.2.1'
 pod "youtube-ios-player-helper", "~> 0.1.1"
 pod 'DNDDragAndDrop', '~> 1.1.0'
+pod 'MMDrawerController', '~> 0.5.7'
 target 'Funny Clip' do
 
 end

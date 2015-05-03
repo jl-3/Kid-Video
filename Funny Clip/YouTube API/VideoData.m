@@ -10,23 +10,40 @@
 
 @implementation VideoData
 -(NSString *)getYouTubeId {
+    if (self.video)
     return self.video.identifier;
+    else {
+       GTLYouTubeVideo *tmpId= (GTLYouTubeVideo*) self.videoSearch.identifier;
+       // return tmpId.;
+      //  NSDictionary *mDic = [NSDictionary dictionaryWithObject:tmpId forKey:@"videoId"];
+        NSLog([ tmpId  JSONValueForKey:@"videoId"] );
+        return [ tmpId  JSONValueForKey:@"videoId"] ;
+    }
 }
 
 -(NSString *)getTitle {
+     if (self.video)
     return self.video.snippet.title;
+    else    return self.videoSearch.snippet.title;
 }
 
 -(NSString *)getThumbUri {
+    if (self.video)
+
     return self.video.snippet.thumbnails.high.url;
+    else return self.videoSearch.snippet.thumbnails.high.url;
 }
 
 -(NSString *)getWatchUri {
+   
     return [@"http://www.youtube.com/watch?v=" stringByAppendingString:self.getYouTubeId];
+    
 }
 
 -(NSString *)getDuration {
-  return self.video.contentDetails.duration;
+  if (self.video)
+    return self.video.contentDetails.duration;
+    else return @"";
 }
 
 - (NSString *)getViews {

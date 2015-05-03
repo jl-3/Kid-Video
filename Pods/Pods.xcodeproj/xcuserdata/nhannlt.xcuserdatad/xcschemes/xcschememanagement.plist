@@ -24,6 +24,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Funny Clip-MMDrawerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Funny Clip-youtube-ios-player-helper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -44,12 +49,22 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Pods-Funny ClipTests-MMDrawerController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Funny ClipTests-youtube-ios-player-helper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
 		<key>Pods-Funny ClipTests.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-MMDrawerController.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -67,62 +82,77 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>03E76CC3B8B4E57DEA5514C3</key>
+		<key>0A83E7198DF49C87CF2B30A0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>123F249B4ED86F2B3C5EA9D4</key>
+		<key>16AC1BC1D7F3E8E677102024</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1DC74F40A4D21D032645F959</key>
+		<key>1878D4A6A5E2529C9B402E57</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1E5AF540AA5B9118DCC9050D</key>
+		<key>2A960D2506F8E3E812C4372B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>24963B957AF663C2067D35F8</key>
+		<key>322336205DD313E225D5F7BC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>31DC192EEFA7D9864EC2C5BD</key>
+		<key>47F8F18D09038DCE1DD5E011</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>496F7BF3937CC2C09F4E52CF</key>
+		<key>4E370C5951C985C52794DD8A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>58644BE9B4BC3C12381CFC81</key>
+		<key>5CDA9B4C08C6E46432C62685</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7278EC96631B12A6F9970E14</key>
+		<key>6B7DD723FE1F71CFE48E2383</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F616582FCBDCF5AADA875C9</key>
+		<key>7E7E82AB1EAC8D2DD2E15A8D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>F5ED4A46A0E8021DB10E1E20</key>
+		<key>80507AD12A5896E294423E25</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>FAC6428745C9EE536D08DFBD</key>
+		<key>911F59F74C95838AB6CC9D8D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B3196D9E0D3912014AAA8781</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C199A01A165C76CF5B8C7A60</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DE9C9C6CA29E4B52E4DABED4</key>
 		<dict>
 			<key>primary</key>
 			<true/>

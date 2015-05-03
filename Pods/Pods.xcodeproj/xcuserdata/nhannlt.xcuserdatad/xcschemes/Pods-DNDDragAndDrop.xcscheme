@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1DC74F40A4D21D032645F959"
+               BlueprintIdentifier = "0A83E7198DF49C87CF2B30A0"
                BuildableName = "libPods-DNDDragAndDrop.a"
                BlueprintName = "Pods-DNDDragAndDrop"
                ReferencedContainer = "container:Pods.xcodeproj">

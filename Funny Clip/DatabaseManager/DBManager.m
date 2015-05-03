@@ -39,7 +39,7 @@ static sqlite3_stmt *statement = nil;
         if (sqlite3_open(dbpath, &database) == SQLITE_OK)
         {
             char *errMsg;
-            const char *sql_stmt ="create table if not exists FavoriteVideos (videoId text primary key , deleted boolean , position integer , time text)";
+            const char *sql_stmt ="create table if not exists FavoriteVideos (videoId text primary key , videoName text , videoDescription text , videoDuration text , thumnailUrl text , position integer , deleted boolean )";
             if (sqlite3_exec(database, sql_stmt, NULL, NULL, &errMsg)
                 != SQLITE_OK)
             {
@@ -61,28 +61,40 @@ static sqlite3_stmt *statement = nil;
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK)
     {
-        NSString *insertSQL = [NSString stringWithFormat:@"insert into FavoriteVideos (videoId,deleted, position, time) values  (\"%@\",\"%@\", \"%@\", \"%@\")",mVideoItem.videoId ,mVideoItem.deleted, mVideoItem.position, mVideoItem.time];
+        NSString *insertSQL = [NSString stringWithFormat:@"insert into FavoriteVideos (videoId , videoName , videoDescription , videoDuration , thumnailUrl , position , deleted ) values  (\"%@\",\"%@\",\"%@\",\"%@\", \"%@\", \"%@\", \"%@\" )",mVideoItem.videoId , mVideoItem.videoName ,   mVideoItem.videoDescription,mVideoItem.videoDuration,mVideoItem.thumnailUrl, mVideoItem.position, mVideoItem.deleted ];
                                 const char *insert_stmt = [insertSQL UTF8String];
-                                sqlite3_prepare_v2(database, insert_stmt,-1, &statement, NULL);
-                                if (sqlite3_step(statement) == SQLITE_DONE)
+        sqlite3_prepare_v2(database, insert_stmt,-1, &statement, NULL);
+                        if (sqlite3_step(statement) == SQLITE_DONE)
                                 {
                                     return YES;
                                 }
+       
                                 else {
-                                    return NO;
+                                    int tmp=[mVideoItem.position intValue]+1;
+                                    [mVideoItem setValue:@(tmp) forKey:@"position"];
+                                    NSString *updateSQL = [NSString stringWithFormat:@" update FavoriteVideos SET position = \"%@\" where videoId = \"%@\" ;",mVideoItem.position, mVideoItem.videoId ];
+                                    const char *update_stmt = [updateSQL UTF8String];
+                                    sqlite3_prepare_v2(database, update_stmt,-1, &statement, NULL);
+                                    if (sqlite3_step(statement) == SQLITE_DONE)
+                                    {
+                                        return YES;
+                                    } else
+                                    {
+                                        return NO;
+                                    }
+                                   // return NO;
                                 }
-                                sqlite3_reset(statement);
-                                }
-                                return NO;
-                                }
-                                
-- (NSArray*) findByRegisterNumber:(NSString*)registerNumber
-        {
+         sqlite3_reset(statement);
+     }
+return NO;
+}
+
+- (NSArray*) findByVideoId:(NSString*)videoId  {
             const char *dbpath = [databasePath UTF8String];
             if (sqlite3_open(dbpath, &database) == SQLITE_OK)
             {
                 NSString *querySQL = [NSString stringWithFormat:
-                                      @"select deleted, position, time from FavoriteVideos where videoId=\"%@\"",registerNumber];
+                                      @"select videoName , videoDescription , videoDuration , thumnailUrl , position , deleted from FavoriteVideos where videoId=\"%@\"",videoId];
                 const char *query_stmt = [querySQL UTF8String];
                 NSMutableArray *resultArray = [[NSMutableArray alloc]init];
                 if (sqlite3_prepare_v2(database,
@@ -90,15 +102,28 @@ static sqlite3_stmt *statement = nil;
                 {
                     if (sqlite3_step(statement) == SQLITE_ROW)
                     {
-                        NSString *deleted = [[NSString alloc] initWithUTF8String:
-                                          (const char *) sqlite3_column_text(statement, 0)];
+                        NSString *videoname = [[NSString alloc] initWithUTF8String:
+                                             (const char *) sqlite3_column_text(statement, 0)];
+                        [resultArray addObject:videoname];
+                        NSString *videoDescription = [[NSString alloc] initWithUTF8String:
+                                               (const char *) sqlite3_column_text(statement, 1)];
+                        [resultArray addObject:videoDescription];
+                        NSString *duration = [[NSString alloc] initWithUTF8String:
+                                               (const char *) sqlite3_column_text(statement, 2)];
+                        [resultArray addObject:duration];
+                        NSString *thumnailUrl = [[NSString alloc]initWithUTF8String:
+                                                 (const char *) sqlite3_column_text(statement, 3)];
+                        [resultArray addObject:thumnailUrl];
+                        
+                        NSInteger position = [[[NSString alloc] initWithUTF8String:
+                                               (const char *) sqlite3_column_text(statement, 4)] integerValue];
+                        [resultArray addObject:@(position)];
+                        NSString *deleted = [[NSString alloc]initWithUTF8String:
+                                          (const char *) sqlite3_column_text(statement, 5)];
                         [resultArray addObject:deleted];
-                        NSString *position = [[NSString alloc] initWithUTF8String:
-                                                (const char *) sqlite3_column_text(statement, 1)];
-                        [resultArray addObject:position];
-                        NSString *time = [[NSString alloc]initWithUTF8String:
-                                          (const char *) sqlite3_column_text(statement, 2)];
-                        [resultArray addObject:time];
+
+                       
+
                         return resultArray;
                     }
                     else{
@@ -126,19 +151,32 @@ static sqlite3_stmt *statement = nil;
                 
                 NSString *videoId = [[NSString alloc] initWithUTF8String:
                                      (const char *) sqlite3_column_text(statement, 0)];
-                //[resultArray addObject:videoId];
-
-                NSString *deleted = [[NSString alloc] initWithUTF8String:
-                                     (const char *) sqlite3_column_text(statement, 1)];
+                NSString *name = [[NSString alloc]initWithUTF8String:
+                                         (const char *) sqlite3_column_text(statement, 1)];
+                NSString *description = [[NSString alloc]initWithUTF8String:
+                                         (const char *) sqlite3_column_text(statement, 2)];
+                NSString *duration = [[NSString alloc]initWithUTF8String:
+                                         (const char *) sqlite3_column_text(statement, 3)];
+                NSString *thumnailUrl = [[NSString alloc]initWithUTF8String:
+                                         (const char *) sqlite3_column_text(statement, 4)];
+                
                 //[resultArray addObject:deleted];
                 NSInteger position = [[[NSString alloc] initWithUTF8String:
-                                      (const char *) sqlite3_column_text(statement, 2)] integerValue];
+                                      (const char *) sqlite3_column_text(statement, 5)] integerValue];
                 //[resultArray addObject:position];
-                NSString *time = [[NSString alloc]initWithUTF8String:
-                                  (const char *) sqlite3_column_text(statement, 3)];
+                NSString *deleted = [[NSString alloc]initWithUTF8String:
+                                  (const char *) sqlite3_column_text(statement, 6)];
+                
                 //[resultArray addObject:time];
                 //return resultArray;
-                NSDictionary *mDic = @{@"videoId":videoId,@"deleted":deleted,@"position":@(position) ,@"time":time,  };
+                NSDictionary *mDic = @{@"videoId":videoId,
+                                       @"videoName":name,
+                                       @"videoDescription":description,
+                                       @"videoDuration":duration,
+                                       @"thumnailUrl":thumnailUrl,
+                                       @"position":@(position),
+                                       @"deleted":deleted,};
+                
                 FavoriteVideoDetail *mItem = [[FavoriteVideoDetail alloc]initWithDictionary:mDic];
                  NSLog(@"%@",mItem.position);
                 [resultArray addObject:mItem];

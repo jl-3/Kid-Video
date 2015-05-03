@@ -9,7 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 static NSString *const DEFAULT_KEYWORD = @"ytdl";
-static NSString *const UPLOAD_PLAYLIST = @"LLfF4l8coMQddgehpwdl4lqA";
+static NSString *const PLAYLIST_MOVIE = @"LLfF4l8coMQddgehpwdl4lqA";
+static NSString *const PLAYLIST_SONG = @"LLfF4l8coMQddgehpwdl4lqA";
+static NSString *const PLAYLIST_STORY = @"LLfF4l8coMQddgehpwdl4lqA";
 
 static NSString *const kClientID = @"352228618510-m24qqg1v3r7f96926or523b03kri1362.apps.googleusercontent.com";
 static NSString *const kClientSecret = @"Jd1PVRLfDZtv2FSYmFUDi6Kb";

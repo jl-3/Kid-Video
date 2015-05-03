@@ -11,28 +11,20 @@
 //#import "MainViewController.h"
 
 // Thumbnail image size.
-static const CGFloat kCropDimension = 120;
+
 
 @implementation YouTubeGetVideos
 
-
-- (void)getYouTubeVideosWithService:(GTLServiceYouTube *)service {
-    // Construct query
-    GTLQueryYouTube *channelsListQuery = [GTLQueryYouTube
-                                          
-                                          queryForChannelsListWithPart:@"contentDetails"];
+- (void)searchYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)searchKey {
+        GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForSearchListWithPart:@"snippet"];
+    playlistItemsListQuery.maxResults = 50l;
+    playlistItemsListQuery.q=searchKey;
     
-    //channelsListQuery.mine =YES;
-    channelsListQuery.forUsername=@"trongnhan68";
-    // channelsListQuery.channelId=@"UCfF4l8coMQddgehpwdl4lqA";
-    
-    //@"UCfF4l8coMQddgehpwdl4lqA";
-   //  channelsListQuery.forContentOwner
     // This callback uses the block syntax
     
-    [service executeQuery:channelsListQuery
+    [service executeQuery:playlistItemsListQuery
      
-        completionHandler:^(GTLServiceTicket *ticket, GTLYouTubeChannelListResponse
+        completionHandler:^(GTLServiceTicket *ticket, GTLCollectionObject
                             
                             *response, NSError *error) {
             
@@ -40,20 +32,128 @@ static const CGFloat kCropDimension = 120;
                 [self.delegate getYouTubeVideos:self didFinishWithResults:nil];
                 return;
             }
-            
+            response = (GTLYouTubeSearchListResponse *) response;
             NSLog(@"Finished API call");
             
-            if ([[response items] count] > 0) {
+                    NSMutableArray *videos = [NSMutableArray arrayWithCapacity:response.items.count];
+                    VideoData *vData;
+                    
+                    for (GTLYouTubeSearchResult *video in response.items){
+                        
+                            vData = [VideoData alloc];
+                            vData.videoSearch = video;
+                            [videos addObject:vData];
+                    }
+                    [self.delegate getYouTubeVideos:self didFinishWithResults:videos];
+            
+                }];
+      //  }];
+    
+}
+- (void)searchYouTubeVideosWithService2:(GTLServiceYouTube *)service : (NSString *)searchKey {
+    GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForSearchListWithPart:@"snippet"];
+    playlistItemsListQuery.maxResults = 50l;
+    playlistItemsListQuery.q=searchKey;
+    
+    // This callback uses the block syntax
+    
+    [service executeQuery:playlistItemsListQuery
+     
+        completionHandler:^(GTLServiceTicket *ticket, GTLCollectionObject
+                            
+                            *response, NSError *error) {
+            
+            if (error) {
+                [self.delegate getYouTubeVideos:self didFinishWithResults:nil];
+                return;
+            }
+            response = (GTLYouTubeSearchListResponse *) response;
+            NSLog(@"Finished API call");
+            
+            NSMutableArray *videoIds = [NSMutableArray arrayWithCapacity:response.items.count];
+            
+            for (GTLYouTubeSearchResult *videoItem in response.items) {
                 
-                GTLYouTubeChannel *channel = response[0];
+                GTLYouTubeVideo *tmpId= (GTLYouTubeVideo*) videoItem.identifier;
+                // return tmpId.;
+                //  NSDictionary *mDic = [NSDictionary dictionaryWithObject:tmpId forKey:@"videoId"];
+                if ([tmpId  JSONValueForKey:@"videoId"]) {
+                NSLog([ tmpId  JSONValueForKey:@"videoId"] );
+                //return [ tmpId  JSONValueForKey:@"videoId"] ;
                 
-                NSString *videosPlaylistId =
-                
-                channel.contentDetails.relatedPlaylists.likes;
-                
+                [videoIds addObject:[tmpId  JSONValueForKey:@"videoId"]];
+                }
+            }
+            
+            GTLQueryYouTube *videosListQuery = [GTLQueryYouTube queryForVideosListWithPart:@"id,contentDetails,snippet,status,statistics"];
+            videosListQuery.identifier = [videoIds componentsJoinedByString: @","];
+            
+            
+            [service executeQuery:videosListQuery
+             
+                completionHandler:^(GTLServiceTicket *ticket, GTLYouTubeVideoListResponse
+                                    
+                                    *response, NSError *error) {
+                    if (error) {
+                        [self.delegate getYouTubeVideos:self didFinishWithResults:nil];
+                        return;
+                    }
+                    
+                    NSLog(@"Finished API call");
+                    NSMutableArray *videos = [NSMutableArray arrayWithCapacity:response.items.count];
+                    VideoData *vData;
+                    
+                    for (GTLYouTubeVideo *video in response.items){
+                        if ([@"public" isEqualToString:video.status.privacyStatus]){
+                            vData = [VideoData alloc];
+                            vData.video = video;
+                            [videos addObject:vData];
+                        }
+                    }
+                    [self.delegate getYouTubeVideos:self didFinishWithResults:videos];
+                    
+                }];
+        }];
+    
+}
+- (void)getYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)playListIdParam {
+    // Construct query
+//    GTLQueryYouTube *channelsListQuery = [GTLQueryYouTube
+//
+//                                          queryForChannelsListWithPart:@"contentDetails"];
+//
+//    //channelsListQuery.mine =YES;
+//    channelsListQuery.forUsername=@"trongnhan68";
+//    // channelsListQuery.channelId=@"UCfF4l8coMQddgehpwdl4lqA";
+//
+//    //@"UCfF4l8coMQddgehpwdl4lqA";
+//   //  channelsListQuery.forContentOwner
+//    // This callback uses the block syntax
+//    
+//    [service executeQuery:channelsListQuery
+//     
+//        completionHandler:^(GTLServiceTicket *ticket, GTLYouTubeChannelListResponse
+//                            
+//                            *response, NSError *error) {
+//            
+//            if (error) {
+//                [self.delegate getYouTubeVideos:self didFinishWithResults:nil];
+//                return;
+//            }
+//            
+//            NSLog(@"Finished API call");
+//            
+//            if ([[response items] count] > 0) {
+//                
+//                GTLYouTubeChannel *channel = response[0];
+    
+//                NSString *videosPlaylistId =
+//                
+//                channel.contentDetails.relatedPlaylists.likes;
+    
                 GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForPlaylistItemsListWithPart:@"contentDetails"];
                 playlistItemsListQuery.maxResults = 50l;
-                playlistItemsListQuery.playlistId =  videosPlaylistId;
+                playlistItemsListQuery.playlistId =  playListIdParam;
                 
                 // This callback uses the block syntax
                 
@@ -104,45 +204,10 @@ static const CGFloat kCropDimension = 120;
                                     }
                                 }
                                 [self.delegate getYouTubeVideos:self didFinishWithResults:videos];
-                                // Schedule an async job to fetch the image data for each result and
-                                // resize the large image in to a smaller thumbnail.
-//                                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
-//                                    NSMutableArray *removeThese = [NSMutableArray array];
-//                                    
-//                                    for (VideoData *vData in videos) {
-//                                        // Fetch synchronously the full sized image.
-//                                        NSURL *url = [NSURL URLWithString:vData.getThumbUri];
-//                                        NSData *imageData = [NSData dataWithContentsOfURL:url];
-//                                        UIImage *image = [UIImage imageWithData:imageData];
-//                                        if (!image) {
-//                                            [removeThese addObject:vData];
-//                                            continue;
-//                                        }
-//                                        vData.fullImage = image;
-//                                        // Create a thumbnail from the fullsized image.
-//                                        UIGraphicsBeginImageContext(CGSizeMake(kCropDimension,
-//                                                                               kCropDimension));
-//                                        [image drawInRect:
-//                                         CGRectMake(0, 0, kCropDimension, kCropDimension)];
-//                                        vData.thumbnail = UIGraphicsGetImageFromCurrentImageContext();
-//                                        UIGraphicsEndImageContext();
-//                                    }
-//                                    
-//                                    // Remove images that has no image data.
-//                                    [videos removeObjectsInArray:removeThese];
-//                                    
-//                                    // Once all the images have been fetched and cached, call
-//                                    // our delegate on the main thread.
-//                                    dispatch_async(dispatch_get_main_queue(), ^{
-//                                        [self.delegate getYouTubeVideos:self
-//                                                        didFinishWithResults:videos];
-//                                    });
-//                                });
                                 
                             }];
                     }];
-            }
-            }];
+
 }
 
 @end

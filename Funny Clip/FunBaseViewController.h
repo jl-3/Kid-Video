@@ -9,12 +9,17 @@
 #import <UIKit/UIKit.h>
 #import <YTPlayerView.h>
 #import "DBManager.h"
+#import <MMDrawerBarButtonItem.h>
 @protocol FunBaseViewControllerDelegate <NSObject>;
 @end
-@interface FunBaseViewController : UIViewController<YTPlayerViewDelegate>
+@interface FunBaseViewController : UIViewController<YTPlayerViewDelegate> {
+    
+}
 @property (retain) id <FunBaseViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *testbtn;
+@property (nonatomic,strong) NSMutableArray  *mFavoriteVideos;
 - (void) setTitleNavigationBar;
 - (void) setLeftBtnNavigationBar;
-- (void) saveToFavorite: (FavoriteVideoDetail *) mFavoriteItem ;
+- (BOOL) saveToFavorite: (FavoriteVideoDetail *) mFavoriteItem ;
+- (BOOL) loadAllFavoriteVideosFromDB ;
 @end

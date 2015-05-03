@@ -16,35 +16,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view setBackgroundColor:[UIColor clearColor]];
+    //[self.view setBackgroundColor:[UIColor clearColor]];
     // Do any additional setup after loading the view from its nib.
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self.navigationController setNavigationBarHidden:NO];
     [self.tabBarController setTitle:@"dasds"];
-   // [self.tabBarController ];
-    // Assign tab bar item with titles
-   // UITabBarController *tabBarController = (UITabBarController *)self.window.rootViewController;
+    self.mFavoriteVideos = [NSMutableArray array];
+
     
-//    self.navigationItem.leftBarButtonItem.title = @"BackView";
-//    self.navigationController.navigationBar.backItem.leftBarButtonItem.title = @"backview";
-//    //self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"Purple.png"];
-//    UIImage *buttonImage = [UIImage imageNamed:@"Purple.png"];
-//    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//    [button setImage:buttonImage forState:UIControlStateNormal];
-//    button.frame = CGRectMake(0, 0, buttonImage.size.width/2, buttonImage.size.height/2);
-//    button.titleLabel.text = @"popview";
-//    [button addTarget:self action:@selector(backBtnNavigationBar) forControlEvents:UIControlEventTouchUpInside];
-//   
-//    UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-   // self.navigationItem.leftBarButtonItem = customBarItem
-    //[self.navigationItem setLeftBarButtonItem:customBarItem];
- //   [self.navigationItem setLeftBarButtonItem:[UIBarButtonItem new]];
- //   self.navigationItem.leftBarButtonItem.title = @"Back";
-  //  [self dummyData];
-    NSArray *data = [[DBManager getSharedInstance]getAllVideos];
    
 }
-- (void) saveToFavorite: (FavoriteVideoDetail *) mFavoriteItem {
+- (BOOL) loadAllFavoriteVideosFromDB {
+        NSString *alertString = @"Data Insertion failed";
+        self.mFavoriteVideos = (NSMutableArray *)[[DBManager getSharedInstance] getAllVideos];
+    //success = [[DBManager getSharedInstance] saveVideo:item2];
+    
+    if (!self.mFavoriteVideos) {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:
+                              alertString message:nil
+                                                      delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        
+    }
+    else {
+        NSLog(@"load all data OK");
+        return YES;
+    }
+    return NO;
+}
+- (BOOL) saveToFavorite: (FavoriteVideoDetail *) mFavoriteItem {
     BOOL success = NO;
     NSString *alertString = @"Data Insertion failed";
     success = [[DBManager getSharedInstance] saveVideo:mFavoriteItem];
@@ -58,8 +58,9 @@
     }
     else {
         NSLog(@"Save data OK");
+        //return YES;
     }
-    
+    return success;
 }
 
 -(void) setTitleNavigationBar

@@ -20,7 +20,7 @@ static const CGFloat kCropDimension = 44;
 
 - (void)directTagWithService:(GTLServiceYouTube *)service videoData:(VideoData*)videoData {
         GTLYouTubeVideo *updateVideo = [GTLYouTubeVideo alloc];
-        GTLYouTubeVideoSnippet *snippet = [videoData addTags:[NSArray arrayWithObjects:DEFAULT_KEYWORD,[UploadController generateKeywordFromPlaylistId:UPLOAD_PLAYLIST],   nil]];
+        GTLYouTubeVideoSnippet *snippet = [videoData addTags:[NSArray arrayWithObjects:DEFAULT_KEYWORD,[UploadController generateKeywordFromPlaylistId:PLAYLIST_SONG],   nil]];
         updateVideo.snippet = snippet;
         updateVideo.identifier = videoData.getYouTubeId;
         

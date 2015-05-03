@@ -28,7 +28,7 @@ static const CGFloat kCropDimension = 44;
     status.privacyStatus = @"public";
     snippet.title = title;
     snippet.descriptionProperty = description;
-    snippet.tags = [NSArray arrayWithObjects:DEFAULT_KEYWORD,[UploadController generateKeywordFromPlaylistId:UPLOAD_PLAYLIST], nil];
+    snippet.tags = [NSArray arrayWithObjects:DEFAULT_KEYWORD,[UploadController generateKeywordFromPlaylistId:PLAYLIST_SONG], nil];
     video.snippet = snippet;
     video.status = status;
     

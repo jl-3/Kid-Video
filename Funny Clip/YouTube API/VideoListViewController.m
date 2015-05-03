@@ -49,7 +49,7 @@
   self.tableView.separatorColor = [UIColor clearColor];
   self.view = self.tableView;
 
-  [self.getVideos getYouTubeVideosWithService:self.youtubeService];
+  //[self.getVideos getYouTubeVideosWithService:self.youtubeService];
 }
 
 -(void)folderButtonPressed:(UIButton *)button

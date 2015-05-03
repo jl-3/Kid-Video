@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		691072161AF686AB0086BDAB /* AppIcon@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 691072141AF686AB0086BDAB /* AppIcon@2x~iphone.png */; };
+		691072171AF686AB0086BDAB /* AppIcon@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 691072151AF686AB0086BDAB /* AppIcon@3x~iphone.png */; };
 		6914A3B51AE74F6D00AAC253 /* iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 6914A3A21AE74F6D00AAC253 /* iframe-player.html */; };
 		6914A3B61AE74F6D00AAC253 /* UploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6914A3A41AE74F6D00AAC253 /* UploadController.m */; };
 		6914A3B71AE74F6D00AAC253 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6914A3A61AE74F6D00AAC253 /* Utils.m */; };
@@ -41,8 +43,6 @@
 		697FB1491ADEA30900DFE12D /* FirstScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697FB1471ADEA30900DFE12D /* FirstScreenView.xib */; };
 		697FB1531ADEA9AE00DFE12D /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697FB1511ADEA9AE00DFE12D /* PlaylistViewController.m */; };
 		697FB1551ADEAB4F00DFE12D /* PlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697FB1541ADEAB4F00DFE12D /* PlaylistViewController.xib */; };
-		698236EB1AE7A405001D81EF /* play_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 698236E31AE7A405001D81EF /* play_icon.jpg */; };
-		698236EC1AE7A405001D81EF /* play_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 698236E41AE7A405001D81EF /* play_off.png */; };
 		698236ED1AE7A405001D81EF /* play_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 698236E51AE7A405001D81EF /* play_on.png */; };
 		698236EE1AE7A405001D81EF /* previous.png in Resources */ = {isa = PBXBuildFile; fileRef = 698236E61AE7A405001D81EF /* previous.png */; };
 		698236EF1AE7A405001D81EF /* youtube_kute.png in Resources */ = {isa = PBXBuildFile; fileRef = 698236E71AE7A405001D81EF /* youtube_kute.png */; };
@@ -52,6 +52,14 @@
 		698236F61AE7AA7A001D81EF /* youtube_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 698236F41AE7AA7A001D81EF /* youtube_pause.png */; };
 		6999FB521ADF80A300B94D04 /* NMBottomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999FB4F1ADF80A300B94D04 /* NMBottomTabBar.m */; };
 		6999FB531ADF80A300B94D04 /* NMBottomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999FB511ADF80A300B94D04 /* NMBottomTabBarController.m */; };
+		699B4D3D1AF65739007FBD7B /* farme_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 699B4D3B1AF65739007FBD7B /* farme_1.png */; };
+		699B4D3E1AF65739007FBD7B /* farme_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 699B4D3C1AF65739007FBD7B /* farme_2.png */; };
+		699B4D411AF65B75007FBD7B /* cute_boy.png in Resources */ = {isa = PBXBuildFile; fileRef = 699B4D3F1AF65B75007FBD7B /* cute_boy.png */; };
+		699B4D421AF65B75007FBD7B /* cute_girl.png in Resources */ = {isa = PBXBuildFile; fileRef = 699B4D401AF65B75007FBD7B /* cute_girl.png */; };
+		699B4D441AF66268007FBD7B /* bg_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 699B4D431AF66268007FBD7B /* bg_search.png */; };
+		699B4D471AF664C6007FBD7B /* icon_pause_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 699B4D451AF664C6007FBD7B /* icon_pause_black.png */; };
+		699B4D481AF664C6007FBD7B /* icon_play_black.png in Resources */ = {isa = PBXBuildFile; fileRef = 699B4D461AF664C6007FBD7B /* icon_play_black.png */; };
+		699B4D4A1AF67B37007FBD7B /* bg_loading.png in Resources */ = {isa = PBXBuildFile; fileRef = 699B4D491AF67B37007FBD7B /* bg_loading.png */; };
 		699CDFC01AE3E4D2005851CC /* television.png in Resources */ = {isa = PBXBuildFile; fileRef = 699CDFBF1AE3E4D2005851CC /* television.png */; };
 		699CDFCA1AE41EF2005851CC /* VideoInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 699CDFC91AE41EF2005851CC /* VideoInfoModel.m */; };
 		699D84D31AE52ABD00C97851 /* VideoLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 699D84D01AE52ABD00C97851 /* VideoLink.m */; };
@@ -90,6 +98,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		691072181AF687040086BDAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6915C7CA1ADE05E4005AD7E1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6915C7D11ADE05E4005AD7E1;
+			remoteInfo = "Funny Clip";
+		};
 		6915C7EC1ADE05E4005AD7E1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6915C7CA1ADE05E4005AD7E1 /* Project object */;
@@ -101,6 +116,8 @@
 
 /* Begin PBXFileReference section */
 		3B56EFAFFFBB72243F50905F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		691072141AF686AB0086BDAB /* AppIcon@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@2x~iphone.png"; sourceTree = "<group>"; };
+		691072151AF686AB0086BDAB /* AppIcon@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AppIcon@3x~iphone.png"; sourceTree = "<group>"; };
 		6914A3A21AE74F6D00AAC253 /* iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "iframe-player.html"; sourceTree = "<group>"; };
 		6914A3A31AE74F6D00AAC253 /* UploadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadController.h; sourceTree = "<group>"; };
 		6914A3A41AE74F6D00AAC253 /* UploadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadController.m; sourceTree = "<group>"; };
@@ -124,7 +141,7 @@
 		6914A3C01AE74F8D00AAC253 /* GTLNetworking_Sources.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GTLNetworking_Sources.m; path = "../../google-api-objectivec-client-read-only/Source/GTLNetworking_Sources.m"; sourceTree = "<group>"; };
 		6914A3C31AE74F9E00AAC253 /* GTLYouTube_Sources.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GTLYouTube_Sources.m; path = "../../google-api-objectivec-client-read-only/Source/Services/YouTube/Generated/GTLYouTube_Sources.m"; sourceTree = "<group>"; };
 		6914A3C51AE7505000AAC253 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "google-api-objectivec-client-read-only/Source/OAuth2/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = SOURCE_ROOT; };
-		6915C7D21ADE05E4005AD7E1 /* Funny Clip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Funny Clip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6915C7D21ADE05E4005AD7E1 /* Tivi Cho Bé .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tivi Cho Bé .app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6915C7D61ADE05E4005AD7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6915C7D71ADE05E4005AD7E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6915C7D91ADE05E4005AD7E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -155,8 +172,6 @@
 		697FB1501ADEA9AE00DFE12D /* PlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistViewController.h; sourceTree = "<group>"; };
 		697FB1511ADEA9AE00DFE12D /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistViewController.m; sourceTree = "<group>"; };
 		697FB1541ADEAB4F00DFE12D /* PlaylistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistViewController.xib; sourceTree = "<group>"; };
-		698236E31AE7A405001D81EF /* play_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = play_icon.jpg; sourceTree = "<group>"; };
-		698236E41AE7A405001D81EF /* play_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_off.png; sourceTree = "<group>"; };
 		698236E51AE7A405001D81EF /* play_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_on.png; sourceTree = "<group>"; };
 		698236E61AE7A405001D81EF /* previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = previous.png; sourceTree = "<group>"; };
 		698236E71AE7A405001D81EF /* youtube_kute.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = youtube_kute.png; sourceTree = "<group>"; };
@@ -168,6 +183,14 @@
 		6999FB4F1ADF80A300B94D04 /* NMBottomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMBottomTabBar.m; sourceTree = "<group>"; };
 		6999FB501ADF80A300B94D04 /* NMBottomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMBottomTabBarController.h; sourceTree = "<group>"; };
 		6999FB511ADF80A300B94D04 /* NMBottomTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMBottomTabBarController.m; sourceTree = "<group>"; };
+		699B4D3B1AF65739007FBD7B /* farme_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = farme_1.png; sourceTree = "<group>"; };
+		699B4D3C1AF65739007FBD7B /* farme_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = farme_2.png; sourceTree = "<group>"; };
+		699B4D3F1AF65B75007FBD7B /* cute_boy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cute_boy.png; sourceTree = "<group>"; };
+		699B4D401AF65B75007FBD7B /* cute_girl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cute_girl.png; sourceTree = "<group>"; };
+		699B4D431AF66268007FBD7B /* bg_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_search.png; sourceTree = "<group>"; };
+		699B4D451AF664C6007FBD7B /* icon_pause_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_pause_black.png; sourceTree = "<group>"; };
+		699B4D461AF664C6007FBD7B /* icon_play_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_play_black.png; sourceTree = "<group>"; };
+		699B4D491AF67B37007FBD7B /* bg_loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_loading.png; sourceTree = "<group>"; };
 		699CDFBF1AE3E4D2005851CC /* television.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = television.png; sourceTree = "<group>"; };
 		699CDFC81AE41EF2005851CC /* VideoInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoInfoModel.h; sourceTree = "<group>"; };
 		699CDFC91AE41EF2005851CC /* VideoInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoInfoModel.m; sourceTree = "<group>"; };
@@ -299,7 +322,7 @@
 		6915C7D31ADE05E4005AD7E1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6915C7D21ADE05E4005AD7E1 /* Funny Clip.app */,
+				6915C7D21ADE05E4005AD7E1 /* Tivi Cho Bé .app */,
 				6915C7EB1ADE05E4005AD7E1 /* Funny ClipTests.xctest */,
 			);
 			name = Products;
@@ -512,23 +535,31 @@
 		69AB3F181ADE1CAA00791DAD /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				699B4D3B1AF65739007FBD7B /* farme_1.png */,
+				691072141AF686AB0086BDAB /* AppIcon@2x~iphone.png */,
+				691072151AF686AB0086BDAB /* AppIcon@3x~iphone.png */,
+				699B4D3C1AF65739007FBD7B /* farme_2.png */,
 				698236F31AE7AA7A001D81EF /* youtube_next.png */,
 				698236F41AE7AA7A001D81EF /* youtube_pause.png */,
+				699B4D451AF664C6007FBD7B /* icon_pause_black.png */,
+				699B4D461AF664C6007FBD7B /* icon_play_black.png */,
+				699B4D3F1AF65B75007FBD7B /* cute_boy.png */,
+				699B4D401AF65B75007FBD7B /* cute_girl.png */,
 				699EFB161AF291D300CDA2F7 /* icon_amnhac.png */,
 				69251D0E1AF5C804004E7392 /* menu_off.png */,
 				699EFB171AF291D300CDA2F7 /* icon_hoathinh.png */,
 				699EFB181AF291D300CDA2F7 /* icon_KECHUYEN.png */,
 				69A52C681AE8E48000EA91CE /* play_on.png */,
-				698236E31AE7A405001D81EF /* play_icon.jpg */,
-				698236E41AE7A405001D81EF /* play_off.png */,
 				69A52C601AE8E12F00EA91CE /* _1.png */,
 				6956E0801AF0CE870087178F /* icon_search.png */,
 				69A52C661AE8E40300EA91CE /* icon_listvideo_recent.png */,
+				699B4D491AF67B37007FBD7B /* bg_loading.png */,
 				69A52C621AE8E12F00EA91CE /* icon_menu.png */,
 				698236F11AE7AA55001D81EF /* youtube_back.png */,
 				698236E51AE7A405001D81EF /* play_on.png */,
 				698236E61AE7A405001D81EF /* previous.png */,
 				698236E71AE7A405001D81EF /* youtube_kute.png */,
+				699B4D431AF66268007FBD7B /* bg_search.png */,
 				698236E81AE7A405001D81EF /* youtube_subscribe.png */,
 				691C35981ADECD48003B33A0 /* tabbarimages */,
 				69AB3F191ADE1CB700791DAD /* Image */,
@@ -603,7 +634,7 @@
 			);
 			name = "Funny Clip";
 			productName = "Funny Clip";
-			productReference = 6915C7D21ADE05E4005AD7E1 /* Funny Clip.app */;
+			productReference = 6915C7D21ADE05E4005AD7E1 /* Tivi Cho Bé .app */;
 			productType = "com.apple.product-type.application";
 		};
 		6915C7EA1ADE05E4005AD7E1 /* Funny ClipTests */ = {
@@ -618,6 +649,7 @@
 			);
 			dependencies = (
 				6915C7ED1ADE05E4005AD7E1 /* PBXTargetDependency */,
+				691072191AF687040086BDAB /* PBXTargetDependency */,
 			);
 			name = "Funny ClipTests";
 			productName = "Funny ClipTests";
@@ -642,7 +674,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6915C7CD1ADE05E4005AD7E1 /* Build configuration list for PBXProject "Funny Clip" */;
+			buildConfigurationList = 6915C7CD1ADE05E4005AD7E1 /* Build configuration list for PBXProject "Tivi Cho Bé " */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -670,35 +702,43 @@
 				69A876A01AE394300073C6B1 /* mVideoCell.xib in Resources */,
 				69A52C651AE8E12F00EA91CE /* icon_menu.png in Resources */,
 				699CDFC01AE3E4D2005851CC /* television.png in Resources */,
+				699B4D421AF65B75007FBD7B /* cute_girl.png in Resources */,
 				69598CC91AE548E5003BE85A /* VideoItemCollectCell.xib in Resources */,
 				6956E0811AF0CE870087178F /* icon_search.png in Resources */,
-				698236EC1AE7A405001D81EF /* play_off.png in Resources */,
 				69A52C671AE8E40300EA91CE /* icon_listvideo_recent.png in Resources */,
-				698236EB1AE7A405001D81EF /* play_icon.jpg in Resources */,
+				699B4D471AF664C6007FBD7B /* icon_pause_black.png in Resources */,
 				698236EE1AE7A405001D81EF /* previous.png in Resources */,
 				698236F51AE7AA7A001D81EF /* youtube_next.png in Resources */,
 				69A52C631AE8E12F00EA91CE /* _1.png in Resources */,
 				6955CEB81ADE76B60093E1C8 /* BaseNavigationController.xib in Resources */,
+				691072161AF686AB0086BDAB /* AppIcon@2x~iphone.png in Resources */,
 				6914A3B51AE74F6D00AAC253 /* iframe-player.html in Resources */,
 				69251D0F1AF5C804004E7392 /* menu_off.png in Resources */,
 				699EFB1B1AF291D300CDA2F7 /* icon_KECHUYEN.png in Resources */,
 				698236F21AE7AA55001D81EF /* youtube_back.png in Resources */,
+				699B4D3E1AF65739007FBD7B /* farme_2.png in Resources */,
 				69A8B9601AF6069C00F8069F /* VCAbout.xib in Resources */,
 				698236ED1AE7A405001D81EF /* play_on.png in Resources */,
 				69A52C691AE8E48000EA91CE /* play_on.png in Resources */,
 				6915C7E61ADE05E4005AD7E1 /* LaunchScreen.xib in Resources */,
+				699B4D481AF664C6007FBD7B /* icon_play_black.png in Resources */,
 				699EFB191AF291D300CDA2F7 /* icon_amnhac.png in Resources */,
 				6915C7E31ADE05E4005AD7E1 /* Images.xcassets in Resources */,
 				697FB1431ADE9A7700DFE12D /* FunBaseViewController.xib in Resources */,
+				699B4D441AF66268007FBD7B /* bg_search.png in Resources */,
 				699F0C081AF5AE410067266C /* tblCellMenu.xib in Resources */,
 				691C35971ADEC02D003B33A0 /* Main.storyboard in Resources */,
 				697FB1551ADEAB4F00DFE12D /* PlaylistViewController.xib in Resources */,
+				691072171AF686AB0086BDAB /* AppIcon@3x~iphone.png in Resources */,
 				698236EF1AE7A405001D81EF /* youtube_kute.png in Resources */,
 				699EFB1A1AF291D300CDA2F7 /* icon_hoathinh.png in Resources */,
 				698236F01AE7A405001D81EF /* youtube_subscribe.png in Resources */,
 				6955CEBD1ADE76DC0093E1C8 /* BaseTabBarController.xib in Resources */,
 				698236F61AE7AA7A001D81EF /* youtube_pause.png in Resources */,
+				699B4D411AF65B75007FBD7B /* cute_boy.png in Resources */,
 				697FB1491ADEA30900DFE12D /* FirstScreenView.xib in Resources */,
+				699B4D4A1AF67B37007FBD7B /* bg_loading.png in Resources */,
+				699B4D3D1AF65739007FBD7B /* farme_1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -807,6 +847,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		691072191AF687040086BDAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6915C7D11ADE05E4005AD7E1 /* Funny Clip */;
+			targetProxy = 691072181AF687040086BDAB /* PBXContainerItemProxy */;
+		};
 		6915C7ED1ADE05E4005AD7E1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6915C7D11ADE05E4005AD7E1 /* Funny Clip */;
@@ -943,7 +988,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Tivi Cho Bé ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -977,7 +1022,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Tivi Cho Bé ";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -997,7 +1042,7 @@
 				INFOPLIST_FILE = "Funny ClipTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Funny Clip.app/Funny Clip";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tivi Cho Bé .app/Tivi Cho Bé ";
 			};
 			name = Debug;
 		};
@@ -1012,14 +1057,14 @@
 				INFOPLIST_FILE = "Funny ClipTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Funny Clip.app/Funny Clip";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tivi Cho Bé .app/Tivi Cho Bé ";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6915C7CD1ADE05E4005AD7E1 /* Build configuration list for PBXProject "Funny Clip" */ = {
+		6915C7CD1ADE05E4005AD7E1 /* Build configuration list for PBXProject "Tivi Cho Bé " */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6915C7F31ADE05E4005AD7E1 /* Debug */,

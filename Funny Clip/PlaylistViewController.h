@@ -48,7 +48,7 @@
   
     UIViewController *mVCAbout;
 }
-@property (strong, nonatomic) NSString *currentTextInSearchBar;
+@property (weak, nonatomic) NSString *currentTextInSearchBar;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 @property(nonatomic, strong) NSArray *VIDEOS_SEARCH_RESULTS;
@@ -65,6 +65,7 @@
 @property (weak, nonatomic) IBOutlet UITabBar *mTabbar;
 @property (weak, nonatomic) IBOutlet UISlider *sliderVideo;
 
+@property (weak, nonatomic) IBOutlet UIView *SourcePlayerView;
 @property (weak, nonatomic) IBOutlet UICollectionView *listViewColectionView;
 @property(nonatomic, strong) IBOutlet YTPlayerView *playerView;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBarView;

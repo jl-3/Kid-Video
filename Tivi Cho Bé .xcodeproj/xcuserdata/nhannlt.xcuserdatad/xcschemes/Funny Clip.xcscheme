@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6915C7D11ADE05E4005AD7E1"
-               BuildableName = "Funny Clip.app"
+               BuildableName = "Tivi Cho Be&#x301; .app"
                BlueprintName = "Funny Clip"
-               ReferencedContainer = "container:Funny Clip.xcodeproj">
+               ReferencedContainer = "container:Tivi Cho Be&#x301; .xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "6915C7EA1ADE05E4005AD7E1"
                BuildableName = "Funny ClipTests.xctest"
                BlueprintName = "Funny ClipTests"
-               ReferencedContainer = "container:Funny Clip.xcodeproj">
+               ReferencedContainer = "container:Tivi Cho Be&#x301; .xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,7 +49,7 @@
                BlueprintIdentifier = "6915C7EA1ADE05E4005AD7E1"
                BuildableName = "Funny ClipTests.xctest"
                BlueprintName = "Funny ClipTests"
-               ReferencedContainer = "container:Funny Clip.xcodeproj">
+               ReferencedContainer = "container:Tivi Cho Be&#x301; .xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6915C7D11ADE05E4005AD7E1"
-            BuildableName = "Funny Clip.app"
+            BuildableName = "Tivi Cho Be&#x301; .app"
             BlueprintName = "Funny Clip"
-            ReferencedContainer = "container:Funny Clip.xcodeproj">
+            ReferencedContainer = "container:Tivi Cho Be&#x301; .xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6915C7D11ADE05E4005AD7E1"
-            BuildableName = "Funny Clip.app"
+            BuildableName = "Tivi Cho Be&#x301; .app"
             BlueprintName = "Funny Clip"
-            ReferencedContainer = "container:Funny Clip.xcodeproj">
+            ReferencedContainer = "container:Tivi Cho Be&#x301; .xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6915C7D11ADE05E4005AD7E1"
-            BuildableName = "Funny Clip.app"
+            BuildableName = "Tivi Cho Be&#x301; .app"
             BlueprintName = "Funny Clip"
-            ReferencedContainer = "container:Funny Clip.xcodeproj">
+            ReferencedContainer = "container:Tivi Cho Be&#x301; .xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -117,13 +117,14 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
    
 }
 - (void) initItemStatus {
+    [self.playerViewFace setHidden:YES];
     [self.ViewListCollection setAlpha:0];
     [self.searchBarView setHidden:YES];
     [self.trailingOfMenuView setConstant:-140];
-    //self.listViewColectionView.bounces =NO ;
+    self.listViewColectionView.bounces =NO ;
     [self.navigationController setNavigationBarHidden:YES];
     
-    [self.playButton setImage:[UIImage imageNamed:@"youtube_pause.png"] forState:UIControlStateSelected];
+    [self.playButton setImage:[UIImage imageNamed:@"icon_play_black.png"] forState:UIControlStateSelected];
     //setup title video playing
     self.titleVideoPlaying.textAlignment= NSTextAlignmentLeft;
     self.titleVideoPlaying.marqueeType = MLContinuous;
@@ -133,8 +134,12 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     self.titleVideoPlaying.animationDelay=0.f;
     
     [self.viewButonSeeking setAlpha:0];
-    [self.currentTextInSearchBar initWithString:@""];
-   // [self.mListVideo se];
+    self.currentTextInSearchBar = @"";
+    
+    // table
+    [self.mListVideo setSectionFooterHeight:1];
+    [self.tbvMenu setBounces:NO];
+   // [self.tbvMenu vi];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -157,7 +162,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 
   
     NSString* videoID = @"9IHb4PBrxYQ";
-    [self.playButton setImage:[UIImage imageNamed:@"stop_on.png"] forState:UIControlStateSelected];
+   // [self.playButton setImage:[UIImage imageNamed:@"stop_on.png"] forState:UIControlStateSelected];
   // For a full list of player parameters, see the documentation for the HTML5 player
   // at: https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
  playerVars = @{
@@ -190,6 +195,8 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
   }
 - (void) checkDurationTime {
     if ([self.playerView currentTime ]> 0) {
+        [self.playerViewFace setHidden:NO];
+        
         NSLog(@"%f",[self.playerView currentTime ]);
         NSLog(@"%i",[self.playerView duration ]);
         NSLog(@"%f",[self.playerView currentTime]/(float)[self.playerView duration]);
@@ -256,12 +263,14 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 #pragma mark - UISEARCHBAR Datasource
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     
-    [self.currentTextInSearchBar  stringByAppendingString:searchText];
-    
+  //  NSString * tmpStr =[self.currentTextInSearchBar  stringByAppendingString:searchText];
+
+   // self.currentTextInSearchBar = tmpStr;
+   // [tmpStr retain];
     
 }
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
-    searchBar.text= self.currentTextInSearchBar;
+    //searchBar.text = self.currentTextInSearchBar;
     _tap.enabled = YES;
 }
 
@@ -269,7 +278,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     flag=4;
     
     if (![searchBar.text isEqualToString:@""]) {
-     self.currentTextInSearchBar = [NSString stringWithString:searchBar.text];
+     //   self.currentTextInSearchBar = searchBar.text;
     [self.getVideos searchYouTubeVideosWithService2:self.youtubeService:searchBar.text];
     }
 }
@@ -336,7 +345,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     NSURL *url = [NSURL URLWithString:vData.getThumbUri];
  
        NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    UIImage *placeholderImage = [UIImage imageNamed:@"play_on.png"];
+    UIImage *placeholderImage = [UIImage imageNamed:@"bg_loading.png"];
     
    // __weak UITableViewCell *weakCell = cell;
     
@@ -377,16 +386,24 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     VideoData *vidData;
     switch (flag) {
         case 1:
+            if ([_VIDEOS_AMNHAC objectAtIndex:indexPath.row]) {
             vidData = [_VIDEOS_AMNHAC objectAtIndex:indexPath.row];
+            }
             break;
         case 2:
+            if ([_VIDEOS_KECHUYEN objectAtIndex:indexPath.row]) {
             vidData = [_VIDEOS_KECHUYEN objectAtIndex:indexPath.row];
+            }
             break;
         case 3:
+            if ([_VIDEOS_HOATHINH objectAtIndex:indexPath.row]) {
             vidData = [_VIDEOS_HOATHINH objectAtIndex:indexPath.row];
+            }
             break;
         default:
+            if ([_VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row]) {
              vidData = [_VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row];
+            }
             break;
     }
 
@@ -417,17 +434,17 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     
     FavoriteVideoDetail *vData = [[super mFavoriteVideos] objectAtIndex:indexPath.row];
     cell.titleLabel.text = vData.videoName;
+        if (![[Utils humanReadableFromYouTubeTime:vData.videoDuration] isEqualToString:@"(Unknown)"]) {
+            [cell.descriptionLabel setHidden:NO];
+            cell.descriptionLabel.text =[Utils humanReadableFromYouTubeTime:vData.videoDuration];
+        } else {
+             [cell.descriptionLabel setHidden:YES];
+        }
 
-    cell.descriptionLabel.text =[Utils humanReadableFromYouTubeTime:vData.videoDuration];
-
-    
     NSURL *url = [NSURL URLWithString:vData.thumnailUrl];
-    
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"play_on.png"];
-    
-    // __weak UITableViewCell *weakCell = cell;
-    
+
     [cell.backgroundImage setImageWithURLRequest:request
                                   placeholderImage:placeholderImage
                                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
@@ -478,7 +495,17 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     lbl.alpha =1;
     return lbl;
     }
-    else return nil;
+    else {
+        UIView *headerView = [[UIView alloc]init];
+        [ headerView setFrame:CGRectMake(0, 0, 0, 0)];
+        return headerView;
+    };
+}
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] init];
+    
+    return view;
 }
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -494,7 +521,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     if (tableView==self.mListVideo) {
         return self.mListVideo.frame.size.width*85/100;
     } else {
-        return 40;
+        return self.view.frame.size.height/10;
     }
 }
 
@@ -557,13 +584,9 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 - (IBAction)buttonPlayerViewFace:(id)sender{
     if (sender == self.playerViewFace)
     {
-        //[self.bottomOfSeekingView setConstant:0];
-        
-        //[self.view setNeedsUpdateConstraints];
         [self.viewButonSeeking setAlpha:0];
         [UIView animateWithDuration:1.f animations:^{
-            //[self.view layoutIfNeeded];
-             [self.viewButonSeeking setAlpha:1];
+        [self.viewButonSeeking setAlpha:1];
         }];
         NSTimer *timerSeekingView =  [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideSeekingView) userInfo:nil repeats:NO];
 
@@ -624,7 +647,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
           [self.searchBarView setHidden:NO];
           _tap.enabled = YES;
       } else {
-          if (![self.currentTextInSearchBar isEqualToString:@""]) {
+          if ([self.currentTextInSearchBar isEqualToString:@""]) {
           [self searchBarSearchButtonClicked:self.searchBarView];
           [self keyboardDisAppearOrShow];
           [self.searchBarView setHidden:YES];
@@ -730,7 +753,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 }
 - (void) ShowViewScroll {
    // self.topSpaceListVideo.constant = 50;
-    self.bottomSpaceListVideo.constant = 50;
+    self.bottomSpaceListVideo.constant = 40;
      self.heighButtonTheLoai.constant = 60;
     //[self.ViewListCollection setAlpha:0];
     [self.view setNeedsUpdateConstraints];
@@ -778,10 +801,12 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 }
 
 - (void)receivedPlaybackStartedNotification:(NSNotification *) notification {
-  if([notification.name isEqual:@"Playback started"] && notification.object != self) {
-    //[self.playerView pauseVideo];
+//  if([notification.name isEqual:@"Playback started"] && notification.object != self) {
+//      [self.playerViewFace setHidden:NO];
+//      [self.playButton setSelected:YES];
+//      [self.playerView playVideo];
       //[self.playerView setHidden:NO];
-  }
+  
 }
 
 

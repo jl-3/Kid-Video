@@ -32,7 +32,7 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="6FB1521C-400F-4B51-A1A9-EB6433E363D9" translatesAutoresizingMaskIntoConstraints="NO" id="I52-2e-KlA" userLabel="imgBG">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="93A44124-D0E9-4879-ADF6-BCEC15051049" translatesAutoresizingMaskIntoConstraints="NO" id="I52-2e-KlA" userLabel="imgBG">
                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I9D-NP-90E" userLabel="ListTable">
@@ -41,7 +41,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b2X-Kr-RQo" userLabel="ViewRecent">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_listvideo_recent.png" translatesAutoresizingMaskIntoConstraints="NO" id="xjs-Jh-htz">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YEUTHICH.png" translatesAutoresizingMaskIntoConstraints="NO" id="xjs-Jh-htz">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 </imageView>
                             </subviews>
@@ -50,7 +50,9 @@
                                 <constraint firstAttribute="trailing" secondItem="xjs-Jh-htz" secondAttribute="trailing" id="4bG-tR-TRS"/>
                                 <constraint firstItem="xjs-Jh-htz" firstAttribute="leading" secondItem="b2X-Kr-RQo" secondAttribute="leading" id="Nom-wl-xYU"/>
                                 <constraint firstAttribute="height" constant="60" id="Of7-oE-rpv"/>
-                                <constraint firstAttribute="bottom" secondItem="xjs-Jh-htz" secondAttribute="bottom" id="Ycq-ZT-1Od"/>
+                                <constraint firstAttribute="bottom" secondItem="xjs-Jh-htz" secondAttribute="bottom" id="Ycq-ZT-1Od">
+                                    <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                                </constraint>
                                 <constraint firstItem="xjs-Jh-htz" firstAttribute="top" secondItem="b2X-Kr-RQo" secondAttribute="top" id="a27-bd-VPy"/>
                             </constraints>
                             <variation key="default">
@@ -653,6 +655,8 @@
                             <exclude reference="MKW-aB-IiY"/>
                         </mask>
                         <mask key="constraints">
+                            <exclude reference="oZr-Dt-qDU"/>
+                            <exclude reference="zzj-VX-eMH"/>
                             <exclude reference="19f-dV-MmO"/>
                             <exclude reference="OcG-QM-9NX"/>
                             <exclude reference="ZDE-CN-AAh"/>
@@ -668,8 +672,6 @@
                             <exclude reference="cSx-yh-ZMW"/>
                             <exclude reference="eqy-KN-h5Q"/>
                             <exclude reference="uE3-Qr-f4d"/>
-                            <exclude reference="oZr-Dt-qDU"/>
-                            <exclude reference="zzj-VX-eMH"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=regular-widthClass=regular">
@@ -680,6 +682,8 @@
                             <include reference="MKW-aB-IiY"/>
                         </mask>
                         <mask key="constraints">
+                            <include reference="oZr-Dt-qDU"/>
+                            <include reference="zzj-VX-eMH"/>
                             <exclude reference="19f-dV-MmO"/>
                             <exclude reference="OcG-QM-9NX"/>
                             <include reference="ZDE-CN-AAh"/>
@@ -695,8 +699,6 @@
                             <exclude reference="cSx-yh-ZMW"/>
                             <include reference="eqy-KN-h5Q"/>
                             <include reference="uE3-Qr-f4d"/>
-                            <include reference="oZr-Dt-qDU"/>
-                            <include reference="zzj-VX-eMH"/>
                         </mask>
                     </variation>
                 </view>
@@ -706,9 +708,6 @@
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vy0-Sc-SXr">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                <rect key="frame" x="300" y="0.0" width="85" height="600"/>
-                            </variation>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="MQ1-YT-wJk"/>
                                 <outlet property="delegate" destination="-1" id="TrL-AQ-0Fs"/>
@@ -855,7 +854,7 @@
         </searchDisplayController>
     </objects>
     <resources>
-        <image name="6FB1521C-400F-4B51-A1A9-EB6433E363D9" width="1024" height="768">
+        <image name="93A44124-D0E9-4879-ADF6-BCEC15051049" width="1024" height="768">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -40251,9 +40250,9 @@ ACQO8gAkDv8AJA8EACQPBgAkDwgAJA8NACQPFQAkDxgAJA8dACQPJQAkDygAJA86ACQPPQAkD0IAAAAA
 AAAEAQAAAAAAAAA/AAAAAAAAAAAAAAAAACQPRA
 </mutableData>
         </image>
+        <image name="YEUTHICH.png" width="800" height="236"/>
         <image name="icon_KECHUYEN.png" width="400" height="334"/>
         <image name="icon_amnhac.png" width="400" height="334"/>
-        <image name="icon_listvideo_recent.png" width="320" height="103"/>
         <image name="icon_menu.png" width="512" height="512"/>
         <image name="icon_pause_black.png" width="256" height="256"/>
         <image name="icon_play_black.png" width="136" height="165"/>

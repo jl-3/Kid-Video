@@ -613,7 +613,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     [self.playerView seekToSeconds:([sender value]*[self.playerView duration]) allowSeekAhead:YES];
 }
 - (void) HideMenuView {
-    self.trailingOfMenuView.constant = -138;
+    self.trailingOfMenuView.constant = -( self.tbvMenu.frame.size.width );
      [self.view setNeedsUpdateConstraints];
     
     [UIView animateWithDuration:1.f animations:^{
@@ -757,7 +757,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 }
 - (void) ShowViewScroll {
    // self.topSpaceListVideo.constant = 50;
-    self.bottomSpaceListVideo.constant = 40;
+    self.bottomSpaceListVideo.constant = self.btnMenu.frame.size.height+5;
      self.heighButtonTheLoai.constant = 60;
     //[self.ViewListCollection setAlpha:0];
     [self.view setNeedsUpdateConstraints];

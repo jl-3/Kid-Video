@@ -77,15 +77,15 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *heighButtonTheLoai;
 //constraigt for butotn
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *trailingHoatHinh;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingAmNhac;
-
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *withOfKeChuyen;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottonKeChuyen;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthAmNhac;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomAmNhac;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthHoatHinh;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomHoatHInh;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *leadingAmNhac;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthAmNhac;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomAmNhac;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *withOfKeChuyen;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottonKeChuyen;
 
 @property (weak, nonatomic) IBOutlet MarqueeLabel *titleVideoPlaying;
 

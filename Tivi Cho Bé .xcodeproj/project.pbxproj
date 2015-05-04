@@ -93,6 +93,7 @@
 		69A876A01AE394300073C6B1 /* mVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A8769E1AE394300073C6B1 /* mVideoCell.xib */; };
 		69A8B95F1AF6069C00F8069F /* VCAbout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A8B95D1AF6069C00F8069F /* VCAbout.m */; };
 		69A8B9601AF6069C00F8069F /* VCAbout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A8B95E1AF6069C00F8069F /* VCAbout.xib */; };
+		69C8A4201AF715B800EB803F /* IpadPlayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C8A41F1AF715B800EB803F /* IpadPlayListViewController.xib */; };
 		69EA86131AE6350800F612FA /* NSURLParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA86121AE6350800F612FA /* NSURLParameters.m */; };
 		69FE692C1AEE7B2500634542 /* FavoriteVideoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE692B1AEE7B2500634542 /* FavoriteVideoDetail.m */; };
 /* End PBXBuildFile section */
@@ -250,6 +251,7 @@
 		69A8B95C1AF6069C00F8069F /* VCAbout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCAbout.h; sourceTree = "<group>"; };
 		69A8B95D1AF6069C00F8069F /* VCAbout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCAbout.m; sourceTree = "<group>"; };
 		69A8B95E1AF6069C00F8069F /* VCAbout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCAbout.xib; sourceTree = "<group>"; };
+		69C8A41F1AF715B800EB803F /* IpadPlayListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IpadPlayListViewController.xib; sourceTree = "<group>"; };
 		69EA86111AE6350800F612FA /* NSURLParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSURLParameters.h; sourceTree = "<group>"; };
 		69EA86121AE6350800F612FA /* NSURLParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLParameters.m; sourceTree = "<group>"; };
 		69FE692A1AEE7B2500634542 /* FavoriteVideoDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteVideoDetail.h; sourceTree = "<group>"; };
@@ -386,6 +388,7 @@
 				697FB1501ADEA9AE00DFE12D /* PlaylistViewController.h */,
 				697FB1511ADEA9AE00DFE12D /* PlaylistViewController.m */,
 				697FB1541ADEAB4F00DFE12D /* PlaylistViewController.xib */,
+				69C8A41F1AF715B800EB803F /* IpadPlayListViewController.xib */,
 				697FB1451ADEA30900DFE12D /* FirstScreenView.h */,
 				697FB1461ADEA30900DFE12D /* FirstScreenView.m */,
 				697FB1471ADEA30900DFE12D /* FirstScreenView.xib */,
@@ -722,6 +725,7 @@
 				69A52C691AE8E48000EA91CE /* play_on.png in Resources */,
 				6915C7E61ADE05E4005AD7E1 /* LaunchScreen.xib in Resources */,
 				699B4D481AF664C6007FBD7B /* icon_play_black.png in Resources */,
+				69C8A4201AF715B800EB803F /* IpadPlayListViewController.xib in Resources */,
 				699EFB191AF291D300CDA2F7 /* icon_amnhac.png in Resources */,
 				6915C7E31ADE05E4005AD7E1 /* Images.xcassets in Resources */,
 				697FB1431ADE9A7700DFE12D /* FunBaseViewController.xib in Resources */,

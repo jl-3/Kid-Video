@@ -24,10 +24,24 @@
         //    self.baseViewController = [[FunBaseViewController alloc] initWithNibName:@"FunBaseViewController" bundle:nil];
         //    self.baseViewController.delegate = self;
         //    [self pushViewController:_baseViewController animated:NO];
-
-        self.playListViewController = [[PlaylistViewController alloc] initWithNibName:@"PlaylistViewController" bundle:nil];
-        self.playListViewController.delegate = self;
-        [self pushViewController:self.playListViewController animated:YES];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        NSLog(@"Ipad: %f",screenSize.size.height);
+        self.PlayListViewController = [[PlaylistViewController alloc] initWithNibName:@"IpadPlayListViewController" bundle:nil];
+        self.PlayListViewController.delegate = self;
+        [self pushViewController:self.PlayListViewController animated:YES];
+        if ([UIScreen mainScreen].scale >= 2) {
+            //self.typeOfDevice = [DEVICE_IPAD_RETINA intValue];
+        } else {
+           // self.typeOfDevice = [DEVICE_IPAD_NON_RETINA intValue];
+        }
+    }else{
+         NSLog(@"Iphone : %f",screenSize.size.height);
+        self.PlayListViewController = [[PlaylistViewController alloc] initWithNibName:@"PlaylistViewController" bundle:nil];
+        self.PlayListViewController.delegate = self;
+        [self pushViewController:self.PlayListViewController animated:YES];
+     
+    }
     
 }
 

@@ -433,7 +433,10 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     }
     
     FavoriteVideoDetail *vData = [[super mFavoriteVideos] objectAtIndex:indexPath.row];
-    cell.titleLabel.text = vData.videoName;
+        cell.titleLabel.trailingBuffer = cell.titleLabel.frame.size.width;
+        cell.titleLabel.text = vData.videoName;
+        NSLog([NSString stringWithFormat:@" %f ", cell.frame.size.width]);
+        NSLog([NSString stringWithFormat:@" %f ", cell.titleLabel.frame.size.width]);
         if (![[Utils humanReadableFromYouTubeTime:vData.videoDuration] isEqualToString:@"(Unknown)"]) {
             [cell.descriptionLabel setHidden:NO];
             cell.descriptionLabel.text =[Utils humanReadableFromYouTubeTime:vData.videoDuration];
@@ -475,6 +478,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
             
         }
+        
         cell.titleItemOfMenu.text = [mMenuItems objectAtIndex:indexPath.row];
         return cell;
     }

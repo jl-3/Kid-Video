@@ -15,7 +15,8 @@
 
 @property (retain) FunBaseViewController* baseViewController;
 @property (retain) FirstScreenView* firstScreenViewController;
-@property (retain) PlaylistViewController* playListViewController;
+@property (retain) PlaylistViewController* PlayListViewController;
+@property (retain) PlaylistViewController* IpadplayListViewController;
 @property (weak, nonatomic) IBOutlet UIButton *leftbtn;
 
 @end

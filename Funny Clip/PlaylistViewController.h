@@ -88,6 +88,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottonKeChuyen;
 
 @property (weak, nonatomic) IBOutlet MarqueeLabel *titleVideoPlaying;
+@property (weak, nonatomic) IBOutlet UIView *MenuView;
 
 @property (weak, nonatomic) IBOutlet UIView *ViewListCollection;
 @property (weak, nonatomic) IBOutlet UIView *viewButonSeeking;
@@ -103,6 +104,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
 @property (weak, nonatomic) IBOutlet UIButton *playerViewFace;
 @property (weak, nonatomic) IBOutlet UIButton *btnMenu;
+@property (weak, nonatomic) IBOutlet UIView *ViewListTable;
 
 - (IBAction)setProgress:(UISlider *)sender;
 - (IBAction)buttonPressed:(id)sender;

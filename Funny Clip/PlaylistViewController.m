@@ -118,13 +118,14 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 }
 - (void) initItemStatus {
     [self.playerViewFace setHidden:YES];
+    [self.playButton setSelected:YES];
     [self.ViewListCollection setAlpha:0];
     [self.searchBarView setHidden:YES];
     [self.trailingOfMenuView setConstant:-140];
     self.listViewColectionView.bounces =NO ;
     [self.navigationController setNavigationBarHidden:YES];
     
-    [self.playButton setImage:[UIImage imageNamed:@"icon_play_black.png"] forState:UIControlStateSelected];
+    [self.playButton setImage:[UIImage imageNamed:@"icon_pause_black.png"] forState:UIControlStateSelected];
     //setup title video playing
     self.titleVideoPlaying.textAlignment= NSTextAlignmentLeft;
     self.titleVideoPlaying.marqueeType = MLContinuous;
@@ -196,7 +197,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 - (void) checkDurationTime {
     if ([self.playerView currentTime ]> 0) {
         [self.playerViewFace setHidden:NO];
-        
+       
         NSLog(@"%f",[self.playerView currentTime ]);
         NSLog(@"%i",[self.playerView duration ]);
         NSLog(@"%f",[self.playerView currentTime]/(float)[self.playerView duration]);
@@ -413,7 +414,12 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         
         [self.titleVideoPlaying setText:vidData.getTitle];
         // durationOfCurrentVideoPlaying = vidData.getDuration;
-         [self buttonPressed:self.playButton];
+        
+        [self buttonPressed:self.playButton];
+        // status button when click play
+        [self.playButton setSelected:YES ];
+        
+        
         [self buttonPressed:self.ViewUpDownbtn];
         [self saveToDBWhenClick:vidData];
 
@@ -478,17 +484,26 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
             
         }
-        
+        [cell.titleItemOfMenu setTextColor:[UIColor blackColor]];
         cell.titleItemOfMenu.text = [mMenuItems objectAtIndex:indexPath.row];
+        NSLog( [mMenuItems objectAtIndex:indexPath.row]);
         return cell;
     }
 
 }
-
+-(CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    if (tableView==self.tbvMenu)
+    {
+        return self.MenuView.frame.size.height/10;
+    } else {
+        return 1;
+    }
+}
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (tableView==self.tbvMenu)
     {
     UILabel *lbl = [[UILabel alloc] init];
+    //[lbl setFrame:CGRectMake(0, 0, self.MenuView.frame.size.width, self.MenuView.frame.size.height/10)];
     lbl.textAlignment = UITextAlignmentCenter;
     //lbl.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
     lbl.text = @"MENU";
@@ -539,6 +554,8 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             
             [self.titleVideoPlaying setText:vidData.videoName];
             [self buttonPressed:self.playButton];
+            // status button when click play
+            [self.playButton setSelected:YES ];
             [self buttonPressed:self.ViewUpDownbtn];
            
             
@@ -547,6 +564,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         switch (indexPath.row) {
             case 0:
                 //
+                
                 break;
             case 1:
                 break;
@@ -575,8 +593,9 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     if ([self saveToFavorite:mFavoriteItem]) {
         if ([self loadAllFavoriteVideosFromDB]) {
             [self.mListVideo reloadData];
-        };
-    };
+        }
+    }
+
 }
 - (void) hideSeekingView {
     [self.viewButonSeeking setAlpha:1];
@@ -613,9 +632,9 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     [self.playerView seekToSeconds:([sender value]*[self.playerView duration]) allowSeekAhead:YES];
 }
 - (void) HideMenuView {
-    self.trailingOfMenuView.constant = -( self.tbvMenu.frame.size.width );
+    self.trailingOfMenuView.constant =  -(self.MenuView.frame.size.width);
+    NSLog(@"%f," ,self.ViewListTable.frame.size.width);
      [self.view setNeedsUpdateConstraints];
-    
     [UIView animateWithDuration:1.f animations:^{
         [self.view layoutIfNeeded];
         

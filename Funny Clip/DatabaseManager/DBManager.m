@@ -61,34 +61,52 @@ static sqlite3_stmt *statement = nil;
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK)
     {
-        NSString *insertSQL = [NSString stringWithFormat:@"insert into FavoriteVideos (videoId , videoName , videoDescription , videoDuration , thumnailUrl , position , deleted ) values  (\"%@\",\"%@\",\"%@\",\"%@\", \"%@\", \"%@\", \"%@\" )",mVideoItem.videoId , mVideoItem.videoName ,   mVideoItem.videoDescription,mVideoItem.videoDuration,mVideoItem.thumnailUrl, mVideoItem.position, mVideoItem.deleted ];
-                                const char *insert_stmt = [insertSQL UTF8String];
+        NSString *insertSQL = [NSString stringWithFormat:@"insert into FavoriteVideos (videoId , videoName , videoDescription , videoDuration , thumnailUrl , position , deleted ) values  (\"%@\",\"%@\",\"%@\",\"%@\", \"%@\", \"%d\", \"%@\" )",mVideoItem.videoId , mVideoItem.videoName ,   mVideoItem.videoDescription,mVideoItem.videoDuration,mVideoItem.thumnailUrl, [mVideoItem.position intValue], mVideoItem.deleted ];
+        const char *insert_stmt = [insertSQL UTF8String];
         sqlite3_prepare_v2(database, insert_stmt,-1, &statement, NULL);
                         if (sqlite3_step(statement) == SQLITE_DONE)
                                 {
                                     return YES;
                                 }
-       
-                                else {
-                                    int tmp=[mVideoItem.position intValue]+1;
-                                    [mVideoItem setValue:@(tmp) forKey:@"position"];
-                                    NSString *updateSQL = [NSString stringWithFormat:@" update FavoriteVideos SET position = \"%@\" where videoId = \"%@\" ;",mVideoItem.position, mVideoItem.videoId ];
-                                    const char *update_stmt = [updateSQL UTF8String];
-                                    sqlite3_prepare_v2(database, update_stmt,-1, &statement, NULL);
-                                    if (sqlite3_step(statement) == SQLITE_DONE)
-                                    {
-                                        return YES;
-                                    } else
-                                    {
-                                        return NO;
-                                    }
-                                   // return NO;
-                                }
-         sqlite3_reset(statement);
+        sqlite3_reset(statement);
+
+        NSLog(@"%d",sqlite3_step(statement));
+        if (sqlite3_step(statement) == SQLITE_MISUSE) {
+            NSArray *mItemVideo = [self findByVideoId:mVideoItem.videoId];
+            if (mItemVideo) {
+            int  videoPosition = [[mItemVideo objectAtIndex:4] intValue];
+                [mVideoItem setValue:@(videoPosition) forKey:@"position"];
+                
+                if ( [self updateVideo:mVideoItem]) {
+                    return YES;
+                };
+            }
+        }
+       sqlite3_reset(statement);
      }
 return NO;
 }
-
+-(BOOL)updateVideo:(FavoriteVideoDetail *) mVideoItem{
+    const char *dbpath = [databasePath UTF8String];
+    if (sqlite3_open(dbpath, &database) == SQLITE_OK)
+    {
+            //int tmp= [mVideoItem.position intValue] +1;
+            //[mVideoItem setValue:@(tmp) forKey:@"position"];
+            NSString *updateSQL = [NSString stringWithFormat:@"UPDATE FavoriteVideos SET position = %d where videoId == '%@' ;",[mVideoItem.position intValue]+1, mVideoItem.videoId ];
+//        sqlite3_bind_int(stmt, 1, [txt UTF8String], -1, SQLITE_TRANSIENT);
+//        sqlite3_bind_text(stmt, 2, [utxt UTF8String], -1, SQLITE_TRANSIENT);
+            const char *update_stmt = [updateSQL UTF8String];
+            sqlite3_prepare_v2(database, update_stmt,-1, &statement, NULL);
+            if (sqlite3_step(statement) == SQLITE_DONE)
+            {
+                return YES;
+            
+            }
+        
+      // sqlite3_reset(statement);
+    }
+    return NO;
+}
 - (NSArray*) findByVideoId:(NSString*)videoId  {
             const char *dbpath = [databasePath UTF8String];
             if (sqlite3_open(dbpath, &database) == SQLITE_OK)
@@ -115,8 +133,8 @@ return NO;
                                                  (const char *) sqlite3_column_text(statement, 3)];
                         [resultArray addObject:thumnailUrl];
                         
-                        NSInteger position = [[[NSString alloc] initWithUTF8String:
-                                               (const char *) sqlite3_column_text(statement, 4)] integerValue];
+                        int position = [[[NSString alloc] initWithUTF8String:
+                                               (const char *) sqlite3_column_text(statement, 4)] intValue];
                         [resultArray addObject:@(position)];
                         NSString *deleted = [[NSString alloc]initWithUTF8String:
                                           (const char *) sqlite3_column_text(statement, 5)];
@@ -161,8 +179,8 @@ return NO;
                                          (const char *) sqlite3_column_text(statement, 4)];
                 
                 //[resultArray addObject:deleted];
-                NSInteger position = [[[NSString alloc] initWithUTF8String:
-                                      (const char *) sqlite3_column_text(statement, 5)] integerValue];
+                int position = [[[NSString alloc] initWithUTF8String:
+                                      (const char *) sqlite3_column_text(statement, 5)] intValue];
                 //[resultArray addObject:position];
                 NSString *deleted = [[NSString alloc]initWithUTF8String:
                                   (const char *) sqlite3_column_text(statement, 6)];
@@ -178,7 +196,7 @@ return NO;
                                        @"deleted":deleted,};
                 
                 FavoriteVideoDetail *mItem = [[FavoriteVideoDetail alloc]initWithDictionary:mDic];
-                 NSLog(@"%@",mItem.position);
+                 NSLog(@"%d",[mItem.position intValue]);
                 [resultArray addObject:mItem];
                
             }

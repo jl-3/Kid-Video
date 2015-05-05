@@ -11,7 +11,7 @@
 @interface FavoriteVideoDetail : NSObject
 @property (nonatomic, copy) NSString* videoId;
 @property (nonatomic, copy) NSString* deleted;
-@property (nonatomic, strong) id position;
+@property (nonatomic, strong) NSNumber *position;
 @property (nonatomic, copy) NSString* videoDuration;
 @property (nonatomic, copy) NSString* thumnailUrl;
 @property (nonatomic, copy) NSString* videoName;

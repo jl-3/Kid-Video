@@ -51,10 +51,12 @@
     //success = [[DBManager getSharedInstance] saveVideo:item2];
     
     if (success == NO) {
-        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:
-                              alertString message:nil
-                                                      delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:
+//                              alertString message:nil
+//                                                      delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//        [alert show];
+        NSLog(@"updating data");
+       // success = [[DBManager getSharedInstance] updateVideo:mFavoriteItem];
     }
     else {
         NSLog(@"Save data OK");

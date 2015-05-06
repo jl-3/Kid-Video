@@ -92,18 +92,19 @@ return NO;
     {
             //int tmp= [mVideoItem.position intValue] +1;
             //[mVideoItem setValue:@(tmp) forKey:@"position"];
-            NSString *updateSQL = [NSString stringWithFormat:@"UPDATE FavoriteVideos SET position = %d where videoId == '%@' ;",[mVideoItem.position intValue]+1, mVideoItem.videoId ];
+            NSString *updateSQL = [NSString stringWithFormat:@"UPDATE FavoriteVideos SET position = \"%d\" where videoId = \"%@\" ",[mVideoItem.position intValue]+1, mVideoItem.videoId ];
 //        sqlite3_bind_int(stmt, 1, [txt UTF8String], -1, SQLITE_TRANSIENT);
 //        sqlite3_bind_text(stmt, 2, [utxt UTF8String], -1, SQLITE_TRANSIENT);
             const char *update_stmt = [updateSQL UTF8String];
             sqlite3_prepare_v2(database, update_stmt,-1, &statement, NULL);
             if (sqlite3_step(statement) == SQLITE_DONE)
             {
+                sqlite3_reset(statement);
                 return YES;
             
             }
-        
-      // sqlite3_reset(statement);
+        NSLog(@"%d",sqlite3_step(statement));
+      sqlite3_reset(statement);
     }
     return NO;
 }
@@ -142,10 +143,12 @@ return NO;
 
                        
 
+                       sqlite3_reset(statement);
                         return resultArray;
                     }
                     else{
                         NSLog(@"Not found");
+                       sqlite3_reset(statement);
                         return nil;
                     }
                     sqlite3_reset(statement);

@@ -66,22 +66,24 @@ static sqlite3_stmt *statement = nil;
         sqlite3_prepare_v2(database, insert_stmt,-1, &statement, NULL);
                         if (sqlite3_step(statement) == SQLITE_DONE)
                                 {
+                                    sqlite3_reset(statement);
+
                                     return YES;
                                 }
-        sqlite3_reset(statement);
-
-        NSLog(@"%d",sqlite3_step(statement));
-        if (sqlite3_step(statement) == SQLITE_MISUSE) {
-            NSArray *mItemVideo = [self findByVideoId:mVideoItem.videoId];
-            if (mItemVideo) {
-            int  videoPosition = [[mItemVideo objectAtIndex:4] intValue];
-                [mVideoItem setValue:@(videoPosition) forKey:@"position"];
-                
-                if ( [self updateVideo:mVideoItem]) {
-                    return YES;
-                };
-            }
-        }
+                        else {
+                                    NSLog(@"%d",sqlite3_step(statement));
+                                    if (sqlite3_step(statement) == SQLITE_MISUSE) {
+                                        NSArray *mItemVideo = [self findByVideoId:mVideoItem.videoId];
+                                        if (mItemVideo) {
+                                        int  videoPosition = [[mItemVideo objectAtIndex:4] intValue];
+                                            [mVideoItem setValue:@(videoPosition) forKey:@"position"];
+                                            
+                                            if ( [self updateVideo:mVideoItem]) {
+                                                return YES;
+                                            };
+                                        }
+                                    }
+                            }
        sqlite3_reset(statement);
      }
 return NO;
@@ -161,7 +163,7 @@ return NO;
     if (sqlite3_open(dbpath, &database) == SQLITE_OK)
     {
         NSString *querySQL = [NSString stringWithFormat:
-                              @"select * from FavoriteVideos "];
+                              @"select * from FavoriteVideos ORDER BY position DESC"];
         const char *query_stmt = [querySQL UTF8String];
         NSMutableArray *resultArray = [[NSMutableArray alloc]init];
         if (sqlite3_prepare_v2(database,

@@ -42,27 +42,27 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         _getVideos = [[YouTubeGetVideos alloc] init];
         _getVideos.delegate = self;
         _VIDEOS_AMNHAC = [[NSArray alloc] init];
-         _VIDEOS_KECHUYEN = [[NSArray alloc] init];
-         _VIDEOS_HOATHINH = [[NSArray alloc] init];
+        _VIDEOS_KECHUYEN = [[NSArray alloc] init];
+        _VIDEOS_HOATHINH = [[NSArray alloc] init];
         _VIDEOS_SEARCH_RESULTS = [[NSArray alloc] init];
         
         flag=1;
-      mVCAbout = [[VCAbout alloc]initWithNibName:@"VCAbout" bundle:nil];
+        mVCAbout = [[VCAbout alloc]initWithNibName:@"VCAbout" bundle:nil];
     }
     return self;
-
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
-  
+    
 }
 
 - (void)showList {
-   // VideoListViewController *listUI = [[VideoListViewController alloc] init];
-   // listUI.youtubeService = self.youtubeService;
-   // [[self navigationController] pushViewController:listUI animated:YES];
+    // VideoListViewController *listUI = [[VideoListViewController alloc] init];
+    // listUI.youtubeService = self.youtubeService;
+    // [[self navigationController] pushViewController:listUI animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -85,26 +85,38 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 }
 #pragma mark - YouTubeGetUploadsDelegate methods
 
-- (void)getYouTubeVideos:(YouTubeGetVideos *)getVideos didFinishWithResults:(NSArray *)results {
+- (void)getYouTubeVideos:(YouTubeGetVideos *)getVideos didFinishWithResults:(NSArray *)results : (NSString*) nextPageTokenThis : (NSString *) prvPageTokenThis : (int ) typeOfResultThis {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     switch (flag) {
         case 1:
-            self.VIDEOS_AMNHAC = results;
+            if (typeOfResultThis == 0)
+                self.VIDEOS_AMNHAC = [results mutableCopy];
+            else [self.VIDEOS_AMNHAC addObjectsFromArray:results];
             break;
         case 2:
-            self.VIDEOS_KECHUYEN = results;
+            if (typeOfResultThis == 0)
+                self.VIDEOS_KECHUYEN = [results mutableCopy];
+            else [self.VIDEOS_KECHUYEN addObjectsFromArray:results];
             break;
         case 3:
-            self.VIDEOS_HOATHINH = results;
+            if (typeOfResultThis == 0)
+                self.VIDEOS_HOATHINH = [results mutableCopy];
+            else [self.VIDEOS_HOATHINH addObjectsFromArray:results];
             break;
         default:
-            self.VIDEOS_SEARCH_RESULTS = results;
+            if (typeOfResultThis == 0)
+            self.VIDEOS_SEARCH_RESULTS = [results mutableCopy];
+            else [self.VIDEOS_SEARCH_RESULTS addObjectsFromArray:results];
             break;
     }
     //[self.ViewListCollection setHidden:NO];
+    [self resetStatusLoadPage];
+    if (nextPageTokenThis) nextPageToken = nextPageTokenThis;
+    if (prvPageTokenThis) prvPageTokenThis = prvPageTokenThis;
+   isLoadFinish=YES;
     [self.listViewColectionView reloadData];
     [self ShowViewScroll];
-  
+    
     //[self.mListVideo reloadData];
 }
 
@@ -114,7 +126,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 }
 - (void) initDataMenu {
     mMenuItems = [NSArray arrayWithObjects:@"Purchase",@"Help",@"About", nil];
-   
+    
 }
 - (void) initItemStatus {
     [self.playerViewFace setHidden:YES];
@@ -122,7 +134,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     [self.ViewListCollection setAlpha:0];
     [self.searchBarView setHidden:YES];
     [self.trailingOfMenuView setConstant:-140];
-    self.listViewColectionView.bounces =NO ;
+    // self.listViewColectionView.bounces =NO ;
     [self.navigationController setNavigationBarHidden:YES];
     
     [self.playButton setImage:[UIImage imageNamed:@"icon_pause_black.png"] forState:UIControlStateSelected];
@@ -140,13 +152,13 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     // table
     [self.mListVideo setSectionFooterHeight:1];
     [self.tbvMenu setBounces:NO];
-   // [self.tbvMenu vi];
+    // [self.tbvMenu vi];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationLandscapeLeft] forKey:@"orientation"];
-   
-   // [self.listViewColectionView setHidden:YES];
+    
+    // [self.listViewColectionView setHidden:YES];
     [self init];
     [self initItemStatus];
     [self initDataMenu];
@@ -160,31 +172,31 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         // Not yet authorized, request authorization and push the login UI onto the navigation stack.
         [[self navigationController] pushViewController:[self createAuthController] animated:YES];
     }
-
-  
-    NSString* videoID = @"9IHb4PBrxYQ";
-   // [self.playButton setImage:[UIImage imageNamed:@"stop_on.png"] forState:UIControlStateSelected];
-  // For a full list of player parameters, see the documentation for the HTML5 player
-  // at: https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
- playerVars = @{
-    @"controls" : @0,
-    @"playsinline" : @1,
-    @"autohide" : @1,
-    @"showinfo" : @0,
-    @"modestbranding" : @1
-  };
-  self.playerView.delegate = self;
- 
-  [self.playerView loadWithVideoId:videoID playerVars:playerVars];
-   timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDurationTime) userInfo:nil repeats:YES];
-    //[self.playerView setFrame:CGRectMake(0, 0, 400, 400)];
-//     [self.playButton setImage:[UIImage imageNamed:@"youtube_pause.png"] forState:UIControlStateSelected];
     
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(receivedPlaybackStartedNotification:)
-                                               name:@"Playback started"
-                                             object:nil];
-   
+    
+    NSString* videoID = @"9IHb4PBrxYQ";
+    // [self.playButton setImage:[UIImage imageNamed:@"stop_on.png"] forState:UIControlStateSelected];
+    // For a full list of player parameters, see the documentation for the HTML5 player
+    // at: https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
+    playerVars = @{
+                   @"controls" : @0,
+                   @"playsinline" : @1,
+                   @"autohide" : @1,
+                   @"showinfo" : @0,
+                   @"modestbranding" : @1
+                   };
+    self.playerView.delegate = self;
+    
+    [self.playerView loadWithVideoId:videoID playerVars:playerVars];
+    timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDurationTime) userInfo:nil repeats:YES];
+    //[self.playerView setFrame:CGRectMake(0, 0, 400, 400)];
+    //     [self.playButton setImage:[UIImage imageNamed:@"youtube_pause.png"] forState:UIControlStateSelected];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receivedPlaybackStartedNotification:)
+                                                 name:@"Playback started"
+                                               object:nil];
+    
     
     [self loadDataJson];
     if ([self loadAllFavoriteVideosFromDB]) {
@@ -193,11 +205,11 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(keyboardDisAppearOrShow)];
     _tap.enabled = NO;
     [self.view addGestureRecognizer:_tap];
-  }
+}
 - (void) checkDurationTime {
     if ([self.playerView currentTime ]> 0) {
         [self.playerViewFace setHidden:NO];
-       
+        
         NSLog(@"%f",[self.playerView currentTime ]);
         NSLog(@"%i",[self.playerView duration ]);
         NSLog(@"%f",[self.playerView currentTime]/(float)[self.playerView duration]);
@@ -212,34 +224,34 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     NSURL *url = [NSURL URLWithString:BaseURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     mPlayLists = [NSMutableArray array];
-
+    
     //[mPlayLists init];
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
-   // operation.responseSerializer = [AFHTTPResponseSerializer serializer];
+    // operation.responseSerializer = [AFHTTPResponseSerializer serializer];
     operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-
+        
         NSDictionary *dict = (NSDictionary*)responseObject;
         NSMutableArray *tmpArray= dict[@"MyPlayLists"];
         for (int i=0;i<tmpArray.count;i++)
         {
             NSObject *tmpObject;
             tmpObject= [tmpArray objectAtIndex:i];
-           // NSLog([tmpObject valueForKey:@"playListId"]);
+            // NSLog([tmpObject valueForKey:@"playListId"]);
             PlayListModel *mPlayListModel = [PlayListModel PlayListWithDictionary:
-                                   @{ @"playListId":[tmpObject valueForKey:@"playListId"],
-                                      @"playListName":[tmpObject valueForKey:@"playListName"],
-                                         
-                                         
-                                         }];
+                                             @{ @"playListId":[tmpObject valueForKey:@"playListId"],
+                                                @"playListName":[tmpObject valueForKey:@"playListName"],
+                                                
+                                                
+                                                }];
             [mPlayLists  addObject:mPlayListModel];
         }
-          NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:0]).playListId;
-          [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp];
+        NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:0]).playListId;
+        [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
         
-       // [self.SimpleTableView reloadData];
+        // [self.SimpleTableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error Retrieving data"
@@ -258,16 +270,16 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     
     [self.listViewColectionView reloadData];
     
-
-
+    
+    
 }
 #pragma mark - UISEARCHBAR Datasource
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     
-  //  NSString * tmpStr =[self.currentTextInSearchBar  stringByAppendingString:searchText];
-
-   // self.currentTextInSearchBar = tmpStr;
-   // [tmpStr retain];
+    //  NSString * tmpStr =[self.currentTextInSearchBar  stringByAppendingString:searchText];
+    
+    // self.currentTextInSearchBar = tmpStr;
+    // [tmpStr retain];
     
 }
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
@@ -279,15 +291,19 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     flag=4;
     
     if (![searchBar.text isEqualToString:@""]) {
-     //   self.currentTextInSearchBar = searchBar.text;
-    [self.getVideos searchYouTubeVideosWithService2:self.youtubeService:searchBar.text];
+        //   self.currentTextInSearchBar = searchBar.text;
+        [self resetStatusLoadPage];
+        [self.getVideos searchYouTubeVideosWithService:self.youtubeService:searchBar.text : nextPageToken : prevPageToken : 0];
     }
 }
-
+- (void) resetStatusLoadPage {
+    nextPageToken = nil;
+    prevPageToken = nil;
+}
 #pragma mark - UICollectionView Datasource
 // 1
 - (NSInteger)collectionView:(UICollectionView *)view numberOfItemsInSection:(NSInteger)section {
- [view registerNib:[UINib nibWithNibName:@"VideoItemCollectCell" bundle:nil] forCellWithReuseIdentifier:@"collectCell"];
+    [view registerNib:[UINib nibWithNibName:@"VideoItemCollectCell" bundle:nil] forCellWithReuseIdentifier:@"collectCell"];
     NSInteger numberOf=0;
     switch (flag) {
         case 1:
@@ -315,7 +331,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)cv cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-   
+    
     VideoItemCollectCell *cellScroll = [cv dequeueReusableCellWithReuseIdentifier:@"collectCell" forIndexPath:indexPath];
     if (!cellScroll)
     {
@@ -335,43 +351,43 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             break;
         default:
             vData = [_VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row];
-
+            
             break;
     }
     cellScroll.titleLbl.trailingBuffer = cellScroll.frame.size.width;
-   cellScroll.titleLbl.text = [vData getTitle];
+    cellScroll.titleLbl.text = [vData getTitle];
     cellScroll.descriptionLb.text = [Utils humanReadableFromYouTubeTime:vData.getDuration];
     if ([cellScroll.descriptionLb.text isEqualToString:@"(Unknown)"]) [cellScroll.descriptionLb setHidden:YES];
     else [cellScroll.descriptionLb setHidden:NO];
     NSURL *url = [NSURL URLWithString:vData.getThumbUri];
- 
-       NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     UIImage *placeholderImage = [UIImage imageNamed:@"bg_loading.png"];
     
-   // __weak UITableViewCell *weakCell = cell;
+    // __weak UITableViewCell *weakCell = cell;
     
     [cellScroll.thumnailImg setImageWithURLRequest:request
-                          placeholderImage:placeholderImage
-                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                       
-                                       NSLog(@"image download: %f %f",image.size.width,image.size.height);
-                                       NSLog(@"cell sizde: %f %f",cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height);
-
+                                  placeholderImage:placeholderImage
+                                           success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                               
+                                               NSLog(@"image download: %f %f",image.size.width,image.size.height);
+                                               NSLog(@"cell sizde: %f %f",cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height);
+                                               
                                                UIGraphicsBeginImageContext(CGSizeMake(cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height
                                                                                       ));
                                                vData.fullImage = image;
                                                [ image drawInRect:
-                                               CGRectMake(0, 0, cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height)];
+                                                CGRectMake(0, 0, cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height)];
                                                vData.thumbnail = UIGraphicsGetImageFromCurrentImageContext();
                                                UIGraphicsEndImageContext();
-                                       
+                                               
                                                [cellScroll.thumnailImg setImage:vData.thumbnail];
-                                       //cellScroll.thumnailImg.image = image;
-                                       [cellScroll setNeedsLayout];
-                                       
-                                   } failure:nil];
+                                               //cellScroll.thumnailImg.image = image;
+                                               [cellScroll setNeedsLayout];
+                                               
+                                           } failure:nil];
     
-        return cellScroll;
+    return cellScroll;
 }
 
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section {
@@ -388,29 +404,29 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     switch (flag) {
         case 1:
             if ([_VIDEOS_AMNHAC objectAtIndex:indexPath.row]) {
-            vidData = [_VIDEOS_AMNHAC objectAtIndex:indexPath.row];
+                vidData = [_VIDEOS_AMNHAC objectAtIndex:indexPath.row];
             }
             break;
         case 2:
             if ([_VIDEOS_KECHUYEN objectAtIndex:indexPath.row]) {
-            vidData = [_VIDEOS_KECHUYEN objectAtIndex:indexPath.row];
+                vidData = [_VIDEOS_KECHUYEN objectAtIndex:indexPath.row];
             }
             break;
         case 3:
             if ([_VIDEOS_HOATHINH objectAtIndex:indexPath.row]) {
-            vidData = [_VIDEOS_HOATHINH objectAtIndex:indexPath.row];
+                vidData = [_VIDEOS_HOATHINH objectAtIndex:indexPath.row];
             }
             break;
         default:
             if ([_VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row]) {
-             vidData = [_VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row];
+                vidData = [_VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row];
             }
             break;
     }
-
+    
     NSString *videoID= [vidData getYouTubeId];
     if ((videoID)&&(vidData)) {
-         [self.playerView loadWithVideoId:videoID playerVars:playerVars];
+        [self.playerView loadWithVideoId:videoID playerVars:playerVars];
         
         [self.titleVideoPlaying setText:vidData.getTitle];
         // durationOfCurrentVideoPlaying = vidData.getDuration;
@@ -422,23 +438,80 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         
         [self buttonPressed:self.ViewUpDownbtn];
         [self saveToDBWhenClick:vidData];
-
+        
     }
     
 }
-
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    if (tableView==self.mListVideo) {
-    mVideoCell * cell = [tableView dequeueReusableCellWithIdentifier:@"videoCell"];
-    if (!cell)
-    {
-        [tableView registerNib:[UINib nibWithNibName:@"mVideoCell" bundle:nil] forCellReuseIdentifier:@"videoCell"];
-        cell = [tableView dequeueReusableCellWithIdentifier:@"videoCell"];
-     
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    NSString *playListId;
+    if (flag <4) {
+      playListId=( (PlayListModel*)[mPlayLists objectAtIndex:flag-1]).playListId;
+      
     }
+    if ((int)scrollView.contentOffset.y >= (int )scrollView.contentSize.height - (int)self.listViewColectionView.frame.size.height)
+    {
+        //[scrollView setScrollEnabled:NO];
+       
+        if (isLoadFinish)
+        switch (flag) {
+            case 4:
+                if (self.VIDEOS_SEARCH_RESULTS.count<200) {
+                [self.getVideos searchYouTubeVideosWithService:self.youtubeService:nil : nextPageToken : nil : 1];
+                 isLoadFinish=NO;
+                }
+                break;
+            
+            default:
+                switch (flag) {
+                    case 1:
+                        if (self.VIDEOS_AMNHAC.count>200) break;
+                        else [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : 1];
+                        break;
+                    case 2:
+                        if (self.VIDEOS_KECHUYEN.count>200) break;
+                        else [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : 1];
+                        break;
+                    case 3:
+                        if (self.VIDEOS_HOATHINH.count>200) break;
+                        else
+                            [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : 1];
+                        break;
+                    default:
+                        break;
+                }
+
+                 //[self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : 0];
+                 isLoadFinish=NO;
+                
+                break;
+        }
+        
+        
+        //LOAD MORE
+        // you can also add a isLoading bool value for better dealing :D
+    }
+    else {
+        NSLog(@"%f",scrollView.contentOffset.y);
+        NSLog(@"%f",scrollView.contentSize.height);
+        NSLog(@"%f",self.listViewColectionView.frame.size.height);
+    }
+}
+
+
+
+#pragma mark - UITableView Datasource
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    FavoriteVideoDetail *vData = [[super mFavoriteVideos] objectAtIndex:indexPath.row];
+    if (tableView==self.mListVideo) {
+        mVideoCell * cell = [tableView dequeueReusableCellWithIdentifier:@"videoCell"];
+        if (!cell)
+        {
+            [tableView registerNib:[UINib nibWithNibName:@"mVideoCell" bundle:nil] forCellReuseIdentifier:@"videoCell"];
+            cell = [tableView dequeueReusableCellWithIdentifier:@"videoCell"];
+            
+        }
+        
+        FavoriteVideoDetail *vData = [[super mFavoriteVideos] objectAtIndex:indexPath.row];
         cell.titleLabel.trailingBuffer = cell.titleLabel.frame.size.width;
         cell.titleLabel.text = vData.videoName;
         NSLog([NSString stringWithFormat:@" %f ", cell.frame.size.width]);
@@ -447,35 +520,35 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             [cell.descriptionLabel setHidden:NO];
             cell.descriptionLabel.text =[Utils humanReadableFromYouTubeTime:vData.videoDuration];
         } else {
-             [cell.descriptionLabel setHidden:YES];
+            [cell.descriptionLabel setHidden:YES];
         }
-
-    NSURL *url = [NSURL URLWithString:vData.thumnailUrl];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-    UIImage *placeholderImage = [UIImage imageNamed:@"play_on.png"];
-
-    [cell.backgroundImage setImageWithURLRequest:request
-                                  placeholderImage:placeholderImage
-                                           success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                               
-                                               NSLog(@"image download: %f %f",image.size.width,image.size.height);
-                                               NSLog(@"cell sizde: %f %f",cell.backgroundImage.frame.size.width,cell.backgroundImage.frame.size.height);
-                                               
-                                               UIGraphicsBeginImageContext(CGSizeMake(cell.backgroundImage.frame.size.width,cell.backgroundImage.frame.size.height
-                                                                                      ));
-                                               //vData.fullImage = image;
-                                               [ image drawInRect:
-                                                CGRectMake(0, 0, cell.backgroundImage.frame.size.width,cell.backgroundImage.frame.size.height)];
-                                               UIImage *tmpImage = [[UIImage alloc]init];
-                                               tmpImage = UIGraphicsGetImageFromCurrentImageContext();
-                                               UIGraphicsEndImageContext();
-                                               
-                                               [cell.backgroundImage setImage:tmpImage];
-                                               //cellScroll.thumnailImg.image = image;
-                                               [cell.backgroundImage setNeedsLayout];
-                                               
-                                           } failure:nil];
-       return cell;
+        
+        NSURL *url = [NSURL URLWithString:vData.thumnailUrl];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        UIImage *placeholderImage = [UIImage imageNamed:@"bg_loading.png"];
+        
+        [cell.backgroundImage setImageWithURLRequest:request
+                                    placeholderImage:placeholderImage
+                                             success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                                 
+                                                 NSLog(@"image download: %f %f",image.size.width,image.size.height);
+                                                 NSLog(@"cell sizde: %f %f",cell.backgroundImage.frame.size.width,cell.backgroundImage.frame.size.height);
+                                                 
+                                                 UIGraphicsBeginImageContext(CGSizeMake(cell.backgroundImage.frame.size.width,cell.backgroundImage.frame.size.height
+                                                                                        ));
+                                                 //vData.fullImage = image;
+                                                 [ image drawInRect:
+                                                  CGRectMake(0, 0, cell.backgroundImage.frame.size.width,cell.backgroundImage.frame.size.height)];
+                                                 UIImage *tmpImage = [[UIImage alloc]init];
+                                                 tmpImage = UIGraphicsGetImageFromCurrentImageContext();
+                                                 UIGraphicsEndImageContext();
+                                                 
+                                                 [cell.backgroundImage setImage:tmpImage];
+                                                 //cellScroll.thumnailImg.image = image;
+                                                 [cell.backgroundImage setNeedsLayout];
+                                                 
+                                             } failure:nil];
+        return cell;
     } else {
         tblCellMenu * cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
         if (!cell)
@@ -489,7 +562,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         NSLog( [mMenuItems objectAtIndex:indexPath.row]);
         return cell;
     }
-
+    
 }
 -(CGFloat )tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (tableView==self.tbvMenu)
@@ -502,17 +575,17 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     if (tableView==self.tbvMenu)
     {
-    UILabel *lbl = [[UILabel alloc] init];
-    //[lbl setFrame:CGRectMake(0, 0, self.MenuView.frame.size.width, self.MenuView.frame.size.height/10)];
-    lbl.textAlignment = UITextAlignmentCenter;
-    //lbl.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
-    lbl.text = @"MENU";
-    lbl.textColor = [UIColor blackColor];
-    lbl.shadowColor = [UIColor grayColor];
-    lbl.shadowOffset = CGSizeMake(0,1);
-  //  lbl.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"my_head_bg"]];
-    lbl.alpha =1;
-    return lbl;
+        UILabel *lbl = [[UILabel alloc] init];
+        //[lbl setFrame:CGRectMake(0, 0, self.MenuView.frame.size.width, self.MenuView.frame.size.height/10)];
+        lbl.textAlignment = UITextAlignmentCenter;
+        //lbl.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
+        lbl.text = @"MENU";
+        lbl.textColor = [UIColor blackColor];
+        lbl.shadowColor = [UIColor grayColor];
+        lbl.shadowOffset = CGSizeMake(0,1);
+        //  lbl.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"my_head_bg"]];
+        lbl.alpha =1;
+        return lbl;
     }
     else {
         UIView *headerView = [[UIView alloc]init];
@@ -545,9 +618,9 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-   
+    
     if (tableView == self.mListVideo) {
-         FavoriteVideoDetail *vidData = [[super mFavoriteVideos] objectAtIndex:indexPath.row];
+        FavoriteVideoDetail *vidData = [[super mFavoriteVideos] objectAtIndex:indexPath.row];
         NSString *videoID= vidData.videoId;
         if ((videoID)&&(vidData)) {
             [self.playerView loadWithVideoId:videoID playerVars:playerVars];
@@ -557,7 +630,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             // status button when click play
             [self.playButton setSelected:YES ];
             [self buttonPressed:self.ViewUpDownbtn];
-           
+            
             
         }
     } else {
@@ -570,12 +643,12 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                 break;
             case 2:
                 
-                 [[self navigationController] pushViewController:mVCAbout animated:YES];
+                [[self navigationController] pushViewController:mVCAbout animated:YES];
                 break;
             default:
                 break;
         }
-    
+        
     }
     
 }
@@ -595,7 +668,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             [self.mListVideo reloadData];
         }
     }
-
+    
 }
 - (void) hideSeekingView {
     [self.viewButonSeeking setAlpha:1];
@@ -609,10 +682,10 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     {
         [self.viewButonSeeking setAlpha:0];
         [UIView animateWithDuration:1.f animations:^{
-        [self.viewButonSeeking setAlpha:1];
+            [self.viewButonSeeking setAlpha:1];
         }];
         NSTimer *timerSeekingView =  [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideSeekingView) userInfo:nil repeats:NO];
-
+        
     } else if (sender == self.playButton) {
         if (self.playButton.isSelected) {
             [self.playerView pauseVideo];
@@ -623,18 +696,18 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             //  [[NSNotificationCenter defaultCenter] postNotificationName:@"Playback started" object:self];
             [self.playerView playVideo];
         }
-  }
+    }
 }
 - (IBAction)setProgress:(UISlider *)sender {
-   // self.progressBar.progress = [sender value];
+    // self.progressBar.progress = [sender value];
     NSLog(@"%f",[sender value]);
     if ([self.playerView currentTime]>0)
-    [self.playerView seekToSeconds:([sender value]*[self.playerView duration]) allowSeekAhead:YES];
+        [self.playerView seekToSeconds:([sender value]*[self.playerView duration]) allowSeekAhead:YES];
 }
 - (void) HideMenuView {
     self.trailingOfMenuView.constant =  -(self.MenuView.frame.size.width);
     NSLog(@"%f," ,self.ViewListTable.frame.size.width);
-     [self.view setNeedsUpdateConstraints];
+    [self.view setNeedsUpdateConstraints];
     [UIView animateWithDuration:1.f animations:^{
         [self.view layoutIfNeeded];
         
@@ -651,82 +724,86 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 }
 
 - (IBAction)buttonPressed:(id)sender {
-
- if (sender == self.ViewUpDownbtn) {
-      //[self appendStatusText:@"Loading previous video in playlist\n"];
-      if (!self.ViewUpDownbtn.isSelected) {
-          [self.ViewUpDownbtn setSelected:YES];
-          [self hideViewScroll];
-          
-      } else {
-          [self.ViewUpDownbtn setSelected:NO];
-          [self ShowViewScroll];
-
-      }
-      
-       }
-  else  if (sender == self.btnSearch) {
-      if ([self.searchBarView isHidden]) {
-          [self.searchBarView setHidden:NO];
-          _tap.enabled = YES;
-      } else {
-          if ([self.currentTextInSearchBar isEqualToString:@""]) {
-          [self searchBarSearchButtonClicked:self.searchBarView];
-          [self keyboardDisAppearOrShow];
-          [self.searchBarView setHidden:YES];
-          //_tap.enabled = NO;
-          }
-      }
-  } else  if (sender == self.btnMenu) {
-      if (self.btnMenu.isSelected) {
-          [self.btnMenu setSelected:NO];
-          [self HideMenuView];
-         
-          
-      } else {
-          [self.btnMenu setSelected:YES];
-          //[self.tbvMenu reloadData];
-           [self ShowMenuView];
-          
-      }
-
-  }
-      else
-      if ([mPlayLists count]>0) {
-         if (sender==self.btnAmNhac) {
-                  flag=1;
-                  if ([_VIDEOS_AMNHAC count]< 1) {
-                       NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:0]).playListId;
-                      [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp];
-                  } else {
-                      [self.listViewColectionView  reloadData];
-                  }
-            [self setSizeBtnTheLoaiWhenClick:sender];
-      } else if (sender==self.btnKeChuyen) {
-                  flag=2;
-                  if ([_VIDEOS_KECHUYEN count]< 1) {
-                      NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:1]).playListId;
-                      [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp];
-                  }else {
-                      [self.listViewColectionView  reloadData];
-                  }
-              [self setSizeBtnTheLoaiWhenClick:sender];
-      } else if (sender==self.btnHoatHinh) {
-                  flag=3;
-                  if ([_VIDEOS_HOATHINH count]< 1) {
-                      NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:2]).playListId;
-                      [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp];
-                  }else {
-                      [self.listViewColectionView  reloadData];
-                  }
-               [self setSizeBtnTheLoaiWhenClick:sender];
-      }
-   } // chheck mPlayList
-  
+    
+    if (sender == self.ViewUpDownbtn) {
+        //[self appendStatusText:@"Loading previous video in playlist\n"];
+        if (!self.ViewUpDownbtn.isSelected) {
+            [self.ViewUpDownbtn setSelected:YES];
+            [self hideViewScroll];
+            
+        } else {
+            [self.ViewUpDownbtn setSelected:NO];
+            [self ShowViewScroll];
+            
+        }
+        
+    }
+    else  if (sender == self.btnSearch) {
+        if ([self.searchBarView isHidden]) {
+            [self.searchBarView setHidden:NO];
+            _tap.enabled = YES;
+        } else {
+            if ([self.currentTextInSearchBar isEqualToString:@""]) {
+                [self searchBarSearchButtonClicked:self.searchBarView];
+                [self keyboardDisAppearOrShow];
+                [self.searchBarView setHidden:YES];
+                //_tap.enabled = NO;
+            }
+            
+        }
+    } else  if (sender == self.btnMenu) {
+        if (self.btnMenu.isSelected) {
+            [self.btnMenu setSelected:NO];
+            [self HideMenuView];
+            
+            
+        } else {
+            [self.btnMenu setSelected:YES];
+            //[self.tbvMenu reloadData];
+            [self ShowMenuView];
+            
+        }
+        
+    }
+    else
+        if ([mPlayLists count]>0) {
+            if (sender==self.btnAmNhac) {
+                flag=1;
+                [self resetStatusLoadPage];
+                if ([_VIDEOS_AMNHAC count]< 1) {
+                    NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:0]).playListId;
+                    [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
+                } else {
+                    [self.listViewColectionView  reloadData];
+                }
+                [self setSizeBtnTheLoaiWhenClick:sender];
+            } else if (sender==self.btnKeChuyen) {
+                flag=2;
+                [self resetStatusLoadPage];
+                if ([_VIDEOS_KECHUYEN count]< 1) {
+                    NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:1]).playListId;
+                   [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
+                }else {
+                    [self.listViewColectionView  reloadData];
+                }
+                [self setSizeBtnTheLoaiWhenClick:sender];
+            } else if (sender==self.btnHoatHinh) {
+                flag=3;
+                [self resetStatusLoadPage];
+                if ([_VIDEOS_HOATHINH count]< 1) {
+                    NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:2]).playListId;
+                    [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
+                }else {
+                    [self.listViewColectionView  reloadData];
+                }
+                [self setSizeBtnTheLoaiWhenClick:sender];
+            }
+        } // chheck mPlayList
+    
     
 }
 - (void) setSizeBtnTheLoaiWhenClick : (id)sender {
-
+    
     if (sender==self.btnAmNhac) {
         self.widthAmNhac.constant=50;
         self.bottomAmNhac.constant=0;
@@ -762,7 +839,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 }
 - (void) hideViewScroll {
     self.bottomSpaceListVideo.constant = self.view.frame.size.height;
-   
+    
     self.heighButtonTheLoai.constant = 0;
     [self.ViewListCollection setAlpha:1];
     //self.bottomSpaceListVideo.constant -= self.view.frame.size.height;
@@ -772,12 +849,12 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         [self.view layoutIfNeeded];
         [self.ViewListCollection setAlpha:0];
     }];
-
+    
 }
 - (void) ShowViewScroll {
-   // self.topSpaceListVideo.constant = 50;
+    // self.topSpaceListVideo.constant = 50;
     self.bottomSpaceListVideo.constant = self.btnMenu.frame.size.height+5;
-     self.heighButtonTheLoai.constant = 60;
+    self.heighButtonTheLoai.constant = 60;
     //[self.ViewListCollection setAlpha:0];
     [self.view setNeedsUpdateConstraints];
     
@@ -818,18 +895,18 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         self.youtubeService.authorizer = authResult;
         //[self isAuthorized];
         [self viewDidLoad];
-       // [self.getVideos getYouTubeVideosWithService:self.youtubeService];
-
+        // [self.getVideos getYouTubeVideosWithService:self.youtubeService];
+        
     }
 }
 
 - (void)receivedPlaybackStartedNotification:(NSNotification *) notification {
-//  if([notification.name isEqual:@"Playback started"] && notification.object != self) {
-//      [self.playerViewFace setHidden:NO];
-//      [self.playButton setSelected:YES];
-//      [self.playerView playVideo];
-      //[self.playerView setHidden:NO];
-  
+    //  if([notification.name isEqual:@"Playback started"] && notification.object != self) {
+    //      [self.playerViewFace setHidden:NO];
+    //      [self.playButton setSelected:YES];
+    //      [self.playerView playVideo];
+    //[self.playerView setHidden:NO];
+    
 }
 
 

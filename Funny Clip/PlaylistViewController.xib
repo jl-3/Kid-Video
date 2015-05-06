@@ -215,10 +215,10 @@
                                         </constraint>
                                     </constraints>
                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <state key="normal" image="EE6C9105-548D-4C13-A2BF-E7F6C2B59E1C">
+                                    <state key="normal" image="D64BA54E-C412-432A-A1A0-1A541D8CA7CA">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <state key="selected" image="26F09E34-8C08-4C03-A4E4-E174A267E2B5"/>
+                                    <state key="selected" image="60368432-A212-439B-9975-E08BD1418091"/>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="eVQ-Yx-N4Q"/>
@@ -249,7 +249,7 @@
                                 </constraint>
                                 <constraint firstAttribute="centerY" secondItem="Ctn-S7-qzc" secondAttribute="centerY" constant="-10" id="7yS-C7-Kpn"/>
                                 <constraint firstItem="Ctn-S7-qzc" firstAttribute="leading" secondItem="dhz-xU-mtl" secondAttribute="leading" id="DwK-9T-J2s">
-                                    <variation key="heightClass=compact" constant="85"/>
+                                    <variation key="heightClass=compact" constant="40"/>
                                 </constraint>
                                 <constraint firstAttribute="centerY" secondItem="XGh-Zl-aaX" secondAttribute="centerY" constant="-15" id="Oiz-Ms-7VQ">
                                     <variation key="heightClass=compact" constant="-10"/>
@@ -275,7 +275,7 @@
                                 <constraint firstItem="Ctn-S7-qzc" firstAttribute="top" secondItem="dhz-xU-mtl" secondAttribute="top" id="mjp-lm-b4v"/>
                                 <constraint firstAttribute="bottom" secondItem="Ctn-S7-qzc" secondAttribute="bottom" constant="5" id="nQR-Gq-KSB"/>
                                 <constraint firstAttribute="trailing" secondItem="Ctn-S7-qzc" secondAttribute="trailing" id="twR-eI-R3n">
-                                    <variation key="heightClass=compact" constant="50"/>
+                                    <variation key="heightClass=compact" constant="40"/>
                                 </constraint>
                                 <constraint firstItem="XGh-Zl-aaX" firstAttribute="top" secondItem="Ctn-S7-qzc" secondAttribute="bottom" id="ysg-Rp-zIw"/>
                             </constraints>
@@ -675,7 +675,7 @@
                                 </mask>
                             </variation>
                         </view>
-                        <searchBar alpha="0.89999999999999991" contentMode="redraw" backgroundImage="3B4E6111-497D-42B0-8494-B66BAB7C821F" translatesAutoresizingMaskIntoConstraints="NO" id="hXi-wq-QKG">
+                        <searchBar alpha="0.89999999999999991" contentMode="redraw" backgroundImage="C5E31B8C-1933-4407-9742-0F5BAF61B137" translatesAutoresizingMaskIntoConstraints="NO" id="hXi-wq-QKG">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1041,7 +1041,7 @@
         </searchDisplayController>
     </objects>
     <resources>
-        <image name="26F09E34-8C08-4C03-A4E4-E174A267E2B5" width="136" height="165">
+        <image name="60368432-A212-439B-9975-E08BD1418091" width="136" height="165">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -2609,7 +2609,7 @@ AAFs+wABbQIAAW0KAAFtFwABbRwAAW0eAAFtIAABbSUAAW0tAAFtMAABbTUAAW09AAFtQAABbVIAAW1V
 AAFtWgAAAAAAAAQBAAAAAAAAAD8AAAAAAAAAAAAAAAAAAW1cA
 </mutableData>
         </image>
-        <image name="3B4E6111-497D-42B0-8494-B66BAB7C821F" width="600" height="144">
+        <image name="C5E31B8C-1933-4407-9742-0F5BAF61B137" width="600" height="144">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -8442,7 +8442,7 @@ AAVUqAAFVK0ABVS1AAVUuAAFVMoABVTNAAVU0gAAAAAAAAQBAAAAAAAAAD8AAAAAAAAAAAAAAAAABVTU
 A
 </mutableData>
         </image>
-        <image name="EE6C9105-548D-4C13-A2BF-E7F6C2B59E1C" width="256" height="256">
+        <image name="D64BA54E-C412-432A-A1A0-1A541D8CA7CA" width="256" height="256">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

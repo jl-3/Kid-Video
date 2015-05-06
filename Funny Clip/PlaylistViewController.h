@@ -33,7 +33,7 @@
 @protocol PlaylistViewControllerDelegate <NSObject>;
 @end;
 
-@interface PlaylistViewController : FunBaseViewController<YouTubeGetVideosDelegate,UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate>
+@interface PlaylistViewController : FunBaseViewController<YouTubeGetVideosDelegate,UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UIScrollViewDelegate >
 {
     NSMutableArray *mVideos;
     NSMutableArray *mPlayLists;
@@ -42,19 +42,23 @@
     int flag; //flag =1 : am nhac
               //flag =2 : ke chuyen
               //flag =3 : hoat hinh
+    // flag=4: search
     NSTimer *timer;
     float durationOfCurrentVideoPlaying;
     NSArray *mMenuItems;
   
     UIViewController *mVCAbout;
+    NSString *nextPageToken;
+        NSString *prevPageToken;
+    BOOL isLoadFinish;
 }
 @property (weak, nonatomic) NSString *currentTextInSearchBar;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
-@property(nonatomic, strong) NSArray *VIDEOS_SEARCH_RESULTS;
-@property(nonatomic, strong) NSArray *VIDEOS_AMNHAC;
-@property(nonatomic, strong) NSArray *VIDEOS_KECHUYEN;
-@property(nonatomic, strong) NSArray *VIDEOS_HOATHINH;
+@property(nonatomic, strong) NSMutableArray *VIDEOS_SEARCH_RESULTS;
+@property(nonatomic, strong) NSMutableArray *VIDEOS_AMNHAC;
+@property(nonatomic, strong) NSMutableArray *VIDEOS_KECHUYEN;
+@property(nonatomic, strong) NSMutableArray *VIDEOS_HOATHINH;
 @property(nonatomic, strong) YouTubeGetVideos *getVideos;
 @property(nonatomic, retain) GTLServiceYouTube *youtubeService;
 

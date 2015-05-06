@@ -15,46 +15,24 @@
 
 @implementation YouTubeGetVideos
 
-- (void)searchYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)searchKey {
-        GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForSearchListWithPart:@"snippet"];
-    playlistItemsListQuery.maxResults = 50l;
-    playlistItemsListQuery.q=searchKey;
-    
-    // This callback uses the block syntax
-    
-    [service executeQuery:playlistItemsListQuery
-     
-        completionHandler:^(GTLServiceTicket *ticket, GTLCollectionObject
-                            
-                            *response, NSError *error) {
-            
-            if (error) {
-                [self.delegate getYouTubeVideos:self didFinishWithResults:nil];
-                return;
-            }
-            response = (GTLYouTubeSearchListResponse *) response;
-            NSLog(@"Finished API call");
-            
-                    NSMutableArray *videos = [NSMutableArray arrayWithCapacity:response.items.count];
-                    VideoData *vData;
-                    
-                    for (GTLYouTubeSearchResult *video in response.items){
-                        
-                            vData = [VideoData alloc];
-                            vData.videoSearch = video;
-                            [videos addObject:vData];
-                    }
-                    [self.delegate getYouTubeVideos:self didFinishWithResults:videos];
-            
-                }];
-      //  }];
-    
-}
-- (void)searchYouTubeVideosWithService2:(GTLServiceYouTube *)service : (NSString *)searchKey {
+// type 0: seaerch, 1: nextpage , 2 prvpage
+- (void)searchYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)searchKey :  (NSString *)nextPageToken :(NSString *)prvPageToken : (int) type {
+   
     GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForSearchListWithPart:@"snippet"];
-    playlistItemsListQuery.maxResults = 50l;
+    playlistItemsListQuery.maxResults = 20l;
+    if (searchKey)
     playlistItemsListQuery.q=searchKey;
-    
+    switch (type) {
+        case 1:
+            playlistItemsListQuery.pageToken= nextPageToken;
+            
+            break;
+        case 2:
+            playlistItemsListQuery.pageToken= prvPageToken;
+            break;
+        default:
+            break;
+    }
     // This callback uses the block syntax
     
     [service executeQuery:playlistItemsListQuery
@@ -64,12 +42,15 @@
                             *response, NSError *error) {
             
             if (error) {
-                [self.delegate getYouTubeVideos:self didFinishWithResults:nil];
+                [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
                 return;
             }
+            NSString * nextPage ;
+            NSString * prvPage ;
             response = (GTLYouTubeSearchListResponse *) response;
             NSLog(@"Finished API call");
-            
+            nextPage = [response JSONValueForKey:@"nextPageToken"];
+            prvPage = [response JSONValueForKey:@"prevPageToken"];
             NSMutableArray *videoIds = [NSMutableArray arrayWithCapacity:response.items.count];
             
             for (GTLYouTubeSearchResult *videoItem in response.items) {
@@ -95,7 +76,7 @@
                                     
                                     *response, NSError *error) {
                     if (error) {
-                        [self.delegate getYouTubeVideos:self didFinishWithResults:nil];
+                        [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
                         return;
                     }
                     
@@ -110,50 +91,39 @@
                             [videos addObject:vData];
                         }
                     }
-                    [self.delegate getYouTubeVideos:self didFinishWithResults:videos];
+                    if (playlistItemsListQuery.pageToken) {
+                        [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:1];
+                    } else {
+                        [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:0];
+                    }
                     
                 }];
         }];
     
 }
-- (void)getYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)playListIdParam {
+
+- (void)getYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)playListId :  (NSString *)nextPageToken : (NSString *)prvPageToken : (int) type {
     // Construct query
-//    GTLQueryYouTube *channelsListQuery = [GTLQueryYouTube
-//
-//                                          queryForChannelsListWithPart:@"contentDetails"];
-//
-//    //channelsListQuery.mine =YES;
-//    channelsListQuery.forUsername=@"trongnhan68";
-//    // channelsListQuery.channelId=@"UCfF4l8coMQddgehpwdl4lqA";
-//
-//    //@"UCfF4l8coMQddgehpwdl4lqA";
-//   //  channelsListQuery.forContentOwner
-//    // This callback uses the block syntax
-//    
-//    [service executeQuery:channelsListQuery
-//     
-//        completionHandler:^(GTLServiceTicket *ticket, GTLYouTubeChannelListResponse
-//                            
-//                            *response, NSError *error) {
-//            
-//            if (error) {
-//                [self.delegate getYouTubeVideos:self didFinishWithResults:nil];
-//                return;
-//            }
-//            
-//            NSLog(@"Finished API call");
-//            
-//            if ([[response items] count] > 0) {
-//                
-//                GTLYouTubeChannel *channel = response[0];
-    
-//                NSString *videosPlaylistId =
-//                
-//                channel.contentDetails.relatedPlaylists.likes;
-    
+
+
                 GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForPlaylistItemsListWithPart:@"contentDetails"];
-                playlistItemsListQuery.maxResults = 50l;
-                playlistItemsListQuery.playlistId =  playListIdParam;
+                    switch (type) {
+                        case 1:
+                            if (nextPageToken)
+                            playlistItemsListQuery.pageToken= nextPageToken;
+                            else {
+                               // [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
+                                return ;
+                            }
+                            break;
+                        case 2:
+                            playlistItemsListQuery.pageToken= prvPageToken;
+                            break;
+                        default:
+                            break;
+                    }
+                playlistItemsListQuery.maxResults = 20l;
+                playlistItemsListQuery.playlistId =  playListId;
                 
                 // This callback uses the block syntax
                 
@@ -164,12 +134,16 @@
                                         *response, NSError *error) {
                         
                         if (error) {
-                            [self.delegate getYouTubeVideos:self didFinishWithResults:nil];
+                            [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
                             return;
                         }
                         
                         NSLog(@"Finished API call");
-                        
+                      
+                        NSString * nextPage ;
+                        NSString * prvPage ;
+                        nextPage = [response JSONValueForKey:@"nextPageToken"];
+                        prvPage = [response JSONValueForKey:@"prevPageToken"];
                         NSMutableArray *videoIds = [NSMutableArray arrayWithCapacity:response.items.count];
                         
                         for (GTLYouTubePlaylistItem *playlistItem in response.items) {
@@ -188,7 +162,7 @@
                                                 
                                                 *response, NSError *error) {
                                 if (error) {
-                                    [self.delegate getYouTubeVideos:self didFinishWithResults:nil];
+                                    [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
                                     return;
                                 }
                                 
@@ -203,7 +177,12 @@
                                         [videos addObject:vData];
                                     }
                                 }
-                                [self.delegate getYouTubeVideos:self didFinishWithResults:videos];
+                                
+                                if (playlistItemsListQuery.pageToken) {
+                                    [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:1];
+                                } else {
+                                    [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:0];
+                                }
                                 
                             }];
                     }];

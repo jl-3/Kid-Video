@@ -44,6 +44,7 @@
     }
     return NO;
 }
+
 - (BOOL) saveToFavorite: (FavoriteVideoDetail *) mFavoriteItem {
     BOOL success = NO;
     NSString *alertString = @"Data Insertion failed";

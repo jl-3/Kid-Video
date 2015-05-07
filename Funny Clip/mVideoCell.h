@@ -12,9 +12,11 @@
 @interface mVideoCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UIButton *moreBtn;
-@property (weak, nonatomic) IBOutlet MarqueeLabel *titleLabel;
-@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topImgTableVideo;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (weak, nonatomic) IBOutlet MarqueeLabel *titleLabel;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint *topImgTableVideo;
+
 //- (void) initCellWithData: ();
 @property (strong, nonatomic) IBOutlet NSLayoutConstraint *leftImgTableVideo;
 + (id) initViewOwner;

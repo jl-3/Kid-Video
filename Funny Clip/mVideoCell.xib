@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -18,16 +17,6 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="farme_2.png" translatesAutoresizingMaskIntoConstraints="NO" id="Dkd-vd-QiA">
                         <rect key="frame" x="0.0" y="0.0" width="421" height="364"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAv-p7-LNw" userLabel="duration">
-                        <rect key="frame" x="382" y="23" width="33" height="20"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="ZfY-3N-jra"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="   ansd a alf abk as" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LDf-hG-g6X" userLabel="Title" customClass="MarqueeLabel">
                         <rect key="frame" x="0.0" y="331" width="421" height="33"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,67 +32,55 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="tapToScroll" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="hME-tc-vRf" userLabel="videoImage">
-                        <rect key="frame" x="49" y="90" width="323" height="241"/>
-                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAv-p7-LNw" userLabel="duration">
+                        <rect key="frame" x="373" y="15" width="33" height="20"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="3zJ-JR-a9c"/>
+                            <constraint firstAttribute="height" constant="20" id="ZfY-3N-jra"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ZfY-3N-jra"/>
+                            </mask>
+                        </variation>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" red="0.95686280727386475" green="0.90980398654937744" blue="0.83529418706893921" alpha="1" colorSpace="deviceRGB"/>
                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="hME-tc-vRf" firstAttribute="width" secondItem="Dkd-vd-QiA" secondAttribute="height" multiplier="304:325" id="0QU-D8-srW"/>
                     <constraint firstItem="LDf-hG-g6X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2dB-Ts-YcL"/>
-                    <constraint firstAttribute="centerX" secondItem="hME-tc-vRf" secondAttribute="centerX" constant="2.5" id="3ug-GR-Zdj"/>
-                    <constraint firstItem="hME-tc-vRf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="82" id="672-EH-Ltk"/>
                     <constraint firstItem="LDf-hG-g6X" firstAttribute="bottom" secondItem="Dkd-vd-QiA" secondAttribute="bottom" id="6HM-pg-KAX"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="hME-tc-vRf" secondAttribute="trailing" constant="40" id="AWg-ew-9A4"/>
+                    <constraint firstItem="iAv-p7-LNw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="9CH-kW-ugy"/>
                     <constraint firstItem="Dkd-vd-QiA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Dwn-53-xln"/>
-                    <constraint firstItem="hME-tc-vRf" firstAttribute="centerX" secondItem="LDf-hG-g6X" secondAttribute="centerX" id="VD5-2D-ULI"/>
                     <constraint firstItem="Dkd-vd-QiA" firstAttribute="leading" secondItem="LDf-hG-g6X" secondAttribute="leading" id="XNb-Ia-gRF"/>
-                    <constraint firstItem="hME-tc-vRf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="30" id="XnO-2v-evf"/>
-                    <constraint firstItem="hME-tc-vRf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="35" id="YVX-dH-NvQ"/>
-                    <constraint firstItem="hME-tc-vRf" firstAttribute="height" secondItem="Dkd-vd-QiA" secondAttribute="height" id="cvp-iE-UBL"/>
                     <constraint firstItem="iAv-p7-LNw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="dNS-du-tjJ"/>
                     <constraint firstItem="Dkd-vd-QiA" firstAttribute="trailing" secondItem="LDf-hG-g6X" secondAttribute="trailing" id="fp1-KW-xCa"/>
                     <constraint firstAttribute="trailing" secondItem="Dkd-vd-QiA" secondAttribute="trailing" id="iC1-aC-pfV"/>
                     <constraint firstAttribute="trailingMargin" secondItem="iAv-p7-LNw" secondAttribute="trailing" constant="-2" id="jQE-6H-7Ue"/>
-                    <constraint firstItem="hME-tc-vRf" firstAttribute="width" secondItem="Dkd-vd-QiA" secondAttribute="width" id="oOZ-Kq-IVf"/>
-                    <constraint firstItem="LDf-hG-g6X" firstAttribute="top" secondItem="hME-tc-vRf" secondAttribute="bottom" constant="8" symbolic="YES" id="s8j-fP-ipv"/>
-                    <constraint firstItem="hME-tc-vRf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="87" id="tVM-7n-gAK"/>
-                    <constraint firstItem="hME-tc-vRf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="87" id="u4m-6W-bhb"/>
-                    <constraint firstItem="LDf-hG-g6X" firstAttribute="top" secondItem="hME-tc-vRf" secondAttribute="bottom" id="vBm-rf-LNm"/>
                     <constraint firstAttribute="bottom" secondItem="Dkd-vd-QiA" secondAttribute="bottom" id="vqY-oN-yzw"/>
-                    <constraint firstItem="LDf-hG-g6X" firstAttribute="top" secondItem="hME-tc-vRf" secondAttribute="bottom" constant="8" symbolic="YES" id="wAk-wn-7YP"/>
-                    <constraint firstItem="hME-tc-vRf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="41" id="yL5-3o-076"/>
+                    <constraint firstAttribute="trailing" secondItem="iAv-p7-LNw" secondAttribute="trailing" constant="15" id="xOQ-6H-mjm"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
-                        <exclude reference="0QU-D8-srW"/>
-                        <exclude reference="3ug-GR-Zdj"/>
-                        <exclude reference="AWg-ew-9A4"/>
-                        <exclude reference="XnO-2v-evf"/>
-                        <exclude reference="YVX-dH-NvQ"/>
-                        <exclude reference="cvp-iE-UBL"/>
-                        <exclude reference="oOZ-Kq-IVf"/>
-                        <exclude reference="tVM-7n-gAK"/>
-                        <exclude reference="u4m-6W-bhb"/>
-                        <exclude reference="s8j-fP-ipv"/>
-                        <exclude reference="wAk-wn-7YP"/>
+                        <exclude reference="dNS-du-tjJ"/>
+                        <exclude reference="jQE-6H-7Ue"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
-                <outlet property="backgroundImage" destination="hME-tc-vRf" id="s92-6G-dbG"/>
+                <outlet property="backgroundImage" destination="Dkd-vd-QiA" id="N05-Ey-6eq"/>
                 <outlet property="descriptionLabel" destination="iAv-p7-LNw" id="g2U-EA-epE"/>
-                <outlet property="leftImgTableVideo" destination="XnO-2v-evf" id="10R-VZ-KVJ"/>
                 <outlet property="titleLabel" destination="LDf-hG-g6X" id="TQU-ys-JIk"/>
-                <outlet property="topImgTableVideo" destination="u4m-6W-bhb" id="9cU-d8-JfO"/>
             </connections>
             <point key="canvasLocation" x="266.5" y="269.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="_1.png" width="1024" height="768"/>
         <image name="farme_2.png" width="450" height="333"/>
     </resources>
 </document>

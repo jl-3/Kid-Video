@@ -100,6 +100,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (id ) objectAtIndex: (NSMutableArray *) mArray : (int) index {
+    if (mArray)
+        if (mArray.count>index)
+        return [mArray objectAtIndex:index];
+        else return nil;
+    else
+        return  nil;
+}
+
 /*
 #pragma mark - Navigation
 

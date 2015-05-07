@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaylistViewController">
@@ -58,7 +58,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="130" id="Ct4-Cx-rpJ">
-                                    <variation key="heightClass=compact" constant="138"/>
+                                    <variation key="heightClass=compact" constant="140"/>
                                 </constraint>
                             </constraints>
                             <color key="sectionIndexBackgroundColor" red="0.73248457860000005" green="0.93580596299999996" blue="0.88002289219999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -677,7 +677,7 @@
                                 </mask>
                             </variation>
                         </view>
-                        <searchBar alpha="0.89999999999999991" contentMode="redraw" backgroundImage="39C79024-840A-4740-B1E0-9328825D1611" translatesAutoresizingMaskIntoConstraints="NO" id="hXi-wq-QKG">
+                        <searchBar alpha="0.89999999999999991" contentMode="redraw" backgroundImage="E89898E5-D0F9-4CDD-83BB-BAFD746922F8" translatesAutoresizingMaskIntoConstraints="NO" id="hXi-wq-QKG">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1043,7 +1043,7 @@
         </searchDisplayController>
     </objects>
     <resources>
-        <image name="39C79024-840A-4740-B1E0-9328825D1611" width="600" height="144">
+        <image name="E89898E5-D0F9-4CDD-83BB-BAFD746922F8" width="600" height="144">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA

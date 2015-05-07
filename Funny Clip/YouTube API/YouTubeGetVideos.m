@@ -17,7 +17,7 @@
 
 // type 0: seaerch, 1: nextpage , 2 prvpage
 - (void)searchYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)searchKey :  (NSString *)nextPageToken :(NSString *)prvPageToken : (int) type {
-   
+    if (!searchKey) return;
     GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForSearchListWithPart:@"snippet"];
     playlistItemsListQuery.maxResults = 20l;
     if (searchKey)
@@ -105,7 +105,7 @@
 - (void)getYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)playListId :  (NSString *)nextPageToken : (NSString *)prvPageToken : (int) type {
     // Construct query
 
-
+    if (!playListId) return;
                 GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForPlaylistItemsListWithPart:@"contentDetails"];
                     switch (type) {
                         case 1:

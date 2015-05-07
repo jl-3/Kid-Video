@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaylistViewController">
@@ -235,8 +235,7 @@
                                             <exclude reference="yQN-fh-BYC"/>
                                         </mask>
                                     </variation>
-                                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                        <rect key="frame" x="275" y="164" width="70" height="70"/>
+                                    <variation key="heightClass=regular-widthClass=regular">
                                         <mask key="constraints">
                                             <include reference="ZHa-HY-ndr"/>
                                             <include reference="yQN-fh-BYC"/>
@@ -857,7 +856,7 @@
                 <constraint firstItem="npn-eB-Bwk" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lZ8-ub-aiJ"/>
                 <constraint firstAttribute="bottom" secondItem="77l-3T-jJ3" secondAttribute="bottom" id="mRX-qe-eFk"/>
                 <constraint firstAttribute="trailing" secondItem="77l-3T-jJ3" secondAttribute="trailing" id="nLw-d4-pWS">
-                    <variation key="heightClass=regular-widthClass=regular" constant="-500"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="-200"/>
                 </constraint>
                 <constraint firstAttribute="trailing" secondItem="I52-2e-KlA" secondAttribute="trailing" id="qpf-vU-8E5"/>
                 <constraint firstItem="77l-3T-jJ3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rTD-Fh-OsS"/>

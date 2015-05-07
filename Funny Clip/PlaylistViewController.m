@@ -238,8 +238,9 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         for (int i=0;i<tmpArray.count;i++)
         {
             NSObject *tmpObject;
-            tmpObject= [tmpArray objectAtIndex:i];
+            tmpObject= [self objectAtIndex:tmpArray:i];
             // NSLog([tmpObject valueForKey:@"playListId"]);
+            if (tmpObject) {
             PlayListModel *mPlayListModel = [PlayListModel PlayListWithDictionary:
                                              @{ @"playListId":[tmpObject valueForKey:@"playListId"],
                                                 @"playListName":[tmpObject valueForKey:@"playListName"],
@@ -247,8 +248,9 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                                                 
                                                 }];
             [mPlayLists  addObject:mPlayListModel];
+            }
         }
-        NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:0]).playListId;
+        NSString *playListIdTmp=( (PlayListModel*)[self objectAtIndex:mPlayLists :0]).playListId;
         [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
         
         // [self.SimpleTableView reloadData];
@@ -341,23 +343,25 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     VideoData *vData;
     switch (flag) {
         case 1:
-            vData = [VIDEOS_AMNHAC objectAtIndex:indexPath.row];
+            vData = [ self objectAtIndex: VIDEOS_AMNHAC :indexPath.row];
             break;
         case 2:
-            vData = [VIDEOS_KECHUYEN objectAtIndex:indexPath.row];
+            vData = [ self objectAtIndex: VIDEOS_KECHUYEN :indexPath.row];
             break;
         case 3:
-            vData = [VIDEOS_HOATHINH objectAtIndex:indexPath.row];
+            vData = [ self objectAtIndex: VIDEOS_HOATHINH :indexPath.row];
             break;
         default:
-            vData = [VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row];
-            
+            vData = [ self objectAtIndex: VIDEOS_SEARCH_RESULTS :indexPath.row];
             break;
     }
+    if (!vData) return
+        cellScroll;
     cellScroll.titleLbl.trailingBuffer = cellScroll.frame.size.width;
     cellScroll.titleLbl.text = [vData getTitle];
     cellScroll.descriptionLb.text = [Utils humanReadableFromYouTubeTime:vData.getDuration];
-    if ([cellScroll.descriptionLb.text isEqualToString:@"(Unknown)"]) [cellScroll.descriptionLb setHidden:YES];
+    if ([cellScroll.descriptionLb.text isEqualToString:@"(Unknown)"])
+        [cellScroll.descriptionLb setHidden:YES];
     else [cellScroll.descriptionLb setHidden:NO];
     NSURL *url = [NSURL URLWithString:vData.getThumbUri];
     
@@ -403,29 +407,29 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     VideoData *vidData;
     switch (flag) {
         case 1:
-            if ([VIDEOS_AMNHAC objectAtIndex:indexPath.row]) {
-                vidData = [VIDEOS_AMNHAC objectAtIndex:indexPath.row];
-            }
+           vidData = [ self objectAtIndex: VIDEOS_AMNHAC :indexPath.row];
+            
             break;
         case 2:
-            if ([VIDEOS_KECHUYEN objectAtIndex:indexPath.row]) {
-                vidData = [VIDEOS_KECHUYEN objectAtIndex:indexPath.row];
-            }
+    
+            vidData = [ self objectAtIndex: VIDEOS_KECHUYEN :indexPath.row];
+            
             break;
         case 3:
-            if ([VIDEOS_HOATHINH objectAtIndex:indexPath.row]) {
-                vidData = [VIDEOS_HOATHINH objectAtIndex:indexPath.row];
-            }
+           
+            vidData = [ self objectAtIndex: VIDEOS_HOATHINH :indexPath.row];
+            
             break;
         default:
-            if ([VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row]) {
-                vidData = [VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row];
-            }
+           
+            vidData = [ self objectAtIndex: VIDEOS_SEARCH_RESULTS :indexPath.row];
+            
             break;
     }
-    
+    if (!vidData) return ;
+    if ([vidData getYouTubeId]) {
     NSString *videoID= [vidData getYouTubeId];
-    if ((videoID)&&(vidData)) {
+    if (videoID) {
         [self.playerView loadWithVideoId:videoID playerVars:playerVars];
         
         [self.titleVideoPlaying setText:vidData.getTitle];
@@ -440,12 +444,12 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         [self saveToDBWhenClick:vidData];
         
     }
-    
+}
 }
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     NSString *playListId;
     if (flag <4) {
-      playListId=( (PlayListModel*)[mPlayLists objectAtIndex:flag-1]).playListId;
+      playListId=( (PlayListModel*)[self objectAtIndex:mPlayLists :flag-1]).playListId;
       
     }
     if ((int)scrollView.contentOffset.y >= (int )scrollView.contentSize.height - (int)self.listViewColectionView.frame.size.height)
@@ -508,13 +512,18 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         {
             [tableView registerNib:[UINib nibWithNibName:@"mVideoCell" bundle:nil] forCellReuseIdentifier:@"videoCell"];
             cell = [tableView dequeueReusableCellWithIdentifier:@"videoCell"];
-            
+//                   [cell.leftImgTableVideo setConstant: cell.frame.size.width*41/395];
+//                   [cell.topImgTableVideo setConstant: cell.frame.size.height*82/325];
+            //[cell setNeedsUpdateConstraints];
         }
-        [cell.leftImgTableVideo setConstant: cell.frame.size.width*41/395];
-        [cell.topImgTableVideo setConstant: cell.frame.size.height*82/325];
-              [self.view setNeedsUpdateConstraints];
-              [self.view setNeedsLayout];
-        FavoriteVideoDetail *vData = [[super mFavoriteVideos] objectAtIndex:indexPath.row];
+//        [cell.leftImgTableVideo setConstant: cell.frame.size.width*41/395];
+//        [cell.topImgTableVideo setConstant: cell.frame.size.height*82/325];
+//        [self.view setNeedsUpdateConstraints];
+//        [self.view setNeedsLayout];
+        
+        //[cell setNeedsUpdateConstraints];
+        FavoriteVideoDetail *vData = [self objectAtIndex: [super mFavoriteVideos] :indexPath.row] ;
+        if (!vData) return cell;
         cell.titleLabel.trailingBuffer = cell.titleLabel.frame.size.width;
         cell.titleLabel.text = vData.videoName;
         NSLog([NSString stringWithFormat:@" width of cell table : %f ", cell.frame.size.width]);
@@ -526,9 +535,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         } else {
             [cell.descriptionLabel setHidden:YES];
         }
-        [cell.leftImgTableVideo setConstant: cell.frame.size.width*41/395];
-        [cell.topImgTableVideo setConstant: cell.frame.size.height*82/325];
-        
+               
          [cell setNeedsLayout];
         NSURL *url = [NSURL URLWithString:vData.thumnailUrl];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -552,9 +559,9 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                                                  
                                                  [cell.backgroundImage setImage:image];
                                                  //cellScroll.thumnailImg.image = image;
-//                                                 [cell.leftImgTableVideo setConstant: cell.frame.size.width*41/395];
-//                                                 [cell.topImgTableVideo setConstant: cell.frame.size.height*82/325];
-                                                [cell.backgroundImage setNeedsLayout];
+//                                                 [self.view setNeedsUpdateConstraints];
+//                                                 [self.view setNeedsLayout];
+                                                //[cell.backgroundImage setNeedsLayout];
 //                                                      [cell.superview setNeedsLayout];
                                                  
                                              } failure:nil];
@@ -569,9 +576,11 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
             
         }
+        
+        
         [cell.titleItemOfMenu setTextColor:[UIColor blackColor]];
-        cell.titleItemOfMenu.text = [mMenuItems objectAtIndex:indexPath.row];
-        NSLog( [mMenuItems objectAtIndex:indexPath.row]);
+        cell.titleItemOfMenu.text = [self objectAtIndex:[mMenuItems mutableCopy] : indexPath.row];
+        //NSLog( [mMenuItems objectAtIndex:indexPath.row]);
         return cell;
     }
     
@@ -581,7 +590,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     {
         return self.MenuView.frame.size.height/10;
     } else {
-        return 1;
+        return 5;
     }
 }
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -612,6 +621,8 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     return view;
 }
 - (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
+    
+    
     return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -635,7 +646,8 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (tableView == self.mListVideo) {
-        FavoriteVideoDetail *vidData = [[super mFavoriteVideos] objectAtIndex:indexPath.row];
+        FavoriteVideoDetail *vidData = (FavoriteVideoDetail *)[ self objectAtIndex:[super mFavoriteVideos]:indexPath.row];
+        if (!vidData) return ;
         NSString *videoID= vidData.videoId;
         if ((videoID)&&(vidData)) {
             [self.playerView loadWithVideoId:videoID playerVars:playerVars];
@@ -787,7 +799,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                 flag=1;
                 [self resetStatusLoadPage];
                 if ([VIDEOS_AMNHAC count]< 1) {
-                    NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:0]).playListId;
+                    NSString *playListIdTmp=( (PlayListModel*)[self objectAtIndex:mPlayLists :0]).playListId;
                     [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
                 } else {
                     [self.listViewColectionView  reloadData];
@@ -797,8 +809,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                 flag=2;
                 [self resetStatusLoadPage];
                 if ([VIDEOS_KECHUYEN count]< 1) {
-                    NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:1]).playListId;
-                   [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
+                    NSString *playListIdTmp=( (PlayListModel*)[self objectAtIndex:mPlayLists :1]).playListId;                   [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
                 }else {
                     [self.listViewColectionView  reloadData];
                 }
@@ -807,7 +818,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                 flag=3;
                 [self resetStatusLoadPage];
                 if ([VIDEOS_HOATHINH count]< 1) {
-                    NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:2]).playListId;
+                   NSString *playListIdTmp=( (PlayListModel*)[self objectAtIndex:mPlayLists :2]).playListId;
                     [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
                 }else {
                     [self.listViewColectionView  reloadData];

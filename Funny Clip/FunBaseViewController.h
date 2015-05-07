@@ -22,5 +22,5 @@
 - (void) setLeftBtnNavigationBar;
 - (BOOL) saveToFavorite: (FavoriteVideoDetail *) mFavoriteItem ;
 - (BOOL) loadAllFavoriteVideosFromDB ;
-- (NSMutableArray *) addArray: (NSArray *) mArray ;
+- (id ) objectAtIndex: (NSMutableArray *) mArray : (int) index ;
 @end

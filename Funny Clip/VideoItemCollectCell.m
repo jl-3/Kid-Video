@@ -21,6 +21,7 @@
     self.titleLbl.animationDelay=0.f;
    
 }
+
 - (void)initDataWithVideoInfo:(VideoModel *)model {
    // [self.titleLabel setText:model.title];
     

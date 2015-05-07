@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlaylistViewController">
@@ -190,10 +190,14 @@
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWy-69-E2J" userLabel="btnMenu">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="BG4-Np-Rsf"/>
-                                <constraint firstAttribute="width" constant="63" id="zyG-GC-LdT"/>
+                                <constraint firstAttribute="height" constant="44" id="BG4-Np-Rsf">
+                                    <variation key="heightClass=regular-widthClass=regular" constant="65"/>
+                                </constraint>
+                                <constraint firstAttribute="width" constant="63" id="zyG-GC-LdT">
+                                    <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                </constraint>
                             </constraints>
-                            <state key="normal" backgroundImage="menu_off.png">
+                            <state key="normal" backgroundImage="menu.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="default">
@@ -231,7 +235,8 @@
                                             <exclude reference="yQN-fh-BYC"/>
                                         </mask>
                                     </variation>
-                                    <variation key="heightClass=regular-widthClass=regular">
+                                    <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
+                                        <rect key="frame" x="275" y="164" width="70" height="70"/>
                                         <mask key="constraints">
                                             <include reference="ZHa-HY-ndr"/>
                                             <include reference="yQN-fh-BYC"/>
@@ -289,13 +294,13 @@
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="7L3-ij-xkd">
-                                    <variation key="heightClass=regular-widthClass=regular" constant="50"/>
+                                    <variation key="heightClass=regular-widthClass=regular" constant="65"/>
                                 </constraint>
                                 <constraint firstAttribute="width" constant="44" id="spA-gG-Vk2">
-                                    <variation key="heightClass=regular-widthClass=regular" constant="50"/>
+                                    <variation key="heightClass=regular-widthClass=regular" constant="85"/>
                                 </constraint>
                             </constraints>
-                            <state key="normal" backgroundImage="icon_menu.png">
+                            <state key="normal" backgroundImage="thuvien.png">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <variation key="default">
@@ -314,7 +319,7 @@
                                 <action selector="buttonPressed:" destination="-1" eventType="touchUpInside" id="Slb-Yc-wLX"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelsA S a" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibj-eV-dOQ" userLabel="Video Name Label" customClass="MarqueeLabel">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ibj-eV-dOQ" userLabel="Video Name Label" customClass="MarqueeLabel">
                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -344,7 +349,9 @@
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="0cK-Ks-2Lw" secondAttribute="trailing" constant="19" id="06f-ZU-QXy"/>
-                        <constraint firstAttribute="bottom" secondItem="nWy-69-E2J" secondAttribute="bottom" id="4WT-rv-RGg"/>
+                        <constraint firstAttribute="bottom" secondItem="nWy-69-E2J" secondAttribute="bottom" id="4WT-rv-RGg">
+                            <variation key="heightClass=regular-widthClass=regular" constant="5"/>
+                        </constraint>
                         <constraint firstAttribute="trailing" secondItem="nWy-69-E2J" secondAttribute="trailing" constant="8" id="7uX-2s-1bE">
                             <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
                         </constraint>
@@ -530,11 +537,11 @@
                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="60" id="Uwt-FS-ETf">
-                                            <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                            <variation key="heightClass=regular-widthClass=regular" constant="85"/>
                                         </constraint>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <state key="normal" backgroundImage="icon_amnhac.png">
+                                    <state key="normal" backgroundImage="theloai_amnhac.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <variation key="default">
@@ -557,7 +564,7 @@
                                         <constraint firstAttribute="width" constant="75" id="wUu-pc-6Tm"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <state key="normal" backgroundImage="icon_KECHUYEN.png">
+                                    <state key="normal" backgroundImage="theloai_kechuyen.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <variation key="default">
@@ -580,7 +587,7 @@
                                         <constraint firstAttribute="width" constant="75" id="NDY-Ke-jht"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <state key="normal" backgroundImage="icon_KECHUYEN.png">
+                                    <state key="normal" backgroundImage="theloai_hoathinh.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                     <variation key="default">
@@ -605,7 +612,9 @@
                                 <constraint firstItem="1mK-j7-RIs" firstAttribute="leading" secondItem="yaR-b0-nda" secondAttribute="leading" constant="-147" id="6iN-AK-0HH">
                                     <variation key="heightClass=regular-widthClass=regular" constant="10"/>
                                 </constraint>
-                                <constraint firstAttribute="width" constant="300" id="E7A-Uh-6hy"/>
+                                <constraint firstAttribute="width" constant="300" id="E7A-Uh-6hy">
+                                    <variation key="heightClass=regular-widthClass=regular" constant="270"/>
+                                </constraint>
                                 <constraint firstAttribute="bottom" secondItem="1mK-j7-RIs" secondAttribute="bottom" constant="10" id="MJr-a0-iPE">
                                     <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
                                 </constraint>
@@ -833,7 +842,7 @@
                     <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
                 </constraint>
                 <constraint firstAttribute="bottom" secondItem="y4N-6O-oqK" secondAttribute="bottom" constant="49" id="Ntt-jv-BAF">
-                    <variation key="heightClass=regular-widthClass=regular" constant="60"/>
+                    <variation key="heightClass=regular-widthClass=regular" constant="80"/>
                 </constraint>
                 <constraint firstItem="y4N-6O-oqK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Uar-d6-Ywt"/>
                 <constraint firstItem="I52-2e-KlA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="V9S-JT-YKI"/>
@@ -923,7 +932,7 @@
                     <exclude reference="eNO-LA-oiZ"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="230" y="-4"/>
+            <point key="canvasLocation" x="274" y="2"/>
         </view>
         <searchDisplayController id="7Cy-gh-5Uo">
             <connections>
@@ -934,13 +943,14 @@
     <resources>
         <image name="YEUTHICH.png" width="800" height="236"/>
         <image name="_1.png" width="1024" height="768"/>
-        <image name="icon_KECHUYEN.png" width="400" height="334"/>
-        <image name="icon_amnhac.png" width="400" height="334"/>
-        <image name="icon_menu.png" width="512" height="512"/>
         <image name="icon_pause_black.png" width="256" height="256"/>
         <image name="icon_play_black.png" width="136" height="165"/>
         <image name="icon_search.png" width="512" height="512"/>
-        <image name="menu_off.png" width="263" height="123"/>
+        <image name="menu.png" width="217" height="145"/>
         <image name="television.png" width="1138" height="811"/>
+        <image name="theloai_amnhac.png" width="1205" height="1007"/>
+        <image name="theloai_hoathinh.png" width="1205" height="1007"/>
+        <image name="theloai_kechuyen.png" width="1205" height="1007"/>
+        <image name="thuvien.png" width="202" height="180"/>
     </resources>
 </document>

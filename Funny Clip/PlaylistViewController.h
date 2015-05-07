@@ -51,14 +51,18 @@
     NSString *nextPageToken;
         NSString *prevPageToken;
     BOOL isLoadFinish;
+    NSMutableArray *VIDEOS_AMNHAC;
+    NSMutableArray *VIDEOS_SEARCH_RESULTS;
+    NSMutableArray *VIDEOS_KECHUYEN;
+    NSMutableArray *VIDEOS_HOATHINH;
 }
 @property (weak, nonatomic) NSString *currentTextInSearchBar;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
-@property(nonatomic, strong) NSMutableArray *VIDEOS_SEARCH_RESULTS;
-@property(nonatomic, strong) NSMutableArray *VIDEOS_AMNHAC;
-@property(nonatomic, strong) NSMutableArray *VIDEOS_KECHUYEN;
-@property(nonatomic, strong) NSMutableArray *VIDEOS_HOATHINH;
+//@property(nonatomic, strong) NSMutableArray *VIDEOS_SEARCH_RESULTS;
+//@property(nonatomic, strong) NSMutableArray *VIDEOS_AMNHAC;
+//@property(nonatomic, strong) NSMutableArray *VIDEOS_KECHUYEN;
+//@property(nonatomic, strong) NSMutableArray *VIDEOS_HOATHINH;
 @property(nonatomic, strong) YouTubeGetVideos *getVideos;
 @property(nonatomic, retain) GTLServiceYouTube *youtubeService;
 

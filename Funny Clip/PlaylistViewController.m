@@ -41,10 +41,10 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     if (self) {
         _getVideos = [[YouTubeGetVideos alloc] init];
         _getVideos.delegate = self;
-        _VIDEOS_AMNHAC = [[NSArray alloc] init];
-        _VIDEOS_KECHUYEN = [[NSArray alloc] init];
-        _VIDEOS_HOATHINH = [[NSArray alloc] init];
-        _VIDEOS_SEARCH_RESULTS = [[NSArray alloc] init];
+        VIDEOS_AMNHAC = [[NSArray alloc] init];
+        VIDEOS_KECHUYEN = [[NSArray alloc] init];
+        VIDEOS_HOATHINH = [[NSArray alloc] init];
+        VIDEOS_SEARCH_RESULTS = [[NSArray alloc] init];
         
         flag=1;
         mVCAbout = [[VCAbout alloc]initWithNibName:@"VCAbout" bundle:nil];
@@ -90,23 +90,23 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     switch (flag) {
         case 1:
             if (typeOfResultThis == 0)
-                self.VIDEOS_AMNHAC = [results mutableCopy];
-            else [self.VIDEOS_AMNHAC addObjectsFromArray:results];
+                VIDEOS_AMNHAC = [results mutableCopy];
+            else [VIDEOS_AMNHAC addObjectsFromArray:results];
             break;
         case 2:
             if (typeOfResultThis == 0)
-                self.VIDEOS_KECHUYEN = [results mutableCopy];
-            else [self.VIDEOS_KECHUYEN addObjectsFromArray:results];
+                VIDEOS_KECHUYEN = [results mutableCopy];
+            else [VIDEOS_KECHUYEN addObjectsFromArray:results];
             break;
         case 3:
             if (typeOfResultThis == 0)
-                self.VIDEOS_HOATHINH = [results mutableCopy];
-            else [self.VIDEOS_HOATHINH addObjectsFromArray:results];
+              VIDEOS_HOATHINH = [results mutableCopy];
+            else [VIDEOS_HOATHINH addObjectsFromArray:results];
             break;
         default:
             if (typeOfResultThis == 0)
-            self.VIDEOS_SEARCH_RESULTS = [results mutableCopy];
-            else [self.VIDEOS_SEARCH_RESULTS addObjectsFromArray:results];
+            VIDEOS_SEARCH_RESULTS = [results mutableCopy];
+            else [VIDEOS_SEARCH_RESULTS addObjectsFromArray:results];
             break;
     }
     //[self.ViewListCollection setHidden:NO];
@@ -136,8 +136,8 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     [self.trailingOfMenuView setConstant:-140];
     // self.listViewColectionView.bounces =NO ;
     [self.navigationController setNavigationBarHidden:YES];
-    
-    [self.playButton setImage:[UIImage imageNamed:@"icon_pause_black.png"] forState:UIControlStateSelected];
+    [self.playButton setBackgroundImage:[UIImage imageNamed:@"icon_play_black.png"] forState:UIControlStateNormal];
+    [self.playButton setBackgroundImage:[UIImage imageNamed:@"icon_pause_black.png"] forState:UIControlStateSelected];
     //setup title video playing
     self.titleVideoPlaying.textAlignment= NSTextAlignmentLeft;
     self.titleVideoPlaying.marqueeType = MLContinuous;
@@ -307,16 +307,16 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     NSInteger numberOf=0;
     switch (flag) {
         case 1:
-            numberOf= [_VIDEOS_AMNHAC count];
+            numberOf= [VIDEOS_AMNHAC count];
             break;
         case 2:
-            numberOf= [_VIDEOS_KECHUYEN count];
+            numberOf= [VIDEOS_KECHUYEN count];
             break;
         case 3:
-            numberOf= [_VIDEOS_HOATHINH count];
+            numberOf= [VIDEOS_HOATHINH count];
             break;
         default:
-            numberOf= [_VIDEOS_SEARCH_RESULTS count];
+            numberOf= [VIDEOS_SEARCH_RESULTS count];
             break;
     }
     return numberOf;
@@ -341,16 +341,16 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     VideoData *vData;
     switch (flag) {
         case 1:
-            vData = [_VIDEOS_AMNHAC objectAtIndex:indexPath.row];
+            vData = [VIDEOS_AMNHAC objectAtIndex:indexPath.row];
             break;
         case 2:
-            vData = [_VIDEOS_KECHUYEN objectAtIndex:indexPath.row];
+            vData = [VIDEOS_KECHUYEN objectAtIndex:indexPath.row];
             break;
         case 3:
-            vData = [_VIDEOS_HOATHINH objectAtIndex:indexPath.row];
+            vData = [VIDEOS_HOATHINH objectAtIndex:indexPath.row];
             break;
         default:
-            vData = [_VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row];
+            vData = [VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row];
             
             break;
     }
@@ -370,18 +370,18 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                                   placeholderImage:placeholderImage
                                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
                                                
-                                               NSLog(@"image download: %f %f",image.size.width,image.size.height);
-                                               NSLog(@"cell sizde: %f %f",cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height);
+                                             //  NSLog(@"image download: %f %f",image.size.width,image.size.height);
+                                             //  NSLog(@"cell sizde: %f %f",cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height);
                                                
-                                               UIGraphicsBeginImageContext(CGSizeMake(cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height
-                                                                                      ));
+//                                               UIGraphicsBeginImageContext(CGSizeMake(cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height
+//                                                                                      ));
                                                vData.fullImage = image;
-                                               [ image drawInRect:
-                                                CGRectMake(0, 0, cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height)];
-                                               vData.thumbnail = UIGraphicsGetImageFromCurrentImageContext();
-                                               UIGraphicsEndImageContext();
+//                                               [ image drawInRect:
+//                                                CGRectMake(0, 0, cellScroll.thumnailImg.frame.size.width,cellScroll.thumnailImg.frame.size.height)];
+//                                               vData.thumbnail = UIGraphicsGetImageFromCurrentImageContext();
+//                                               UIGraphicsEndImageContext();
                                                
-                                               [cellScroll.thumnailImg setImage:vData.thumbnail];
+                                               [cellScroll.thumnailImg setImage:vData.fullImage];
                                                //cellScroll.thumnailImg.image = image;
                                                [cellScroll setNeedsLayout];
                                                
@@ -403,23 +403,23 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     VideoData *vidData;
     switch (flag) {
         case 1:
-            if ([_VIDEOS_AMNHAC objectAtIndex:indexPath.row]) {
-                vidData = [_VIDEOS_AMNHAC objectAtIndex:indexPath.row];
+            if ([VIDEOS_AMNHAC objectAtIndex:indexPath.row]) {
+                vidData = [VIDEOS_AMNHAC objectAtIndex:indexPath.row];
             }
             break;
         case 2:
-            if ([_VIDEOS_KECHUYEN objectAtIndex:indexPath.row]) {
-                vidData = [_VIDEOS_KECHUYEN objectAtIndex:indexPath.row];
+            if ([VIDEOS_KECHUYEN objectAtIndex:indexPath.row]) {
+                vidData = [VIDEOS_KECHUYEN objectAtIndex:indexPath.row];
             }
             break;
         case 3:
-            if ([_VIDEOS_HOATHINH objectAtIndex:indexPath.row]) {
-                vidData = [_VIDEOS_HOATHINH objectAtIndex:indexPath.row];
+            if ([VIDEOS_HOATHINH objectAtIndex:indexPath.row]) {
+                vidData = [VIDEOS_HOATHINH objectAtIndex:indexPath.row];
             }
             break;
         default:
-            if ([_VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row]) {
-                vidData = [_VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row];
+            if ([VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row]) {
+                vidData = [VIDEOS_SEARCH_RESULTS objectAtIndex:indexPath.row];
             }
             break;
     }
@@ -455,7 +455,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         if (isLoadFinish)
         switch (flag) {
             case 4:
-                if (self.VIDEOS_SEARCH_RESULTS.count<200) {
+                if (VIDEOS_SEARCH_RESULTS.count<200) {
                 [self.getVideos searchYouTubeVideosWithService:self.youtubeService:nil : nextPageToken : nil : 1];
                  isLoadFinish=NO;
                 }
@@ -464,15 +464,15 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             default:
                 switch (flag) {
                     case 1:
-                        if (self.VIDEOS_AMNHAC.count>200) break;
+                        if (VIDEOS_AMNHAC.count>200) break;
                         else [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : 1];
                         break;
                     case 2:
-                        if (self.VIDEOS_KECHUYEN.count>200) break;
+                        if (VIDEOS_KECHUYEN.count>200) break;
                         else [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : 1];
                         break;
                     case 3:
-                        if (self.VIDEOS_HOATHINH.count>200) break;
+                        if (VIDEOS_HOATHINH.count>200) break;
                         else
                             [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : 1];
                         break;
@@ -510,19 +510,26 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             cell = [tableView dequeueReusableCellWithIdentifier:@"videoCell"];
             
         }
-        
+        [cell.leftImgTableVideo setConstant: cell.frame.size.width*41/395];
+        [cell.topImgTableVideo setConstant: cell.frame.size.height*82/325];
+              [self.view setNeedsUpdateConstraints];
+              [self.view setNeedsLayout];
         FavoriteVideoDetail *vData = [[super mFavoriteVideos] objectAtIndex:indexPath.row];
         cell.titleLabel.trailingBuffer = cell.titleLabel.frame.size.width;
         cell.titleLabel.text = vData.videoName;
-        NSLog([NSString stringWithFormat:@" %f ", cell.frame.size.width]);
-        NSLog([NSString stringWithFormat:@" %f ", cell.titleLabel.frame.size.width]);
+        NSLog([NSString stringWithFormat:@" width of cell table : %f ", cell.frame.size.width]);
+        NSLog([NSString stringWithFormat:@" heigh of cell table : %f ", cell.frame.size.height]);
+       // NSLog([NSString stringWithFormat:@" %f ", cell.titleLabel.frame.size.width]);
         if (![[Utils humanReadableFromYouTubeTime:vData.videoDuration] isEqualToString:@"(Unknown)"]) {
             [cell.descriptionLabel setHidden:NO];
             cell.descriptionLabel.text =[Utils humanReadableFromYouTubeTime:vData.videoDuration];
         } else {
             [cell.descriptionLabel setHidden:YES];
         }
+        [cell.leftImgTableVideo setConstant: cell.frame.size.width*41/395];
+        [cell.topImgTableVideo setConstant: cell.frame.size.height*82/325];
         
+         [cell setNeedsLayout];
         NSURL *url = [NSURL URLWithString:vData.thumnailUrl];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         UIImage *placeholderImage = [UIImage imageNamed:@"bg_loading.png"];
@@ -543,11 +550,16 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                                                  tmpImage = UIGraphicsGetImageFromCurrentImageContext();
                                                  UIGraphicsEndImageContext();
                                                  
-                                                 [cell.backgroundImage setImage:tmpImage];
+                                                 [cell.backgroundImage setImage:image];
                                                  //cellScroll.thumnailImg.image = image;
-                                                 [cell.backgroundImage setNeedsLayout];
+//                                                 [cell.leftImgTableVideo setConstant: cell.frame.size.width*41/395];
+//                                                 [cell.topImgTableVideo setConstant: cell.frame.size.height*82/325];
+                                                [cell.backgroundImage setNeedsLayout];
+//                                                      [cell.superview setNeedsLayout];
                                                  
                                              } failure:nil];
+//      [cell.superview setNeedsUpdateConstraints];
+//        [cell.superview setNeedsLayout];
         return cell;
     } else {
         tblCellMenu * cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
@@ -611,7 +623,10 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView==self.mListVideo) {
-        return self.mListVideo.frame.size.width*85/100;
+        NSLog(@"heightForRowAtIndexPath table video %f", tableView.frame.size.width);
+       
+        return tableView.frame.size.width-10;
+       // return 100;
     } else {
         return self.view.frame.size.height/10;
     }
@@ -688,8 +703,9 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         
     } else if (sender == self.playButton) {
         if (self.playButton.isSelected) {
-            [self.playerView pauseVideo];
             [self.playButton setSelected:NO];
+            [self.playerView pauseVideo];
+            
             
         } else {
             [self.playButton setSelected:YES];
@@ -770,7 +786,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             if (sender==self.btnAmNhac) {
                 flag=1;
                 [self resetStatusLoadPage];
-                if ([_VIDEOS_AMNHAC count]< 1) {
+                if ([VIDEOS_AMNHAC count]< 1) {
                     NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:0]).playListId;
                     [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
                 } else {
@@ -780,7 +796,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             } else if (sender==self.btnKeChuyen) {
                 flag=2;
                 [self resetStatusLoadPage];
-                if ([_VIDEOS_KECHUYEN count]< 1) {
+                if ([VIDEOS_KECHUYEN count]< 1) {
                     NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:1]).playListId;
                    [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
                 }else {
@@ -790,7 +806,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             } else if (sender==self.btnHoatHinh) {
                 flag=3;
                 [self resetStatusLoadPage];
-                if ([_VIDEOS_HOATHINH count]< 1) {
+                if ([VIDEOS_HOATHINH count]< 1) {
                     NSString *playListIdTmp=( (PlayListModel*)[mPlayLists objectAtIndex:2]).playListId;
                     [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
                 }else {
@@ -803,32 +819,47 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     
 }
 - (void) setSizeBtnTheLoaiWhenClick : (id)sender {
+   
+    float widthNomarl= 50;
+    float widthSeleted= 60;
+    float bottomNomarl= 10;
+    float bottomSeleted= 0;
+    float leading = 5;
+    float trailing = 5;
     
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        widthNomarl= 75;
+        widthSeleted= 85;
+//        bottomNomarl = 
+//        bottomSeleted
+        leading = 10;
+        trailing = 10;
+    }
     if (sender==self.btnAmNhac) {
-        self.widthAmNhac.constant=50;
-        self.bottomAmNhac.constant=0;
-        self.withOfKeChuyen.constant=40;
-        self.bottonKeChuyen.constant=10;
-        self.widthHoatHinh.constant=40;
-        self.bottomHoatHInh.constant=10;
-        self.leadingAmNhac.constant=0;
-        self.trailingHoatHinh.constant=5;
+        self.widthAmNhac.constant=widthSeleted;
+        self.bottomAmNhac.constant=bottomSeleted;
+        self.withOfKeChuyen.constant=widthNomarl;
+        self.bottonKeChuyen.constant=bottomNomarl;
+        self.widthHoatHinh.constant=widthNomarl;
+        self.bottomHoatHInh.constant=bottomNomarl;
+        self.leadingAmNhac.constant=bottomSeleted;
+        self.trailingHoatHinh.constant=trailing;
     } else if (sender==self.btnKeChuyen) {
-        self.widthAmNhac.constant=40;
-        self.bottomAmNhac.constant=10;
-        self.withOfKeChuyen.constant=50;
-        self.bottonKeChuyen.constant=0;
-        self.widthHoatHinh.constant=40;
-        self.bottomHoatHInh.constant=10;
+        self.widthAmNhac.constant=widthNomarl;
+        self.bottomAmNhac.constant=bottomNomarl;
+        self.withOfKeChuyen.constant=widthSeleted;
+        self.bottonKeChuyen.constant=bottomSeleted;
+        self.widthHoatHinh.constant=widthNomarl;
+        self.bottomHoatHInh.constant=bottomNomarl;
     } else {
-        self.widthAmNhac.constant=40;
-        self.bottomAmNhac.constant=10;
-        self.withOfKeChuyen.constant=40;
-        self.bottonKeChuyen.constant=10;
-        self.widthHoatHinh.constant=50;
-        self.bottomHoatHInh.constant=0;
-        self.trailingHoatHinh.constant=0;
-        self.leadingAmNhac.constant=5;
+        self.widthAmNhac.constant=widthNomarl;
+        self.bottomAmNhac.constant=bottomNomarl;
+        self.withOfKeChuyen.constant=widthNomarl;
+        self.bottonKeChuyen.constant=bottomNomarl;
+        self.widthHoatHinh.constant=widthSeleted;
+        self.bottomHoatHInh.constant=bottomSeleted;
+        self.trailingHoatHinh.constant=bottomSeleted;
+        self.leadingAmNhac.constant=leading;
     }
     [self.view setNeedsUpdateConstraints];
     

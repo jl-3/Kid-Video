@@ -23,13 +23,16 @@
     self.titleLabel.fadeLength = 1.0f;
    // self.titleLabel.trailingBuffer = self.titleLabel.frame.size.width;
     self.titleLabel.animationDelay=0.f;
-  
+    [self.leftImgTableVideo setConstant: self.frame.size.width*41/395];
+    [self.topImgTableVideo setConstant: self.frame.size.width*82/325];
+
 }
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         // Initialization code
+        
     }
     return self;
 }

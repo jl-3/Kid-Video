@@ -35,6 +35,8 @@
 
 @interface PlaylistViewController : FunBaseViewController<YouTubeGetVideosDelegate,UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UIScrollViewDelegate >
 {
+    BOOL isTheFirstTime;
+    
     NSMutableArray *mVideos;
     NSMutableArray *mPlayLists;
     NSMutableArray *mFavoriteVideos;
@@ -109,6 +111,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *ViewListCollection;
 @property (weak, nonatomic) IBOutlet UIView *viewButonSeeking;
+@property (strong, nonatomic) IBOutlet UIView *viewButtonTheLoai;
 
 
 @property(nonatomic, weak) IBOutlet UIButton *playButton;

@@ -17,7 +17,10 @@
 
 // type 0: seaerch, 1: nextpage , 2 prvpage
 - (void)searchYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)searchKey :  (NSString *)nextPageToken :(NSString *)prvPageToken : (int) type {
-    if (!searchKey) return;
+    if ((!searchKey)&&(!nextPageToken)&&(!prvPageToken))  {
+        [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
+        return;
+    }
     GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForSearchListWithPart:@"snippet"];
     playlistItemsListQuery.maxResults = 20l;
     if (searchKey)
@@ -105,15 +108,18 @@
 - (void)getYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)playListId :  (NSString *)nextPageToken : (NSString *)prvPageToken : (int) type {
     // Construct query
 
-    if (!playListId) return;
+    if (!playListId)  {
+        [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
+        return;
+    }
                 GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForPlaylistItemsListWithPart:@"contentDetails"];
                     switch (type) {
                         case 1:
                             if (nextPageToken)
                             playlistItemsListQuery.pageToken= nextPageToken;
                             else {
-                               // [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
-                                return ;
+                                    [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
+                                    return;
                             }
                             break;
                         case 2:

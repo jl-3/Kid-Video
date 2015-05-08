@@ -50,7 +50,7 @@
     @try {
     for (int i=3; i< youTubeTimeFormat.length; i++) {
         if ([youTubeTimeFormat characterAtIndex:i] == 'H' ){
-            if ([youTubeTimeFormat characterAtIndex:i-2]=='T'){
+            if ([youTubeTimeFormat characterAtIndex:i-3]=='T'){
                 NSRange mRange = NSMakeRange(i-2, 2);
                 hour = [youTubeTimeFormat substringWithRange:mRange];
             } else {
@@ -59,7 +59,7 @@
             }
         }
         if ([youTubeTimeFormat characterAtIndex:i] == 'M' ){
-            if ([youTubeTimeFormat characterAtIndex:i-2]=='M'){
+            if (([youTubeTimeFormat characterAtIndex:i-3]=='H')||(([youTubeTimeFormat characterAtIndex:i-3]=='T'))){
                 NSRange mRange = NSMakeRange(i-2, 2);
                 min = [youTubeTimeFormat substringWithRange:mRange];
             } else {
@@ -68,7 +68,7 @@
             }
         }
         if ([youTubeTimeFormat characterAtIndex:i] == 'S' ){
-            if ([youTubeTimeFormat characterAtIndex:i-2]=='S'){
+            if (([youTubeTimeFormat characterAtIndex:i-3]=='M')||(([youTubeTimeFormat characterAtIndex:i-3]=='T'))){
                 NSRange mRange = NSMakeRange(i-2, 2);
                 sec = [youTubeTimeFormat substringWithRange:mRange];
             } else {

@@ -87,6 +87,9 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 
 - (void)getYouTubeVideos:(YouTubeGetVideos *)getVideos didFinishWithResults:(NSArray *)results : (NSString*) nextPageTokenThis : (NSString *) prvPageTokenThis : (int ) typeOfResultThis {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
+    
+    isLoadFinish=YES;
     if (!results) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error loading data"
@@ -119,7 +122,8 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         default:
             if (typeOfResultThis == 0)
             VIDEOS_SEARCH_RESULTS = [results mutableCopy];
-            else [VIDEOS_SEARCH_RESULTS addObjectsFromArray:results];
+            else
+                [VIDEOS_SEARCH_RESULTS addObjectsFromArray:results];
             break;
     }
     //[self.ViewListCollection setHidden:NO];
@@ -128,6 +132,8 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     if (prvPageTokenThis) prvPageTokenThis = prvPageTokenThis;
     isLoadFinish=YES;
     [self.listViewColectionView reloadData];
+    if (isTheFirstTime) isTheFirstTime = NO;
+    else
     [self ShowViewScroll];
     [MBProgressHUD hideHUDForView:self.view animated:YES];
    }
@@ -169,7 +175,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 - (void)viewDidLoad {
     [super viewDidLoad];
     [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationLandscapeLeft] forKey:@"orientation"];
-    
+    isTheFirstTime= YES;
     // [self.listViewColectionView setHidden:YES];
     [self init];
     [self initItemStatus];
@@ -186,7 +192,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     }
     
     
-    NSString* videoID = @"9IHb4PBrxYQ";
+    NSString* videoID = @"L0MK7qz13bU";
     // [self.playButton setImage:[UIImage imageNamed:@"stop_on.png"] forState:UIControlStateSelected];
     // For a full list of player parameters, see the documentation for the HTML5 player
     // at: https://developers.google.com/youtube/player_parameters?playerVersion=HTML5
@@ -781,7 +787,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     
     if (sender == self.ViewUpDownbtn) {
         //[self appendStatusText:@"Loading previous video in playlist\n"];
-        if (!self.ViewUpDownbtn.isSelected) {
+        if (self.ViewUpDownbtn.isSelected) {
             [self.ViewUpDownbtn setSelected:YES];
             [self hideViewScroll];
             
@@ -902,7 +908,8 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         self.trailingHoatHinh.constant=bottomSeleted;
         self.leadingAmNhac.constant=leading;
     }
-    [self.view setNeedsUpdateConstraints];
+   
+    [self.viewButtonTheLoai setNeedsUpdateConstraints];
     
     [UIView animateWithDuration:1.f animations:^{
         [self.view layoutIfNeeded];
@@ -915,10 +922,10 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     self.heighButtonTheLoai.constant = 0;
     [self.ViewListCollection setAlpha:1];
     //self.bottomSpaceListVideo.constant -= self.view.frame.size.height;
-    [self.view setNeedsUpdateConstraints];
+    [self.ViewListCollection setNeedsUpdateConstraints];
     
     [UIView animateWithDuration:1.f animations:^{
-        [self.view layoutIfNeeded];
+        [self.ViewListCollection layoutIfNeeded];
         [self.ViewListCollection setAlpha:0];
     }];
     
@@ -928,11 +935,11 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     self.bottomSpaceListVideo.constant = self.btnMenu.frame.size.height+5;
     self.heighButtonTheLoai.constant = 60;
     //[self.ViewListCollection setAlpha:0];
-    [self.view setNeedsUpdateConstraints];
+    [self.ViewListCollection setNeedsUpdateConstraints];
     
     [UIView animateWithDuration:1.f animations:^{
         [self.ViewListCollection setAlpha:1];
-        [self.view layoutIfNeeded];
+        [self.ViewListCollection layoutIfNeeded];
         
     }];
 }

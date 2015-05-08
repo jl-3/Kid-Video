@@ -87,6 +87,19 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 
 - (void)getYouTubeVideos:(YouTubeGetVideos *)getVideos didFinishWithResults:(NSArray *)results : (NSString*) nextPageTokenThis : (NSString *) prvPageTokenThis : (int ) typeOfResultThis {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    if (!results) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error loading data"
+                                                            message:@"Please check your network connection."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        [alertView show];
+        return;
+    }
     switch (flag) {
         case 1:
             if (typeOfResultThis == 0)
@@ -113,12 +126,11 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     [self resetStatusLoadPage];
     if (nextPageTokenThis) nextPageToken = nextPageTokenThis;
     if (prvPageTokenThis) prvPageTokenThis = prvPageTokenThis;
-   isLoadFinish=YES;
+    isLoadFinish=YES;
     [self.listViewColectionView reloadData];
     [self ShowViewScroll];
-    
-    //[self.mListVideo reloadData];
-}
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
+   }
 
 
 - (void) outlog {
@@ -207,13 +219,16 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     [self.view addGestureRecognizer:_tap];
 }
 - (void) checkDurationTime {
-    if ([self.playerView currentTime ]> 0) {
+    if ((tmpValueOfSlider != [self.sliderVideo value]) && ([self.playerView currentTime ]> 0) ){
         [self.playerViewFace setHidden:NO];
         
         NSLog(@"%f",[self.playerView currentTime ]);
         NSLog(@"%i",[self.playerView duration ]);
         NSLog(@"%f",[self.playerView currentTime]/(float)[self.playerView duration]);
         [self.sliderVideo setValue:([self.playerView currentTime]/(float)[self.playerView duration ]) animated:YES];
+    }
+    if ([self.sliderVideo value] == 1) {
+        [self ShowViewScroll];
     }
 }
 - (void)  keyboardDisAppearOrShow {
@@ -230,6 +245,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     // operation.responseSerializer = [AFHTTPResponseSerializer serializer];
     operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+    
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         
@@ -250,6 +266,8 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             [mPlayLists  addObject:mPlayListModel];
             }
         }
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
         NSString *playListIdTmp=( (PlayListModel*)[self objectAtIndex:mPlayLists :0]).playListId;
         [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
         
@@ -261,10 +279,13 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+
         [alertView show];
     }];
     
     // 5
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [operation start];
     
 }
@@ -295,6 +316,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     if (![searchBar.text isEqualToString:@""]) {
         //   self.currentTextInSearchBar = searchBar.text;
         [self resetStatusLoadPage];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [self.getVideos searchYouTubeVideosWithService:self.youtubeService:searchBar.text : nextPageToken : prevPageToken : 0];
     }
 }
@@ -656,7 +678,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             [self buttonPressed:self.playButton];
             // status button when click play
             [self.playButton setSelected:YES ];
-            [self buttonPressed:self.ViewUpDownbtn];
+            [self hideViewScroll];
             
             
         }
@@ -711,7 +733,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
         [UIView animateWithDuration:1.f animations:^{
             [self.viewButonSeeking setAlpha:1];
         }];
-        NSTimer *timerSeekingView =  [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideSeekingView) userInfo:nil repeats:NO];
+        timerSeekingView =  [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideSeekingView) userInfo:nil repeats:NO];
         
     } else if (sender == self.playButton) {
         if (self.playButton.isSelected) {
@@ -724,6 +746,8 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
             //  [[NSNotificationCenter defaultCenter] postNotificationName:@"Playback started" object:self];
             [self.playerView playVideo];
         }
+        [timerSeekingView invalidate];
+        timerSeekingView =  [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideSeekingView) userInfo:nil repeats:NO];
     }
 }
 - (IBAction)setProgress:(UISlider *)sender {
@@ -731,6 +755,9 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
     NSLog(@"%f",[sender value]);
     if ([self.playerView currentTime]>0)
         [self.playerView seekToSeconds:([sender value]*[self.playerView duration]) allowSeekAhead:YES];
+    tmpValueOfSlider=[sender value];
+    [timerSeekingView invalidate];
+     timerSeekingView =  [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideSeekingView) userInfo:nil repeats:NO];
 }
 - (void) HideMenuView {
     self.trailingOfMenuView.constant =  -(self.MenuView.frame.size.width);
@@ -744,7 +771,6 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
 - (void) ShowMenuView {
     self.trailingOfMenuView.constant = 0;
     [self.view setNeedsUpdateConstraints];
-    
     [UIView animateWithDuration:1.f animations:^{
         [self.view layoutIfNeeded];
         
@@ -800,6 +826,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                 [self resetStatusLoadPage];
                 if ([VIDEOS_AMNHAC count]< 1) {
                     NSString *playListIdTmp=( (PlayListModel*)[self objectAtIndex:mPlayLists :0]).playListId;
+                   [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                     [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
                 } else {
                     [self.listViewColectionView  reloadData];
@@ -809,7 +836,9 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                 flag=2;
                 [self resetStatusLoadPage];
                 if ([VIDEOS_KECHUYEN count]< 1) {
-                    NSString *playListIdTmp=( (PlayListModel*)[self objectAtIndex:mPlayLists :1]).playListId;                   [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
+                    NSString *playListIdTmp=( (PlayListModel*)[self objectAtIndex:mPlayLists :1]).playListId;
+                    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                    [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
                 }else {
                     [self.listViewColectionView  reloadData];
                 }
@@ -819,6 +848,7 @@ static NSString * const BaseURLString =@"https://www.dropbox.com/s/msp70rmarezsj
                 [self resetStatusLoadPage];
                 if ([VIDEOS_HOATHINH count]< 1) {
                    NSString *playListIdTmp=( (PlayListModel*)[self objectAtIndex:mPlayLists :2]).playListId;
+                    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                     [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : 0];
                 }else {
                     [self.listViewColectionView  reloadData];

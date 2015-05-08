@@ -10,6 +10,7 @@
 #import <YTPlayerView.h>
 #import "DBManager.h"
 #import <MMDrawerBarButtonItem.h>
+#import <MBProgressHUD.h>
 @protocol FunBaseViewControllerDelegate <NSObject>;
 @end
 @interface FunBaseViewController : UIViewController<YTPlayerViewDelegate> {

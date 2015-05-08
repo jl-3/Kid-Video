@@ -39,12 +39,21 @@
     NSMutableArray *mPlayLists;
     NSMutableArray *mFavoriteVideos;
     NSDictionary *playerVars ;
+    
+    NSTimer *timerSeekingView;
     int flag; //flag =1 : am nhac
               //flag =2 : ke chuyen
               //flag =3 : hoat hinh
     // flag=4: search
     NSTimer *timer;
+    
+    // tmp variable
+    float tmpValueOfSlider;
     float durationOfCurrentVideoPlaying;
+    VideoData *CurrentVideoPlaying;
+   
+    
+    
     NSArray *mMenuItems;
   
     UIViewController *mVCAbout;

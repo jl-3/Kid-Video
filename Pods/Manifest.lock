@@ -19,6 +19,7 @@ PODS:
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
   - DNDDragAndDrop (1.1.3)
+  - MBProgressHUD (0.9.1)
   - MMDrawerController (0.5.7):
     - MMDrawerController/Core (= 0.5.7)
     - MMDrawerController/MMDrawerBarButtonItem (= 0.5.7)
@@ -36,12 +37,14 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (= 2.2.1)
   - DNDDragAndDrop (~> 1.1.0)
+  - MBProgressHUD (~> 0.9.1)
   - MMDrawerController (~> 0.5.7)
   - youtube-ios-player-helper (~> 0.1.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 59a0b8e9ecd4e194d64b4967232cd2cc83490113
   DNDDragAndDrop: 34cada1f3bf83acc1ec21075d156d99688ce23e3
+  MBProgressHUD: c47f2c166c126cf2ce36498d80f33e754d4e93ad
   MMDrawerController: 7a4cf8e25596bf2434e03ce50d22a8608ddee6a1
   youtube-ios-player-helper: d7350b9f9070edf482e5d0bd5e8948c0ba1437f3
 

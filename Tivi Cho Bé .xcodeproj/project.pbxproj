@@ -625,6 +625,11 @@
 				TargetAttributes = {
 					6915C7D11ADE05E4005AD7E1 = {
 						CreatedOnToolsVersion = 6.3;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					6915C7EA1ADE05E4005AD7E1 = {
 						CreatedOnToolsVersion = 6.3;
@@ -934,7 +939,7 @@
 					"\"$(SRCROOT)/google-api-objectivec-client-read-only/Source/Objects\"",
 				);
 				INFOPLIST_FILE = "Funny Clip/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -968,7 +973,7 @@
 					"\"$(SRCROOT)/google-api-objectivec-client-read-only/Source/Objects\"",
 				);
 				INFOPLIST_FILE = "Funny Clip/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

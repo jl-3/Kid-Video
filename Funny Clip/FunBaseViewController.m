@@ -40,6 +40,14 @@
     }
     else {
         NSLog(@"load all data OK");
+        int maxSizeOfList=100;
+        if (self.mFavoriteVideos.count == maxSizeOfList ) {
+           BOOL success = [[DBManager getSharedInstance] removeVideo:[self objectAtIndex:self.mFavoriteVideos :maxSizeOfList]];
+            if (success) {
+                [self loadAllFavoriteVideosFromDB];
+            }
+
+        }
         return YES;
     }
     return NO;

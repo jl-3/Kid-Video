@@ -7,7 +7,7 @@
 //
 
 #import "FunBaseViewController.h"
-
+#import <AFNetworkReachabilityManager.h>
 @interface FunBaseViewController ()
 
 @end
@@ -23,9 +23,10 @@
     [self.tabBarController setTitle:@"dasds"];
     self.mFavoriteVideos = [NSMutableArray array];
 
-    
-   
 }
+
+
+
 - (BOOL) loadAllFavoriteVideosFromDB {
         NSString *alertString = @"Data Insertion failed";
         self.mFavoriteVideos = (NSMutableArray *)[[DBManager getSharedInstance] getAllVideos];
@@ -42,11 +43,18 @@
         NSLog(@"load all data OK");
         int maxSizeOfList=100;
         if (self.mFavoriteVideos.count == maxSizeOfList ) {
-           BOOL success = [[DBManager getSharedInstance] removeVideo:[self objectAtIndex:self.mFavoriteVideos :maxSizeOfList]];
+           BOOL success = [[DBManager getSharedInstance] removeVideo:0];
             if (success) {
                 [self loadAllFavoriteVideosFromDB];
             }
 
+        }
+        if (self.mFavoriteVideos.count == maxSizeOfList*2 ) {
+            BOOL success = [[DBManager getSharedInstance] removeVideo:1];
+            if (success) {
+                [self loadAllFavoriteVideosFromDB];
+            }
+            
         }
         return YES;
     }
@@ -108,14 +116,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (id ) objectAtIndex: (NSMutableArray *) mArray : (int) index {
-    if (mArray)
-        if (mArray.count>index)
-        return [mArray objectAtIndex:index];
-        else return nil;
-    else
-        return  nil;
-}
+
 
 /*
 #pragma mark - Navigation

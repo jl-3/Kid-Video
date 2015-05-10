@@ -7,7 +7,7 @@
 //
 
 #import "VideoUploadViewController.h"
-#import "Utils.h"
+#import "BaseUtils.h"
 
 UITextField *titleField;
 UITextField *descField;
@@ -102,7 +102,7 @@ UITextField *descField;
 
 - (void)uploadYouTubeVideo:(YouTubeUploadVideo *)uploadVideo
       didFinishWithResults:(GTLYouTubeVideo *)video {
-  [Utils showAlert:@"Video Uploaded" message:video.identifier];
+  [BaseUtils showAlert:@"Video Uploaded" message:video.identifier];
 }
 
 // Call this method somewhere in your view controller setup code.

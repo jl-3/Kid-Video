@@ -3,7 +3,7 @@
 #import "GTLYouTube.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "UploadController.h"
-#import "Utils.h"
+#import "BaseUtils.h"
 #import "VideoPlayerViewController.h"
 #import "VideoUploadViewController.h"
 
@@ -86,7 +86,7 @@
   cell.imageView.image = vidData.thumbnail;
   cell.textLabel.text = [vidData getTitle];
   cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ -- %@ views",
-                               [Utils humanReadableFromYouTubeTime:vidData.getDuration],
+                               [BaseUtils humanReadableFromYouTubeTime:vidData.getDuration],
                                vidData.getViews];
   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
   return cell;
@@ -118,7 +118,7 @@
     // In case we're running the iPhone simulator, fall back on the photo library instead.
     cameraUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-      [Utils showAlert:@"Error" message:@"Sorry, iPad Simulator not supported!"];
+      [BaseUtils showAlert:@"Error" message:@"Sorry, iPad Simulator not supported!"];
       return;
     }
   }
@@ -134,7 +134,7 @@
   // In case we're running the iPhone simulator, fall back on the photo library instead.
   cameraUI.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
   if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-    [Utils showAlert:@"Error" message:@"Sorry, iPad Simulator not supported!"];
+    [BaseUtils showAlert:@"Error" message:@"Sorry, iPad Simulator not supported!"];
     return;
   }
   cameraUI.mediaTypes = [[NSArray alloc] initWithObjects:(NSString *)kUTTypeMovie, nil];

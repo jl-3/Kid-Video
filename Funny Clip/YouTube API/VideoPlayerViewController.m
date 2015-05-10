@@ -8,7 +8,7 @@
 
 #import "VideoPlayerViewController.h"
 #import "UploadController.h"
-#import "Utils.h"
+#import "BaseUtils.h"
 
 @interface VideoPlayerViewController ()
 
@@ -71,6 +71,6 @@
 #pragma mark - uploadYouTubeVideo
 
 - (void)directTag:(YouTubeDirectTag *)directTag didFinishWithResults:(GTLYouTubeVideo *)video {
-  [Utils showAlert:@"Tags Updates" message:[video.snippet.tags componentsJoinedByString:@""]];
+  [BaseUtils showAlert:@"Tags Updates" message:[video.snippet.tags componentsJoinedByString:@""]];
 }
 @end

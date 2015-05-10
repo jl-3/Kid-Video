@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6914A3B51AE74F6D00AAC253 /* iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 6914A3A21AE74F6D00AAC253 /* iframe-player.html */; };
 		6914A3B61AE74F6D00AAC253 /* UploadController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6914A3A41AE74F6D00AAC253 /* UploadController.m */; };
-		6914A3B71AE74F6D00AAC253 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 6914A3A61AE74F6D00AAC253 /* Utils.m */; };
 		6914A3B81AE74F6D00AAC253 /* VideoData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6914A3A81AE74F6D00AAC253 /* VideoData.m */; };
 		6914A3B91AE74F6D00AAC253 /* VideoListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6914A3AA1AE74F6D00AAC253 /* VideoListViewController.m */; };
 		6914A3BA1AE74F6D00AAC253 /* VideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6914A3AC1AE74F6D00AAC253 /* VideoPlayerViewController.m */; };
@@ -86,6 +85,8 @@
 		69A876A01AE394300073C6B1 /* mVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A8769E1AE394300073C6B1 /* mVideoCell.xib */; };
 		69A8B95F1AF6069C00F8069F /* VCAbout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A8B95D1AF6069C00F8069F /* VCAbout.m */; };
 		69A8B9601AF6069C00F8069F /* VCAbout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A8B95E1AF6069C00F8069F /* VCAbout.xib */; };
+		69BF14D61AFF02740083EABE /* BaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BF14D51AFF02740083EABE /* BaseUtils.m */; };
+		69BF14D81AFF08150083EABE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69BF14D71AFF08150083EABE /* Localizable.strings */; };
 		69C8A4201AF715B800EB803F /* IpadPlayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C8A41F1AF715B800EB803F /* IpadPlayListViewController.xib */; };
 		69EA86131AE6350800F612FA /* NSURLParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA86121AE6350800F612FA /* NSURLParameters.m */; };
 		69FE692C1AEE7B2500634542 /* FavoriteVideoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE692B1AEE7B2500634542 /* FavoriteVideoDetail.m */; };
@@ -113,8 +114,6 @@
 		6914A3A21AE74F6D00AAC253 /* iframe-player.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "iframe-player.html"; sourceTree = "<group>"; };
 		6914A3A31AE74F6D00AAC253 /* UploadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadController.h; sourceTree = "<group>"; };
 		6914A3A41AE74F6D00AAC253 /* UploadController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadController.m; sourceTree = "<group>"; };
-		6914A3A51AE74F6D00AAC253 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		6914A3A61AE74F6D00AAC253 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		6914A3A71AE74F6D00AAC253 /* VideoData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoData.h; sourceTree = "<group>"; };
 		6914A3A81AE74F6D00AAC253 /* VideoData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoData.m; sourceTree = "<group>"; };
 		6914A3A91AE74F6D00AAC253 /* VideoListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoListViewController.h; sourceTree = "<group>"; };
@@ -237,6 +236,9 @@
 		69A8B95C1AF6069C00F8069F /* VCAbout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCAbout.h; sourceTree = "<group>"; };
 		69A8B95D1AF6069C00F8069F /* VCAbout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCAbout.m; sourceTree = "<group>"; };
 		69A8B95E1AF6069C00F8069F /* VCAbout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCAbout.xib; sourceTree = "<group>"; };
+		69BF14D41AFF02740083EABE /* BaseUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseUtils.h; sourceTree = "<group>"; };
+		69BF14D51AFF02740083EABE /* BaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseUtils.m; sourceTree = "<group>"; };
+		69BF14D71AFF08150083EABE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		69C8A41F1AF715B800EB803F /* IpadPlayListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IpadPlayListViewController.xib; sourceTree = "<group>"; };
 		69EA86111AE6350800F612FA /* NSURLParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSURLParameters.h; sourceTree = "<group>"; };
 		69EA86121AE6350800F612FA /* NSURLParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLParameters.m; sourceTree = "<group>"; };
@@ -275,8 +277,6 @@
 				6914A3C51AE7505000AAC253 /* GTMOAuth2ViewTouch.xib */,
 				6914A3A31AE74F6D00AAC253 /* UploadController.h */,
 				6914A3A41AE74F6D00AAC253 /* UploadController.m */,
-				6914A3A51AE74F6D00AAC253 /* Utils.h */,
-				6914A3A61AE74F6D00AAC253 /* Utils.m */,
 				6914A3A71AE74F6D00AAC253 /* VideoData.h */,
 				6914A3A81AE74F6D00AAC253 /* VideoData.m */,
 				6914A3A91AE74F6D00AAC253 /* VideoListViewController.h */,
@@ -490,6 +490,8 @@
 				697FB13F1ADE9A7700DFE12D /* FunBaseViewController.h */,
 				697FB1401ADE9A7700DFE12D /* FunBaseViewController.m */,
 				697FB1411ADE9A7700DFE12D /* FunBaseViewController.xib */,
+				69BF14D41AFF02740083EABE /* BaseUtils.h */,
+				69BF14D51AFF02740083EABE /* BaseUtils.m */,
 			);
 			name = BaseCustom;
 			sourceTree = "<group>";
@@ -537,6 +539,7 @@
 				6966F0771AFB4EFF003A03E3 /* theloai_kechuyen.png */,
 				6966F0781AFB4EFF003A03E3 /* thuvien.png */,
 				6966F0791AFB4EFF003A03E3 /* YEUTHICH.png */,
+				69BF14D71AFF08150083EABE /* Localizable.strings */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -674,6 +677,7 @@
 				6914A3B51AE74F6D00AAC253 /* iframe-player.html in Resources */,
 				69A8B9601AF6069C00F8069F /* VCAbout.xib in Resources */,
 				6915C7E61ADE05E4005AD7E1 /* LaunchScreen.xib in Resources */,
+				69BF14D81AFF08150083EABE /* Localizable.strings in Resources */,
 				6966F07F1AFB4EFF003A03E3 /* cute_boy.png in Resources */,
 				6966F08B1AFB4EFF003A03E3 /* theloai_kechuyen.png in Resources */,
 				6966F0821AFB4EFF003A03E3 /* farme_2.png in Resources */,
@@ -758,6 +762,7 @@
 				697FB1421ADE9A7700DFE12D /* FunBaseViewController.m in Sources */,
 				6914A3C11AE74F8D00AAC253 /* GTLCommon_Sources.m in Sources */,
 				699EB3981AEF567C00116B07 /* PlayListModel.m in Sources */,
+				69BF14D61AFF02740083EABE /* BaseUtils.m in Sources */,
 				6914A3C21AE74F8D00AAC253 /* GTLNetworking_Sources.m in Sources */,
 				69FE692C1AEE7B2500634542 /* FavoriteVideoDetail.m in Sources */,
 				69A8769F1AE394300073C6B1 /* mVideoCell.m in Sources */,
@@ -779,7 +784,6 @@
 				699D85161AE52AD200C97851 /* JSONModel.m in Sources */,
 				699D85191AE52AD200C97851 /* JSONModelError.m in Sources */,
 				6914A3BD1AE74F6D00AAC253 /* YouTubeGetVideos.m in Sources */,
-				6914A3B71AE74F6D00AAC253 /* Utils.m in Sources */,
 				69EA86131AE6350800F612FA /* NSURLParameters.m in Sources */,
 				699CDFCA1AE41EF2005851CC /* VideoInfoModel.m in Sources */,
 				69598CC81AE548E5003BE85A /* VideoItemCollectCell.m in Sources */,

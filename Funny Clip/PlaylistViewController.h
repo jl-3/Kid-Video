@@ -1,16 +1,9 @@
-// Copyright 2014 Google Inc. All rights reserved.
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
+//  PlaylistViewController.h
+//  Funny Clip
 //
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+//  Created by NhanNLT on 4/15/15.
+//  Copyright (c) 2015 NhanNLT. All rights reserved.
 
 #import "YTPlayerView.h"
 #import "FunBaseViewController.h"
@@ -24,16 +17,16 @@
 #import "YouTubeGetVideos.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 //
-
+#import <AFNetworkReachabilityManager.h>
 #import "UIViewController+MMDrawerController.h"
 #import "MMDrawerBarButtonItem.h"
-
+#import "BaseUtils.h"
 //
 //#import "VideoItemCollectCell.m"
 @protocol PlaylistViewControllerDelegate <NSObject>;
 @end;
 
-@interface PlaylistViewController : FunBaseViewController<YouTubeGetVideosDelegate, UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UIScrollViewDelegate >
+@interface PlaylistViewController : FunBaseViewController<YTPlayerViewDelegate, YouTubeGetVideosDelegate, UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UIScrollViewDelegate >
 {
     BOOL isTheFirstTime;
     
@@ -41,31 +34,30 @@
     NSMutableArray *mPlayLists;
     NSMutableArray *mFavoriteVideos;
     NSDictionary *playerVars ;
-    
     NSTimer *timerSeekingView;
-    int flag; //flag =1 : am nhac
+    int IS_OPEN_IN_TAB;
+                //flag =1 : am nhac
               //flag =2 : ke chuyen
               //flag =3 : hoat hinh
     // flag=4: search
     NSTimer *timer;
-    
+    NSTimer *timerCheckNetwork;
     // tmp variable
     float tmpValueOfSlider;
     float durationOfCurrentVideoPlaying;
-    VideoData *CurrentVideoPlaying;
-   
-    
-    
+    NSString *CurrentVideoIdPlaying;
+    float theSecondBefore;
     NSArray *mMenuItems;
-  
     UIViewController *mVCAbout;
     NSString *nextPageToken;
-        NSString *prevPageToken;
+    NSString *prevPageToken;
     BOOL isLoadFinish;
     NSMutableArray *VIDEOS_AMNHAC;
     NSMutableArray *VIDEOS_SEARCH_RESULTS;
     NSMutableArray *VIDEOS_KECHUYEN;
     NSMutableArray *VIDEOS_HOATHINH;
+    UIAlertView *alertViewNetwork;
+    BOOL isLoadedJson;
 }
 @property (weak, nonatomic) NSString *currentTextInSearchBar;
 
@@ -122,13 +114,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnHoatHinh;
 @property (strong, nonatomic) IBOutlet UIButton *ViewUpDownbtn;
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
-@property (weak, nonatomic) IBOutlet UIButton *playerViewFace;
+
 @property (weak, nonatomic) IBOutlet UIButton *btnMenu;
 @property (weak, nonatomic) IBOutlet UIView *ViewListTable;
 
 - (IBAction)setProgress:(UISlider *)sender;
 - (IBAction)buttonPressed:(id)sender;
-- (IBAction)buttonPlayerViewFace:(id)sender;
+
 - (void) saveToDBWhenClick : (VideoData*) vData;
 
 @property (retain) id<PlaylistViewControllerDelegate> delegate;

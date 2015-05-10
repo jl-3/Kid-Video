@@ -18,7 +18,7 @@
 // type 0: seaerch, 1: nextpage , 2 prvpage
 - (void)searchYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)searchKey :  (NSString *)nextPageToken :(NSString *)prvPageToken : (int) type {
     if ((!searchKey)&&(!nextPageToken)&&(!prvPageToken))  {
-        [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
+        [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:TYPE_OF_RESULT_NORMAL];
         return;
     }
     GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForSearchListWithPart:@"snippet"];
@@ -26,11 +26,11 @@
     if (searchKey)
     playlistItemsListQuery.q=searchKey;
     switch (type) {
-        case 1:
+        case IS_SEARCH_NEXT_PAGE:
             playlistItemsListQuery.pageToken= nextPageToken;
             
             break;
-        case 2:
+        case IS_SEARCH_PRV_PAGE:
             playlistItemsListQuery.pageToken= prvPageToken;
             break;
         default:
@@ -45,7 +45,7 @@
                             *response, NSError *error) {
             
             if (error) {
-                [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
+                [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:TYPE_OF_RESULT_NORMAL];
                 return;
             }
             NSString * nextPage ;
@@ -79,7 +79,7 @@
                                     
                                     *response, NSError *error) {
                     if (error) {
-                        [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
+                        [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:TYPE_OF_RESULT_NORMAL];
                         return;
                     }
                     
@@ -95,9 +95,10 @@
                         }
                     }
                     if (playlistItemsListQuery.pageToken) {
-                        [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:1];
+                        // Please check is case: get prv page
+                        [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:TYPE_OF_RESULT_NEXT_PAGE];
                     } else {
-                        [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:0];
+                        [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:TYPE_OF_RESULT_NORMAL];
                     }
                     
                 }];
@@ -109,20 +110,20 @@
     // Construct query
 
     if (!playListId)  {
-        [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
+        [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:TYPE_OF_RESULT_NORMAL];
         return;
     }
                 GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForPlaylistItemsListWithPart:@"contentDetails"];
                     switch (type) {
-                        case 1:
+                        case IS_GET_NEXT_PAGE:
                             if (nextPageToken)
                             playlistItemsListQuery.pageToken= nextPageToken;
                             else {
-                                    [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
+                                    [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:TYPE_OF_RESULT_NORMAL];
                                     return;
                             }
                             break;
-                        case 2:
+                        case IS_GET_PRV_PAGE:
                             playlistItemsListQuery.pageToken= prvPageToken;
                             break;
                         default:
@@ -140,7 +141,7 @@
                                         *response, NSError *error) {
                         
                         if (error) {
-                            [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
+                            [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:TYPE_OF_RESULT_NORMAL];
                             return;
                         }
                         
@@ -168,7 +169,7 @@
                                                 
                                                 *response, NSError *error) {
                                 if (error) {
-                                    [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:0];
+                                    [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:TYPE_OF_RESULT_NORMAL];
                                     return;
                                 }
                                 
@@ -185,9 +186,9 @@
                                 }
                                 
                                 if (playlistItemsListQuery.pageToken) {
-                                    [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:1];
+                                    [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:TYPE_OF_RESULT_NEXT_PAGE];
                                 } else {
-                                    [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:0];
+                                    [self.delegate getYouTubeVideos:self didFinishWithResults:videos:nextPage:prvPage:IS_GET_NORMAL_PAGE];
                                 }
                                 
                             }];

@@ -89,14 +89,14 @@ static sqlite3_stmt *statement = nil;
 return NO;
 }
 
--(BOOL)removeVideo:(FavoriteVideoDetail *) mVideoItem{
+-(BOOL)removeVideo:(int ) position{
     const char *dbpath = [databasePath UTF8String];
     if (sqlite3_open(dbpath, &database) == SQLITE_OK)
     {
         //int tmp= [mVideoItem.position intValue] +1;
         //[mVideoItem setValue:@(tmp) forKey:@"position"];
       //  NSString *updateSQL = [NSString stringWithFormat:@"delete from FavoriteVideos where videoId = \"%@\" ", mVideoItem.videoId ];
-        NSString *updateSQL = [NSString stringWithFormat:@"delete from FavoriteVideos where position < 1 "];
+        NSString *updateSQL = [NSString stringWithFormat:@"delete from FavoriteVideos where position < \"%d\" ",position];
         
         const char *delete_stmt = [updateSQL UTF8String];
         sqlite3_prepare_v2(database, delete_stmt,-1, &statement, NULL);

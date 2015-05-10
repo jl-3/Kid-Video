@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GTLYouTube.h"
-
+#import "BaseUtils.h"
 @protocol YouTubeGetVideosDelegate;
 
 @interface YouTubeGetVideos : NSObject

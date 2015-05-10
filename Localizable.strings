@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Tivi Cho Bé 
+
+  Created by nhannlt on 10/05/2015.
+  Copyright (c) Năm 2015 NhanNLT. All rights reserved.
+*/
+"POPUP_TITLE_NETWORK" = "Lỗi mạng. ";
+"POPUP_INFO_NETWORK_ERROR" = "Không thể kết nối mạng, Vui lòng kiểm tra Wifi/3G ! ";
+"POPUP_INFO_LOAD_DATA_ERROR" =  "Lấy dữ liệu không thành công , Vui lòng thử lại ! ";
+"ITEMS_MENU" = "";
+"ABOUT_APP" = "";

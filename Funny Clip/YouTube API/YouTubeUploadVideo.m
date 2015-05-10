@@ -9,7 +9,7 @@
 #import "YouTubeUploadVideo.h"
 #import "VideoData.h"
 #import "UploadController.h"
-#import "Utils.h"
+#import "BaseUtils.h"
 
 // Thumbnail image size.
 static const CGFloat kCropDimension = 44;
@@ -35,7 +35,7 @@ static const CGFloat kCropDimension = 44;
     GTLUploadParameters *uploadParameters = [GTLUploadParameters uploadParametersWithData:fileData MIMEType:@"video/*"];
     GTLQueryYouTube *query = [GTLQueryYouTube queryForVideosInsertWithObject:video part:@"snippet,status" uploadParameters:uploadParameters];
     
-    UIAlertView *waitIndicator = [Utils showWaitIndicator:@"Uploading to YouTube"];
+    UIAlertView *waitIndicator = [BaseUtils showWaitIndicator:@"Uploading to YouTube"];
     
     [service executeQuery:query
                 completionHandler:^(GTLServiceTicket *ticket,
@@ -44,14 +44,14 @@ static const CGFloat kCropDimension = 44;
                     if (error == nil)
                     {
                         NSLog(@"File ID: %@", insertedVideo.identifier);
-                        [Utils showAlert:@"YouTube" message:@"Video uploaded!"];
+                        [BaseUtils showAlert:@"YouTube" message:@"Video uploaded!"];
                         [self.delegate uploadYouTubeVideo:self didFinishWithResults:insertedVideo];
                         return;
                     }
                     else
                     {
                         NSLog(@"An error occurred: %@", error);
-                        [Utils showAlert:@"YouTube" message:@"Sorry, an error occurred!"];
+                        [BaseUtils showAlert:@"YouTube" message:@"Sorry, an error occurred!"];
                         [self.delegate uploadYouTubeVideo:self didFinishWithResults:nil];
                         return;
                     }

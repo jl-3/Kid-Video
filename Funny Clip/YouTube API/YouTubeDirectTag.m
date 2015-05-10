@@ -10,7 +10,7 @@
 #import "VideoData.h"
 //#import "MainViewController.h"
 #import "UploadController.h"
-#import "Utils.h"
+#import "BaseUtils.h"
 
 // Thumbnail image size.
 static const CGFloat kCropDimension = 44;
@@ -34,14 +34,14 @@ static const CGFloat kCropDimension = 44;
                         if (error == nil)
                         {
                             NSLog(@"Tags updated");
-                            [Utils showAlert:@"YouTube" message:@"Video uploaded!"];
+                            [BaseUtils showAlert:@"YouTube" message:@"Video uploaded!"];
                             [self.delegate directTag:self didFinishWithResults:response];
                             return;
                         }
                         else
                         {
                             NSLog(@"An error occurred: %@", error);
-                            [Utils showAlert:@"YouTube" message:@"Sorry, an error occurred!"];
+                            [BaseUtils showAlert:@"YouTube" message:@"Sorry, an error occurred!"];
                             [self.delegate directTag:self didFinishWithResults:nil];
                             return;
                         }

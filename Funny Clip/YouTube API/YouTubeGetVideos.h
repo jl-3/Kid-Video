@@ -18,7 +18,7 @@
 // Performs a G+ image search with the given query, will return
 // by calling googlePlusImageSearch:didFinishWithResults: when completed.
 - (void)getYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)playListId :  (NSString *)nextPageToken : (NSString *)prvPageToken : (int) type;
-
+- (void)getYouTubeFavoriteVideosWithService:(GTLServiceYouTube *)service : (NSString *)playListId ;
 // search
 
 - (void)searchYouTubeVideosWithService:(GTLServiceYouTube *)service : (NSString *)searchKey :  (NSString *)nextPageToken : (NSString *)prvPageToken : (int) type;
@@ -37,5 +37,5 @@
 // 0: Non-loadmore
 - (void)getYouTubeVideos:(YouTubeGetVideos *)getVideos
     didFinishWithResults:(NSArray *)results : (NSString *)nextPageToken : (NSString *)prvPageToken : (int) typeOfResult;
-
+- (void)getYouTubeFavoriteVideos:(YouTubeGetVideos *)getVideos didFinishWithResults:(NSArray *)results;
 @end

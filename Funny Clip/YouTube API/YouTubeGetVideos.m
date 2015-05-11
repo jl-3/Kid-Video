@@ -195,5 +195,71 @@
                     }];
 
 }
+- (void)getYouTubeFavoriteVideosWithService:(GTLServiceYouTube *)service :(NSString *)playListId {
+    // Construct query
+    
+    if (!playListId)  {
+        [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:TYPE_OF_RESULT_NORMAL];
+        return;
+    }
+    GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForPlaylistItemsListWithPart:@"contentDetails"];
+    playlistItemsListQuery.maxResults = 20l;
+    playlistItemsListQuery.playlistId =  playListId;
+    
+    // This callback uses the block syntax
+    
+    [service executeQuery:playlistItemsListQuery
+     
+        completionHandler:^(GTLServiceTicket *ticket, GTLYouTubePlaylistItemListResponse
+                            
+                            *response, NSError *error) {
+            
+            if (error) {
+                [self.delegate getYouTubeFavoriteVideos: self didFinishWithResults:nil];
+                return;
+            }
+            
+            NSLog(@"Finished API call");
+           
+            NSMutableArray *videoIds = [NSMutableArray arrayWithCapacity:response.items.count];
+            
+            for (GTLYouTubePlaylistItem *playlistItem in response.items) {
+                
+                [videoIds addObject:playlistItem.contentDetails.videoId];
+                
+            }
+            
+            GTLQueryYouTube *videosListQuery = [GTLQueryYouTube queryForVideosListWithPart:@"id,contentDetails,snippet,status,statistics"];
+            videosListQuery.identifier = [videoIds componentsJoinedByString: @","];
+            
+            
+            [service executeQuery:videosListQuery
+             
+                completionHandler:^(GTLServiceTicket *ticket, GTLYouTubeVideoListResponse
+                                    
+                                    *response, NSError *error) {
+                    if (error) {
+                       [self.delegate getYouTubeFavoriteVideos: self didFinishWithResults:nil];                        return;
+                    }
+                    
+                    NSLog(@"Finished API call");
+                    NSMutableArray *videos = [NSMutableArray arrayWithCapacity:response.items.count];
+                    VideoData *vData;
+                    
+                    for (GTLYouTubeVideo *video in response.items){
+                        if ([@"public" isEqualToString:video.status.privacyStatus]){
+                            vData = [VideoData alloc];
+                            vData.video = video;
+                            [videos addObject:vData];
+                        }
+                    }
+                    
+                [self.delegate getYouTubeFavoriteVideos: self didFinishWithResults:videos];
+                    
+                    
+                }];
+        }];
+    
+}
 
 @end

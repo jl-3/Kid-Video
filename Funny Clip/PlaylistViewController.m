@@ -28,8 +28,8 @@
 
 // BaseURLString
 static NSString * const BaseURLStringDropBox_1 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
-static NSString * const BaseURLStringDropBox_2 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
-static NSString * const BaseURLStringGoogle =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
+//static NSString * const BaseURLStringDropBox_2 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
+static NSString * const BaseURLStringGoogle =@"https://drive.google.com/uc?export=download&id=0B45IYpZpvVu-NGFqQXhEZmhVbVE";
 static NSString * const BaseURLStringGit =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
 
 
@@ -109,8 +109,7 @@ static NSString * const BaseURLStringGit =@"https://www.dropbox.com/s/msp70rmare
         [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
         
         [[self navigationController] pushViewController:[self createAuthController] animated:YES];
-        
-    } else {
+       } else {
     [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationLandscapeLeft] forKey:@"orientation"];
         isTheFirstTime= YES;
         // [self.listViewColectionView setHidden:YES];
@@ -209,7 +208,14 @@ static NSString * const BaseURLStringGit =@"https://www.dropbox.com/s/msp70rmare
     [[self navigationController] pushViewController:viewController animated:YES];
 }
 #pragma mark - YouTubeGetUploadsDelegate methods
-
+- (void)getYouTubeFavoriteVideos:(YouTubeGetVideos *)getVideos didFinishWithResults:(NSArray *)results {
+    if (results) {
+    
+        for (VideoData *vidData in results) {
+            [self saveToDBWhenClick:vidData];
+        }
+    }
+}
 - (void)getYouTubeVideos:(YouTubeGetVideos *)getVideos didFinishWithResults:(NSArray *)results : (NSString*) nextPageTokenThis : (NSString *) prvPageTokenThis : (int ) typeOfResultThis {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 
@@ -270,7 +276,8 @@ static NSString * const BaseURLStringGit =@"https://www.dropbox.com/s/msp70rmare
 }
 - (void ) checkNetworkStatus {
         if (!isLoadedJson) {
-            [self loadDataJson];
+            [self loadDataJson: BaseURLStringGoogle];
+            
         }
 }
 - (void) checkDurationTime {
@@ -296,10 +303,11 @@ static NSString * const BaseURLStringGit =@"https://www.dropbox.com/s/msp70rmare
     [self.searchBarView resignFirstResponder];
     _tap.enabled = NO;
 }
-- (void) loadDataJson {
+- (void) loadDataJson: (NSString * ) baseURLString {
    
     if (isLoadedJson) return;
-    NSURL *url = [NSURL URLWithString:BaseURLStringDropBox_1];
+    
+    NSURL *url = [NSURL URLWithString:baseURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     mPlayLists = [NSMutableArray array];
     
@@ -318,7 +326,7 @@ static NSString * const BaseURLStringGit =@"https://www.dropbox.com/s/msp70rmare
         {
             NSObject *tmpObject;
             tmpObject= [BaseUtils objectAtIndex:tmpArray:i];
-            // NSLog([tmpObject valueForKey:@"playListId"]);
+            // NSLodropg([tmpObject valueForKey:@"playListId"]);
             if (tmpObject) {
             PlayListModel *mPlayListModel = [PlayListModel PlayListWithDictionary:
                                              @{ @"playListId":[tmpObject valueForKey:@"playListId"],
@@ -332,14 +340,24 @@ static NSString * const BaseURLStringGit =@"https://www.dropbox.com/s/msp70rmare
         //[MBProgressHUD hideHUDForView:self.playerView animated:YES];
         isLoadedJson = YES;
         NSString *playListIdTmp=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :0]).playListId;
+        NSString *playListIdFavorite=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :3]).playListId;
         [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : IS_GET_NORMAL_PAGE];
-        
+       
+        // get favorite  if is the first time;
+        if (mFavoriteVideos)
+            if (mFavoriteVideos.count == 0)
+                [self.getVideos getYouTubeFavoriteVideosWithService:self.youtubeService :playListIdFavorite];
         // [self.SimpleTableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
 
        [BaseUtils showAlert:POPUP_TITLE_NETWORK message:POPUP_INFO_LOAD_DATA_ERROR];
         [MBProgressHUD hideHUDForView:self.playerView animated:YES];
         isLoadedJson = NO;
+
+        if ([baseURLString isEqualToString:BaseURLStringDropBox_1 ])
+              [self loadDataJson : BaseURLStringGoogle];
+        else if ([baseURLString isEqualToString:BaseURLStringGoogle ])
+                [self loadDataJson : BaseURLStringGit];
     }];
     
     // 5

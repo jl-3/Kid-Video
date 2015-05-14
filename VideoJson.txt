@@ -1,20 +1,31 @@
-[
-  {
-    "MyPlayLists": [
+{
+  "version": 1.0,
+  "message": "success",
+  "MyPlayLists": [
+    {
+      "playListId": "PLzB9NRNjGRgyMwT8HTXHotQSReKNUoh-d",
+      "playListName": "Nhac Thieu Nhi"
+    },
+    {
+      "playListId": "PLzB9NRNjGRgyzA34r0wMpozmw6vQDTx7u",
+      "playListName":"Ke Chuyen"
+    },    
+    {
+      "playListId": "PLzB9NRNjGRgw_ZUyt4f801-ooKE4hKUbt",
+      "playListName":"Hoat Hinh"  
+    },
+	{
+      "playListId": "PLzB9NRNjGRgxH9c97gFLdUgE0Cpg8qXEr",
+      "playListName":"Favorite List"  
+    }
+  
+  ],
+  "MyFistVideos": [
       {
-        "playListId": "PLzB9NRNjGRgyMwT8HTXHotQSReKNUoh-d",
-        "playListName": "Nhac Thieu Nhi"
+    "videoId": "GstTC5LmE1Q"
       },
       {
-        "playListId": "PLI6jqRNBP79mQOn3TIOf-EWe8QkMbSbGG",
-        "playListName": "Nhac JANTV"
+    "videoId": "jlDDxg7gxLU"
       }
-    ],
-    "MyChannels": [
-      {
-        "channelId": "asdasd",
-        "channelName": "nhhdasnnd"
-      }
-    ]
-  }
-]
+   ] 
+} 

@@ -17,13 +17,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //  CGRect *frame= [[UIScreen mainScreen] bounds];
+    CGRect frame = [[UIScreen mainScreen] bounds];
+    //frame.origin.y = 20;
+//    [self.window setFrame:frame];
+    
+    self.window = [[UIWindow alloc] initWithFrame:frame];
+    
+//    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.clipsToBounds = YES;
     // Override point for customization after application launch.
     self.navigationController = [[BaseNavigationController alloc] init];
  //  self.tabBarController = [[BaseTabBarController alloc] initWithNibName:@"BaseTabBarController" bundle:nil];
-   self.window.rootViewController = self.navigationController;
-
-    
+    self.window.rootViewController = self.navigationController;
+    self.window.backgroundColor = [UIColor clearColor];
+    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent];
+    [self.window makeKeyAndVisible];
 
     return YES;
 }

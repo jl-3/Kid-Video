@@ -30,7 +30,7 @@
 static NSString * const BaseURLStringDropBox_1 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
 //static NSString * const BaseURLStringDropBox_2 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
 static NSString * const BaseURLStringGoogle =@"https://drive.google.com/uc?export=download&id=0B45IYpZpvVu-NGFqQXhEZmhVbVE";
-static NSString * const BaseURLStringGit =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
+static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/trongnhan68/Kid-Video/master/VideoJson.txt";
 
 
 #pragma mark - Init Data
@@ -90,12 +90,12 @@ static NSString * const BaseURLStringGit =@"https://www.dropbox.com/s/msp70rmare
 #pragma mark - ViewDid
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self.navigationController setNavigationBarHidden:YES];
-    
+   // [self.navigationController setNavigationBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-   
+    
     
     self.youtubeService = [[GTLServiceYouTube alloc] init];
     self.youtubeService.authorizer =
@@ -217,7 +217,7 @@ static NSString * const BaseURLStringGit =@"https://www.dropbox.com/s/msp70rmare
     }
 }
 - (void)getYouTubeVideos:(YouTubeGetVideos *)getVideos didFinishWithResults:(NSArray *)results : (NSString*) nextPageTokenThis : (NSString *) prvPageTokenThis : (int ) typeOfResultThis {
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 
     if (![AFNetworkReachabilityManager sharedManager].reachable) {
     
@@ -307,6 +307,7 @@ static NSString * const BaseURLStringGit =@"https://www.dropbox.com/s/msp70rmare
    
     if (isLoadedJson) return;
     
+//    NSString *tmpStr = @"https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=PLzB9NRNjGRgxH9c97gFLdUgE0Cpg8qXEr&key=AIzaSyA2THPKeUZagzEMi4pg65VqwZRoKWPQ2N0";
     NSURL *url = [NSURL URLWithString:baseURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     mPlayLists = [NSMutableArray array];

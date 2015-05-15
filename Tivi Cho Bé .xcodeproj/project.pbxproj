@@ -32,6 +32,8 @@
 		6955CEBD1ADE76DC0093E1C8 /* BaseTabBarController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6955CEBB1ADE76DC0093E1C8 /* BaseTabBarController.xib */; };
 		69598CC81AE548E5003BE85A /* VideoItemCollectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69598CC61AE548E5003BE85A /* VideoItemCollectCell.m */; };
 		69598CC91AE548E5003BE85A /* VideoItemCollectCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69598CC71AE548E5003BE85A /* VideoItemCollectCell.xib */; };
+		695D10441B04A25C00E1614B /* topbarbase.png in Resources */ = {isa = PBXBuildFile; fileRef = 695D10431B04A25C00E1614B /* topbarbase.png */; };
+		695D10461B04AACF00E1614B /* icon_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 695D10451B04AACF00E1614B /* icon_delete.png */; };
 		6966F07A1AFB4EFF003A03E3 /* _1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6966F0661AFB4EFE003A03E3 /* _1.png */; };
 		6966F07B1AFB4EFF003A03E3 /* AppIcon@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 6966F0671AFB4EFE003A03E3 /* AppIcon@2x~iphone.png */; };
 		6966F07C1AFB4EFF003A03E3 /* AppIcon@3x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 6966F0681AFB4EFE003A03E3 /* AppIcon@3x~iphone.png */; };
@@ -152,6 +154,8 @@
 		69598CC51AE548E5003BE85A /* VideoItemCollectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoItemCollectCell.h; sourceTree = "<group>"; };
 		69598CC61AE548E5003BE85A /* VideoItemCollectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoItemCollectCell.m; sourceTree = "<group>"; };
 		69598CC71AE548E5003BE85A /* VideoItemCollectCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoItemCollectCell.xib; sourceTree = "<group>"; };
+		695D10431B04A25C00E1614B /* topbarbase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = topbarbase.png; sourceTree = "<group>"; };
+		695D10451B04AACF00E1614B /* icon_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_delete.png; sourceTree = "<group>"; };
 		6966F0661AFB4EFE003A03E3 /* _1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = _1.png; path = Resource/_1.png; sourceTree = "<group>"; };
 		6966F0671AFB4EFE003A03E3 /* AppIcon@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon@2x~iphone.png"; path = "Resource/AppIcon@2x~iphone.png"; sourceTree = "<group>"; };
 		6966F0681AFB4EFE003A03E3 /* AppIcon@3x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "AppIcon@3x~iphone.png"; path = "Resource/AppIcon@3x~iphone.png"; sourceTree = "<group>"; };
@@ -520,11 +524,13 @@
 			isa = PBXGroup;
 			children = (
 				6966F0661AFB4EFE003A03E3 /* _1.png */,
+				695D10431B04A25C00E1614B /* topbarbase.png */,
 				6966F0671AFB4EFE003A03E3 /* AppIcon@2x~iphone.png */,
 				6966F0681AFB4EFE003A03E3 /* AppIcon@3x~iphone.png */,
 				6966F0691AFB4EFE003A03E3 /* bg_loading.png */,
 				6966F06A1AFB4EFE003A03E3 /* bg_search.png */,
 				6966F06B1AFB4EFE003A03E3 /* cute_boy.png */,
+				695D10451B04AACF00E1614B /* icon_delete.png */,
 				6966F06C1AFB4EFE003A03E3 /* cute_girl.png */,
 				6966F06D1AFB4EFF003A03E3 /* farme_1.png */,
 				6966F06E1AFB4EFF003A03E3 /* farme_2.png */,
@@ -677,6 +683,7 @@
 				6914A3B51AE74F6D00AAC253 /* iframe-player.html in Resources */,
 				69A8B9601AF6069C00F8069F /* VCAbout.xib in Resources */,
 				6915C7E61ADE05E4005AD7E1 /* LaunchScreen.xib in Resources */,
+				695D10441B04A25C00E1614B /* topbarbase.png in Resources */,
 				69BF14D81AFF08150083EABE /* Localizable.strings in Resources */,
 				6966F07F1AFB4EFF003A03E3 /* cute_boy.png in Resources */,
 				6966F08B1AFB4EFF003A03E3 /* theloai_kechuyen.png in Resources */,
@@ -690,6 +697,7 @@
 				6966F0801AFB4EFF003A03E3 /* cute_girl.png in Resources */,
 				6966F08C1AFB4EFF003A03E3 /* thuvien.png in Resources */,
 				697FB1431ADE9A7700DFE12D /* FunBaseViewController.xib in Resources */,
+				695D10461B04AACF00E1614B /* icon_delete.png in Resources */,
 				699F0C081AF5AE410067266C /* tblCellMenu.xib in Resources */,
 				6966F0811AFB4EFF003A03E3 /* farme_1.png in Resources */,
 				691C35971ADEC02D003B33A0 /* Main.storyboard in Resources */,

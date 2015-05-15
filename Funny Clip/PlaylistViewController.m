@@ -30,12 +30,12 @@
 static NSString * const BaseURLStringDropBox_1 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
 //static NSString * const BaseURLStringDropBox_2 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
 static NSString * const BaseURLStringGoogle =@"https://drive.google.com/uc?export=download&id=0B45IYpZpvVu-NGFqQXhEZmhVbVE";
-static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/trongnhan68/Kid-Video/master/VideoJson.txt";
+static NSString * const BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Video/master/VideoJson.txt";
 
 
 #pragma mark - Init Data
 - (void) initDataMenu {
-    mMenuItems = [NSArray arrayWithObjects:@"Purchase",@"Help",@"About", nil];
+    mMenuItems = [NSArray arrayWithObjects:@"Bỏ quảng cáo ",@"Cài đặt ",@"About", nil];
     
 }
 - (void) initItemStatus {
@@ -90,7 +90,7 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
 #pragma mark - ViewDid
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-   // [self.navigationController setNavigationBarHidden:YES];
+    [self.navigationController setNavigationBarHidden:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
 }
 - (void)viewDidLoad {
@@ -142,7 +142,10 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
                                                      name:@"Playback started"
                                                    object:nil];
         
-        
+           [[NSNotificationCenter defaultCenter] addObserver:self
+                                                    selector:@selector(deleteVideoFromFavorite:)
+                                                        name:@"deleteVideoFromFavorite"
+                                                      object:nil];
         //[self loadDataJson];
         if ([self loadAllFavoriteVideosFromDB]) {
             [self.mListVideo reloadData];
@@ -276,7 +279,7 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
 }
 - (void ) checkNetworkStatus {
         if (!isLoadedJson) {
-            [self loadDataJson: BaseURLStringGoogle];
+            [self loadDataJson: BaseURLStringDropBox_1];
             
         }
 }
@@ -634,7 +637,7 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
         } else {
             [cell.descriptionLabel setHidden:YES];
         }
-               
+        cell.videoId = vData.videoId;
          [cell setNeedsLayout];
         NSURL *url = [NSURL URLWithString:vData.thumnailUrl];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -670,9 +673,9 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
             cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
             
         }
+      
         
-        
-        [cell.titleItemOfMenu setTextColor:[UIColor blackColor]];
+        [cell.titleItemOfMenu setTextColor:[UIColor whiteColor]];
         cell.titleItemOfMenu.text = [BaseUtils objectAtIndex:[mMenuItems mutableCopy] : indexPath.row];
         //NSLog( [mMenuItems objectAtIndex:indexPath.row]);
         return cell;
@@ -695,7 +698,7 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
         lbl.textAlignment = UITextAlignmentCenter;
         //lbl.font = [UIFont fontWithName:@"Helvetica-Bold" size:12];
         lbl.text = @"MENU";
-        lbl.textColor = [UIColor blackColor];
+        lbl.textColor = [UIColor whiteColor];
         lbl.shadowColor = [UIColor grayColor];
         lbl.shadowOffset = CGSizeMake(0,1);
         //  lbl.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"my_head_bg"]];
@@ -739,8 +742,9 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (tableView == self.mListVideo) {
-        [tableView deselectRowAtIndexPath:indexPath animated:NO];
+       // [tableView deselectRowAtIndexPath:indexPath animated:NO];
         FavoriteVideoDetail *vidData = (FavoriteVideoDetail *)[ BaseUtils objectAtIndex:[super mFavoriteVideos]:indexPath.row];
         if (!vidData) return ;
         NSString *videoID= vidData.videoId;
@@ -762,6 +766,7 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
         }
     } else {
         switch (indexPath.row) {
+                
             case 0:
                 //
                 
@@ -769,7 +774,7 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
             case 1:
                 break;
             case 2:
-                
+              
                 [[self navigationController] pushViewController:mVCAbout animated:YES];
                 break;
             default:
@@ -842,7 +847,7 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
     self.trailingOfMenuView.constant =  -(self.MenuView.frame.size.width);
     NSLog(@"%f," ,self.ViewListTable.frame.size.width);
     [self.view setNeedsUpdateConstraints];
-    [UIView animateWithDuration:1.f animations:^{
+    [UIView animateWithDuration:0.3f animations:^{
         [self.view layoutIfNeeded];
         
     }];
@@ -850,7 +855,7 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
 - (void) ShowMenuView {
     self.trailingOfMenuView.constant = 0;
     [self.view setNeedsUpdateConstraints];
-    [UIView animateWithDuration:1.f animations:^{
+    [UIView animateWithDuration:0.3f animations:^{
         [self.view layoutIfNeeded];
         
     }];
@@ -1061,7 +1066,21 @@ static NSString * const BaseURLStringGit =@"https://raw.githubusercontent.com/tr
         
     }
 }
-
+- (void)deleteVideoFromFavorite:(NSNotification *) notification {
+      if([notification.name isEqual:@"deleteVideoFromFavorite"] && notification.object != self) {
+      
+          NSString * videoId = ((mVideoCell *)notification.object).videoId;
+          
+          BOOL success = [[DBManager getSharedInstance] removeVideo:videoId];
+          if (success ) {
+          
+              if ([self loadAllFavoriteVideosFromDB]) {
+                  [self.mListVideo reloadData];
+              }
+          }
+      }
+    
+}
 - (void)receivedPlaybackStartedNotification:(NSNotification *) notification {
     //  if([notification.name isEqual:@"Playback started"] && notification.object != self) {
     //      [self.playerViewFace setHidden:NO];

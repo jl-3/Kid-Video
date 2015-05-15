@@ -20,11 +20,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
        CGRect screenSize = [UIScreen mainScreen].bounds;
-  
-        //    self.baseViewController = [[FunBaseViewController alloc] initWithNibName:@"FunBaseViewController" bundle:nil];
-        //    self.baseViewController.delegate = self;
-        //    [self pushViewController:_baseViewController animated:NO];
+    [self.navigationBar setTranslucent:YES];
+    self.navigationBar.barStyle = UIBarStyleBlack;
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    //[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
+   // [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"topbarbase"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationItem.title = @"hello";
+   // [self addNavigationbarItems];
     
+    [self.navigationController.view setBackgroundColor:[UIColor blackColor]];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         NSLog(@"Ipad: %f",screenSize.size.height);
         self.PlayListViewController = [[PlaylistViewController alloc] initWithNibName:@"IpadPlayListViewController" bundle:nil];

@@ -16,7 +16,8 @@
 
 +(DBManager*)getSharedInstance;
 -(BOOL)saveVideo:(FavoriteVideoDetail *) mVideoItem;
--(BOOL)removeVideo:(int ) position;
+-(BOOL)removeVideos:(int ) position;
+-(BOOL)removeVideo:(NSString * ) videoId;
 -(BOOL)updateVideo:(FavoriteVideoDetail *) mVideoItem;
 -(NSArray*) findByVideoId:(NSString*)videoId;
 -(NSArray*) getAllVideos;

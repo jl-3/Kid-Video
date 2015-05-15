@@ -18,13 +18,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.view setBackgroundColor:[UIColor blackColor]];
-    [self.titleVC setTextColor:[UIColor whiteColor]];
+    //[self.view setBackgroundColor:[UIColor blackColor]];
+    //[self.titleVC setTextColor:[UIColor whiteColor]];
+    
     
 }
 - (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
+//    [self.navigationItem.leftBarButtonItem setTitle:@"he"];
+//    [self.navigationController.view setBackgroundColor:[UIColor blackColor]];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

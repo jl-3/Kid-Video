@@ -301,7 +301,9 @@
                         <constraint firstItem="UAt-OJ-J4g" firstAttribute="leading" secondItem="npn-eB-Bwk" secondAttribute="leading" id="rM0-84-any"/>
                         <constraint firstAttribute="trailing" secondItem="UAt-OJ-J4g" secondAttribute="trailing" id="tpD-Sd-upT"/>
                         <constraint firstAttribute="bottom" secondItem="ibj-eV-dOQ" secondAttribute="bottom" constant="10" id="v2l-y6-5i7"/>
-                        <constraint firstItem="nWy-69-E2J" firstAttribute="leading" secondItem="ibj-eV-dOQ" secondAttribute="trailing" constant="19" id="ySa-Xo-5em"/>
+                        <constraint firstItem="nWy-69-E2J" firstAttribute="leading" secondItem="ibj-eV-dOQ" secondAttribute="trailing" constant="19" id="ySa-Xo-5em">
+                            <variation key="heightClass=regular-widthClass=regular" constant="10"/>
+                        </constraint>
                     </constraints>
                     <variation key="default">
                         <mask key="subviews">
@@ -669,16 +671,16 @@
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="vy0-Sc-SXr">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <color key="sectionIndexColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                            <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="MQ1-YT-wJk"/>
                                 <outlet property="delegate" destination="-1" id="TrL-AQ-0Fs"/>
                             </connections>
                         </tableView>
                     </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="vy0-Sc-SXr" firstAttribute="leading" secondItem="77l-3T-jJ3" secondAttribute="leading" id="143-Z9-qzu"/>

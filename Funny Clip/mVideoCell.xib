@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -48,14 +49,29 @@
                             </mask>
                         </variation>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQb-XY-hJl">
+                        <rect key="frame" x="0.0" y="0.0" width="40" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="Nkh-0c-1FF"/>
+                            <constraint firstAttribute="width" constant="40" id="aMZ-n6-y3z"/>
+                        </constraints>
+                        <state key="normal" title="Button" backgroundImage="icon_delete.png">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="actionClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dl8-CX-U3w"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.95686280727386475" green="0.90980398654937744" blue="0.83529418706893921" alpha="1" colorSpace="deviceRGB"/>
                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="LDf-hG-g6X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2dB-Ts-YcL"/>
+                    <constraint firstItem="oQb-XY-hJl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="2i6-am-uG5"/>
                     <constraint firstItem="LDf-hG-g6X" firstAttribute="bottom" secondItem="Dkd-vd-QiA" secondAttribute="bottom" id="6HM-pg-KAX"/>
                     <constraint firstItem="iAv-p7-LNw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="9CH-kW-ugy"/>
                     <constraint firstItem="Dkd-vd-QiA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Dwn-53-xln"/>
+                    <constraint firstItem="oQb-XY-hJl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Phl-Au-wkj"/>
                     <constraint firstItem="Dkd-vd-QiA" firstAttribute="leading" secondItem="LDf-hG-g6X" secondAttribute="leading" id="XNb-Ia-gRF"/>
                     <constraint firstItem="iAv-p7-LNw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="15" id="dNS-du-tjJ"/>
                     <constraint firstItem="Dkd-vd-QiA" firstAttribute="trailing" secondItem="LDf-hG-g6X" secondAttribute="trailing" id="fp1-KW-xCa"/>
@@ -74,6 +90,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="backgroundImage" destination="Dkd-vd-QiA" id="N05-Ey-6eq"/>
+                <outlet property="btnDelete" destination="oQb-XY-hJl" id="uDu-Vp-mRO"/>
                 <outlet property="descriptionLabel" destination="iAv-p7-LNw" id="g2U-EA-epE"/>
                 <outlet property="titleLabel" destination="LDf-hG-g6X" id="TQU-ys-JIk"/>
             </connections>
@@ -82,5 +99,6 @@
     </objects>
     <resources>
         <image name="farme_2.png" width="450" height="333"/>
+        <image name="icon_delete.png" width="640" height="435"/>
     </resources>
 </document>

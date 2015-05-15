@@ -58,4 +58,11 @@
     [super layoutIfNeeded];
     [super setNeedsUpdateConstraints];
 }
+- (IBAction)actionClick:(UIButton *)sender {
+    
+    if (sender == self.btnDelete) {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteVideoFromFavorite" object:self];
+         
+    }
+}
 @end

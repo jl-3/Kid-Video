@@ -20,12 +20,13 @@
     // Do any additional setup after loading the view from its nib.
     [self.view setBackgroundColor:[UIColor blackColor]];
     [self.navigationController setNavigationBarHidden:NO];
-    [self.tabBarController setTitle:@"dasds"];
+   
     self.mFavoriteVideos = [NSMutableArray array];
+    
+  
+
 
 }
-
-
 
 - (BOOL) loadAllFavoriteVideosFromDB {
         NSString *alertString = @"Data Insertion failed";
@@ -43,14 +44,14 @@
         NSLog(@"load all data OK");
         int maxSizeOfList=100;
         if (self.mFavoriteVideos.count == maxSizeOfList ) {
-           BOOL success = [[DBManager getSharedInstance] removeVideo:0];
+           BOOL success = [[DBManager getSharedInstance] removeVideos:0];
             if (success) {
                 [self loadAllFavoriteVideosFromDB];
             }
 
         }
         if (self.mFavoriteVideos.count == maxSizeOfList*2 ) {
-            BOOL success = [[DBManager getSharedInstance] removeVideo:1];
+            BOOL success = [[DBManager getSharedInstance] removeVideos:1];
             if (success) {
                 [self loadAllFavoriteVideosFromDB];
             }
@@ -90,21 +91,21 @@
 -(void) setLeftButtonNavigationBar
 {
         self.navigationItem.leftBarButtonItem.title = @"BackView";
-        self.navigationController.navigationBar.backItem.leftBarButtonItem.title = @"backview";
-        //self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"Purple.png"];
-        UIImage *buttonImage = [UIImage imageNamed:@"Purple.png"];
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setImage:buttonImage forState:UIControlStateNormal];
-        button.frame = CGRectMake(0, 0, buttonImage.size.width/2, buttonImage.size.height/2);
-        button.titleLabel.text = @"popview";
-        [button addTarget:self action:@selector(backBtnNavigationBar) forControlEvents:UIControlEventTouchUpInside];
-    
-        UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    self.navigationItem.leftBarButtonItem = customBarItem;
-    [self.navigationItem setLeftBarButtonItem:customBarItem];
+//        self.navigationController.navigationBar.backItem.leftBarButtonItem.title = @"backview";
+//        //self.navigationItem.leftBarButtonItem.image = [UIImage imageNamed:@"Purple.png"];
+//        UIImage *buttonImage = [UIImage imageNamed:@"YEUTHICH.PNG"];
+//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [button setImage:buttonImage forState:UIControlStateNormal];
+//        button.frame = CGRectMake(0, 0, buttonImage.size.width/2, buttonImage.size.height/2);
+//        button.titleLabel.text = @"popview";
+//        [button addTarget:self action:@selector(backBtnNavigationBar) forControlEvents:UIControlEventTouchUpInside];
+//    
+//        UIBarButtonItem *customBarItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+//    self.navigationItem.leftBarButtonItem = customBarItem;
+//    [self.navigationItem setLeftBarButtonItem:customBarItem];
        //[self.navigationItem setLeftBarButtonItem:[UIBarButtonItem new]];
        //self.navigationItem.leftBarButtonItem.title = @"Back";
-
+   // [self.navigationController setBackgroundColor:[UIColor blackColor]];
     
 }
 - (void)backBtnNavigationBar

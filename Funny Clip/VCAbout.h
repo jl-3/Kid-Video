@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "FunBaseViewController.h"
+#import "BaseNavigationController.h"
 @interface VCAbout : FunBaseViewController
 @property (weak, nonatomic) IBOutlet UILabel *titleVC;
 

@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  Tivi Cho Bé 
+
+  Created by NhanNLT on 5/19/15.
+  Copyright (c) 2015 NhanNLT. All rights reserved.
+*/
+"POPUP_TITLE_NETWORK" = "Network errror! ";
+"POPUP_INFO_NETWORK_ERROR" = "Can not connect to internet, Please check your Wifi/3G ! ";
+"POPUP_INFO_LOAD_DATA_ERROR" =  "Get data failed, Please try again ! ";
+"ITEMS_MENU" = "";
+"ABOUT_APP" = "";

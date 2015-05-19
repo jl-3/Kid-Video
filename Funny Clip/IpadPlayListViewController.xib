@@ -55,9 +55,10 @@
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YEUTHICH.png" translatesAutoresizingMaskIntoConstraints="NO" id="xjs-Jh-htz">
                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </imageView>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="xjs-Jh-htz" secondAttribute="trailing" id="4bG-tR-TRS"/>
                                 <constraint firstItem="xjs-Jh-htz" firstAttribute="leading" secondItem="b2X-Kr-RQo" secondAttribute="leading" id="Nom-wl-xYU"/>

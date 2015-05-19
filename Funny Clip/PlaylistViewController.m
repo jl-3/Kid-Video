@@ -27,15 +27,26 @@
 @synthesize youtubeService;
 
 // BaseURLString
-static NSString * const BaseURLStringDropBox_1 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
+static NSString * BaseURLStringDropBox_1 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
 //static NSString * const BaseURLStringDropBox_2 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
-static NSString * const BaseURLStringGoogle =@"https://drive.google.com/uc?export=download&id=0B45IYpZpvVu-NGFqQXhEZmhVbVE";
-static NSString * const BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Video/master/VideoJson.txt";
+static NSString *  BaseURLStringGoogle =@"https://drive.google.com/uc?export=download&id=0B45IYpZpvVu-NGFqQXhEZmhVbVE";
+static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Video/master/VideoJson.txt";
 
+- (void) initValueLocalizable {
+
+    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
+    if ([language isEqualToString:@"vi"]) {
+      BaseURLStringDropBox_1 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
+       
+      BaseURLStringGoogle =@"https://drive.google.com/uc?export=download&id=0B45IYpZpvVu-NGFqQXhEZmhVbVE";
+      BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Video/master/VideoJson.txt";
+    
+    } 
+}
 
 #pragma mark - Init Data
 - (void) initDataMenu {
-    mMenuItems = [NSArray arrayWithObjects:@"Bỏ quảng cáo ",@"Cài đặt ",@"About", nil];
+    mMenuItems = [NSArray arrayWithObjects:@"Remove Ads",@"Setting ",@"About", nil];
     
 }
 - (void) initItemStatus {
@@ -53,6 +64,11 @@ static NSString * const BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/K
     [self.navigationController setNavigationBarHidden:YES];
     [self.playButton setBackgroundImage:[UIImage imageNamed:BTN_NAME_PLAY] forState:UIControlStateNormal];
     [self.playButton setBackgroundImage:[UIImage imageNamed:BTN_NAME_PAUSE] forState:UIControlStateSelected];
+    
+     [self.btnAmNhac setBackgroundImage:[UIImage imageNamed:BTN_NAME_MUSIC] forState:UIControlStateNormal];
+     [self.btnHoatHinh setBackgroundImage:[UIImage imageNamed:BTN_NAME_CARTOON] forState:UIControlStateNormal];
+     [self.btnKeChuyen setBackgroundImage:[UIImage imageNamed:BTN_NAME_STORY] forState:UIControlStateNormal];
+   // [self];
     
     //setup title video playing
     self.titleVideoPlaying.textAlignment= NSTextAlignmentLeft;
@@ -95,7 +111,7 @@ static NSString * const BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/K
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    [self initValueLocalizable];
     
     self.youtubeService = [[GTLServiceYouTube alloc] init];
     self.youtubeService.authorizer =

@@ -20,6 +20,7 @@
                 <outlet property="btnHoatHinh" destination="tBK-ha-Zz0" id="pyR-Nr-NNG"/>
                 <outlet property="btnKeChuyen" destination="ZvP-Eg-4Sf" id="qCK-B9-auR"/>
                 <outlet property="btnMenu" destination="UIC-uQ-Pbh" id="VJi-sz-OkY"/>
+                <outlet property="btnRecent" destination="Tvb-2U-Ca1" id="b6w-nd-GW6"/>
                 <outlet property="btnSearch" destination="nDh-uH-gWw" id="Vys-UG-ys6"/>
                 <outlet property="heighButtonTheLoai" destination="y0G-CS-coJ" id="wu9-ON-5qD"/>
                 <outlet property="leadingAmNhac" destination="gRx-Rr-rzQ" id="R0Y-0B-GD6"/>
@@ -256,14 +257,6 @@
                             <exclude reference="UIC-uQ-Pbh"/>
                         </mask>
                         <mask key="constraints">
-                            <exclude reference="2eq-0L-tJg"/>
-                            <exclude reference="hZq-Vk-EbI"/>
-                            <exclude reference="pjv-gW-QXH"/>
-                            <exclude reference="qNz-Z4-uFs"/>
-                            <exclude reference="1W7-pR-TIv"/>
-                            <exclude reference="3ig-FY-ugf"/>
-                            <exclude reference="TxC-1k-KPb"/>
-                            <exclude reference="hKr-U5-ksK"/>
                             <exclude reference="Bdg-yX-weq"/>
                             <exclude reference="GK3-fU-QW8"/>
                             <exclude reference="Gp0-Dj-NiT"/>
@@ -272,6 +265,14 @@
                             <exclude reference="Ae8-Og-gUz"/>
                             <exclude reference="OkW-hh-fuf"/>
                             <exclude reference="hIJ-r3-P3l"/>
+                            <exclude reference="2eq-0L-tJg"/>
+                            <exclude reference="hZq-Vk-EbI"/>
+                            <exclude reference="pjv-gW-QXH"/>
+                            <exclude reference="qNz-Z4-uFs"/>
+                            <exclude reference="1W7-pR-TIv"/>
+                            <exclude reference="3ig-FY-ugf"/>
+                            <exclude reference="TxC-1k-KPb"/>
+                            <exclude reference="hKr-U5-ksK"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=compact">
@@ -282,14 +283,6 @@
                             <include reference="UIC-uQ-Pbh"/>
                         </mask>
                         <mask key="constraints">
-                            <include reference="2eq-0L-tJg"/>
-                            <include reference="hZq-Vk-EbI"/>
-                            <include reference="pjv-gW-QXH"/>
-                            <include reference="qNz-Z4-uFs"/>
-                            <include reference="1W7-pR-TIv"/>
-                            <include reference="3ig-FY-ugf"/>
-                            <include reference="TxC-1k-KPb"/>
-                            <include reference="hKr-U5-ksK"/>
                             <include reference="Bdg-yX-weq"/>
                             <include reference="GK3-fU-QW8"/>
                             <include reference="Gp0-Dj-NiT"/>
@@ -298,6 +291,14 @@
                             <exclude reference="Ae8-Og-gUz"/>
                             <include reference="OkW-hh-fuf"/>
                             <include reference="hIJ-r3-P3l"/>
+                            <include reference="2eq-0L-tJg"/>
+                            <include reference="hZq-Vk-EbI"/>
+                            <include reference="pjv-gW-QXH"/>
+                            <include reference="qNz-Z4-uFs"/>
+                            <include reference="1W7-pR-TIv"/>
+                            <include reference="3ig-FY-ugf"/>
+                            <include reference="TxC-1k-KPb"/>
+                            <include reference="hKr-U5-ksK"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">

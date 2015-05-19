@@ -49,17 +49,25 @@
 		6966F0861AFB4EFF003A03E3 /* icon_search.png in Resources */ = {isa = PBXBuildFile; fileRef = 6966F0721AFB4EFF003A03E3 /* icon_search.png */; };
 		6966F0871AFB4EFF003A03E3 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 6966F0731AFB4EFF003A03E3 /* menu.png */; };
 		6966F0881AFB4EFF003A03E3 /* television.png in Resources */ = {isa = PBXBuildFile; fileRef = 6966F0741AFB4EFF003A03E3 /* television.png */; };
-		6966F0891AFB4EFF003A03E3 /* theloai_amnhac.png in Resources */ = {isa = PBXBuildFile; fileRef = 6966F0751AFB4EFF003A03E3 /* theloai_amnhac.png */; };
-		6966F08A1AFB4EFF003A03E3 /* theloai_hoathinh.png in Resources */ = {isa = PBXBuildFile; fileRef = 6966F0761AFB4EFF003A03E3 /* theloai_hoathinh.png */; };
-		6966F08B1AFB4EFF003A03E3 /* theloai_kechuyen.png in Resources */ = {isa = PBXBuildFile; fileRef = 6966F0771AFB4EFF003A03E3 /* theloai_kechuyen.png */; };
 		6966F08C1AFB4EFF003A03E3 /* thuvien.png in Resources */ = {isa = PBXBuildFile; fileRef = 6966F0781AFB4EFF003A03E3 /* thuvien.png */; };
-		6966F08D1AFB4EFF003A03E3 /* YEUTHICH.png in Resources */ = {isa = PBXBuildFile; fileRef = 6966F0791AFB4EFF003A03E3 /* YEUTHICH.png */; };
 		697FB1421ADE9A7700DFE12D /* FunBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697FB1401ADE9A7700DFE12D /* FunBaseViewController.m */; };
 		697FB1431ADE9A7700DFE12D /* FunBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697FB1411ADE9A7700DFE12D /* FunBaseViewController.xib */; };
 		697FB1481ADEA30900DFE12D /* FirstScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 697FB1461ADEA30900DFE12D /* FirstScreenView.m */; };
 		697FB1491ADEA30900DFE12D /* FirstScreenView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697FB1471ADEA30900DFE12D /* FirstScreenView.xib */; };
 		697FB1531ADEA9AE00DFE12D /* PlaylistViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 697FB1511ADEA9AE00DFE12D /* PlaylistViewController.m */; };
 		697FB1551ADEAB4F00DFE12D /* PlaylistViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697FB1541ADEAB4F00DFE12D /* PlaylistViewController.xib */; };
+		698490B01B0B0D56005E31D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 698490B21B0B0D56005E31D0 /* Localizable.strings */; };
+		698490B31B0B0D5C005E31D0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 698490B51B0B0D5C005E31D0 /* Localizable.strings */; };
+		698490C81B0B137A005E31D0 /* YEUTHICH.png in Resources */ = {isa = PBXBuildFile; fileRef = 698490CA1B0B137A005E31D0 /* YEUTHICH.png */; };
+		698490CB1B0B137E005E31D0 /* theloai_kechuyen.png in Resources */ = {isa = PBXBuildFile; fileRef = 698490CD1B0B137E005E31D0 /* theloai_kechuyen.png */; };
+		698490CE1B0B1382005E31D0 /* theloai_hoathinh.png in Resources */ = {isa = PBXBuildFile; fileRef = 698490D01B0B1382005E31D0 /* theloai_hoathinh.png */; };
+		698490D11B0B1386005E31D0 /* theloai_amnhac.png in Resources */ = {isa = PBXBuildFile; fileRef = 698490D31B0B1386005E31D0 /* theloai_amnhac.png */; };
+		698490D41B0B138D005E31D0 /* theloai_amnhac.png in Resources */ = {isa = PBXBuildFile; fileRef = 698490D61B0B138D005E31D0 /* theloai_amnhac.png */; };
+		698490D71B0B1391005E31D0 /* theloai_hoathinh.png in Resources */ = {isa = PBXBuildFile; fileRef = 698490D91B0B1391005E31D0 /* theloai_hoathinh.png */; };
+		698490DA1B0B1396005E31D0 /* theloai_kechuyen.png in Resources */ = {isa = PBXBuildFile; fileRef = 698490DC1B0B1396005E31D0 /* theloai_kechuyen.png */; };
+		698490DD1B0B139C005E31D0 /* YEUTHICH.png in Resources */ = {isa = PBXBuildFile; fileRef = 698490DF1B0B139C005E31D0 /* YEUTHICH.png */; };
+		698490E71B0B2562005E31D0 /* VCSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 698490E51B0B2562005E31D0 /* VCSetting.m */; };
+		698490E81B0B2562005E31D0 /* VCSetting.xib in Resources */ = {isa = PBXBuildFile; fileRef = 698490E61B0B2562005E31D0 /* VCSetting.xib */; };
 		6999FB521ADF80A300B94D04 /* NMBottomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999FB4F1ADF80A300B94D04 /* NMBottomTabBar.m */; };
 		6999FB531ADF80A300B94D04 /* NMBottomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999FB511ADF80A300B94D04 /* NMBottomTabBarController.m */; };
 		699CDFCA1AE41EF2005851CC /* VideoInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 699CDFC91AE41EF2005851CC /* VideoInfoModel.m */; };
@@ -88,7 +96,6 @@
 		69A8B95F1AF6069C00F8069F /* VCAbout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A8B95D1AF6069C00F8069F /* VCAbout.m */; };
 		69A8B9601AF6069C00F8069F /* VCAbout.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A8B95E1AF6069C00F8069F /* VCAbout.xib */; };
 		69BF14D61AFF02740083EABE /* BaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BF14D51AFF02740083EABE /* BaseUtils.m */; };
-		69BF14D81AFF08150083EABE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69BF14D71AFF08150083EABE /* Localizable.strings */; };
 		69C8A4201AF715B800EB803F /* IpadPlayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C8A41F1AF715B800EB803F /* IpadPlayListViewController.xib */; };
 		69EA86131AE6350800F612FA /* NSURLParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA86121AE6350800F612FA /* NSURLParameters.m */; };
 		69FE692C1AEE7B2500634542 /* FavoriteVideoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE692B1AEE7B2500634542 /* FavoriteVideoDetail.m */; };
@@ -134,7 +141,7 @@
 		6914A3C01AE74F8D00AAC253 /* GTLNetworking_Sources.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GTLNetworking_Sources.m; path = "../../google-api-objectivec-client-read-only/Source/GTLNetworking_Sources.m"; sourceTree = "<group>"; };
 		6914A3C31AE74F9E00AAC253 /* GTLYouTube_Sources.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GTLYouTube_Sources.m; path = "../../google-api-objectivec-client-read-only/Source/Services/YouTube/Generated/GTLYouTube_Sources.m"; sourceTree = "<group>"; };
 		6914A3C51AE7505000AAC253 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = "google-api-objectivec-client-read-only/Source/OAuth2/Touch/GTMOAuth2ViewTouch.xib"; sourceTree = SOURCE_ROOT; };
-		6915C7D21ADE05E4005AD7E1 /* Tivi Cho Bé .app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tivi Cho Bé .app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6915C7D21ADE05E4005AD7E1 /* Video Clip for Kids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Video Clip for Kids.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6915C7D61ADE05E4005AD7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6915C7D71ADE05E4005AD7E1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6915C7D91ADE05E4005AD7E1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -171,11 +178,7 @@
 		6966F0721AFB4EFF003A03E3 /* icon_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_search.png; path = Resource/icon_search.png; sourceTree = "<group>"; };
 		6966F0731AFB4EFF003A03E3 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = Resource/menu.png; sourceTree = "<group>"; };
 		6966F0741AFB4EFF003A03E3 /* television.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = television.png; path = Resource/television.png; sourceTree = "<group>"; };
-		6966F0751AFB4EFF003A03E3 /* theloai_amnhac.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = theloai_amnhac.png; path = Resource/theloai_amnhac.png; sourceTree = "<group>"; };
-		6966F0761AFB4EFF003A03E3 /* theloai_hoathinh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = theloai_hoathinh.png; path = Resource/theloai_hoathinh.png; sourceTree = "<group>"; };
-		6966F0771AFB4EFF003A03E3 /* theloai_kechuyen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = theloai_kechuyen.png; path = Resource/theloai_kechuyen.png; sourceTree = "<group>"; };
 		6966F0781AFB4EFF003A03E3 /* thuvien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thuvien.png; path = Resource/thuvien.png; sourceTree = "<group>"; };
-		6966F0791AFB4EFF003A03E3 /* YEUTHICH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = YEUTHICH.png; path = Resource/YEUTHICH.png; sourceTree = "<group>"; };
 		697FB13F1ADE9A7700DFE12D /* FunBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FunBaseViewController.h; sourceTree = "<group>"; };
 		697FB1401ADE9A7700DFE12D /* FunBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunBaseViewController.m; sourceTree = "<group>"; };
 		697FB1411ADE9A7700DFE12D /* FunBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FunBaseViewController.xib; sourceTree = "<group>"; };
@@ -185,6 +188,25 @@
 		697FB1501ADEA9AE00DFE12D /* PlaylistViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaylistViewController.h; sourceTree = "<group>"; };
 		697FB1511ADEA9AE00DFE12D /* PlaylistViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaylistViewController.m; sourceTree = "<group>"; };
 		697FB1541ADEAB4F00DFE12D /* PlaylistViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlaylistViewController.xib; sourceTree = "<group>"; };
+		698490AE1B0B0C26005E31D0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		698490AF1B0B0C26005E31D0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Main.strings; sourceTree = "<group>"; };
+		698490B11B0B0D56005E31D0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		698490B41B0B0D5C005E31D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		698490C91B0B137A005E31D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/YEUTHICH.png; sourceTree = "<group>"; };
+		698490CC1B0B137E005E31D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/theloai_kechuyen.png; sourceTree = "<group>"; };
+		698490CF1B0B1382005E31D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/theloai_hoathinh.png; sourceTree = "<group>"; };
+		698490D21B0B1386005E31D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Base; path = Base.lproj/theloai_amnhac.png; sourceTree = "<group>"; };
+		698490D51B0B138D005E31D0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vi; path = vi.lproj/theloai_amnhac.png; sourceTree = "<group>"; };
+		698490D81B0B1391005E31D0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vi; path = vi.lproj/theloai_hoathinh.png; sourceTree = "<group>"; };
+		698490DB1B0B1396005E31D0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vi; path = vi.lproj/theloai_kechuyen.png; sourceTree = "<group>"; };
+		698490DE1B0B139C005E31D0 /* vi */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = vi; path = vi.lproj/YEUTHICH.png; sourceTree = "<group>"; };
+		698490E01B0B166F005E31D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/theloai_kechuyen.png; sourceTree = "<group>"; };
+		698490E11B0B1675005E31D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/YEUTHICH.png; sourceTree = "<group>"; };
+		698490E21B0B1678005E31D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/theloai_amnhac.png; sourceTree = "<group>"; };
+		698490E31B0B167B005E31D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = en; path = en.lproj/theloai_hoathinh.png; sourceTree = "<group>"; };
+		698490E41B0B2562005E31D0 /* VCSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSetting.h; sourceTree = "<group>"; };
+		698490E51B0B2562005E31D0 /* VCSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSetting.m; sourceTree = "<group>"; };
+		698490E61B0B2562005E31D0 /* VCSetting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCSetting.xib; sourceTree = "<group>"; };
 		6999FB4E1ADF80A300B94D04 /* NMBottomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMBottomTabBar.h; sourceTree = "<group>"; };
 		6999FB4F1ADF80A300B94D04 /* NMBottomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMBottomTabBar.m; sourceTree = "<group>"; };
 		6999FB501ADF80A300B94D04 /* NMBottomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMBottomTabBarController.h; sourceTree = "<group>"; };
@@ -242,7 +264,6 @@
 		69A8B95E1AF6069C00F8069F /* VCAbout.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCAbout.xib; sourceTree = "<group>"; };
 		69BF14D41AFF02740083EABE /* BaseUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseUtils.h; sourceTree = "<group>"; };
 		69BF14D51AFF02740083EABE /* BaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseUtils.m; sourceTree = "<group>"; };
-		69BF14D71AFF08150083EABE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		69C8A41F1AF715B800EB803F /* IpadPlayListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IpadPlayListViewController.xib; sourceTree = "<group>"; };
 		69EA86111AE6350800F612FA /* NSURLParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSURLParameters.h; sourceTree = "<group>"; };
 		69EA86121AE6350800F612FA /* NSURLParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLParameters.m; sourceTree = "<group>"; };
@@ -314,7 +335,7 @@
 		6915C7D31ADE05E4005AD7E1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6915C7D21ADE05E4005AD7E1 /* Tivi Cho Bé .app */,
+				6915C7D21ADE05E4005AD7E1 /* Video Clip for Kids.app */,
 				6915C7EB1ADE05E4005AD7E1 /* Funny ClipTests.xctest */,
 			);
 			name = Products;
@@ -378,8 +399,35 @@
 				69A8B95C1AF6069C00F8069F /* VCAbout.h */,
 				69A8B95D1AF6069C00F8069F /* VCAbout.m */,
 				69A8B95E1AF6069C00F8069F /* VCAbout.xib */,
+				698490E41B0B2562005E31D0 /* VCSetting.h */,
+				698490E51B0B2562005E31D0 /* VCSetting.m */,
+				698490E61B0B2562005E31D0 /* VCSetting.xib */,
 			);
 			name = AllViewController;
+			sourceTree = "<group>";
+		};
+		698490B61B0B1367005E31D0 /* English */ = {
+			isa = PBXGroup;
+			children = (
+				698490D31B0B1386005E31D0 /* theloai_amnhac.png */,
+				698490D01B0B1382005E31D0 /* theloai_hoathinh.png */,
+				698490CD1B0B137E005E31D0 /* theloai_kechuyen.png */,
+				698490CA1B0B137A005E31D0 /* YEUTHICH.png */,
+			);
+			name = English;
+			path = Resource/English;
+			sourceTree = "<group>";
+		};
+		698490BB1B0B1367005E31D0 /* VietNam */ = {
+			isa = PBXGroup;
+			children = (
+				698490D61B0B138D005E31D0 /* theloai_amnhac.png */,
+				698490D91B0B1391005E31D0 /* theloai_hoathinh.png */,
+				698490DC1B0B1396005E31D0 /* theloai_kechuyen.png */,
+				698490DF1B0B139C005E31D0 /* YEUTHICH.png */,
+			);
+			name = VietNam;
+			path = Resource/VietNam;
 			sourceTree = "<group>";
 		};
 		699CDFC11AE41BE3005851CC /* Model */ = {
@@ -524,6 +572,8 @@
 			isa = PBXGroup;
 			children = (
 				6966F0661AFB4EFE003A03E3 /* _1.png */,
+				698490B61B0B1367005E31D0 /* English */,
+				698490BB1B0B1367005E31D0 /* VietNam */,
 				695D10431B04A25C00E1614B /* topbarbase.png */,
 				6966F0671AFB4EFE003A03E3 /* AppIcon@2x~iphone.png */,
 				6966F0681AFB4EFE003A03E3 /* AppIcon@3x~iphone.png */,
@@ -540,12 +590,9 @@
 				6966F0721AFB4EFF003A03E3 /* icon_search.png */,
 				6966F0731AFB4EFF003A03E3 /* menu.png */,
 				6966F0741AFB4EFF003A03E3 /* television.png */,
-				6966F0751AFB4EFF003A03E3 /* theloai_amnhac.png */,
-				6966F0761AFB4EFF003A03E3 /* theloai_hoathinh.png */,
-				6966F0771AFB4EFF003A03E3 /* theloai_kechuyen.png */,
 				6966F0781AFB4EFF003A03E3 /* thuvien.png */,
-				6966F0791AFB4EFF003A03E3 /* YEUTHICH.png */,
-				69BF14D71AFF08150083EABE /* Localizable.strings */,
+				698490B21B0B0D56005E31D0 /* Localizable.strings */,
+				698490B51B0B0D5C005E31D0 /* Localizable.strings */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -601,7 +648,7 @@
 			);
 			name = "Funny Clip";
 			productName = "Funny Clip";
-			productReference = 6915C7D21ADE05E4005AD7E1 /* Tivi Cho Bé .app */;
+			productReference = 6915C7D21ADE05E4005AD7E1 /* Video Clip for Kids.app */;
 			productType = "com.apple.product-type.application";
 		};
 		6915C7EA1ADE05E4005AD7E1 /* Funny ClipTests */ = {
@@ -646,7 +693,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6915C7CD1ADE05E4005AD7E1 /* Build configuration list for PBXProject "Tivi Cho Bé " */;
+			buildConfigurationList = 6915C7CD1ADE05E4005AD7E1 /* Build configuration list for PBXProject "Video Clip for Kids" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -675,7 +722,9 @@
 				6966F07C1AFB4EFF003A03E3 /* AppIcon@3x~iphone.png in Resources */,
 				6914A3C61AE7505000AAC253 /* GTMOAuth2ViewTouch.xib in Resources */,
 				6966F0831AFB4EFF003A03E3 /* icon_menu.png in Resources */,
+				698490E81B0B2562005E31D0 /* VCSetting.xib in Resources */,
 				6966F07D1AFB4EFF003A03E3 /* bg_loading.png in Resources */,
+				698490D11B0B1386005E31D0 /* theloai_amnhac.png in Resources */,
 				69A876A01AE394300073C6B1 /* mVideoCell.xib in Resources */,
 				69598CC91AE548E5003BE85A /* VideoItemCollectCell.xib in Resources */,
 				6955CEB81ADE76B60093E1C8 /* BaseNavigationController.xib in Resources */,
@@ -683,31 +732,35 @@
 				6914A3B51AE74F6D00AAC253 /* iframe-player.html in Resources */,
 				69A8B9601AF6069C00F8069F /* VCAbout.xib in Resources */,
 				6915C7E61ADE05E4005AD7E1 /* LaunchScreen.xib in Resources */,
+				698490DA1B0B1396005E31D0 /* theloai_kechuyen.png in Resources */,
 				695D10441B04A25C00E1614B /* topbarbase.png in Resources */,
-				69BF14D81AFF08150083EABE /* Localizable.strings in Resources */,
+				698490B01B0B0D56005E31D0 /* Localizable.strings in Resources */,
 				6966F07F1AFB4EFF003A03E3 /* cute_boy.png in Resources */,
-				6966F08B1AFB4EFF003A03E3 /* theloai_kechuyen.png in Resources */,
 				6966F0821AFB4EFF003A03E3 /* farme_2.png in Resources */,
-				6966F0891AFB4EFF003A03E3 /* theloai_amnhac.png in Resources */,
+				698490C81B0B137A005E31D0 /* YEUTHICH.png in Resources */,
+				698490CB1B0B137E005E31D0 /* theloai_kechuyen.png in Resources */,
 				69C8A4201AF715B800EB803F /* IpadPlayListViewController.xib in Resources */,
 				6966F07E1AFB4EFF003A03E3 /* bg_search.png in Resources */,
 				6915C7E31ADE05E4005AD7E1 /* Images.xcassets in Resources */,
+				698490B31B0B0D5C005E31D0 /* Localizable.strings in Resources */,
 				6966F07A1AFB4EFF003A03E3 /* _1.png in Resources */,
 				6966F0851AFB4EFF003A03E3 /* icon_play_black.png in Resources */,
+				698490D41B0B138D005E31D0 /* theloai_amnhac.png in Resources */,
 				6966F0801AFB4EFF003A03E3 /* cute_girl.png in Resources */,
 				6966F08C1AFB4EFF003A03E3 /* thuvien.png in Resources */,
+				698490DD1B0B139C005E31D0 /* YEUTHICH.png in Resources */,
 				697FB1431ADE9A7700DFE12D /* FunBaseViewController.xib in Resources */,
 				695D10461B04AACF00E1614B /* icon_delete.png in Resources */,
 				699F0C081AF5AE410067266C /* tblCellMenu.xib in Resources */,
+				698490D71B0B1391005E31D0 /* theloai_hoathinh.png in Resources */,
 				6966F0811AFB4EFF003A03E3 /* farme_1.png in Resources */,
+				698490CE1B0B1382005E31D0 /* theloai_hoathinh.png in Resources */,
 				691C35971ADEC02D003B33A0 /* Main.storyboard in Resources */,
 				697FB1551ADEAB4F00DFE12D /* PlaylistViewController.xib in Resources */,
 				6955CEBD1ADE76DC0093E1C8 /* BaseTabBarController.xib in Resources */,
 				6966F0841AFB4EFF003A03E3 /* icon_pause_black.png in Resources */,
 				697FB1491ADEA30900DFE12D /* FirstScreenView.xib in Resources */,
-				6966F08D1AFB4EFF003A03E3 /* YEUTHICH.png in Resources */,
 				6966F07B1AFB4EFF003A03E3 /* AppIcon@2x~iphone.png in Resources */,
-				6966F08A1AFB4EFF003A03E3 /* theloai_hoathinh.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -791,6 +844,7 @@
 				699D84D31AE52ABD00C97851 /* VideoLink.m in Sources */,
 				699D85161AE52AD200C97851 /* JSONModel.m in Sources */,
 				699D85191AE52AD200C97851 /* JSONModelError.m in Sources */,
+				698490E71B0B2562005E31D0 /* VCSetting.m in Sources */,
 				6914A3BD1AE74F6D00AAC253 /* YouTubeGetVideos.m in Sources */,
 				69EA86131AE6350800F612FA /* NSURLParameters.m in Sources */,
 				699CDFCA1AE41EF2005851CC /* VideoInfoModel.m in Sources */,
@@ -833,6 +887,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6915C7E51ADE05E4005AD7E1 /* Base */,
+				698490AE1B0B0C26005E31D0 /* vi */,
 			);
 			name = LaunchScreen.xib;
 			sourceTree = "<group>";
@@ -841,8 +896,94 @@
 			isa = PBXVariantGroup;
 			children = (
 				691C35961ADEC02D003B33A0 /* Base */,
+				698490AF1B0B0C26005E31D0 /* vi */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		698490B21B0B0D56005E31D0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				698490B11B0B0D56005E31D0 /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		698490B51B0B0D5C005E31D0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				698490B41B0B0D5C005E31D0 /* Base */,
+			);
+			name = Localizable.strings;
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		698490CA1B0B137A005E31D0 /* YEUTHICH.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				698490C91B0B137A005E31D0 /* Base */,
+				698490E11B0B1675005E31D0 /* en */,
+			);
+			name = YEUTHICH.png;
+			sourceTree = "<group>";
+		};
+		698490CD1B0B137E005E31D0 /* theloai_kechuyen.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				698490CC1B0B137E005E31D0 /* Base */,
+				698490E01B0B166F005E31D0 /* en */,
+			);
+			name = theloai_kechuyen.png;
+			sourceTree = "<group>";
+		};
+		698490D01B0B1382005E31D0 /* theloai_hoathinh.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				698490CF1B0B1382005E31D0 /* Base */,
+				698490E31B0B167B005E31D0 /* en */,
+			);
+			name = theloai_hoathinh.png;
+			sourceTree = "<group>";
+		};
+		698490D31B0B1386005E31D0 /* theloai_amnhac.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				698490D21B0B1386005E31D0 /* Base */,
+				698490E21B0B1678005E31D0 /* en */,
+			);
+			name = theloai_amnhac.png;
+			sourceTree = "<group>";
+		};
+		698490D61B0B138D005E31D0 /* theloai_amnhac.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				698490D51B0B138D005E31D0 /* vi */,
+			);
+			name = theloai_amnhac.png;
+			sourceTree = "<group>";
+		};
+		698490D91B0B1391005E31D0 /* theloai_hoathinh.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				698490D81B0B1391005E31D0 /* vi */,
+			);
+			name = theloai_hoathinh.png;
+			sourceTree = "<group>";
+		};
+		698490DC1B0B1396005E31D0 /* theloai_kechuyen.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				698490DB1B0B1396005E31D0 /* vi */,
+			);
+			name = theloai_kechuyen.png;
+			sourceTree = "<group>";
+		};
+		698490DF1B0B139C005E31D0 /* YEUTHICH.png */ = {
+			isa = PBXVariantGroup;
+			children = (
+				698490DE1B0B139C005E31D0 /* vi */,
+			);
+			name = YEUTHICH.png;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -957,7 +1098,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				PRODUCT_NAME = "Tivi Cho Bé ";
+				PRODUCT_NAME = "Video Clip for Kids";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -991,7 +1132,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				PRODUCT_NAME = "Tivi Cho Bé ";
+				PRODUCT_NAME = "Video Clip for Kids";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1033,7 +1174,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6915C7CD1ADE05E4005AD7E1 /* Build configuration list for PBXProject "Tivi Cho Bé " */ = {
+		6915C7CD1ADE05E4005AD7E1 /* Build configuration list for PBXProject "Video Clip for Kids" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6915C7F31ADE05E4005AD7E1 /* Debug */,

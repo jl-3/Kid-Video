@@ -114,6 +114,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnHoatHinh;
 @property (strong, nonatomic) IBOutlet UIButton *ViewUpDownbtn;
 @property (weak, nonatomic) IBOutlet UIButton *btnSearch;
+@property (weak, nonatomic) IBOutlet UIButton *btnRecent;
 
 @property (weak, nonatomic) IBOutlet UIButton *btnMenu;
 @property (weak, nonatomic) IBOutlet UIView *ViewListTable;

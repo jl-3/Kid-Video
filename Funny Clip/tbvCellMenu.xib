@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="tbvCellMenu" rowHeight="124" id="KGk-i7-Jjw" customClass="tbvCellMenu">
+            <rect key="frame" x="0.0" y="-4" width="444" height="124"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="taw-6h-3Tu">
+                        <rect key="frame" x="373" y="46" width="51" height="31"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="49" id="tec-Ha-pmI"/>
+                        </constraints>
+                        <connections>
+                            <action selector="valueChange:" destination="KGk-i7-Jjw" eventType="valueChanged" id="92a-nN-AfT"/>
+                        </connections>
+                    </switch>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vX4-vT-sKP">
+                        <rect key="frame" x="8" y="51" width="355" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="centerY" secondItem="taw-6h-3Tu" secondAttribute="centerY" id="4QD-BQ-YeM"/>
+                    <constraint firstAttribute="centerY" secondItem="vX4-vT-sKP" secondAttribute="centerY" id="Cmv-iJ-DE9"/>
+                    <constraint firstItem="vX4-vT-sKP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="JPD-TS-XAi"/>
+                    <constraint firstItem="taw-6h-3Tu" firstAttribute="leading" secondItem="vX4-vT-sKP" secondAttribute="trailing" constant="10" id="KAq-CW-y8C"/>
+                    <constraint firstAttribute="bottom" secondItem="vX4-vT-sKP" secondAttribute="bottom" id="Qvv-W4-b1b"/>
+                    <constraint firstItem="taw-6h-3Tu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="ZI6-lW-DaW"/>
+                    <constraint firstAttribute="bottom" secondItem="taw-6h-3Tu" secondAttribute="bottom" constant="6" id="aBy-5q-yF1"/>
+                    <constraint firstAttribute="trailing" secondItem="taw-6h-3Tu" secondAttribute="trailing" constant="22" id="eXr-Gg-2wD"/>
+                    <constraint firstItem="vX4-vT-sKP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="oTq-yB-udQ"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="JPD-TS-XAi"/>
+                        <exclude reference="Qvv-W4-b1b"/>
+                        <exclude reference="ZI6-lW-DaW"/>
+                        <exclude reference="aBy-5q-yF1"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="lblContent" destination="vX4-vT-sKP" id="7XK-4u-He4"/>
+                <outlet property="view_switch" destination="taw-6h-3Tu" id="n96-tt-wt8"/>
+            </connections>
+            <point key="canvasLocation" x="405" y="296"/>
+        </tableViewCell>
+    </objects>
+</document>

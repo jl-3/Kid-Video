@@ -68,6 +68,8 @@
 		698490DD1B0B139C005E31D0 /* YEUTHICH.png in Resources */ = {isa = PBXBuildFile; fileRef = 698490DF1B0B139C005E31D0 /* YEUTHICH.png */; };
 		698490E71B0B2562005E31D0 /* VCSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = 698490E51B0B2562005E31D0 /* VCSetting.m */; };
 		698490E81B0B2562005E31D0 /* VCSetting.xib in Resources */ = {isa = PBXBuildFile; fileRef = 698490E61B0B2562005E31D0 /* VCSetting.xib */; };
+		698490EC1B0B2A6A005E31D0 /* tbvCellMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 698490EA1B0B2A6A005E31D0 /* tbvCellMenu.m */; };
+		698490ED1B0B2A6A005E31D0 /* tbvCellMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 698490EB1B0B2A6A005E31D0 /* tbvCellMenu.xib */; };
 		6999FB521ADF80A300B94D04 /* NMBottomTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999FB4F1ADF80A300B94D04 /* NMBottomTabBar.m */; };
 		6999FB531ADF80A300B94D04 /* NMBottomTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6999FB511ADF80A300B94D04 /* NMBottomTabBarController.m */; };
 		699CDFCA1AE41EF2005851CC /* VideoInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 699CDFC91AE41EF2005851CC /* VideoInfoModel.m */; };
@@ -207,6 +209,9 @@
 		698490E41B0B2562005E31D0 /* VCSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCSetting.h; sourceTree = "<group>"; };
 		698490E51B0B2562005E31D0 /* VCSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCSetting.m; sourceTree = "<group>"; };
 		698490E61B0B2562005E31D0 /* VCSetting.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCSetting.xib; sourceTree = "<group>"; };
+		698490E91B0B2A6A005E31D0 /* tbvCellMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tbvCellMenu.h; sourceTree = "<group>"; };
+		698490EA1B0B2A6A005E31D0 /* tbvCellMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = tbvCellMenu.m; sourceTree = "<group>"; };
+		698490EB1B0B2A6A005E31D0 /* tbvCellMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = tbvCellMenu.xib; sourceTree = "<group>"; };
 		6999FB4E1ADF80A300B94D04 /* NMBottomTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMBottomTabBar.h; sourceTree = "<group>"; };
 		6999FB4F1ADF80A300B94D04 /* NMBottomTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NMBottomTabBar.m; sourceTree = "<group>"; };
 		6999FB501ADF80A300B94D04 /* NMBottomTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NMBottomTabBarController.h; sourceTree = "<group>"; };
@@ -564,6 +569,9 @@
 				699F0C041AF5AE410067266C /* tblCellMenu.h */,
 				699F0C051AF5AE410067266C /* tblCellMenu.m */,
 				699F0C061AF5AE410067266C /* tblCellMenu.xib */,
+				698490E91B0B2A6A005E31D0 /* tbvCellMenu.h */,
+				698490EA1B0B2A6A005E31D0 /* tbvCellMenu.m */,
+				698490EB1B0B2A6A005E31D0 /* tbvCellMenu.xib */,
 			);
 			name = CustomView;
 			sourceTree = "<group>";
@@ -755,6 +763,7 @@
 				698490D71B0B1391005E31D0 /* theloai_hoathinh.png in Resources */,
 				6966F0811AFB4EFF003A03E3 /* farme_1.png in Resources */,
 				698490CE1B0B1382005E31D0 /* theloai_hoathinh.png in Resources */,
+				698490ED1B0B2A6A005E31D0 /* tbvCellMenu.xib in Resources */,
 				691C35971ADEC02D003B33A0 /* Main.storyboard in Resources */,
 				697FB1551ADEAB4F00DFE12D /* PlaylistViewController.xib in Resources */,
 				6955CEBD1ADE76DC0093E1C8 /* BaseTabBarController.xib in Resources */,
@@ -824,6 +833,7 @@
 				6914A3C11AE74F8D00AAC253 /* GTLCommon_Sources.m in Sources */,
 				699EB3981AEF567C00116B07 /* PlayListModel.m in Sources */,
 				69BF14D61AFF02740083EABE /* BaseUtils.m in Sources */,
+				698490EC1B0B2A6A005E31D0 /* tbvCellMenu.m in Sources */,
 				6914A3C21AE74F8D00AAC253 /* GTLNetworking_Sources.m in Sources */,
 				69FE692C1AEE7B2500634542 /* FavoriteVideoDetail.m in Sources */,
 				69A8769F1AE394300073C6B1 /* mVideoCell.m in Sources */,

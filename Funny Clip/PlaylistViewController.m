@@ -46,7 +46,16 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
 
 #pragma mark - Init Data
 - (void) initDataMenu {
-    mMenuItems = [NSArray arrayWithObjects:@"Remove Ads",@"Setting ",@"About", nil];
+    mMenuItems = [NSArray arrayWithObjects:@"Play Repeat",@"Play Background",@"Remove Ads",@"About", nil];
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(receivedNotification:)
+//                                                 name:@"playRepeat"
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(receivedNotification:)
+//                                                 name:@"playBackground"
+//                                               object:nil];
     
 }
 - (void) initItemStatus {
@@ -111,6 +120,16 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    BOOL isFirstTime = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstTime"];
+    if (!isFirstTime) {
+    // do someting when first time run app;
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"playRepeat"];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"playBackground"];
+    
+    } else {
+    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstTime"];
+    }
+    
     [self initValueLocalizable];
     
     self.youtubeService = [[GTLServiceYouTube alloc] init];
@@ -682,19 +701,50 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
 
         return cell;
     } else {
-        tblCellMenu * cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
-        if (!cell)
-        {
-            [tableView registerNib:[UINib nibWithNibName:@"tblCellMenu" bundle:nil] forCellReuseIdentifier:@"tblCellMenuID"];
-            cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
-            
-        }
-      
+    
+                if ((indexPath.row == 2) || (indexPath.row == 3))
+                {
+                    tblCellMenu * cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
+                    if (!cell)
+                    {
+                        [tableView registerNib:[UINib nibWithNibName:@"tblCellMenu" bundle:nil] forCellReuseIdentifier:@"tblCellMenuID"];
+                        cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
+                        
+                    }
+                  
+                    
+                    [cell.titleItemOfMenu setTextColor:[UIColor whiteColor]];
+                    cell.titleItemOfMenu.text = [BaseUtils objectAtIndex:[mMenuItems mutableCopy] : indexPath.row];
+                    //NSLog( [mMenuItems objectAtIndex:indexPath.row]);
+                   
+                    return cell;
+                } else {
+                      tbvCellMenu  * cell = [tableView dequeueReusableCellWithIdentifier:@"tbvCellMenu"];
+                    if (!cell)
+                    {
+                        [tableView registerNib:[UINib nibWithNibName:@"tbvCellMenu" bundle:nil] forCellReuseIdentifier:@"tbvCellMenu"];
+                        cell = [tableView dequeueReusableCellWithIdentifier:@"tbvCellMenu"];
+                        
+                    }
+                    if (indexPath.row == 0) {
+                        
+                       
+                    [cell.view_switch setOn: [[NSUserDefaults standardUserDefaults]boolForKey:@"playRepeat" ]];
+                                             }
+                    if (indexPath.row == 1) {
+                     
+                        
+                        [cell.view_switch setOn:[[NSUserDefaults standardUserDefaults]boolForKey:@"playBackground" ] ];
+                    }
+                    
+                    cell.index = indexPath.row;
+                    [cell.lblContent setTextColor:[UIColor whiteColor]];
+                    cell.lblContent.text = [BaseUtils objectAtIndex:[mMenuItems mutableCopy] : indexPath.row];
+                    //
+                    return cell;
+                
+                }
         
-        [cell.titleItemOfMenu setTextColor:[UIColor whiteColor]];
-        cell.titleItemOfMenu.text = [BaseUtils objectAtIndex:[mMenuItems mutableCopy] : indexPath.row];
-        //NSLog( [mMenuItems objectAtIndex:indexPath.row]);
-        return cell;
     }
     
 }
@@ -742,7 +792,7 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
     if (tableView==self.mListVideo) {
         return [[super mFavoriteVideos] count];
     } else {
-        return 3;
+        return 4;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -769,9 +819,7 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
             [self.playerView loadWithVideoId:videoID playerVars:playerVars];
             [MBProgressHUD showHUDAddedTo:self.playerView animated:YES];
             [self.titleVideoPlaying setText:vidData.videoName];
-            //[self buttonPressed:self.playButton];
-            // status button when click play
-           //set status playbutton, playViewseeking, Slider when play new video.
+        
             [self.playButton setSelected:YES ];
           
           
@@ -788,9 +836,12 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
                 
                 break;
             case 1:
+                
                 break;
             case 2:
-              
+                
+                break;
+            case 3:
                 [[self navigationController] pushViewController:mVCAbout animated:YES];
                 break;
             default:
@@ -1096,6 +1147,21 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
           }
       }
     
+}
+
+- (void)receivedNotification:(NSNotification *) notification {
+//    if([notification.name isEqual:@"playRepeat"] ) {
+//      
+//        
+//        [[NSUserDefaults standardUserDefaults] setBool:(BOOL)notification.object forKey:@"playRepeat" ];
+//        
+//    } else
+//        if ([notification.name isEqual:@"playBackground"] ) {
+//            [[NSUserDefaults standardUserDefaults] setBool:(BOOL)notification.object forKey:@"playBackground" ];
+//
+//        }
+//        
+//        
 }
 - (void)receivedPlaybackStartedNotification:(NSNotification *) notification {
     //  if([notification.name isEqual:@"Playback started"] && notification.object != self) {

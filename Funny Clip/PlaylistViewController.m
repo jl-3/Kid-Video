@@ -46,7 +46,7 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
 
 #pragma mark - Init Data
 - (void) initDataMenu {
-    mMenuItems = [NSArray arrayWithObjects:@"Play Repeat",@"Play Background",@"Remove Ads",@"About", nil];
+    mMenuItems = [NSArray arrayWithObjects:@"Loop",@"Remove Ads",@"Sign In",@"About", nil];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(receivedNotification:)
@@ -125,9 +125,8 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
     // do someting when first time run app;
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"playRepeat"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"playBackground"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstTime"];
     
-    } else {
-    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstTime"];
     }
     
     [self initValueLocalizable];
@@ -169,7 +168,7 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
         self.playerView.delegate = self;
         
         // [self.playerView loadWithVideoId:videoID playerVars:playerVars];
-//        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDurationTime) userInfo:nil repeats:YES];
+       timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDurationTime) userInfo:nil repeats:YES];
         
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -308,7 +307,9 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
     NSLog(@"playerViewDidBecomeReady");
     [MBProgressHUD hideHUDForView:self.playerView animated:NO];
     
+    
 }
+
 - (void)playerView:(YTPlayerView *)playerView receivedError:(YTPlayerError)error {
       NSLog(@"receivedError");
 }
@@ -318,25 +319,26 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
             
         }
 }
+
 - (void) checkDurationTime {
    
-    NSLog(@"TIMER: CheckDurationTime");
-   // if ([self.playerView currentTime]>0 )[self.playerViewFace setHidden:NO];
-    if ((tmpValueOfSlider != [self.sliderVideo value]) && ([self.playerView currentTime ] > theSecondBefore) ){
-        
-        theSecondBefore=[self.playerView currentTime ];
-        NSLog(@"--------------------------");
-        NSLog(@"playerView currentTime: %f",[self.playerView currentTime ]);
-        NSLog(@"playerView duration :  %i",[self.playerView duration ]);
-        NSLog(@"slider video by player view: %f",[self.playerView currentTime]/(float)[self.playerView duration]);
-        NSLog(@"--------------------------");
-        [self.sliderVideo setValue:([self.playerView currentTime]/(float)[self.playerView duration ]) animated:YES];
-        
+ //   NSLog(@"TIMER: CheckDurationTime %@",self.playerView.duration);
+    if ((self.playerView.currentTime > 0) && (self.playerView.duration) ){
+          NSLog(@"TIMER: CheckDurationTime %i",self.playerView.duration);
+    if ((self.playerView.currentTime > self.playerView.duration - 1)){
+             if ([[NSUserDefaults standardUserDefaults] boolForKey:@"playRepeat"]) {
+                [self.playerView setLoop:YES];
+               [self.playerView seekToSeconds:0 allowSeekAhead:YES];
+                }
+             else {
+                 [self.playerView seekToSeconds:0 allowSeekAhead:YES];
+                 [self.playerView pauseVideo];
+
+                [self ShowViewScroll];
+            }
     }
-    if ([self.sliderVideo value] == 1) {
-        [self ShowViewScroll];
     }
-}
+   }
 - (void)  keyboardDisAppearOrShow {
     [self.searchBarView resignFirstResponder];
     _tap.enabled = NO;
@@ -556,7 +558,8 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
         [self.playerView loadWithVideoId:videoID playerVars:playerVars];
         [MBProgressHUD showHUDAddedTo:self.playerView animated:YES];
         [self.titleVideoPlaying setText:vidData.getTitle];
-        // durationOfCurrentVideoPlaying = vidData.getDuration;
+        
+        //durationOfCurrentVideoPlaying = vidData.getDuration;
         
         [self buttonPressed:self.playButton];
         // status button when click play
@@ -702,7 +705,7 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
         return cell;
     } else {
     
-                if ((indexPath.row == 2) || (indexPath.row == 3))
+                if (indexPath.row > 0)
                 {
                     tblCellMenu * cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
                     if (!cell)
@@ -726,19 +729,17 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
                         cell = [tableView dequeueReusableCellWithIdentifier:@"tbvCellMenu"];
                         
                     }
+                    
+                   cell.view_switch.transform = CGAffineTransformMakeScale(0.75, 0.75);
                     if (indexPath.row == 0) {
-                        
-                       
+                    
                     [cell.view_switch setOn: [[NSUserDefaults standardUserDefaults]boolForKey:@"playRepeat" ]];
                                              }
-                    if (indexPath.row == 1) {
-                     
-                        
-                        [cell.view_switch setOn:[[NSUserDefaults standardUserDefaults]boolForKey:@"playBackground" ] ];
-                    }
+                  
                     
                     cell.index = indexPath.row;
                     [cell.lblContent setTextColor:[UIColor whiteColor]];
+                   // [cell.lblContent setFont:[UIFont fontWithName: size:<#(CGFloat)#>]];
                     cell.lblContent.text = [BaseUtils objectAtIndex:[mMenuItems mutableCopy] : indexPath.row];
                     //
                     return cell;
@@ -802,8 +803,8 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
         return tableView.frame.size.width*80/100;
        // return 100;
     } else {
-        return self.view.frame.size.height/10;
-    }
+               return self.view.frame.size.height/10;
+            }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -831,19 +832,20 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
     } else {
         switch (indexPath.row) {
                 
-            case 0:
-                //
-                
-                break;
+            
             case 1:
-                
                 break;
             case 2:
+                
+                [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
+                [self.navigationController setNavigationBarHidden:NO];
+                [[self navigationController] pushViewController:[self createAuthController] animated:YES];
                 
                 break;
             case 3:
                 [[self navigationController] pushViewController:mVCAbout animated:YES];
                 break;
+
             default:
                 break;
         }
@@ -1125,6 +1127,7 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
     if (error != nil) {
         [BaseUtils showAlert:@"Authentication Error" message:error.localizedDescription];
         self.youtubeService.authorizer = nil;
+        [self viewDidLoad];
     } else {
         self.youtubeService.authorizer = authResult;
         //[self isAuthorized];

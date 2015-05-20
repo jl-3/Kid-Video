@@ -11,11 +11,18 @@
 #import "DBManager.h"
 #import <MMDrawerBarButtonItem.h>
 #import <MBProgressHUD.h>
+#import "iAd/ADBannerView.h"
 @protocol FunBaseViewControllerDelegate <NSObject>;
 @end
-@interface FunBaseViewController : UIViewController<YTPlayerViewDelegate> {
+@interface FunBaseViewController : UIViewController<YTPlayerViewDelegate, ADBannerViewDelegate> {
+
+
     
 }
+@property (nonatomic) IBOutlet UIView *contentView;
+@property (nonatomic) id adBannerView;
+@property (nonatomic) BOOL adBannerViewIsVisible;
+
 @property (retain) id <FunBaseViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *testbtn;
 @property (nonatomic,strong) NSMutableArray  *mFavoriteVideos;

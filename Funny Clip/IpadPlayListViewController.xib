@@ -21,6 +21,7 @@
                 <outlet property="btnKeChuyen" destination="9E0-f8-IEQ" id="aKZ-16-b3t"/>
                 <outlet property="btnMenu" destination="nWy-69-E2J" id="KCh-hH-bSY"/>
                 <outlet property="btnSearch" destination="BsM-DA-JLd" id="LYn-c5-Ztj"/>
+                <outlet property="contentView" destination="iN0-l3-epB" id="RfI-PE-mGA"/>
                 <outlet property="heighButtonTheLoai" destination="47T-GC-sNx" id="yLX-aE-0Ai"/>
                 <outlet property="leadingAmNhac" destination="6iN-AK-0HH" id="NwV-VC-tIw"/>
                 <outlet property="listViewColectionView" destination="H2h-e9-52L" id="R1o-qZ-11e"/>

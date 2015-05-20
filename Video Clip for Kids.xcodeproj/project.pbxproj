@@ -24,7 +24,6 @@
 		6915C7DB1ADE05E4005AD7E1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6915C7DA1ADE05E4005AD7E1 /* AppDelegate.m */; };
 		6915C7E31ADE05E4005AD7E1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6915C7E21ADE05E4005AD7E1 /* Images.xcassets */; };
 		6915C7E61ADE05E4005AD7E1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6915C7E41ADE05E4005AD7E1 /* LaunchScreen.xib */; };
-		6915C7F21ADE05E4005AD7E1 /* Funny_ClipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6915C7F11ADE05E4005AD7E1 /* Funny_ClipTests.m */; };
 		691C35971ADEC02D003B33A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 691C35951ADEC02D003B33A0 /* Main.storyboard */; };
 		6955CEB71ADE76B60093E1C8 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6955CEB51ADE76B60093E1C8 /* BaseNavigationController.m */; };
 		6955CEB81ADE76B60093E1C8 /* BaseNavigationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6955CEB61ADE76B60093E1C8 /* BaseNavigationController.xib */; };
@@ -100,25 +99,10 @@
 		69BF14D61AFF02740083EABE /* BaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BF14D51AFF02740083EABE /* BaseUtils.m */; };
 		69C8A4201AF715B800EB803F /* IpadPlayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C8A41F1AF715B800EB803F /* IpadPlayListViewController.xib */; };
 		69EA86131AE6350800F612FA /* NSURLParameters.m in Sources */ = {isa = PBXBuildFile; fileRef = 69EA86121AE6350800F612FA /* NSURLParameters.m */; };
+		69EBBA6A1B0C5D6300B30989 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EBBA691B0C5D6300B30989 /* StoreKit.framework */; };
+		69EBBA6C1B0C5DB200B30989 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69EBBA6B1B0C5DB200B30989 /* iAd.framework */; };
 		69FE692C1AEE7B2500634542 /* FavoriteVideoDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FE692B1AEE7B2500634542 /* FavoriteVideoDetail.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		691072181AF687040086BDAB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6915C7CA1ADE05E4005AD7E1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6915C7D11ADE05E4005AD7E1;
-			remoteInfo = "Funny Clip";
-		};
-		6915C7EC1ADE05E4005AD7E1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6915C7CA1ADE05E4005AD7E1 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6915C7D11ADE05E4005AD7E1;
-			remoteInfo = "Funny Clip";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3B56EFAFFFBB72243F50905F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,7 +134,6 @@
 		6915C7DA1ADE05E4005AD7E1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6915C7E21ADE05E4005AD7E1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		6915C7E51ADE05E4005AD7E1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		6915C7EB1ADE05E4005AD7E1 /* Funny ClipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Funny ClipTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6915C7F01ADE05E4005AD7E1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6915C7F11ADE05E4005AD7E1 /* Funny_ClipTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Funny_ClipTests.m; sourceTree = "<group>"; };
 		691C35961ADEC02D003B33A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -272,6 +255,8 @@
 		69C8A41F1AF715B800EB803F /* IpadPlayListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = IpadPlayListViewController.xib; sourceTree = "<group>"; };
 		69EA86111AE6350800F612FA /* NSURLParameters.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSURLParameters.h; sourceTree = "<group>"; };
 		69EA86121AE6350800F612FA /* NSURLParameters.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSURLParameters.m; sourceTree = "<group>"; };
+		69EBBA691B0C5D6300B30989 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		69EBBA6B1B0C5DB200B30989 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		69FE692A1AEE7B2500634542 /* FavoriteVideoDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteVideoDetail.h; sourceTree = "<group>"; };
 		69FE692B1AEE7B2500634542 /* FavoriteVideoDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteVideoDetail.m; sourceTree = "<group>"; };
 		82A58356B7293C6FD50E6C75 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -282,15 +267,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69EBBA6C1B0C5DB200B30989 /* iAd.framework in Frameworks */,
+				69EBBA6A1B0C5D6300B30989 /* StoreKit.framework in Frameworks */,
 				69A741EA1AEE6BD7000C6350 /* libsqlite3.dylib in Frameworks */,
 				699D85391AE52E4900C97851 /* libPods.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6915C7E81ADE05E4005AD7E1 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +321,6 @@
 			isa = PBXGroup;
 			children = (
 				6915C7D21ADE05E4005AD7E1 /* Video Clip for Kids.app */,
-				6915C7EB1ADE05E4005AD7E1 /* Funny ClipTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -617,6 +596,8 @@
 		7BE508E6149B342F7B4878B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				69EBBA6B1B0C5DB200B30989 /* iAd.framework */,
+				69EBBA691B0C5D6300B30989 /* StoreKit.framework */,
 				69A741E91AEE6BD7000C6350 /* libsqlite3.dylib */,
 				699D85401AE52E7E00C97851 /* CoreGraphics.framework */,
 				699D853E1AE52E7400C97851 /* Foundation.framework */,
@@ -659,25 +640,6 @@
 			productReference = 6915C7D21ADE05E4005AD7E1 /* Video Clip for Kids.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6915C7EA1ADE05E4005AD7E1 /* Funny ClipTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6915C7F81ADE05E4005AD7E1 /* Build configuration list for PBXNativeTarget "Funny ClipTests" */;
-			buildPhases = (
-				6915C7E71ADE05E4005AD7E1 /* Sources */,
-				6915C7E81ADE05E4005AD7E1 /* Frameworks */,
-				6915C7E91ADE05E4005AD7E1 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6915C7ED1ADE05E4005AD7E1 /* PBXTargetDependency */,
-				691072191AF687040086BDAB /* PBXTargetDependency */,
-			);
-			name = "Funny ClipTests";
-			productName = "Funny ClipTests";
-			productReference = 6915C7EB1ADE05E4005AD7E1 /* Funny ClipTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -689,15 +651,15 @@
 				TargetAttributes = {
 					6915C7D11ADE05E4005AD7E1 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = CXF8DXBC3C;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.InAppPurchase = {
+								enabled = 1;
+							};
 						};
-					};
-					6915C7EA1ADE05E4005AD7E1 = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 6915C7D11ADE05E4005AD7E1;
 					};
 				};
 			};
@@ -715,7 +677,6 @@
 			projectRoot = "";
 			targets = (
 				6915C7D11ADE05E4005AD7E1 /* Funny Clip */,
-				6915C7EA1ADE05E4005AD7E1 /* Funny ClipTests */,
 			);
 		};
 /* End PBXProject section */
@@ -770,13 +731,6 @@
 				6966F0841AFB4EFF003A03E3 /* icon_pause_black.png in Resources */,
 				697FB1491ADEA30900DFE12D /* FirstScreenView.xib in Resources */,
 				6966F07B1AFB4EFF003A03E3 /* AppIcon@2x~iphone.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6915C7E91ADE05E4005AD7E1 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -869,28 +823,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6915C7E71ADE05E4005AD7E1 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6915C7F21ADE05E4005AD7E1 /* Funny_ClipTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		691072191AF687040086BDAB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6915C7D11ADE05E4005AD7E1 /* Funny Clip */;
-			targetProxy = 691072181AF687040086BDAB /* PBXContainerItemProxy */;
-		};
-		6915C7ED1ADE05E4005AD7E1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 6915C7D11ADE05E4005AD7E1 /* Funny Clip */;
-			targetProxy = 6915C7EC1ADE05E4005AD7E1 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		6915C7E41ADE05E4005AD7E1 /* LaunchScreen.xib */ = {
@@ -1084,6 +1017,8 @@
 			baseConfigurationReference = 82A58356B7293C6FD50E6C75 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -1109,6 +1044,7 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "Video Clip for Kids";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1118,6 +1054,8 @@
 			baseConfigurationReference = 3B56EFAFFFBB72243F50905F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -1143,41 +1081,8 @@
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
 				PRODUCT_NAME = "Video Clip for Kids";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		6915C7F91ADE05E4005AD7E1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Funny ClipTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tivi Cho Bé .app/Tivi Cho Bé ";
-			};
-			name = Debug;
-		};
-		6915C7FA1ADE05E4005AD7E1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "Funny ClipTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tivi Cho Bé .app/Tivi Cho Bé ";
 			};
 			name = Release;
 		};
@@ -1198,15 +1103,6 @@
 			buildConfigurations = (
 				6915C7F61ADE05E4005AD7E1 /* Debug */,
 				6915C7F71ADE05E4005AD7E1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6915C7F81ADE05E4005AD7E1 /* Build configuration list for PBXNativeTarget "Funny ClipTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6915C7F91ADE05E4005AD7E1 /* Debug */,
-				6915C7FA1ADE05E4005AD7E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

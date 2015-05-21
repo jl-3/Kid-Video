@@ -22,13 +22,22 @@
 #import "MMDrawerBarButtonItem.h"
 #import "BaseUtils.h"
 #import "tbvCellMenu.h"
+#import <GoogleMobileAds/GoogleMobileAds.h>
 //
 //#import "VideoItemCollectCell.m"
 @protocol PlaylistViewControllerDelegate <NSObject>;
 @end;
 
-@interface PlaylistViewController : FunBaseViewController<YTPlayerViewDelegate, YouTubeGetVideosDelegate, UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UIScrollViewDelegate >
+@interface PlaylistViewController : FunBaseViewController<YTPlayerViewDelegate, YouTubeGetVideosDelegate, UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UIScrollViewDelegate , GADBannerViewDelegate>
 {
+   
+    
+    ADBannerView *adBannerView;
+    BOOL adBannerViewIsVisible;
+    GADBannerView *mGADBannerView;
+    BOOL mGADBannerViewIsVisible;
+   
+    
     BOOL isTheFirstTime;
     
     NSMutableArray *mVideos;
@@ -71,6 +80,8 @@
 @property(nonatomic, retain) GTLServiceYouTube *youtubeService;
 
 
+@property (weak, nonatomic) IBOutlet UIView *viewAds;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heighOfAds;
 @property (weak, nonatomic) IBOutlet UIImageView *televisionImage;
 @property (weak, nonatomic) IBOutlet UITableView *mListVideo;
 @property (weak, nonatomic) IBOutlet UITableView *tbvMenu;

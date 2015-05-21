@@ -5,11 +5,10 @@ pod 'MBProgressHUD', '~> 0.9.1'
 pod "youtube-ios-player-helper", "~> 0.1.1"
 pod 'DNDDragAndDrop', '~> 1.1.0'
 pod 'MMDrawerController', '~> 0.5.7'
+pod 'Google-Mobile-Ads-SDK'
 target 'Funny Clip' do
 
 end
 
-target 'Funny ClipTests' do
 
-end
 

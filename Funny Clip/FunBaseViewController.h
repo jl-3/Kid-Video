@@ -19,9 +19,7 @@
 
     
 }
-@property (nonatomic) IBOutlet UIView *contentView;
-@property (nonatomic) id adBannerView;
-@property (nonatomic) BOOL adBannerViewIsVisible;
+
 
 @property (retain) id <FunBaseViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UIButton *testbtn;

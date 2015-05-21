@@ -44,6 +44,108 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
     } 
 }
 
+- (void)createAdBannerView {
+    CGRect mFrame = [self.viewAds frame];
+    mFrame.origin.x=0;
+    mFrame.origin.y=0;
+   mFrame.size.height=50;
+    mGADBannerView = [[GADBannerView alloc] initWithFrame:mFrame] ;
+  mGADBannerView.adUnitID = @"ca-app-pub-3940256099942544/6300978111";
+    
+    mGADBannerView.rootViewController = self;
+   
+    GADRequest *request = [GADRequest request];
+    request.testDevices = @[@"f4b2fe76020c0b7d56afd471562817362737644c"];
+    
+        [mGADBannerView loadRequest:request];
+    
+    [self.viewAds addSubview:mGADBannerView];
+    
+}
+- (void)adViewDidReceiveAd:(GADBannerView *)view {
+    CGRect mFrame = [view frame];
+    mFrame.origin.x=0;
+    mFrame.origin.y=0;
+    [mGADBannerView setFrame:mFrame];
+
+}
+- (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error{
+    CGRect mFrame = [view frame];
+    mFrame.origin.x=0;
+    mFrame.origin.y= 0;
+    [mGADBannerView setFrame:mFrame];
+}
+
+
+//#pragma mark ADBannerViewDelegate
+//
+//- (void)bannerViewDidLoadAd:(ADBannerView *)banner {
+//    if (!adBannerViewIsVisible) {
+//        adBannerViewIsVisible = YES;
+//        [self fixupAdView:[UIDevice currentDevice].orientation];
+//    }
+//}
+//
+//- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+//{
+//    if (adBannerViewIsVisible)
+//    {
+//        adBannerViewIsVisible = NO;
+//        [self fixupAdView:[UIDevice currentDevice].orientation];
+//    }
+//}
+//- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+//    [self fixupAdView:toInterfaceOrientation];
+//}
+//- (int)getBannerHeight:(UIDeviceOrientation)orientation {
+//    if (UIInterfaceOrientationIsLandscape(orientation)) {
+//        return 35;
+//    } else {
+//        return 50;
+//    }
+//}
+//
+//- (int)getBannerHeight {
+//    return [self getBannerHeight:[UIDevice currentDevice].orientation];
+//}
+//- (void)createAdBannerView {
+//    Class classAdBannerView = NSClassFromString(@"ADBannerView");
+//    if (classAdBannerView != nil) {
+//        adBannerView = [[classAdBannerView alloc]
+//                             initWithFrame:CGRectZero];
+//
+//        [adBannerView setFrame:CGRectMake(0, 0, self.viewAds.frame.size.width, self.viewAds.frame.size.height)];
+//        [adBannerView setDelegate:self];
+//        [adBannerView setBackgroundColor:[UIColor clearColor]];
+//        [self.viewAds setBackgroundColor:[UIColor redColor]];
+//        [self.viewAds addSubview:adBannerView];
+//        [adBannerView didMoveToSuperview];
+//    }
+//}
+//- (void)fixupAdView:(UIInterfaceOrientation)toInterfaceOrientation {
+//    if (adBannerView != nil) {
+//  [UIView beginAnimations:@"fixupViews" context:nil];
+//        if (adBannerViewIsVisible) {
+//            CGRect adBannerViewFrame = [self.viewAds frame];
+//            adBannerViewFrame.origin.x = 0;
+//            adBannerViewFrame.origin.y = 0;
+//            [adBannerView setFrame:adBannerViewFrame];
+//            
+////            self.heighOfAds.constant = 35;
+////            [self.viewAds needsUpdateConstraints];
+//        } else {
+//            CGRect adBannerViewFrame = [self.viewAds frame];
+//            adBannerViewFrame.origin.x = 0;
+//            adBannerViewFrame.origin.y = - 30;
+//            [adBannerView setFrame:adBannerViewFrame];
+//            
+//            
+////            self.heighOfAds.constant = 0;
+////            [self.viewAds needsUpdateConstraints];
+//        }
+//        [UIView commitAnimations];
+//    }
+//}
 #pragma mark - Init Data
 - (void) initDataMenu {
     mMenuItems = [NSArray arrayWithObjects:@"Loop",@"Remove Ads",@"Sign In",@"About", nil];
@@ -117,6 +219,13 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
     [super viewDidAppear:animated];
     [self.navigationController setNavigationBarHidden:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    if (mGADBannerView)
+    [mGADBannerView setBackgroundColor:[UIColor yellowColor]];
+    [self.viewAds setBackgroundColor:[UIColor redColor]];
+  // [self fixupAdView:[[UIDevice currentDevice] orientation]];
+    
+    
+    
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -145,6 +254,10 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
         [[self navigationController] pushViewController:[self createAuthController] animated:YES];
        } else {
     [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationLandscapeLeft] forKey:@"orientation"];
+           
+         // Load ads
+        [self createAdBannerView];
+           
         isTheFirstTime= YES;
         // [self.listViewColectionView setHidden:YES];
         [self init];
@@ -472,7 +585,7 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
     VideoData *vData;
     switch (IS_OPEN_IN_TAB) {
         case IS_MUSIC:
-            vData = [ BaseUtils objectAtIndex: VIDEOS_AMNHAC :indexPath.row];
+            vData = [ BaseUtils objectAtIndex: VIDEOS_AMNHAC : indexPath.row];
             break;
         case IS_STORY:
             vData = [ BaseUtils objectAtIndex: VIDEOS_KECHUYEN :indexPath.row];

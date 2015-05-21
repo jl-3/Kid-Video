@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
@@ -22,8 +21,8 @@
                 <outlet property="btnMenu" destination="UIC-uQ-Pbh" id="VJi-sz-OkY"/>
                 <outlet property="btnRecent" destination="Tvb-2U-Ca1" id="b6w-nd-GW6"/>
                 <outlet property="btnSearch" destination="nDh-uH-gWw" id="Vys-UG-ys6"/>
-                <outlet property="contentView" destination="wHL-AA-NOy" id="TQZ-OB-y8p"/>
                 <outlet property="heighButtonTheLoai" destination="y0G-CS-coJ" id="wu9-ON-5qD"/>
+                <outlet property="heighOfAds" destination="UPj-dE-DsQ" id="G6N-kh-eZx"/>
                 <outlet property="leadingAmNhac" destination="gRx-Rr-rzQ" id="R0Y-0B-GD6"/>
                 <outlet property="listViewColectionView" destination="OSZ-ez-Loh" id="tAt-Fx-YLL"/>
                 <outlet property="mListVideo" destination="T86-7R-AUz" id="brE-Y6-cNm"/>
@@ -36,6 +35,7 @@
                 <outlet property="trailingHoatHinh" destination="ech-N3-ZdI" id="cEF-pH-qRp"/>
                 <outlet property="trailingOfMenuView" destination="6IH-id-YwR" id="ihw-w3-mdN"/>
                 <outlet property="view" destination="wHL-AA-NOy" id="Wwv-wK-yBV"/>
+                <outlet property="viewAds" destination="tVC-e0-rDi" id="Mki-zS-9KR"/>
                 <outlet property="viewButtonTheLoai" destination="pam-Fb-Zoe" id="hrI-3h-1d0"/>
                 <outlet property="widthAmNhac" destination="pc6-JY-Jec" id="b6G-J3-WO1"/>
                 <outlet property="widthHoatHinh" destination="IVc-Ur-K9L" id="gw1-Xx-x01"/>
@@ -181,6 +181,25 @@
                                 <rect key="frame" x="0.0" y="-14" width="333" height="183"/>
                             </variation>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tVC-e0-rDi" userLabel="viewAds">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="160" id="UPj-dE-DsQ">
+                                    <variation key="heightClass=compact" constant="50"/>
+                                </constraint>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="UPj-dE-DsQ"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=compact">
+                                <mask key="constraints">
+                                    <include reference="UPj-dE-DsQ"/>
+                                </mask>
+                            </variation>
+                        </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETg-b2-abQ" customClass="MarqueeLabel">
                             <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -240,6 +259,9 @@
                         <constraint firstAttribute="bottom" secondItem="ETg-b2-abQ" secondAttribute="bottom" constant="8" id="GK3-fU-QW8"/>
                         <constraint firstItem="ETg-b2-abQ" firstAttribute="leading" secondItem="PhF-3s-YPB" secondAttribute="leading" constant="68" id="Gp0-Dj-NiT"/>
                         <constraint firstItem="UIC-uQ-Pbh" firstAttribute="leading" secondItem="ETg-b2-abQ" secondAttribute="trailing" constant="8" id="OkW-hh-fuf"/>
+                        <constraint firstItem="tVC-e0-rDi" firstAttribute="top" secondItem="PhF-3s-YPB" secondAttribute="top" constant="20" id="TTQ-6C-Nyx">
+                            <variation key="heightClass=compact" constant="13"/>
+                        </constraint>
                         <constraint firstItem="d72-ie-tMX" firstAttribute="top" secondItem="PhF-3s-YPB" secondAttribute="top" constant="13" id="TxC-1k-KPb"/>
                         <constraint firstAttribute="trailing" secondItem="ETg-b2-abQ" secondAttribute="trailing" constant="8" id="VxF-IX-rCZ">
                             <variation key="heightClass=compact" constant="50"/>
@@ -249,6 +271,12 @@
                             <variation key="heightClass=compact" constant="13"/>
                         </constraint>
                         <constraint firstAttribute="trailing" secondItem="SOI-HB-vg9" secondAttribute="trailing" id="hZq-Vk-EbI"/>
+                        <constraint firstAttribute="trailing" secondItem="tVC-e0-rDi" secondAttribute="trailing" constant="19" id="lhH-Bc-LpH">
+                            <variation key="heightClass=compact" constant="13"/>
+                        </constraint>
+                        <constraint firstItem="tVC-e0-rDi" firstAttribute="leading" secondItem="PhF-3s-YPB" secondAttribute="leading" constant="19" id="oPn-Vt-Shu">
+                            <variation key="heightClass=compact" constant="13"/>
+                        </constraint>
                         <constraint firstItem="SOI-HB-vg9" firstAttribute="leading" secondItem="PhF-3s-YPB" secondAttribute="leading" id="pjv-gW-QXH"/>
                         <constraint firstItem="SOI-HB-vg9" firstAttribute="top" secondItem="PhF-3s-YPB" secondAttribute="top" id="qNz-Z4-uFs"/>
                     </constraints>
@@ -256,6 +284,7 @@
                         <mask key="subviews">
                             <exclude reference="SOI-HB-vg9"/>
                             <exclude reference="d72-ie-tMX"/>
+                            <exclude reference="tVC-e0-rDi"/>
                             <exclude reference="ETg-b2-abQ"/>
                             <exclude reference="UIC-uQ-Pbh"/>
                         </mask>
@@ -276,12 +305,16 @@
                             <exclude reference="3ig-FY-ugf"/>
                             <exclude reference="TxC-1k-KPb"/>
                             <exclude reference="hKr-U5-ksK"/>
+                            <exclude reference="TTQ-6C-Nyx"/>
+                            <exclude reference="lhH-Bc-LpH"/>
+                            <exclude reference="oPn-Vt-Shu"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=compact">
                         <mask key="subviews">
                             <include reference="SOI-HB-vg9"/>
                             <include reference="d72-ie-tMX"/>
+                            <include reference="tVC-e0-rDi"/>
                             <include reference="ETg-b2-abQ"/>
                             <include reference="UIC-uQ-Pbh"/>
                         </mask>
@@ -302,6 +335,9 @@
                             <include reference="3ig-FY-ugf"/>
                             <include reference="TxC-1k-KPb"/>
                             <include reference="hKr-U5-ksK"/>
+                            <include reference="TTQ-6C-Nyx"/>
+                            <include reference="lhH-Bc-LpH"/>
+                            <include reference="oPn-Vt-Shu"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">

@@ -54,6 +54,12 @@
 #define COCOAPODS_VERSION_MINOR_DNDDragAndDrop 1
 #define COCOAPODS_VERSION_PATCH_DNDDragAndDrop 3
 
+// Google-Mobile-Ads-SDK
+#define COCOAPODS_POD_AVAILABLE_Google_Mobile_Ads_SDK
+#define COCOAPODS_VERSION_MAJOR_Google_Mobile_Ads_SDK 7
+#define COCOAPODS_VERSION_MINOR_Google_Mobile_Ads_SDK 2
+#define COCOAPODS_VERSION_PATCH_Google_Mobile_Ads_SDK 2
+
 // MBProgressHUD
 #define COCOAPODS_POD_AVAILABLE_MBProgressHUD
 #define COCOAPODS_VERSION_MAJOR_MBProgressHUD 0

@@ -21,8 +21,8 @@
                 <outlet property="btnKeChuyen" destination="9E0-f8-IEQ" id="aKZ-16-b3t"/>
                 <outlet property="btnMenu" destination="nWy-69-E2J" id="KCh-hH-bSY"/>
                 <outlet property="btnSearch" destination="BsM-DA-JLd" id="LYn-c5-Ztj"/>
-                <outlet property="contentView" destination="iN0-l3-epB" id="RfI-PE-mGA"/>
                 <outlet property="heighButtonTheLoai" destination="47T-GC-sNx" id="yLX-aE-0Ai"/>
+                <outlet property="heighOfAds" destination="wwz-UL-CY7" id="lkB-SQ-MzJ"/>
                 <outlet property="leadingAmNhac" destination="6iN-AK-0HH" id="NwV-VC-tIw"/>
                 <outlet property="listViewColectionView" destination="H2h-e9-52L" id="R1o-qZ-11e"/>
                 <outlet property="mListVideo" destination="ugT-xI-0Gk" id="l5M-JB-XsY"/>
@@ -34,6 +34,7 @@
                 <outlet property="trailingHoatHinh" destination="vCS-m3-flh" id="3HQ-rr-eOJ"/>
                 <outlet property="trailingOfMenuView" destination="nLw-d4-pWS" id="2cE-D1-fuj"/>
                 <outlet property="view" destination="iN0-l3-epB" id="NgK-IF-dKo"/>
+                <outlet property="viewAds" destination="xdi-X5-ZEr" id="4aB-bU-zfd"/>
                 <outlet property="viewButtonTheLoai" destination="yaR-b0-nda" id="RFs-sb-Zma"/>
                 <outlet property="widthAmNhac" destination="Uwt-FS-ETf" id="1Jb-vd-7eG"/>
                 <outlet property="widthHoatHinh" destination="NDY-Ke-jht" id="pL2-id-UQM"/>
@@ -99,7 +100,7 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="138" id="NhS-ME-3cl">
-                                    <variation key="heightClass=regular-widthClass=regular" constant="200"/>
+                                    <variation key="heightClass=regular-widthClass=regular" constant="198"/>
                                 </constraint>
                             </constraints>
                             <variation key="default">
@@ -176,6 +177,28 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cK-Ks-2Lw" customClass="YTPlayerView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xdi-X5-ZEr" userLabel="viewAds">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="300" id="eVe-mE-IDi"/>
+                                <constraint firstAttribute="height" constant="60" id="wwz-UL-CY7">
+                                    <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                </constraint>
+                            </constraints>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="eVe-mE-IDi"/>
+                                    <exclude reference="wwz-UL-CY7"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=regular-widthClass=regular">
+                                <mask key="constraints">
+                                    <exclude reference="eVe-mE-IDi"/>
+                                    <include reference="wwz-UL-CY7"/>
+                                </mask>
+                            </variation>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nWy-69-E2J" userLabel="btnMenu">
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
@@ -265,6 +288,9 @@
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="0cK-Ks-2Lw" secondAttribute="trailing" constant="19" id="06f-ZU-QXy"/>
+                        <constraint firstAttribute="trailing" secondItem="xdi-X5-ZEr" secondAttribute="trailing" id="3rh-kg-6uo">
+                            <variation key="heightClass=regular-widthClass=regular" constant="19"/>
+                        </constraint>
                         <constraint firstAttribute="bottom" secondItem="nWy-69-E2J" secondAttribute="bottom" id="4WT-rv-RGg">
                             <variation key="heightClass=regular-widthClass=regular" constant="5"/>
                         </constraint>
@@ -280,7 +306,13 @@
                         <constraint firstAttribute="bottom" secondItem="ibj-eV-dOQ" secondAttribute="bottom" constant="53" id="HDi-zO-fSw"/>
                         <constraint firstAttribute="trailing" secondItem="0cK-Ks-2Lw" secondAttribute="trailing" constant="596" id="HnP-Of-Bhj"/>
                         <constraint firstItem="nWy-69-E2J" firstAttribute="leading" secondItem="ibj-eV-dOQ" secondAttribute="trailing" constant="466" id="L04-9h-Xlj"/>
+                        <constraint firstItem="xdi-X5-ZEr" firstAttribute="top" secondItem="npn-eB-Bwk" secondAttribute="top" constant="105" id="ShP-Er-4mY">
+                            <variation key="heightClass=regular-widthClass=regular" constant="20"/>
+                        </constraint>
                         <constraint firstItem="0cK-Ks-2Lw" firstAttribute="leading" secondItem="npn-eB-Bwk" secondAttribute="leading" id="Um7-m0-a3o">
+                            <variation key="heightClass=regular-widthClass=regular" constant="19"/>
+                        </constraint>
+                        <constraint firstItem="xdi-X5-ZEr" firstAttribute="leading" secondItem="npn-eB-Bwk" secondAttribute="leading" id="WXD-d5-IWh">
                             <variation key="heightClass=regular-widthClass=regular" constant="19"/>
                         </constraint>
                         <constraint firstItem="ibj-eV-dOQ" firstAttribute="top" secondItem="UAt-OJ-J4g" secondAttribute="bottom" constant="54" id="XA7-Z2-F9C"/>
@@ -311,6 +343,7 @@
                         <mask key="subviews">
                             <exclude reference="UAt-OJ-J4g"/>
                             <exclude reference="0cK-Ks-2Lw"/>
+                            <exclude reference="xdi-X5-ZEr"/>
                             <exclude reference="nWy-69-E2J"/>
                             <exclude reference="604-1o-t7n"/>
                             <exclude reference="ibj-eV-dOQ"/>
@@ -344,6 +377,9 @@
                             <exclude reference="cAF-Rm-bEK"/>
                             <exclude reference="jQO-fq-MUB"/>
                             <exclude reference="jWk-Gz-gMc"/>
+                            <exclude reference="3rh-kg-6uo"/>
+                            <exclude reference="ShP-Er-4mY"/>
+                            <exclude reference="WXD-d5-IWh"/>
                         </mask>
                     </variation>
                     <variation key="heightClass=compact-widthClass=compact" fixedFrame="YES">
@@ -353,6 +389,7 @@
                         <mask key="subviews">
                             <include reference="UAt-OJ-J4g"/>
                             <include reference="0cK-Ks-2Lw"/>
+                            <include reference="xdi-X5-ZEr"/>
                             <include reference="nWy-69-E2J"/>
                             <include reference="604-1o-t7n"/>
                             <include reference="ibj-eV-dOQ"/>
@@ -386,6 +423,9 @@
                             <exclude reference="cAF-Rm-bEK"/>
                             <exclude reference="jQO-fq-MUB"/>
                             <include reference="jWk-Gz-gMc"/>
+                            <include reference="3rh-kg-6uo"/>
+                            <include reference="ShP-Er-4mY"/>
+                            <include reference="WXD-d5-IWh"/>
                         </mask>
                     </variation>
                 </view>
@@ -691,7 +731,9 @@
                             <variation key="heightClass=regular-widthClass=regular" constant="199"/>
                         </constraint>
                         <constraint firstItem="vy0-Sc-SXr" firstAttribute="top" secondItem="77l-3T-jJ3" secondAttribute="top" id="d3m-zO-vBk"/>
-                        <constraint firstAttribute="width" constant="200" id="dnN-Fs-IvJ"/>
+                        <constraint firstAttribute="width" constant="200" id="dnN-Fs-IvJ">
+                            <variation key="heightClass=regular-widthClass=regular" constant="198"/>
+                        </constraint>
                         <constraint firstAttribute="trailing" secondItem="vy0-Sc-SXr" secondAttribute="trailing" id="sIz-i1-F6X"/>
                     </constraints>
                     <variation key="default">
@@ -825,7 +867,7 @@
                     <exclude reference="eNO-LA-oiZ"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="274" y="2"/>
+            <point key="canvasLocation" x="253.5" y="82"/>
         </view>
         <searchDisplayController id="7Cy-gh-5Uo">
             <connections>

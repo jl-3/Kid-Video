@@ -22,20 +22,20 @@
 #import "MMDrawerBarButtonItem.h"
 #import "BaseUtils.h"
 #import "tbvCellMenu.h"
-#import <GoogleMobileAds/GoogleMobileAds.h>
+
 //
 //#import "VideoItemCollectCell.m"
 @protocol PlaylistViewControllerDelegate <NSObject>;
 @end;
 
-@interface PlaylistViewController : FunBaseViewController<YTPlayerViewDelegate, YouTubeGetVideosDelegate, UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UIScrollViewDelegate , GADBannerViewDelegate>
+@interface PlaylistViewController : FunBaseViewController<YTPlayerViewDelegate, YouTubeGetVideosDelegate, UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UIScrollViewDelegate >
 {
    
     
     ADBannerView *adBannerView;
     BOOL adBannerViewIsVisible;
-    GADBannerView *mGADBannerView;
-    BOOL mGADBannerViewIsVisible;
+//    GADBannerView *mGADBannerView;
+//    BOOL mGADBannerViewIsVisible;
    
     
     BOOL isTheFirstTime;

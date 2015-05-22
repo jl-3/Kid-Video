@@ -35,8 +35,7 @@
     IAPHelper *mIAPHleper;
     ADBannerView *adBannerView;
     BOOL adBannerViewIsVisible;
-//    GADBannerView *mGADBannerView;
-//    BOOL mGADBannerViewIsVisible;
+
     NSString *myNation;
     
     BOOL isTheFirstTime;
@@ -58,7 +57,7 @@
     float durationOfCurrentVideoPlaying;
     NSString *CurrentVideoIdPlaying;
     float theSecondBefore;
-    NSArray *mMenuItems;
+    NSMutableArray *mMenuItems;
     UIViewController *mVCAbout;
     NSString *nextPageToken;
     NSString *prevPageToken;

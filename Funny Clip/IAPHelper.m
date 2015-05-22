@@ -52,6 +52,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
             if (productPurchased) {
                 [_purchasedProductIdentifiers addObject:productIdentifier];
                 NSLog(@"Previously purchased: %@", productIdentifier);
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:productIdentifier];
             } else {
                 NSLog(@"Not purchased: %@", productIdentifier);
             }
@@ -156,6 +157,7 @@ NSString *const IAPHelperProductPurchasedNotification = @"IAPHelperProductPurcha
     [self provideContentForProductIdentifier:transaction.payment.productIdentifier];
     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:transaction.payment.productIdentifier];
     [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+   // [[NSUserDefaults standardUserDefaults] setBool:YES forKey:];
 }
 
 // called when a transaction has been restored and successfully completed

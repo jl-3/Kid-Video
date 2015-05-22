@@ -132,7 +132,9 @@
                         </constraint>
                         <constraint firstAttribute="width" constant="200" id="gGd-oU-5Jo"/>
                         <constraint firstAttribute="bottom" secondItem="ugT-xI-0Gk" secondAttribute="bottom" id="gla-92-CvM"/>
-                        <constraint firstItem="b2X-Kr-RQo" firstAttribute="top" secondItem="I9D-NP-90E" secondAttribute="top" id="xAl-Q1-fzR"/>
+                        <constraint firstItem="b2X-Kr-RQo" firstAttribute="top" secondItem="I9D-NP-90E" secondAttribute="top" id="xAl-Q1-fzR">
+                            <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                        </constraint>
                     </constraints>
                     <variation key="default">
                         <mask key="subviews">
@@ -192,8 +194,7 @@
                                     <exclude reference="wwz-UL-CY7"/>
                                 </mask>
                             </variation>
-                            <variation key="heightClass=regular-widthClass=regular" misplaced="YES">
-                                <rect key="frame" x="19" y="20" width="362" height="66"/>
+                            <variation key="heightClass=regular-widthClass=regular">
                                 <mask key="constraints">
                                     <exclude reference="eVe-mE-IDi"/>
                                     <include reference="wwz-UL-CY7"/>
@@ -730,7 +731,9 @@
                         <constraint firstItem="vy0-Sc-SXr" firstAttribute="leading" secondItem="77l-3T-jJ3" secondAttribute="leading" id="Ocl-zL-Joj">
                             <variation key="heightClass=regular-widthClass=regular" constant="199"/>
                         </constraint>
-                        <constraint firstItem="vy0-Sc-SXr" firstAttribute="top" secondItem="77l-3T-jJ3" secondAttribute="top" id="d3m-zO-vBk"/>
+                        <constraint firstItem="vy0-Sc-SXr" firstAttribute="top" secondItem="77l-3T-jJ3" secondAttribute="top" id="d3m-zO-vBk">
+                            <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
+                        </constraint>
                         <constraint firstAttribute="width" constant="200" id="dnN-Fs-IvJ">
                             <variation key="heightClass=regular-widthClass=regular" constant="198"/>
                         </constraint>
@@ -801,6 +804,7 @@
                     <variation key="heightClass=regular-widthClass=regular" constant="0.0"/>
                 </constraint>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">

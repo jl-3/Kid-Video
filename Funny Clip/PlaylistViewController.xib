@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <deployment defaultVersion="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -54,30 +54,6 @@
                 <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KPb-1x-alq" userLabel="ListTable">
                     <rect key="frame" x="334" y="0.0" width="234" height="320"/>
                     <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="35" sectionHeaderHeight="1" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T86-7R-AUz">
-                            <rect key="frame" x="0.0" y="-6" width="234" height="326"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="130" id="Ct4-Cx-rpJ">
-                                    <variation key="heightClass=compact" constant="140"/>
-                                </constraint>
-                            </constraints>
-                            <color key="sectionIndexBackgroundColor" red="0.73248457860000005" green="0.93580596299999996" blue="0.88002289219999996" alpha="1" colorSpace="calibratedRGB"/>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="Ct4-Cx-rpJ"/>
-                                </mask>
-                            </variation>
-                            <variation key="heightClass=compact">
-                                <mask key="constraints">
-                                    <include reference="Ct4-Cx-rpJ"/>
-                                </mask>
-                            </variation>
-                            <connections>
-                                <outlet property="dataSource" destination="-1" id="IKb-rq-jc6"/>
-                                <outlet property="delegate" destination="-1" id="Jap-jK-7Ri"/>
-                            </connections>
-                        </tableView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M53-sg-ciK" userLabel="recentView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <subviews>
@@ -93,10 +69,12 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="58" id="8wT-ua-5SX">
                                     <variation key="heightClass=compact" constant="60"/>
+                                    <variation key="heightClass=compact-widthClass=regular" constant="45"/>
                                 </constraint>
                                 <constraint firstItem="Tvb-2U-Ca1" firstAttribute="leading" secondItem="M53-sg-ciK" secondAttribute="leading" id="N1N-ff-0a1"/>
                                 <constraint firstItem="Tvb-2U-Ca1" firstAttribute="top" secondItem="M53-sg-ciK" secondAttribute="top" id="VC6-6C-NeV">
                                     <variation key="heightClass=compact" constant="20"/>
+                                    <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
                                 </constraint>
                                 <constraint firstAttribute="trailing" secondItem="Tvb-2U-Ca1" secondAttribute="trailing" id="aac-dE-IQz"/>
                                 <constraint firstAttribute="bottom" secondItem="Tvb-2U-Ca1" secondAttribute="bottom" id="d0D-om-Vdb"/>
@@ -126,6 +104,30 @@
                                 </mask>
                             </variation>
                         </view>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="35" sectionHeaderHeight="1" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T86-7R-AUz">
+                            <rect key="frame" x="0.0" y="-6" width="234" height="326"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="130" id="Ct4-Cx-rpJ">
+                                    <variation key="heightClass=compact" constant="140"/>
+                                </constraint>
+                            </constraints>
+                            <color key="sectionIndexBackgroundColor" red="0.73248457860000005" green="0.93580596299999996" blue="0.88002289219999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <variation key="default">
+                                <mask key="constraints">
+                                    <exclude reference="Ct4-Cx-rpJ"/>
+                                </mask>
+                            </variation>
+                            <variation key="heightClass=compact">
+                                <mask key="constraints">
+                                    <include reference="Ct4-Cx-rpJ"/>
+                                </mask>
+                            </variation>
+                            <connections>
+                                <outlet property="dataSource" destination="-1" id="IKb-rq-jc6"/>
+                                <outlet property="delegate" destination="-1" id="Jap-jK-7Ri"/>
+                            </connections>
+                        </tableView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -133,7 +135,9 @@
                             <variation key="heightClass=compact" constant="140"/>
                         </constraint>
                         <constraint firstItem="M53-sg-ciK" firstAttribute="top" secondItem="KPb-1x-alq" secondAttribute="top" id="Dz9-tu-L4S"/>
-                        <constraint firstItem="T86-7R-AUz" firstAttribute="top" secondItem="M53-sg-ciK" secondAttribute="bottom" id="Ecg-CH-nZ9"/>
+                        <constraint firstItem="T86-7R-AUz" firstAttribute="top" secondItem="M53-sg-ciK" secondAttribute="bottom" id="Ecg-CH-nZ9">
+                            <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
+                        </constraint>
                         <constraint firstItem="M53-sg-ciK" firstAttribute="leading" secondItem="KPb-1x-alq" secondAttribute="leading" id="LEK-SO-p2a"/>
                         <constraint firstAttribute="trailing" secondItem="M53-sg-ciK" secondAttribute="trailing" id="gQO-a7-gxt"/>
                         <constraint firstAttribute="bottom" secondItem="T86-7R-AUz" secondAttribute="bottom" id="ukQ-kz-iU3"/>
@@ -759,7 +763,9 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="w3S-ek-dah" secondAttribute="trailing" id="0cs-Wn-QN0"/>
                         <constraint firstAttribute="bottom" secondItem="w3S-ek-dah" secondAttribute="bottom" id="XRu-94-ExE"/>
-                        <constraint firstItem="w3S-ek-dah" firstAttribute="top" secondItem="RTC-Rf-9Yj" secondAttribute="top" id="erP-5a-Z8l"/>
+                        <constraint firstItem="w3S-ek-dah" firstAttribute="top" secondItem="RTC-Rf-9Yj" secondAttribute="top" id="erP-5a-Z8l">
+                            <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
+                        </constraint>
                         <constraint firstItem="w3S-ek-dah" firstAttribute="leading" secondItem="RTC-Rf-9Yj" secondAttribute="leading" id="mPo-eS-qwN"/>
                         <constraint firstAttribute="width" constant="160" id="tJo-7l-1Ku">
                             <variation key="heightClass=compact" constant="140"/>
@@ -803,6 +809,7 @@
                 <constraint firstItem="4me-Ob-d7k" firstAttribute="leading" secondItem="wHL-AA-NOy" secondAttribute="leading" id="3Fq-DX-leD"/>
                 <constraint firstAttribute="trailing" secondItem="RTC-Rf-9Yj" secondAttribute="trailing" id="6IH-id-YwR">
                     <variation key="heightClass=compact" constant="-140"/>
+                    <variation key="heightClass=compact-widthClass=regular" constant="-140"/>
                 </constraint>
                 <constraint firstItem="KPb-1x-alq" firstAttribute="top" secondItem="wHL-AA-NOy" secondAttribute="top" id="8R1-ec-s5C"/>
                 <constraint firstItem="KPb-1x-alq" firstAttribute="top" secondItem="PhF-3s-YPB" secondAttribute="bottom" constant="-260" id="9Tg-Dk-h3A">
@@ -828,7 +835,9 @@
                     <variation key="heightClass=compact" constant="8" symbolic="YES"/>
                 </constraint>
                 <constraint firstItem="4me-Ob-d7k" firstAttribute="top" secondItem="wHL-AA-NOy" secondAttribute="top" id="asN-aK-4AJ"/>
-                <constraint firstItem="RTC-Rf-9Yj" firstAttribute="top" secondItem="wHL-AA-NOy" secondAttribute="top" id="dyk-kV-h54"/>
+                <constraint firstItem="RTC-Rf-9Yj" firstAttribute="top" secondItem="wHL-AA-NOy" secondAttribute="top" id="dyk-kV-h54">
+                    <variation key="heightClass=compact-widthClass=regular" constant="20"/>
+                </constraint>
                 <constraint firstItem="PhF-3s-YPB" firstAttribute="top" secondItem="wHL-AA-NOy" secondAttribute="top" id="eD6-U3-IPx"/>
                 <constraint firstItem="PhF-3s-YPB" firstAttribute="leading" secondItem="wHL-AA-NOy" secondAttribute="leading" id="fOt-2Z-bUM"/>
                 <constraint firstItem="KPb-1x-alq" firstAttribute="leading" secondItem="PhF-3s-YPB" secondAttribute="trailing" constant="2" id="nMP-Rh-BVj"/>
@@ -837,6 +846,8 @@
                     <variation key="heightClass=compact" constant="170"/>
                 </constraint>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">

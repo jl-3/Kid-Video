@@ -35,7 +35,10 @@
 
 
 }
-
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
 - (BOOL) loadAllFavoriteVideosFromDB {
         NSString *alertString = @"Data Insertion failed";
         self.mFavoriteVideos = (NSMutableArray *)[[DBManager getSharedInstance] getAllVideos];

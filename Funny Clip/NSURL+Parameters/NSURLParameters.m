@@ -1,10 +1,3 @@
-//
-//  NSURL+Parameters.m
-//  NSURL+Parameters
-//
-//  Created by Carl Jahn on 16.09.13.
-//  Copyright (c) 2013 Carl Jahn. All rights reserved.
-//
 
 #import "NSURLParameters.h"
 #import <objc/runtime.h>

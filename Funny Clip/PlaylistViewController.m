@@ -42,7 +42,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         adBannerViewIsVisible = YES;
         adBannerView = banner;
         NSLog(@"%f",banner.frame.size.width);
-                NSLog(@"%f",banner.frame.size.height);
+        NSLog(@"%f",banner.frame.size.height);
         [self fixupAdView:[UIDevice currentDevice].orientation];
     }
 }
@@ -73,34 +73,40 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
 - (void)createAdBannerView {
     Class classAdBannerView = NSClassFromString(@"ADBannerView");
     if (classAdBannerView != nil) {
+        if (!adBannerView) {
         adBannerView = [[classAdBannerView alloc]
-                             initWithFrame:CGRectZero];
-
+                        initWithFrame:CGRectZero];
+        
         [adBannerView setFrame:CGRectMake(0, 0, self.viewAds.frame.size.width, self.viewAds.frame.size.height)];
         [adBannerView setDelegate:self];
         [adBannerView setBackgroundColor:[UIColor clearColor]];
         [self.viewAds setBackgroundColor:[UIColor clearColor]];
         [self.viewAds addSubview:adBannerView];
         [adBannerView didMoveToSuperview];
+        }
     }
 }
 - (void)fixupAdView:(UIInterfaceOrientation)toInterfaceOrientation {
+   
+
     if (adBannerView != nil) {
-  [UIView beginAnimations:@"fixupViews" context:nil];
+       
         if (adBannerViewIsVisible) {
-
-            [self.viewAds setAlpha:0];
+             if (![[NSUserDefaults standardUserDefaults]boolForKey:kIdentifierRemoveAds]) {
+                 [self.viewAds setHidden:NO];
+             }
         } else {
-
-            [self.viewAds setAlpha:0];
+            
+            [self.viewAds setHidden:YES];
         }
-        [UIView commitAnimations];
+       
+    
     }
 }
 #pragma mark - Init Data
 - (void) initDataMenu {
-    mMenuItems = [NSArray arrayWithObjects:@"Loop",@"Remove Ads",@"Sign In",@"About", nil];
-
+    mMenuItems = [NSMutableArray arrayWithObjects:@"Loop",@"Remove Ads",@"Sign In",@"About", nil];
+    
     
 }
 - (void) initItemStatus {
@@ -109,7 +115,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     // Init
     theSecondBefore=0;
     CurrentVideoIdPlaying = @"L0MK7qz13bU";
-   
+    
     [self.playButton setSelected:YES];
     [self.ViewListCollection setAlpha:0];
     [self.searchBarView setHidden:YES];
@@ -119,10 +125,10 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     [self.playButton setBackgroundImage:[UIImage imageNamed:BTN_NAME_PLAY] forState:UIControlStateNormal];
     [self.playButton setBackgroundImage:[UIImage imageNamed:BTN_NAME_PAUSE] forState:UIControlStateSelected];
     
-     [self.btnAmNhac setBackgroundImage:[UIImage imageNamed:BTN_NAME_MUSIC] forState:UIControlStateNormal];
-     [self.btnHoatHinh setBackgroundImage:[UIImage imageNamed:BTN_NAME_CARTOON] forState:UIControlStateNormal];
-     [self.btnKeChuyen setBackgroundImage:[UIImage imageNamed:BTN_NAME_STORY] forState:UIControlStateNormal];
-   // [self];
+    [self.btnAmNhac setBackgroundImage:[UIImage imageNamed:BTN_NAME_MUSIC] forState:UIControlStateNormal];
+    [self.btnHoatHinh setBackgroundImage:[UIImage imageNamed:BTN_NAME_CARTOON] forState:UIControlStateNormal];
+    [self.btnKeChuyen setBackgroundImage:[UIImage imageNamed:BTN_NAME_STORY] forState:UIControlStateNormal];
+    // [self];
     
     //setup title video playing
     self.titleVideoPlaying.textAlignment= NSTextAlignmentLeft;
@@ -156,16 +162,23 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     return self;
     
 }
-
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 #pragma mark - ViewDid
 - (void)viewDidAppear:(BOOL)animated {
+    
     [super viewDidAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+
     [self.navigationController setNavigationBarHidden:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
     if (adBannerView)
-    [adBannerView setBackgroundColor:[UIColor clearColor]];
+        [adBannerView setBackgroundColor:[UIColor clearColor]];
     [self.viewAds setBackgroundColor:[UIColor clearColor]];
-  // [self fixupAdView:[[UIDevice currentDevice] orientation]];
+    [self refreshView];
+    // [self fixupAdView:[[UIDevice currentDevice] orientation]];
     
     
     
@@ -173,26 +186,27 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSSet *productIdentifiers = [NSSet setWithObjects:kIdentifierRemoveAds,nil];
-
+    if (mIAPHleper) {
     mIAPHleper = [[IAPHelper alloc]initWithProductIdentifiers:productIdentifiers ];
     [mIAPHleper requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {
-        self.products = products;
+            self.products = products;
             
         }
-           }];
+    }];
+    }
     myNation = @"EN";
     [self checkLocation];
     BOOL isFirstTime = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstTime"];
     if (!isFirstTime) {
-    // do someting when first time run app;
+        // do someting when first time run app;
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"playRepeat"];
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"playBackground"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstTime"];
-    
+        
     }
     
-   
+    
     
     self.youtubeService = [[GTLServiceYouTube alloc] init];
     self.youtubeService.authorizer =
@@ -206,20 +220,21 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
         
         [[self navigationController] pushViewController:[self createAuthController] animated:YES];
-       } else {
-    [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationLandscapeLeft] forKey:@"orientation"];
-           
-         // Load ads
+    } else {
+        [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationLandscapeLeft] forKey:@"orientation"];
         
-           
+        // Load ads
+        
+        
         isTheFirstTime= YES;
         // [self.listViewColectionView setHidden:YES];
         [self init];
         [self initItemStatus];
         [self initDataMenu];
-         mFavoriteVideos = [NSMutableArray array];
-         [self createAdBannerView];
-
+        mFavoriteVideos = [NSMutableArray array];
+        
+        [self createAdBannerView];
+        
         
         
         //NSString* videoID = @"L0MK7qz13bU";
@@ -236,7 +251,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         self.playerView.delegate = self;
         
         // [self.playerView loadWithVideoId:videoID playerVars:playerVars];
-       timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDurationTime) userInfo:nil repeats:YES];
+        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDurationTime) userInfo:nil repeats:YES];
         
         
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -244,13 +259,13 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
                                                      name:@"Playback started"
                                                    object:nil];
         
-           [[NSNotificationCenter defaultCenter] addObserver:self
-                                                    selector:@selector(deleteVideoFromFavorite:)
-                                                        name:@"deleteVideoFromFavorite"
-                                                      object:nil];
-           
-           [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
-           
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(deleteVideoFromFavorite:)
+                                                     name:@"deleteVideoFromFavorite"
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
+        
         //[self loadDataJson];
         if ([self loadAllFavoriteVideosFromDB]) {
             [self.mListVideo reloadData];
@@ -287,8 +302,8 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
             }
             
         }];
-
-    
+        
+        
     }
     
     
@@ -318,7 +333,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
 #pragma mark - YouTubeGetUploadsDelegate methods
 - (void)getYouTubeFavoriteVideos:(YouTubeGetVideos *)getVideos didFinishWithResults:(NSArray *)results {
     if (results) {
-    
+        
         for (VideoData *vidData in results) {
             [self saveToDBWhenClick:vidData];
         }
@@ -326,11 +341,11 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
 }
 - (void)getYouTubeVideos:(YouTubeGetVideos *)getVideos didFinishWithResults:(NSArray *)results : (NSString*) nextPageTokenThis : (NSString *) prvPageTokenThis : (int ) typeOfResultThis {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-
-    if (![AFNetworkReachabilityManager sharedManager].reachable) {
     
-               [BaseUtils showAlert:POPUP_TITLE_NETWORK message:POPUP_INFO_LOAD_DATA_ERROR];
-
+    if (![AFNetworkReachabilityManager sharedManager].reachable) {
+        
+        [BaseUtils showAlert:POPUP_TITLE_NETWORK message:POPUP_INFO_LOAD_DATA_ERROR];
+        
     }
     isLoadFinish=YES;
     if (!results) {
@@ -351,12 +366,12 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
             break;
         case IS_CARTOON:
             if (typeOfResultThis == TYPE_OF_RESULT_NORMAL)
-              VIDEOS_HOATHINH = [results mutableCopy];
+                VIDEOS_HOATHINH = [results mutableCopy];
             else [VIDEOS_HOATHINH addObjectsFromArray:results];
             break;
         default:
             if (typeOfResultThis == TYPE_OF_RESULT_NORMAL)
-            VIDEOS_SEARCH_RESULTS = [results mutableCopy];
+                VIDEOS_SEARCH_RESULTS = [results mutableCopy];
             else
                 [VIDEOS_SEARCH_RESULTS addObjectsFromArray:results];
             break;
@@ -369,9 +384,9 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     [self.listViewColectionView reloadData];
     if (isTheFirstTime) isTheFirstTime = NO;
     else
-    [self ShowViewScroll];
+        [self ShowViewScroll];
     [MBProgressHUD hideHUDForView:self.listViewColectionView animated:YES];
-   }
+}
 
 
 - (void)playerViewDidBecomeReady:(YTPlayerView *)playerView{
@@ -382,44 +397,44 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
 }
 
 - (void)playerView:(YTPlayerView *)playerView receivedError:(YTPlayerError)error {
-      NSLog(@"receivedError");
+    NSLog(@"receivedError");
 }
 - (void ) checkNetworkStatus {
-        if (!isLoadedJson) {
-            [self checkLocation];
-            [self loadDataJson: BaseURLStringDropBox_1];
-            
-        }
+    if (!isLoadedJson) {
+        [self checkLocation];
+        [self loadDataJson: BaseURLStringDropBox_1];
+        
+    }
 }
 
 - (void) checkDurationTime {
-   
- //   NSLog(@"TIMER: CheckDurationTime %@",self.playerView.duration);
+    
+    //   NSLog(@"TIMER: CheckDurationTime %@",self.playerView.duration);
     if ((self.playerView.currentTime > 0) && (self.playerView.duration) ){
-          NSLog(@"TIMER: CheckDurationTime %i",self.playerView.duration);
-    if ((self.playerView.currentTime > self.playerView.duration - 1)){
-             if ([[NSUserDefaults standardUserDefaults] boolForKey:@"playRepeat"]) {
+        NSLog(@"TIMER: CheckDurationTime %i",self.playerView.duration);
+        if ((self.playerView.currentTime > self.playerView.duration - 1)){
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:@"playRepeat"]) {
                 [self.playerView setLoop:YES];
-               [self.playerView seekToSeconds:0 allowSeekAhead:YES];
-                }
-             else {
-                 [self.playerView seekToSeconds:0 allowSeekAhead:YES];
-                 [self.playerView pauseVideo];
-
+                [self.playerView seekToSeconds:0 allowSeekAhead:YES];
+            }
+            else {
+                [self.playerView seekToSeconds:0 allowSeekAhead:YES];
+                [self.playerView pauseVideo];
+                
                 [self ShowViewScroll];
             }
+        }
     }
-    }
-   }
+}
 - (void)  keyboardDisAppearOrShow {
     [self.searchBarView resignFirstResponder];
     _tap.enabled = NO;
 }
 - (void) loadDataJson: (NSString * ) baseURLString {
-   
+    
     if (isLoadedJson) return;
     
-//    NSString *tmpStr = @"https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=PLzB9NRNjGRgxH9c97gFLdUgE0Cpg8qXEr&key=AIzaSyA2THPKeUZagzEMi4pg65VqwZRoKWPQ2N0";
+    //    NSString *tmpStr = @"https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=PLzB9NRNjGRgxH9c97gFLdUgE0Cpg8qXEr&key=AIzaSyA2THPKeUZagzEMi4pg65VqwZRoKWPQ2N0";
     NSURL *url = [NSURL URLWithString:baseURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     mPlayLists = [NSMutableArray array];
@@ -437,10 +452,17 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
             if ([myNation isEqualToString:@"VN"]) {
                 playList = @"MyPlayLists_VN";
             } else {
-              playList = @"MyPlayLists_EN";
+                playList = @"MyPlayLists_EN";
             }
-        } 
+        }
         NSDictionary *dict = (NSDictionary*)responseObject;
+        NSMutableArray *tmpArrayFirstVideos= dict[@"MyFistVideos"];
+        NSObject *tmpObjectFristVideos;
+        tmpObjectFristVideos= [BaseUtils objectAtIndex:tmpArrayFirstVideos:0];
+
+        CurrentVideoIdPlaying = [tmpObjectFristVideos valueForKey:@"videoId"];
+        
+        
         NSMutableArray *tmpArray= dict[playList];
         for (int i=0;i<tmpArray.count;i++)
         {
@@ -448,37 +470,38 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
             tmpObject= [BaseUtils objectAtIndex:tmpArray:i];
             // NSLodropg([tmpObject valueForKey:@"playListId"]);
             if (tmpObject) {
-            PlayListModel *mPlayListModel = [PlayListModel PlayListWithDictionary:
-                                             @{ @"playListId":[tmpObject valueForKey:@"playListId"],
-                                                @"playListName":[tmpObject valueForKey:@"playListName"],
-                                                
-                                                
-                                                }];
-          [mPlayLists  addObject:mPlayListModel];
+                PlayListModel *mPlayListModel = [PlayListModel PlayListWithDictionary:
+                                                 @{ @"playListId":[tmpObject valueForKey:@"playListId"],
+                                                    @"playListName":[tmpObject valueForKey:@"playListName"],
+                                                    
+                                                    
+                                                    }];
+                [mPlayLists  addObject:mPlayListModel];
             }
         }
         
         isLoadedJson = YES;
         //unitIdBanner = dict [@"unitIdBanner"];
-                NSString *playListIdTmp=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :0]).playListId;
+        
+        NSString *playListIdTmp=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :0]).playListId;
         NSString *playListIdFavorite=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :3]).playListId;
         [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : IS_GET_NORMAL_PAGE];
-       
+        
         // get favorite  if is the first time;
         if (mFavoriteVideos)
             if (mFavoriteVideos.count == 0)
                 [self.getVideos getYouTubeFavoriteVideosWithService:self.youtubeService :playListIdFavorite];
         // [self.SimpleTableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-
-       [BaseUtils showAlert:POPUP_TITLE_NETWORK message:POPUP_INFO_LOAD_DATA_ERROR];
+        
+        [BaseUtils showAlert:POPUP_TITLE_NETWORK message:POPUP_INFO_LOAD_DATA_ERROR];
         [MBProgressHUD hideHUDForView:self.playerView animated:YES];
         isLoadedJson = NO;
-
+        
         if ([baseURLString isEqualToString:BaseURLStringDropBox_1 ])
-              [self loadDataJson : BaseURLStringGoogle];
+            [self loadDataJson : BaseURLStringGoogle];
         else if ([baseURLString isEqualToString:BaseURLStringGoogle ])
-                [self loadDataJson : BaseURLStringGit];
+            [self loadDataJson : BaseURLStringGit];
     }];
     
     // 5
@@ -487,47 +510,47 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     
 }
 - (void) checkLocation{
-
+    
     NSString *urlString = [NSString stringWithFormat:@"http://www.geoplugin.net/json.gp"];
-   
-
+    
+    
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-      AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     operation.responseSerializer = [AFJSONResponseSerializer serializer];
     // operation.responseSerializer = [AFHTTPResponseSerializer serializer];
     operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-   
-       
+        
+        
         NSDictionary *dict = (NSDictionary*)responseObject;
-       // NSMutableArray *tmpArray= dict[@"geoPlugin"];
+        // NSMutableArray *tmpArray= dict[@"geoPlugin"];
         if (dict)
-        myNation = [dict objectForKey:@"geoplugin_countryCode"];
+            myNation = [dict objectForKey:@"geoplugin_countryCode"];
         if (isLoadedJson) {
             isLoadedJson= NO;
             [self loadDataJson:BaseURLStringDropBox_1];
         }
         
-            //proceed.
+        //proceed.
         // [self initValueLocalizable];
-
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         
-       
+        
     }];
     
     // 5
     //[MBProgressHUD showHUDAddedTo:self.playerView animated:NO];
     [operation start];
     
-  }
+}
 #pragma mark - UISEARCHBAR Datasource
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
-
+    
     
 }
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar{
@@ -620,9 +643,9 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     [cellScroll.thumnailImg setImageWithURLRequest:request
                                   placeholderImage:placeholderImage
                                            success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-                                
+                                               
                                                vData.fullImage = image;
-
+                                               
                                                
                                                [cellScroll.thumnailImg setImage:vData.fullImage];
                                                //cellScroll.thumnailImg.image = image;
@@ -646,125 +669,125 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     VideoData *vidData;
     switch (IS_OPEN_IN_TAB) {
         case IS_MUSIC:
-           vidData = [ BaseUtils objectAtIndex: VIDEOS_AMNHAC :indexPath.row];
+            vidData = [ BaseUtils objectAtIndex: VIDEOS_AMNHAC :indexPath.row];
             
             break;
         case IS_STORY:
-    
+            
             vidData = [ BaseUtils objectAtIndex: VIDEOS_KECHUYEN :indexPath.row];
             
             break;
         case IS_CARTOON:
-           
+            
             vidData = [ BaseUtils objectAtIndex: VIDEOS_HOATHINH :indexPath.row];
             
             break;
         default:
-           
+            
             vidData = [ BaseUtils objectAtIndex: VIDEOS_SEARCH_RESULTS :indexPath.row];
             
             break;
     }
     if (!vidData) return ;
     if ([vidData getYouTubeId]) {
-      
-    NSString *videoID= [vidData getYouTubeId];
         
-    if (videoID) {
+        NSString *videoID= [vidData getYouTubeId];
         
-        CurrentVideoIdPlaying = videoID;
-        [self.playerView loadWithVideoId:videoID playerVars:playerVars];
-        [MBProgressHUD showHUDAddedTo:self.playerView animated:YES];
-        [self.titleVideoPlaying setText:vidData.getTitle];
-        
-        //durationOfCurrentVideoPlaying = vidData.getDuration;
-        
-        [self buttonPressed:self.playButton];
-        // status button when click play
-        [self.playButton setSelected:YES ];
-     
-        [self buttonPressed:self.ViewUpDownbtn];
-        [self saveToDBWhenClick:vidData];
-        [self.sliderVideo setValue:0];
-        tmpValueOfSlider= -1;
+        if (videoID) {
+            
+            CurrentVideoIdPlaying = videoID;
+            [self.playerView loadWithVideoId:videoID playerVars:playerVars];
+            [MBProgressHUD showHUDAddedTo:self.playerView animated:YES];
+            [self.titleVideoPlaying setText:vidData.getTitle];
+            
+            //durationOfCurrentVideoPlaying = vidData.getDuration;
+            
+            [self buttonPressed:self.playButton];
+            // status button when click play
+            [self.playButton setSelected:YES ];
+            
+            [self buttonPressed:self.ViewUpDownbtn];
+            [self saveToDBWhenClick:vidData];
+            [self.sliderVideo setValue:0];
+            tmpValueOfSlider= -1;
+        }
     }
-}
 }
 
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-   
-   // UIView *md= [scrollView.subviews objectAtIndex:1];
+    
+    // UIView *md= [scrollView.subviews objectAtIndex:1];
     //if ([scrollView.subviews objectAtIndex:1])
     if (scrollView == self.listViewColectionView) {
-   
-    if ((int)scrollView.contentOffset.y >= (int )scrollView.contentSize.height - (int)self.listViewColectionView.frame.size.height)
-    {
-        //[scrollView setScrollEnabled:NO];
-        NSString *playListId;
-        if ( IS_OPEN_IN_TAB != IS_SEARCH ) {
-            playListId=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :IS_OPEN_IN_TAB-1]).playListId;
-            
-        }
-        if (isLoadFinish)
-        switch (IS_OPEN_IN_TAB) {
-            case IS_SEARCH:
-                if (VIDEOS_SEARCH_RESULTS.count < MAX_ITEM_IN_LIST) {
-                   [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
-                [self.getVideos searchYouTubeVideosWithService:self.youtubeService:nil : nextPageToken : nil : IS_SEARCH_NEXT_PAGE];
-                 isLoadFinish=NO;
-                }
-                break;
-            
-            default:
-                switch (IS_OPEN_IN_TAB) {
-                    case IS_MUSIC:
-                        if (VIDEOS_AMNHAC.count > MAX_ITEM_IN_LIST) break;
-                        else  {
-                            if (nextPageToken) {
-                        [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : IS_SEARCH_NEXT_PAGE];
-                        [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
-                            }
-                        }
-                        break;
-                    case IS_STORY:
-                        if (VIDEOS_KECHUYEN.count > MAX_ITEM_IN_LIST) break;
-                        else {
-                              if (nextPageToken) {
-                            [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : IS_SEARCH_NEXT_PAGE];
-                            [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
-                              }
-                        }
-                        break;
-                    case IS_CARTOON:
-                        if (VIDEOS_HOATHINH.count > MAX_ITEM_IN_LIST) break;
-                        else
-                        {
-                              if (nextPageToken) {
-                            [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : IS_SEARCH_NEXT_PAGE];
-                            [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
-                              }
-                        }
-                        break;
-                    default:
-                        break;
-                }
-
-                 //[self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : 0];
-                 isLoadFinish=NO;
+        
+        if ((int)scrollView.contentOffset.y >= (int )scrollView.contentSize.height - (int)self.listViewColectionView.frame.size.height)
+        {
+            //[scrollView setScrollEnabled:NO];
+            NSString *playListId;
+            if ( IS_OPEN_IN_TAB != IS_SEARCH ) {
+                playListId=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :IS_OPEN_IN_TAB-1]).playListId;
                 
-                break;
+            }
+            if (isLoadFinish)
+                switch (IS_OPEN_IN_TAB) {
+                    case IS_SEARCH:
+                        if (VIDEOS_SEARCH_RESULTS.count < MAX_ITEM_IN_LIST) {
+                            [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
+                            [self.getVideos searchYouTubeVideosWithService:self.youtubeService:nil : nextPageToken : nil : IS_SEARCH_NEXT_PAGE];
+                            isLoadFinish=NO;
+                        }
+                        break;
+                        
+                    default:
+                        switch (IS_OPEN_IN_TAB) {
+                            case IS_MUSIC:
+                                if (VIDEOS_AMNHAC.count > MAX_ITEM_IN_LIST) break;
+                                else  {
+                                    if (nextPageToken) {
+                                        [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : IS_SEARCH_NEXT_PAGE];
+                                        [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
+                                    }
+                                }
+                                break;
+                            case IS_STORY:
+                                if (VIDEOS_KECHUYEN.count > MAX_ITEM_IN_LIST) break;
+                                else {
+                                    if (nextPageToken) {
+                                        [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : IS_SEARCH_NEXT_PAGE];
+                                        [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
+                                    }
+                                }
+                                break;
+                            case IS_CARTOON:
+                                if (VIDEOS_HOATHINH.count > MAX_ITEM_IN_LIST) break;
+                                else
+                                {
+                                    if (nextPageToken) {
+                                        [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : IS_SEARCH_NEXT_PAGE];
+                                        [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
+                                    }
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+                        
+                        //[self.getVideos getYouTubeVideosWithService:self.youtubeService:playListId: nextPageToken : prevPageToken : 0];
+                        isLoadFinish=NO;
+                        
+                        break;
+                }
+            
+            
+            //LOAD MORE
+            // you can also add a isLoading bool value for better dealing :D
         }
-        
-        
-        //LOAD MORE
-        // you can also add a isLoading bool value for better dealing :D
-    }
-    else {
-        NSLog(@"%f",scrollView.contentOffset.y);
-        NSLog(@"%f",scrollView.contentSize.height);
-        NSLog(@"%f",self.listViewColectionView.frame.size.height);
-    }
+        else {
+            NSLog(@"%f",scrollView.contentOffset.y);
+            NSLog(@"%f",scrollView.contentSize.height);
+            NSLog(@"%f",self.listViewColectionView.frame.size.height);
+        }
     }
 }
 
@@ -777,16 +800,16 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         {
             [tableView registerNib:[UINib nibWithNibName:@"mVideoCell" bundle:nil] forCellReuseIdentifier:@"videoCell"];
             cell = [tableView dequeueReusableCellWithIdentifier:@"videoCell"];
-
+            
         }
-
+        
         FavoriteVideoDetail *vData = [BaseUtils objectAtIndex: [super mFavoriteVideos] :indexPath.row] ;
         if (!vData) return cell;
         cell.titleLabel.trailingBuffer = cell.titleLabel.frame.size.width;
         cell.titleLabel.text = vData.videoName;
         NSLog([NSString stringWithFormat:@" width of cell table : %f ", cell.frame.size.width]);
         NSLog([NSString stringWithFormat:@" heigh of cell table : %f ", cell.frame.size.height]);
-       // NSLog([NSString stringWithFormat:@" %f ", cell.titleLabel.frame.size.width]);
+        // NSLog([NSString stringWithFormat:@" %f ", cell.titleLabel.frame.size.width]);
         if (![[BaseUtils humanReadableFromYouTubeTime:vData.videoDuration] isEqualToString:@"(Unknown)"]) {
             [cell.descriptionLabel setHidden:NO];
             cell.descriptionLabel.text =[BaseUtils humanReadableFromYouTubeTime:vData.videoDuration];
@@ -794,7 +817,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
             [cell.descriptionLabel setHidden:YES];
         }
         cell.videoId = vData.videoId;
-         [cell setNeedsLayout];
+        [cell setNeedsLayout];
         NSURL *url = [NSURL URLWithString:vData.thumnailUrl];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         UIImage *placeholderImage = [UIImage imageNamed:@"bg_loading.png"];
@@ -816,58 +839,61 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
                                                  UIGraphicsEndImageContext();
                                                  
                                                  [cell.backgroundImage setImage:image];
-
+                                                 
                                                  
                                              } failure:nil];
-
+        
         return cell;
     } else {
-    
-                if (indexPath.row > 0)
-                {
-                    tblCellMenu * cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
-                    if (!cell)
-                    {
-                        [tableView registerNib:[UINib nibWithNibName:@"tblCellMenu" bundle:nil] forCellReuseIdentifier:@"tblCellMenuID"];
-                        cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
-                        
-                    }
-                  
-                    if (indexPath.row == 1) {
-                       cell.lblPrice.text = @"0.99$";
-                    } else {
-                    [cell.lblPrice setText:@""];
-                    }
-                        
-                    [cell.titleItemOfMenu setTextColor:[UIColor whiteColor]];
-                    cell.titleItemOfMenu.text = [BaseUtils objectAtIndex:[mMenuItems mutableCopy] : indexPath.row];
-                    //NSLog( [mMenuItems objectAtIndex:indexPath.row]);
-                   
-                    return cell;
-                } else {
-                    tbvCellMenu  * cell = [tableView dequeueReusableCellWithIdentifier:@"tbvCellMenu"];
-                    if (!cell)
-                    {
-                        [tableView registerNib:[UINib nibWithNibName:@"tbvCellMenu" bundle:nil] forCellReuseIdentifier:@"tbvCellMenu"];
-                        cell = [tableView dequeueReusableCellWithIdentifier:@"tbvCellMenu"];
-                        
-                    }
-                    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
-                   cell.view_switch.transform = CGAffineTransformMakeScale(0.75, 0.75);
-                    if (indexPath.row == 0) {
-                    
-                    [cell.view_switch setOn: [[NSUserDefaults standardUserDefaults]boolForKey:@"playRepeat" ]];
-                                             }
-                  
-                    
-                    cell.index = indexPath.row;
-                    [cell.lblContent setTextColor:[UIColor whiteColor]];
-                   // [cell.lblContent setFont:[UIFont fontWithName: size:<#(CGFloat)#>]];
-                    cell.lblContent.text = [BaseUtils objectAtIndex:[mMenuItems mutableCopy] : indexPath.row];
-                    //
-                    return cell;
+        
+        if (indexPath.row > 0)
+        {
+            tblCellMenu * cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
+            if (!cell)
+            {
+                [tableView registerNib:[UINib nibWithNibName:@"tblCellMenu" bundle:nil] forCellReuseIdentifier:@"tblCellMenuID"];
+                cell = [tableView dequeueReusableCellWithIdentifier:@"tblCellMenuID"];
                 
-                }
+            }
+            
+            if (indexPath.row == 1) {
+                cell.lblPrice.text = @"0.99$";
+            } else {
+                [cell.lblPrice setText:@""];
+            }
+            if ([[NSUserDefaults standardUserDefaults]boolForKey:kIdentifierRemoveAds]) {
+                [cell.lblPrice setHidden:YES];
+                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            }
+            [cell.titleItemOfMenu setTextColor:[UIColor whiteColor]];
+            cell.titleItemOfMenu.text = [BaseUtils objectAtIndex:[mMenuItems mutableCopy] : indexPath.row];
+            //NSLog( [mMenuItems objectAtIndex:indexPath.row]);
+            
+            return cell;
+        } else {
+            tbvCellMenu  * cell = [tableView dequeueReusableCellWithIdentifier:@"tbvCellMenu"];
+            if (!cell)
+            {
+                [tableView registerNib:[UINib nibWithNibName:@"tbvCellMenu" bundle:nil] forCellReuseIdentifier:@"tbvCellMenu"];
+                cell = [tableView dequeueReusableCellWithIdentifier:@"tbvCellMenu"];
+                
+            }
+            [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+            cell.view_switch.transform = CGAffineTransformMakeScale(0.75, 0.75);
+            if (indexPath.row == 0) {
+                
+                [cell.view_switch setOn: [[NSUserDefaults standardUserDefaults]boolForKey:@"playRepeat" ]];
+            }
+            
+            
+            cell.index = indexPath.row;
+            [cell.lblContent setTextColor:[UIColor whiteColor]];
+            // [cell.lblContent setFont:[UIFont fontWithName: size:<#(CGFloat)#>]];
+            cell.lblContent.text = [BaseUtils objectAtIndex:[mMenuItems mutableCopy] : indexPath.row];
+            //
+            return cell;
+            
+        }
         
     }
     
@@ -922,19 +948,19 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView==self.mListVideo) {
         NSLog(@"heightForRowAtIndexPath table video %f", tableView.frame.size.width);
-       
+        
         return tableView.frame.size.width*80/100;
-       // return 100;
+        // return 100;
     } else {
-               return self.view.frame.size.height/8;
-            }
+        return self.view.frame.size.height/8;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (tableView == self.mListVideo) {
-       // [tableView deselectRowAtIndexPath:indexPath animated:NO];
+        // [tableView deselectRowAtIndexPath:indexPath animated:NO];
         FavoriteVideoDetail *vidData = (FavoriteVideoDetail *)[ BaseUtils objectAtIndex:[super mFavoriteVideos]:indexPath.row];
         if (!vidData) return ;
         NSString *videoID= vidData.videoId;
@@ -943,25 +969,26 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
             [self.playerView loadWithVideoId:videoID playerVars:playerVars];
             [MBProgressHUD showHUDAddedTo:self.playerView animated:YES];
             [self.titleVideoPlaying setText:vidData.videoName];
-        
+            
             [self.playButton setSelected:YES ];
-          
-          
-             tmpValueOfSlider= -1;
+            
+            
+            tmpValueOfSlider= -1;
             [self hideViewScroll];
-           
+            
             
         }
     } else {
         switch (indexPath.row) {
                 
-            
+                
             case 1:
-                // remove ads
-                if ([self.products objectAtIndex:0]) {
-                    self.product = [self.products objectAtIndex:0];
-                    [mIAPHleper buyProduct:self.product];
-                }
+                
+                if (![[NSUserDefaults standardUserDefaults] boolForKey:kIdentifierRemoveAds]){
+                    if ([self.products objectAtIndex:0]) {
+                        self.product = [self.products objectAtIndex:0];
+                        [mIAPHleper buyProduct:self.product];
+                    }}
                 break;
             case 2:
                 
@@ -973,7 +1000,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
             case 3:
                 [[self navigationController] pushViewController:mVCAbout animated:YES];
                 break;
-
+                
             default:
                 break;
         }
@@ -1008,28 +1035,28 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     }];
 }
 - (IBAction)buttonPlayerViewFace:(id)sender{
-//    if (sender == self.playerViewFace)
-//    {
-//        [self.viewButonSeeking setAlpha:0];
-//        [UIView animateWithDuration:1.f animations:^{
-//            [self.viewButonSeeking setAlpha:1];
-//        }];
-//      
-//    } else if (sender == self.playButton) {
-//        if (self.playButton.isSelected) {
-//            [self.playButton setSelected:NO];
-//            [self.playerView pauseVideo];
-//            
-//            
-//        } else {
-//            [self.playButton setSelected:YES];
-//            //  [[NSNotificationCenter defaultCenter] postNotificationName:@"Playback started" object:self];
-//            [self.playerView playVideo];
-//        }
-//        [timerSeekingView invalidate];
-//        timerSeekingView =  [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideSeekingView) userInfo:nil repeats:NO];
-//        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDurationTime) userInfo:nil repeats:YES];
-//    }
+    //    if (sender == self.playerViewFace)
+    //    {
+    //        [self.viewButonSeeking setAlpha:0];
+    //        [UIView animateWithDuration:1.f animations:^{
+    //            [self.viewButonSeeking setAlpha:1];
+    //        }];
+    //
+    //    } else if (sender == self.playButton) {
+    //        if (self.playButton.isSelected) {
+    //            [self.playButton setSelected:NO];
+    //            [self.playerView pauseVideo];
+    //
+    //
+    //        } else {
+    //            [self.playButton setSelected:YES];
+    //            //  [[NSNotificationCenter defaultCenter] postNotificationName:@"Playback started" object:self];
+    //            [self.playerView playVideo];
+    //        }
+    //        [timerSeekingView invalidate];
+    //        timerSeekingView =  [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideSeekingView) userInfo:nil repeats:NO];
+    //        timer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(checkDurationTime) userInfo:nil repeats:YES];
+    //    }
 }
 - (IBAction)setProgress:(UISlider *)sender {
     // self.progressBar.progress = [sender value];
@@ -1038,7 +1065,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         [self.playerView seekToSeconds:([sender value]*[self.playerView duration]) allowSeekAhead:YES];
     tmpValueOfSlider=[sender value] - 0.0000001;
     [timerSeekingView invalidate];
-     timerSeekingView =  [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideSeekingView) userInfo:nil repeats:NO];
+    timerSeekingView =  [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(hideSeekingView) userInfo:nil repeats:NO];
 }
 - (void) HideMenuView {
     self.trailingOfMenuView.constant =  -(self.MenuView.frame.size.width);
@@ -1064,7 +1091,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         //[self appendStatusText:@"Loading previous video in playlist\n"];
         if (!self.ViewUpDownbtn.isSelected) {
             [self.ViewUpDownbtn setSelected:YES];
-             [self ShowViewScroll];
+            [self ShowViewScroll];
             if ((isLoadedJson)&& (mPlayLists))
                 if (VIDEOS_AMNHAC.count == 0) {
                     NSString *playListIdTmp=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :0]).playListId;
@@ -1074,7 +1101,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
             
         } else {
             [self.ViewUpDownbtn setSelected:NO];
-           [self hideViewScroll];
+            [self hideViewScroll];
             
         }
         
@@ -1086,13 +1113,13 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
             
             _tap.enabled = YES;
         } else {
-           // if ([self.currentTextInSearchBar isEqualToString:@""]) {
-                //[self searchBarSearchButtonClicked:self.searchBarView];
-                [self keyboardDisAppearOrShow];
-                [self.searchBarView setHidden:YES];
-                [self.viewButtonTheLoai setHidden:NO];
-                //_tap.enabled = NO;
-          //  }
+            // if ([self.currentTextInSearchBar isEqualToString:@""]) {
+            //[self searchBarSearchButtonClicked:self.searchBarView];
+            [self keyboardDisAppearOrShow];
+            [self.searchBarView setHidden:YES];
+            [self.viewButtonTheLoai setHidden:NO];
+            //_tap.enabled = NO;
+            //  }
             
         }
     } else  if (sender == self.btnMenu) {
@@ -1116,7 +1143,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
                 [self resetStatusLoadPage];
                 if ([VIDEOS_AMNHAC count] < 1) {
                     NSString *playListIdTmp=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :0]).playListId;
-                   [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
+                    [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
                     [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : IS_GET_NORMAL_PAGE];
                 } else {
                     [self.listViewColectionView  reloadData];
@@ -1137,7 +1164,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
                 IS_OPEN_IN_TAB = IS_CARTOON;
                 [self resetStatusLoadPage];
                 if ([VIDEOS_HOATHINH count]< 1) {
-                   NSString *playListIdTmp=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :2]).playListId;
+                    NSString *playListIdTmp=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :2]).playListId;
                     [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
                     [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : IS_GET_NORMAL_PAGE];
                 }else {
@@ -1150,7 +1177,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     
 }
 - (void) setSizeBtnTheLoaiWhenClick : (id)sender {
-   
+    
     float widthNomarl= 50;
     float widthSeleted= 60;
     float bottomNomarl= 10;
@@ -1161,8 +1188,8 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         widthNomarl= 75;
         widthSeleted= 85;
-//        bottomNomarl = 
-//        bottomSeleted
+        //        bottomNomarl =
+        //        bottomSeleted
         leading = 10;
         trailing = 10;
     }
@@ -1192,7 +1219,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         self.trailingHoatHinh.constant=bottomSeleted;
         self.leadingAmNhac.constant=leading;
     }
-   
+    
     [self.viewButtonTheLoai setNeedsUpdateConstraints];
     
     [UIView animateWithDuration:1.f animations:^{
@@ -1253,9 +1280,10 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
       finishedWithAuth:(GTMOAuth2Authentication *)authResult
                  error:(NSError *)error {
     if (error != nil) {
-        [BaseUtils showAlert:@"Authentication Error" message:error.localizedDescription];
-        self.youtubeService.authorizer = nil;
+        //[BaseUtils showAlert:@"Authentication Error" message:error.localizedDescription];
+             self.youtubeService.authorizer = nil;
         [self viewDidLoad];
+        
     } else {
         self.youtubeService.authorizer = authResult;
         //[self isAuthorized];
@@ -1265,34 +1293,34 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     }
 }
 - (void)deleteVideoFromFavorite:(NSNotification *) notification {
-      if([notification.name isEqual:@"deleteVideoFromFavorite"] && notification.object != self) {
-      
-          NSString * videoId = ((mVideoCell *)notification.object).videoId;
-          
-          BOOL success = [[DBManager getSharedInstance] removeVideo:videoId];
-          if (success ) {
-          
-              if ([self loadAllFavoriteVideosFromDB]) {
-                  [self.mListVideo reloadData];
-              }
-          }
-      }
+    if([notification.name isEqual:@"deleteVideoFromFavorite"] && notification.object != self) {
+        
+        NSString * videoId = ((mVideoCell *)notification.object).videoId;
+        
+        BOOL success = [[DBManager getSharedInstance] removeVideo:videoId];
+        if (success ) {
+            
+            if ([self loadAllFavoriteVideosFromDB]) {
+                [self.mListVideo reloadData];
+            }
+        }
+    }
     
 }
 
 - (void)receivedNotification:(NSNotification *) notification {
-//    if([notification.name isEqual:@"playRepeat"] ) {
-//      
-//        
-//        [[NSUserDefaults standardUserDefaults] setBool:(BOOL)notification.object forKey:@"playRepeat" ];
-//        
-//    } else
-//        if ([notification.name isEqual:@"playBackground"] ) {
-//            [[NSUserDefaults standardUserDefaults] setBool:(BOOL)notification.object forKey:@"playBackground" ];
-//
-//        }
-//        
-//        
+    //    if([notification.name isEqual:@"playRepeat"] ) {
+    //
+    //
+    //        [[NSUserDefaults standardUserDefaults] setBool:(BOOL)notification.object forKey:@"playRepeat" ];
+    //
+    //    } else
+    //        if ([notification.name isEqual:@"playBackground"] ) {
+    //            [[NSUserDefaults standardUserDefaults] setBool:(BOOL)notification.object forKey:@"playBackground" ];
+    //
+    //        }
+    //
+    //
 }
 - (void)receivedPlaybackStartedNotification:(NSNotification *) notification {
     //  if([notification.name isEqual:@"Playback started"] && notification.object != self) {
@@ -1308,14 +1336,23 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
 - (void)productPurchased:(NSNotification *)notification
 {
     NSString *productIdentifier = notification.object;
-    if ([self.product.productIdentifier isEqualToString:productIdentifier]) {
+    if ([self.product.productIdentifier isEqualToString:kIdentifierRemoveAds]) {
         NSLog(@"This product has been purchased!");
-        [self refreshView];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:kIdentifierRemoveAds];
+         [self refreshView];
     }
 }
- - (void ) refreshView {
-   //  [mMenuItems ar];
-
+- (void ) refreshView {
+    //  [mMenuItems ar];
+    
+    if ([[NSUserDefaults standardUserDefaults]boolForKey:kIdentifierRemoveAds]) {
+        [mMenuItems setObject:@"Purchased" atIndexedSubscript:1];
+        
+        [self.tbvMenu reloadData];
+        adBannerViewIsVisible = NO;
+        [self fixupAdView:[[UIDevice currentDevice] orientation] ];
+    }
+    
 }
 
 @end

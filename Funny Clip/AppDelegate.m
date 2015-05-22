@@ -31,7 +31,8 @@
  //  self.tabBarController = [[BaseTabBarController alloc] initWithNibName:@"BaseTabBarController" bundle:nil];
     self.window.rootViewController = self.navigationController;
     self.window.backgroundColor = [UIColor clearColor];
-    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    [[UIApplication sharedApplication] setStatusBarStyle: NO];
     [self.window makeKeyAndVisible];
 
     return YES;

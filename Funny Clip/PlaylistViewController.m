@@ -22,8 +22,10 @@
 #import "tblCellMenu.h"
 #import "VCAbout.h"
 // Thumbnail image size.
+@import StoreKit;
 
 @implementation PlaylistViewController
+
 @synthesize youtubeService;
 
 // BaseURLString
@@ -31,52 +33,8 @@ static NSString * BaseURLStringDropBox_1 =@"https://www.dropbox.com/s/msp70rmare
 //static NSString * const BaseURLStringDropBox_2 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
 static NSString *  BaseURLStringGoogle =@"https://drive.google.com/uc?export=download&id=0B45IYpZpvVu-NGFqQXhEZmhVbVE";
 static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Video/master/VideoJson.txt";
-
-- (void) initValueLocalizable {
-
-    NSString * language = [[NSLocale preferredLanguages] objectAtIndex:0];
-    if ([language isEqualToString:@"vi"]) {
-      BaseURLStringDropBox_1 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
-       
-      BaseURLStringGoogle =@"https://drive.google.com/uc?export=download&id=0B45IYpZpvVu-NGFqQXhEZmhVbVE";
-      BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Video/master/VideoJson.txt";
-    
-    } 
-}
-
-//- (void)createAdBannerView {
-//    CGRect mFrame = [self.viewAds frame];
-//    mFrame.origin.x=0;
-//    mFrame.origin.y=0;
-//   mFrame.size.height=50;
-//    mGADBannerView = [[GADBannerView alloc] initWithFrame:mFrame] ;
-//  mGADBannerView.adUnitID = unitIdBanner;
-//    
-//    mGADBannerView.rootViewController = self;
-//   
-//    GADRequest *request = [GADRequest request];
-//    request.testDevices = @[@"f4b2fe76020c0b7d56afd471562817362737644c",@"F82C578EB094402286E48486048FA8"];
-//    
-//        [mGADBannerView loadRequest:request];
-//    
-//    [self.viewAds addSubview:mGADBannerView];
-//    
-//}
-//- (void)adViewDidReceiveAd:(GADBannerView *)view {
-//    CGRect mFrame = [view frame];
-//    mFrame.origin.x=0;
-//    mFrame.origin.y=0;
-//    [mGADBannerView setFrame:mFrame];
 //
-//}
-//- (void)adView:(GADBannerView *)view didFailToReceiveAdWithError:(GADRequestError *)error{
-//    CGRect mFrame = [view frame];
-//    mFrame.origin.x=0;
-//    mFrame.origin.y= 0;
-//    [mGADBannerView setFrame:mFrame];
-//}
-
-
+static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
 #pragma mark ADBannerViewDelegate
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
@@ -131,7 +89,7 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
   [UIView beginAnimations:@"fixupViews" context:nil];
         if (adBannerViewIsVisible) {
 
-            [self.viewAds setAlpha:1];
+            [self.viewAds setAlpha:0];
         } else {
 
             [self.viewAds setAlpha:0];
@@ -142,15 +100,7 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
 #pragma mark - Init Data
 - (void) initDataMenu {
     mMenuItems = [NSArray arrayWithObjects:@"Loop",@"Remove Ads",@"Sign In",@"About", nil];
-    
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(receivedNotification:)
-//                                                 name:@"playRepeat"
-//                                               object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self
-//                                             selector:@selector(receivedNotification:)
-//                                                 name:@"playBackground"
-//                                               object:nil];
+
     
 }
 - (void) initItemStatus {
@@ -222,6 +172,17 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSSet *productIdentifiers = [NSSet setWithObjects:kIdentifierRemoveAds,nil];
+
+    mIAPHleper = [[IAPHelper alloc]initWithProductIdentifiers:productIdentifiers ];
+    [mIAPHleper requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
+        if (success) {
+        self.products = products;
+            
+        }
+           }];
+    myNation = @"EN";
+    [self checkLocation];
     BOOL isFirstTime = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstTime"];
     if (!isFirstTime) {
     // do someting when first time run app;
@@ -231,7 +192,7 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
     
     }
     
-    [self initValueLocalizable];
+   
     
     self.youtubeService = [[GTLServiceYouTube alloc] init];
     self.youtubeService.authorizer =
@@ -422,6 +383,7 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
 }
 - (void ) checkNetworkStatus {
         if (!isLoadedJson) {
+            [self checkLocation];
             [self loadDataJson: BaseURLStringDropBox_1];
             
         }
@@ -467,9 +429,16 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
-        
+        NSString *playList;
+        if (myNation) {
+            if ([myNation isEqualToString:@"VN"]) {
+                playList = @"MyPlayLists_VN";
+            } else {
+              playList = @"MyPlayLists_EN";
+            }
+        } 
         NSDictionary *dict = (NSDictionary*)responseObject;
-        NSMutableArray *tmpArray= dict[@"MyPlayLists"];
+        NSMutableArray *tmpArray= dict[playList];
         for (int i=0;i<tmpArray.count;i++)
         {
             NSObject *tmpObject;
@@ -514,7 +483,45 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
     [operation start];
     
 }
+- (void) checkLocation{
 
+    NSString *urlString = [NSString stringWithFormat:@"http://www.geoplugin.net/json.gp"];
+   
+
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+      AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    operation.responseSerializer = [AFJSONResponseSerializer serializer];
+    // operation.responseSerializer = [AFHTTPResponseSerializer serializer];
+    operation.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+   
+       
+        NSDictionary *dict = (NSDictionary*)responseObject;
+       // NSMutableArray *tmpArray= dict[@"geoPlugin"];
+        if (dict)
+        myNation = [dict objectForKey:@"geoplugin_countryCode"];
+        if (isLoadedJson) {
+            isLoadedJson= NO;
+            [self loadDataJson:BaseURLStringDropBox_1];
+        }
+        
+            //proceed.
+        // [self initValueLocalizable];
+
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+       
+    }];
+    
+    // 5
+    //[MBProgressHUD showHUDAddedTo:self.playerView animated:NO];
+    [operation start];
+    
+  }
 #pragma mark - UISEARCHBAR Datasource
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
 
@@ -823,14 +830,19 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
                         
                     }
                   
-                    
+                    if (indexPath.row == 1) {
+                       cell.lblPrice.text = @"0.99$";
+                    } else {
+                    [cell.lblPrice setText:@""];
+                    }
+                        
                     [cell.titleItemOfMenu setTextColor:[UIColor whiteColor]];
                     cell.titleItemOfMenu.text = [BaseUtils objectAtIndex:[mMenuItems mutableCopy] : indexPath.row];
                     //NSLog( [mMenuItems objectAtIndex:indexPath.row]);
                    
                     return cell;
                 } else {
-                      tbvCellMenu  * cell = [tableView dequeueReusableCellWithIdentifier:@"tbvCellMenu"];
+                    tbvCellMenu  * cell = [tableView dequeueReusableCellWithIdentifier:@"tbvCellMenu"];
                     if (!cell)
                     {
                         [tableView registerNib:[UINib nibWithNibName:@"tbvCellMenu" bundle:nil] forCellReuseIdentifier:@"tbvCellMenu"];
@@ -942,6 +954,11 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
                 
             
             case 1:
+                // remove ads
+                if ([self.products objectAtIndex:0]) {
+                    self.product = [self.products objectAtIndex:0];
+                    [mIAPHleper buyProduct:self.product];
+                }
                 break;
             case 2:
                 
@@ -1284,4 +1301,13 @@ static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Vi
 }
 
 
+#pragma mark - StoreKit
+- (void)productPurchased:(NSNotification *)notification
+{
+    NSString *productIdentifier = notification.object;
+    if ([self.product.productIdentifier isEqualToString:productIdentifier]) {
+        NSLog(@"This product has been purchased!");
+       // [self refreshView];
+    }
+}
 @end

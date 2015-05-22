@@ -11,5 +11,6 @@
 @interface tblCellMenu : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *titleItemOfMenu
 ;
+@property (weak, nonatomic) IBOutlet UILabel *lblPrice;
 
 @end

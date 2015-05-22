@@ -92,6 +92,7 @@
 		69A741E81AEE65DF000C6350 /* MarqueeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A741E71AEE65DF000C6350 /* MarqueeLabel.m */; };
 		69A741EA1AEE6BD7000C6350 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 69A741E91AEE6BD7000C6350 /* libsqlite3.dylib */; };
 		69A741F21AEE6CBD000C6350 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A741F11AEE6CBD000C6350 /* DBManager.m */; };
+		69A7C0221B0F0B1200ED6E9C /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A7C0211B0F0B1200ED6E9C /* IAPHelper.m */; };
 		69A8769F1AE394300073C6B1 /* mVideoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A8769D1AE394300073C6B1 /* mVideoCell.m */; };
 		69A876A01AE394300073C6B1 /* mVideoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69A8769E1AE394300073C6B1 /* mVideoCell.xib */; };
 		69A8B95F1AF6069C00F8069F /* VCAbout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A8B95D1AF6069C00F8069F /* VCAbout.m */; };
@@ -244,6 +245,8 @@
 		69A741E91AEE6BD7000C6350 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		69A741F01AEE6CBD000C6350 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		69A741F11AEE6CBD000C6350 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
+		69A7C0201B0F0B1200ED6E9C /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		69A7C0211B0F0B1200ED6E9C /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		69A8769C1AE394300073C6B1 /* mVideoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mVideoCell.h; sourceTree = "<group>"; };
 		69A8769D1AE394300073C6B1 /* mVideoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mVideoCell.m; sourceTree = "<group>"; };
 		69A8769E1AE394300073C6B1 /* mVideoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mVideoCell.xib; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 		6915C7D41ADE05E4005AD7E1 /* Funny Clip */ = {
 			isa = PBXGroup;
 			children = (
+				69A7C0201B0F0B1200ED6E9C /* IAPHelper.h */,
+				69A7C0211B0F0B1200ED6E9C /* IAPHelper.m */,
 				69A741E51AEE65DF000C6350 /* AutoScrollLabel */,
 				6914A3A11AE74F6D00AAC253 /* YouTube API */,
 				69EA86101AE6350800F612FA /* NSURL+Parameters */,
@@ -784,6 +789,7 @@
 				6955CEB71ADE76B60093E1C8 /* BaseNavigationController.m in Sources */,
 				6914A3B81AE74F6D00AAC253 /* VideoData.m in Sources */,
 				697FB1421ADE9A7700DFE12D /* FunBaseViewController.m in Sources */,
+				69A7C0221B0F0B1200ED6E9C /* IAPHelper.m in Sources */,
 				6914A3C11AE74F8D00AAC253 /* GTLCommon_Sources.m in Sources */,
 				699EB3981AEF567C00116B07 /* PlayListModel.m in Sources */,
 				69BF14D61AFF02740083EABE /* BaseUtils.m in Sources */,

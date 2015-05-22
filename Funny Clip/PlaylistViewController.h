@@ -22,7 +22,8 @@
 #import "MMDrawerBarButtonItem.h"
 #import "BaseUtils.h"
 #import "tbvCellMenu.h"
-
+#import "IAPHelper.h"
+@import StoreKit;
 //
 //#import "VideoItemCollectCell.m"
 @protocol PlaylistViewControllerDelegate <NSObject>;
@@ -31,12 +32,12 @@
 @interface PlaylistViewController : FunBaseViewController<YTPlayerViewDelegate, YouTubeGetVideosDelegate, UICollectionViewDataSource,UICollectionViewDelegate, UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchControllerDelegate,UIScrollViewDelegate >
 {
    
-    
+    IAPHelper *mIAPHleper;
     ADBannerView *adBannerView;
     BOOL adBannerViewIsVisible;
 //    GADBannerView *mGADBannerView;
 //    BOOL mGADBannerViewIsVisible;
-   
+    NSString *myNation;
     
     BOOL isTheFirstTime;
     
@@ -69,6 +70,10 @@
     UIAlertView *alertViewNetwork;
     BOOL isLoadedJson;
 }
+
+@property (nonatomic, strong) NSArray *products;
+@property (nonatomic, strong) NSNumberFormatter *priceFormatter;
+@property (nonatomic, strong) SKProduct *product;
 @property (weak, nonatomic) NSString *currentTextInSearchBar;
 
 @property (strong, nonatomic) UITapGestureRecognizer *tap;

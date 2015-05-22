@@ -248,6 +248,9 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
                                                     selector:@selector(deleteVideoFromFavorite:)
                                                         name:@"deleteVideoFromFavorite"
                                                       object:nil];
+           
+           [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(productPurchased:) name:IAPHelperProductPurchasedNotification object:nil];
+           
         //[self loadDataJson];
         if ([self loadAllFavoriteVideosFromDB]) {
             [self.mListVideo reloadData];
@@ -849,7 +852,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
                         cell = [tableView dequeueReusableCellWithIdentifier:@"tbvCellMenu"];
                         
                     }
-                    
+                    [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                    cell.view_switch.transform = CGAffineTransformMakeScale(0.75, 0.75);
                     if (indexPath.row == 0) {
                     
@@ -923,7 +926,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         return tableView.frame.size.width*80/100;
        // return 100;
     } else {
-               return self.view.frame.size.height/10;
+               return self.view.frame.size.height/8;
             }
 }
 
@@ -1307,7 +1310,12 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     NSString *productIdentifier = notification.object;
     if ([self.product.productIdentifier isEqualToString:productIdentifier]) {
         NSLog(@"This product has been purchased!");
-       // [self refreshView];
+        [self refreshView];
     }
 }
+ - (void ) refreshView {
+   //  [mMenuItems ar];
+
+}
+
 @end

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment defaultVersion="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
@@ -205,10 +206,10 @@
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="BG4-Np-Rsf">
-                                    <variation key="heightClass=regular-widthClass=regular" constant="65"/>
+                                    <variation key="heightClass=regular-widthClass=regular" constant="90"/>
                                 </constraint>
                                 <constraint firstAttribute="width" constant="63" id="zyG-GC-LdT">
-                                    <variation key="heightClass=regular-widthClass=regular" constant="80"/>
+                                    <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                                 </constraint>
                             </constraints>
                             <state key="normal" backgroundImage="menu.png">
@@ -234,7 +235,7 @@
                             <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="7L3-ij-xkd">
-                                    <variation key="heightClass=regular-widthClass=regular" constant="65"/>
+                                    <variation key="heightClass=regular-widthClass=regular" constant="70"/>
                                 </constraint>
                                 <constraint firstAttribute="width" constant="44" id="spA-gG-Vk2">
                                     <variation key="heightClass=regular-widthClass=regular" constant="85"/>
@@ -871,7 +872,7 @@
                     <exclude reference="eNO-LA-oiZ"/>
                 </mask>
             </variation>
-            <point key="canvasLocation" x="253.5" y="82"/>
+            <point key="canvasLocation" x="257.5" y="178"/>
         </view>
         <searchDisplayController id="7Cy-gh-5Uo">
             <connections>

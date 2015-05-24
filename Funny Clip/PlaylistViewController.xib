@@ -218,6 +218,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="ne2-tS-qdH">
                                     <variation key="heightClass=compact" constant="41"/>
+                                    <variation key="heightClass=compact-widthClass=regular" constant="60"/>
                                 </constraint>
                                 <constraint firstAttribute="width" constant="72" id="zbe-sO-pbH"/>
                             </constraints>
@@ -710,9 +711,11 @@
                         </constraint>
                         <constraint firstAttribute="height" constant="40" id="W2X-fb-xny">
                             <variation key="heightClass=compact" constant="40"/>
+                            <variation key="heightClass=compact-widthClass=regular" constant="44"/>
                         </constraint>
                         <constraint firstAttribute="width" constant="40" id="dqf-1u-5YZ">
                             <variation key="heightClass=compact" constant="50"/>
+                            <variation key="heightClass=compact-widthClass=regular" constant="54"/>
                         </constraint>
                         <constraint firstAttribute="width" constant="46" id="p2g-TN-BGJ"/>
                     </constraints>
@@ -819,6 +822,7 @@
                 <constraint firstItem="OPz-jk-exJ" firstAttribute="top" secondItem="wHL-AA-NOy" secondAttribute="top" constant="57" id="AtA-DQ-7y2"/>
                 <constraint firstAttribute="bottom" secondItem="4me-Ob-d7k" secondAttribute="bottom" constant="50" id="BWf-2J-GbH">
                     <variation key="heightClass=compact" constant="40"/>
+                    <variation key="heightClass=compact-widthClass=regular" constant="46"/>
                 </constraint>
                 <constraint firstAttribute="bottom" secondItem="7RU-El-bct" secondAttribute="bottom" id="FuJ-fD-W5j"/>
                 <constraint firstItem="OPz-jk-exJ" firstAttribute="leading" secondItem="wHL-AA-NOy" secondAttribute="leading" constant="8" id="HrT-ZT-Bjg"/>

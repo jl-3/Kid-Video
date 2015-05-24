@@ -10,3 +10,10 @@
 "POPUP_INFO_LOAD_DATA_ERROR" =  "Get data failed, Please try again ! ";
 "ITEMS_MENU" = "";
 "ABOUT_APP" = "";
+"STRING_LOOP" = "Loop";
+"STRING_REMOVE_ADS" = "Disable Ads";
+"STRING_ABOUT" = "About";
+"STRING_SIGNIN" = "Sign In/Register";
+"STRING_CONTENT" = "Content";
+"STRING_REQUIRE_SIGN_IN" = "This App required Google account. So, You should Sign in your Goolge account (Menu -> Sign in).";
+"STRING_ADS_OFF" = "Ads is OFF";

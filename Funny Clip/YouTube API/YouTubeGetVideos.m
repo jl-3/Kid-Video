@@ -21,10 +21,12 @@
         [self.delegate getYouTubeVideos:self didFinishWithResults:nil:nil:nil:TYPE_OF_RESULT_NORMAL];
         return;
     }
+
     GTLQueryYouTube *playlistItemsListQuery = [GTLQueryYouTube queryForSearchListWithPart:@"snippet"];
     playlistItemsListQuery.maxResults = 20l;
     if (searchKey)
     playlistItemsListQuery.q=searchKey;
+    playlistItemsListQuery.safeSearch = @"moderate";
     switch (type) {
         case IS_SEARCH_NEXT_PAGE:
             playlistItemsListQuery.pageToken= nextPageToken;
@@ -215,7 +217,8 @@
                             *response, NSError *error) {
             
             if (error) {
-                [self.delegate getYouTubeFavoriteVideos: self didFinishWithResults:nil];
+                
+                [self.delegate getYouTubeFavoriteVideos: self didFinishWithResults: nil];
                 return;
             }
             

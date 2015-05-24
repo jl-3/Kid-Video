@@ -836,7 +836,7 @@
                 </constraint>
                 <constraint firstItem="4me-Ob-d7k" firstAttribute="top" secondItem="wHL-AA-NOy" secondAttribute="top" id="asN-aK-4AJ"/>
                 <constraint firstItem="RTC-Rf-9Yj" firstAttribute="top" secondItem="wHL-AA-NOy" secondAttribute="top" id="dyk-kV-h54">
-                    <variation key="heightClass=compact-widthClass=regular" constant="20"/>
+                    <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
                 </constraint>
                 <constraint firstItem="PhF-3s-YPB" firstAttribute="top" secondItem="wHL-AA-NOy" secondAttribute="top" id="eD6-U3-IPx"/>
                 <constraint firstItem="PhF-3s-YPB" firstAttribute="leading" secondItem="wHL-AA-NOy" secondAttribute="leading" id="fOt-2Z-bUM"/>

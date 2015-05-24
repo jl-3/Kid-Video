@@ -10,3 +10,10 @@
 "POPUP_INFO_LOAD_DATA_ERROR" =  "Lấy dữ liệu không thành công , Vui lòng thử lại ! ";
 "ITEMS_MENU" = "";
 "ABOUT_APP" = "";
+"STRING_LOOP" = "Lặp lại";
+"STRING_REMOVE_ADS" = "Tắt quảng cáo";
+"STRING_ABOUT" = "About";
+"STRING_SIGNIN" = "Đăng nhập/Đăng ký";
+"STRING_CONTENT" = "Nội Dung";
+"STRING_REQUIRE_SIGN_IN" = "ỨNG DỤNG SỬ DỤNG TÀI KHOẢN GOOGLE ĐỂ ĐĂNG NHẬP. VÀO MENU -> ĐĂNG NHẬP ĐỂ ĐĂNG NHẬP/ ĐĂNG KÝ SỬ DỤNG.";
+"STRING_ADS_OFF" = "Đã tắt Quảng Cáo ";

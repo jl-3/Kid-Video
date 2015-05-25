@@ -28,10 +28,10 @@
 
 @synthesize youtubeService;
 
-// BaseURLString BaseURLStringGoogle BaseURLStringDropBox_1
-static NSString * BaseURLStringGoogle =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
+// BaseURLString BaseURLStringGoogle BaseURLStringDropBox_1 https://raw.githubusercontent.com/trongnhan68/Kid-Video/master/VideoJson.txt
+static NSString * BaseURLStringDropBox_1 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
 //static NSString * const BaseURLStringDropBox_2 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
-static NSString *  BaseURLStringDropBox_1 =@"https://drive.google.com/uc?export=download&id=0B45IYpZpvVu-ZzNXRldTLTZHd1U";
+static NSString *  BaseURLStringGoogle =@"https://raw.githubusercontent.com/trongnhan68/Kid-Video/master/VideoJson.txt";
 static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Video/master/VideoJson.txt";
 //
 static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
@@ -93,7 +93,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
        
         if (adBannerViewIsVisible) {
              if (![[NSUserDefaults standardUserDefaults]boolForKey:kIdentifierRemoveAds]) {
-                 [self.viewAds setHidden:YES];
+                 [self.viewAds setHidden:NO];
              }
         } else {
             

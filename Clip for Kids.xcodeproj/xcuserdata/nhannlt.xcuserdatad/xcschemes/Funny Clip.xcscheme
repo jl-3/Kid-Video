@@ -42,16 +42,6 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6915C7EA1ADE05E4005AD7E1"
-               BuildableName = "Funny ClipTests.xctest"
-               BlueprintName = "Funny ClipTests"
-               ReferencedContainer = "container:Clip for Kids.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
@@ -107,6 +97,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "Clip For Kid"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

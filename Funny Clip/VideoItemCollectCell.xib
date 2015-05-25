@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="394" height="252"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="U3l-M0-tR7">
-                        <rect key="frame" x="5" y="5" width="384" height="247"/>
+                        <rect key="frame" x="3" y="3" width="388" height="249"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5:32" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BwM-5e-qm8" userLabel="time">
@@ -26,14 +27,6 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="deviceRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cute_boy.png" translatesAutoresizingMaskIntoConstraints="NO" id="a2D-fW-XVk">
-                        <rect key="frame" x="356" y="213" width="30" height="40"/>
-                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="30" id="0C6-A5-Mxg"/>
-                            <constraint firstAttribute="height" constant="40" id="JHk-UL-fhJ"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RED-I8-ONe" customClass="MarqueeLabel">
                         <rect key="frame" x="5" y="252" width="384" height="20"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -57,19 +50,17 @@
             <constraints>
                 <constraint firstItem="RED-I8-ONe" firstAttribute="top" secondItem="U3l-M0-tR7" secondAttribute="bottom" id="008-gp-850"/>
                 <constraint firstAttribute="bottom" secondItem="RED-I8-ONe" secondAttribute="bottom" id="0g6-KY-sDJ"/>
-                <constraint firstItem="U3l-M0-tR7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="A1w-kX-ytg"/>
-                <constraint firstItem="U3l-M0-tR7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="Fhb-DS-dQi"/>
-                <constraint firstAttribute="bottom" secondItem="a2D-fW-XVk" secondAttribute="bottom" constant="19" id="GXJ-FR-S4c"/>
+                <constraint firstItem="U3l-M0-tR7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="A1w-kX-ytg"/>
+                <constraint firstItem="U3l-M0-tR7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="3" id="Fhb-DS-dQi"/>
                 <constraint firstItem="87A-RH-oIT" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Jz7-zO-eNt"/>
                 <constraint firstItem="87A-RH-oIT" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cmG-oN-hhb"/>
                 <constraint firstItem="BwM-5e-qm8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="eKP-F2-43S"/>
                 <constraint firstItem="RED-I8-ONe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="jnS-iG-7iO"/>
                 <constraint firstAttribute="trailing" secondItem="87A-RH-oIT" secondAttribute="trailing" id="ks4-Gq-k91"/>
-                <constraint firstAttribute="trailing" secondItem="a2D-fW-XVk" secondAttribute="trailing" constant="8" id="ouB-b3-Thn"/>
                 <constraint firstAttribute="trailing" secondItem="RED-I8-ONe" secondAttribute="trailing" constant="5" id="psg-z6-Ws0"/>
                 <constraint firstItem="RED-I8-ONe" firstAttribute="top" secondItem="87A-RH-oIT" secondAttribute="bottom" id="tan-1R-yzk"/>
                 <constraint firstAttribute="trailing" secondItem="BwM-5e-qm8" secondAttribute="trailing" constant="10" id="vtN-S2-end"/>
-                <constraint firstAttribute="trailing" secondItem="U3l-M0-tR7" secondAttribute="trailing" constant="5" id="zfX-k1-kaZ"/>
+                <constraint firstAttribute="trailing" secondItem="U3l-M0-tR7" secondAttribute="trailing" constant="3" id="zfX-k1-kaZ"/>
             </constraints>
             <size key="customSize" width="714" height="383"/>
             <connections>
@@ -82,7 +73,6 @@
     </objects>
     <resources>
         <image name="_1.png" width="1024" height="768"/>
-        <image name="cute_boy.png" width="84" height="144"/>
         <image name="farme_1.png" width="800" height="800"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

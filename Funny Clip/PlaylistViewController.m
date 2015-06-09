@@ -22,6 +22,21 @@
 #import "tblCellMenu.h"
 #import "VCAbout.h"
 // Thumbnail image size.
+
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_RETINA ([[UIScreen mainScreen] scale] >= 2.0)
+
+#define SCREEN_WIDTH ([[UIScreen mainScreen] bounds].size.width)
+#define SCREEN_HEIGHT ([[UIScreen mainScreen] bounds].size.height)
+#define SCREEN_MAX_LENGTH (MAX(SCREEN_WIDTH, SCREEN_HEIGHT))
+#define SCREEN_MIN_LENGTH (MIN(SCREEN_WIDTH, SCREEN_HEIGHT))
+
+#define IS_IPHONE_4_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH < 568.0)
+#define IS_IPHONE_5 (IS_IPHONE && SCREEN_MAX_LENGTH == 568.0)
+#define IS_IPHONE_6 (IS_IPHONE && SCREEN_MAX_LENGTH == 667.0)
+#define IS_IPHONE_6_OR_LESS (IS_IPHONE && SCREEN_MAX_LENGTH <= 667.0)
+#define IS_IPHONE_6P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 @import StoreKit;
 
 @implementation PlaylistViewController
@@ -33,6 +48,8 @@ static NSString * BaseURLStringDropBox_1 =@"https://www.dropbox.com/s/msp70rmare
 //static NSString * const BaseURLStringDropBox_2 =@"https://www.dropbox.com/s/msp70rmarezsjyw/VideoJson.txt?dl=1";
 static NSString *  BaseURLStringGoogle =@"https://raw.githubusercontent.com/trongnhan68/Kid-Video/master/VideoJson.txt";
 static NSString *  BaseURLStringGit =@"https://cdn.rawgit.com/trongnhan68/Kid-Video/master/VideoJson.txt";
+
+
 //
 static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
 #pragma mark ADBannerViewDelegate
@@ -105,16 +122,17 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
 }
 #pragma mark - Init Data
 - (void) initDataMenu {
-    mMenuItems = [NSMutableArray arrayWithObjects:NSLocalizedString(@"STRING_LOOP", nil),NSLocalizedString(@"STRING_REMOVE_ADS",nil),NSLocalizedString(@"STRING_SIGNIN",nil),NSLocalizedString(@"STRING_CONTENT",nil),NSLocalizedString(@"STRING_ABOUT",nil), nil];
+    mMenuItems = [NSMutableArray arrayWithObjects:NSLocalizedString(@"STRING_LOOP", nil),NSLocalizedString(@"STRING_REMOVE_ADS",nil),NSLocalizedString(@"STRING_CONTENT",nil),NSLocalizedString(@"STRING_ABOUT",nil), nil];
     
     
 }
 - (void) initItemStatus {
     //set IS_OPEN_IN_TAB =1: MUSIC TAB
     IS_OPEN_IN_TAB = IS_MUSIC;
+    //[self.btnRecent setHidden:YES];
     // Init
     theSecondBefore=0;
-    CurrentVideoIdPlaying = @"L0MK7qz13bU";
+    CurrentVideoIdPlaying = @"";
     
     [self.playButton setSelected:YES];
     [self.ViewListCollection setAlpha:0];
@@ -144,7 +162,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     // table
     [self.mListVideo setSectionFooterHeight:1];
     [self.tbvMenu setBounces:NO];
-    // [self.tbvMenu vi];
+        // [self.tbvMenu vi];
 }
 
 - (id)init
@@ -162,8 +180,17 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     return self;
     
 }
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    [self ShowViewScroll];
+    [MBProgressHUD showHUDAddedTo:self.ViewListCollection animated:YES];
+    
+    
+}
+
 - (void)viewWillDisappear:(BOOL)animated
 {
+    [super viewWillDisappear:YES];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 #pragma mark - ViewDid
@@ -174,18 +201,27 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
 
     [self.navigationController setNavigationBarHidden:YES];
     [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
     if (adBannerView)
         [adBannerView setBackgroundColor:[UIColor clearColor]];
     [self.viewAds setBackgroundColor:[UIColor clearColor]];
     [self refreshView];
-        [self.view setNeedsUpdateConstraints];
-      [self.view layoutIfNeeded];
+    [self.view setNeedsUpdateConstraints];
+    [self.view layoutIfNeeded];
     [self.tbvMenu reloadData];
     [self.mListVideo reloadData];
     // [self fixupAdView:[[UIDevice currentDevice] orientation]];
     
     
     
+}
+- (void)updateViewConstraints {
+    [self.view layoutIfNeeded];
+    if (IS_IPHONE_6_OR_LESS)
+    self.topFavorite.constant = -20;
+
+    [super updateViewConstraints];
+
 }
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSLog(@"");
@@ -214,15 +250,15 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"isFirstTime"];
         
     }
-    
-    
-    
     self.youtubeService = [[GTLServiceYouTube alloc] init];
-    self.youtubeService.authorizer =
-    [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
-                                                          clientID:kClientID
-                                                      clientSecret:kClientSecret];
-    if (![self isAuthorized]) {
+    self.youtubeService.APIKey = @"AIzaSyDTbkkZZ3OscoG-P8LAdovOxLg6mbThaSU";
+
+//    self.youtubeService.authorizer =
+//    [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:kKeychainItemName
+//                                                          clientID:kClientID
+//                                                      clientSecret:kClientSecret];
+    BOOL tmp = NO;
+    if (tmp) {
         // Not yet authorized, request authorization and push the login UI onto the navigation stack.
         
         
@@ -251,8 +287,8 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         [self initDataMenu];
         mFavoriteVideos = [NSMutableArray array];
         
+       //ip5
         [self createAdBannerView];
-        
         
         
         //NSString* videoID = @"L0MK7qz13bU";
@@ -328,7 +364,32 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     
 }
 
+- (void) loadJson :(NSString *) urlstring {
+   
 
+    GTLServiceYouTube *service = [[GTLServiceYouTube alloc] init];
+    
+    service.APIKey = @"AIzaSyDTbkkZZ3OscoG-P8LAdovOxLg6mbThaSU";
+    
+    GTLQueryYouTube *query = [GTLQueryYouTube queryForPlaylistItemsListWithPart:@"contentDetails"];
+    query.playlistId = @"PLzB9NRNjGRgw_ZUyt4f801-ooKE4hKUbt";
+    
+    GTLServiceTicket *ticket = [service executeQuery:query
+                                   completionHandler:^(GTLServiceTicket *ticket, id object, NSError *error) {
+                                       if (!error) {
+                                           GTLYouTubePlaylistItemListResponse *playlistItems = object;
+                                           
+                                           for (GTLYouTubePlaylistItem *playlistItem in playlistItems) {
+                                               GTLYouTubePlaylistItemContentDetails *details = playlistItem.contentDetails;
+                                               
+                                               NSLog(@"PlaylistItem video ID = %@", details.videoId);
+                                           }
+                                       } else {
+                                           NSLog(@"%@", error);
+                                       }
+                                   }];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -469,6 +530,8 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSString *playList;
+        NSDictionary *dict = (NSDictionary*)responseObject;
+        
         if (myNation) {
             if ([myNation isEqualToString:@"VN"]) {
                if (![[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstTime"])
@@ -494,7 +557,9 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         } else {
          playList = @"MyPlayLists_EN";
         }
-        NSDictionary *dict = (NSDictionary*)responseObject;
+       
+        
+        
         NSMutableArray *tmpArrayFirstVideos= dict[@"MyFistVideos"];
         NSObject *tmpObjectFristVideos;
         tmpObjectFristVideos= [BaseUtils objectAtIndex:tmpArrayFirstVideos:0];
@@ -547,7 +612,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         NSString *playListIdFavorite=( (PlayListModel*)[BaseUtils objectAtIndex:mPlayLists :3]).playListId;
         
         [self.getVideos getYouTubeVideosWithService:self.youtubeService:playListIdTmp: nextPageToken : prevPageToken : IS_GET_NORMAL_PAGE];
-        
+        [MBProgressHUD showHUDAddedTo:self.listViewColectionView animated:YES];
         // get favorite  if is the first time;
         if (mFavoriteVideos)
             if (mFavoriteVideos.count == 0)
@@ -557,6 +622,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
         
         [BaseUtils showAlert:POPUP_TITLE_NETWORK message:POPUP_INFO_LOAD_DATA_ERROR];
         [MBProgressHUD hideHUDForView:self.playerView animated:YES];
+        
         isLoadedJson = NO;
         
         if ([baseURLString isEqualToString:BaseURLStringDropBox_1 ])
@@ -920,7 +986,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
             if (indexPath.row == 1) {
                 cell.lblPrice.text = @"";
                 
-            } else if (indexPath.row == 3) {
+            } else if (indexPath.row == 2) {
             
                 BOOL isVietnamese = [[NSUserDefaults standardUserDefaults] boolForKey:@"vietnamese" ];
                 if (isVietnamese) {
@@ -1015,7 +1081,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     if (tableView==self.mListVideo) {
         return [[super mFavoriteVideos] count];
     } else {
-        return 5;
+        return mMenuItems.count ;
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -1063,15 +1129,8 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
                         [mIAPHleper buyProduct:self.product];
                     }}
                 break;
+                
             case 2:
-                
-                [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIInterfaceOrientationPortrait] forKey:@"orientation"];
-                [self.navigationController setNavigationBarHidden:NO];
-                [[self navigationController] pushViewController:[self createAuthController] animated:YES];
-                
-                break;
-            
-            case 3:
              
                 if ( [[NSUserDefaults standardUserDefaults] boolForKey:@"vietnamese" ]) {
                     [[NSUserDefaults standardUserDefaults] setBool:NO forKey: @"vietnamese" ];
@@ -1085,7 +1144,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
                [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"jsonHasChange"];
                 [self loadDataJson:BaseURLStringDropBox_1];
                 break;
-            case 4:
+            case 3:
                 [[self navigationController] pushViewController:mVCAbout animated:YES];
                 break;
                 
@@ -1159,6 +1218,7 @@ static NSString *kIdentifierRemoveAds = @"T28UGK7CB9.removeAds";
     
     self.trailingOfMenuView.constant =  -(self.MenuView.frame.size.width);
     NSLog(@"%f," ,self.ViewListTable.frame.size.width);
+     // [self.topFavorite setConstant:-20];
     [self.view setNeedsUpdateConstraints];
     [UIView animateWithDuration:0.3f animations:^{
         [self.view layoutIfNeeded];

@@ -1,5 +1,5 @@
 {
-  "version": 1.0,
+  "version": "1",
   "message": "success",
   "MyPlayLists_VN": [
     {
@@ -22,22 +22,21 @@
   ],
  "MyPlayLists_EN": [
     {
-      "playListId": "PLzB9NRNjGRgx0rt4ixB_4JuNYyW4yHikk",
+      "playListId": "PLzB9NRNjGRgyMwT8HTXHotQSReKNUoh-d",
       "playListName": "Nhac Thieu Nhi"
     },
     {
-      "playListId": "PLzB9NRNjGRgwnG4PrF9NikqFVVRDeKzyp",
+      "playListId": "PLzB9NRNjGRgyzA34r0wMpozmw6vQDTx7u",
       "playListName":"Ke Chuyen"
     },    
     {
-      "playListId": "PLzB9NRNjGRgy3dxY2ppTI2TV2w0f50zkr",
+      "playListId": "PLzB9NRNjGRgw_ZUyt4f801-ooKE4hKUbt",
       "playListName":"Hoat Hinh"  
     },
 	{
-      "playListId": "PLzB9NRNjGRgyaFNdYApbaygJCWu6eyGhX",
+      "playListId": "PLzB9NRNjGRgxH9c97gFLdUgE0Cpg8qXEr",
       "playListName":"Favorite List"  
-    }
-  
+    }  
   ],
   "MyFistVideos": [
       {

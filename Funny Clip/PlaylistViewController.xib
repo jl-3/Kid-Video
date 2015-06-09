@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -33,6 +32,7 @@
                 <outlet property="tbvMenu" destination="w3S-ek-dah" id="VQu-rk-HIx"/>
                 <outlet property="televisionImage" destination="SOI-HB-vg9" id="9gt-iT-4j5"/>
                 <outlet property="titleVideoPlaying" destination="ETg-b2-abQ" id="me4-Hh-qLo"/>
+                <outlet property="topFavorite" destination="Dz9-tu-L4S" id="NBj-ah-gbX"/>
                 <outlet property="trailingHoatHinh" destination="ech-N3-ZdI" id="cEF-pH-qRp"/>
                 <outlet property="trailingOfMenuView" destination="6IH-id-YwR" id="ihw-w3-mdN"/>
                 <outlet property="view" destination="wHL-AA-NOy" id="Wwv-wK-yBV"/>
@@ -57,10 +57,10 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M53-sg-ciK" userLabel="recentView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvb-2U-Ca1" userLabel="recentbtn">
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tvb-2U-Ca1" userLabel="recentbtn">
                                     <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <state key="normal" backgroundImage="YEUTHICH.png">
+                                    <state key="normal" image="YEUTHICH.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
@@ -134,7 +134,9 @@
                         <constraint firstAttribute="width" constant="145" id="4Gw-ZU-lhg">
                             <variation key="heightClass=compact" constant="140"/>
                         </constraint>
-                        <constraint firstItem="M53-sg-ciK" firstAttribute="top" secondItem="KPb-1x-alq" secondAttribute="top" id="Dz9-tu-L4S"/>
+                        <constraint firstItem="M53-sg-ciK" firstAttribute="top" secondItem="KPb-1x-alq" secondAttribute="top" id="Dz9-tu-L4S">
+                            <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
+                        </constraint>
                         <constraint firstItem="T86-7R-AUz" firstAttribute="top" secondItem="M53-sg-ciK" secondAttribute="bottom" id="Ecg-CH-nZ9">
                             <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
                         </constraint>

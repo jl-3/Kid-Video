@@ -113,6 +113,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *withOfKeChuyen;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottonKeChuyen;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topFavorite;
 
 @property (weak, nonatomic) IBOutlet MarqueeLabel *titleVideoPlaying;
 @property (weak, nonatomic) IBOutlet UIView *MenuView;
